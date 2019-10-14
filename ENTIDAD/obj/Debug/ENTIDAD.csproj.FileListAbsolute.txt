@@ -1,0 +1,43 @@
+C:\Users\Frank\Desktop\Hotel Las Vegas\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\Users\Frank\Desktop\Hotel Las Vegas\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\Users\Frank\Desktop\Hotel Las Vegas\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\Users\Frank\Desktop\Hotel Las Vegas\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.pdb
+D:\PROYECTOS\frank 18092015\asfdbjhsa\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.dll
+D:\PROYECTOS\frank 18092015\asfdbjhsa\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.pdb
+D:\PROYECTOS\frank 18092015\asfdbjhsa\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csprojResolveAssemblyReference.cache
+D:\PROYECTOS\frank 18092015\asfdbjhsa\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.dll
+D:\PROYECTOS\frank 18092015\asfdbjhsa\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.dll
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.pdb
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.dll
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.pdb
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csprojResolveAssemblyReference.cache
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Debug\ENTIDAD.pdb

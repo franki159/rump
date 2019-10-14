@@ -1,0 +1,35 @@
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csprojResolveAssemblyReference.cache
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\PLANTILLA\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.pdb
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.dll
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.pdb
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csprojResolveAssemblyReference.cache
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.dll
+D:\Bussiness\Web\Hotel\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csprojAssemblyReference.cache
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\Hotel\Hotel Leyva\SolHotelVegas\ENTIDAD\obj\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Release\ENTIDAD.csprojAssemblyReference.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\SolAdminRUMP\ENTIDAD\obj\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.csprojAssemblyReference.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.pdb

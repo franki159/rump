@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\Frank\Downloads\LasVegas</_PublishTargetUrl>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/advanced-datatable/examples/examples_support/details_close.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/examples/examples_support/details_open.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/examples/examples_support/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/css/demo_page.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/css/demo_table.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/css/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/back_disabled.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/back_enabled.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/back_enabled_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/forward_disabled.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/forward_enabled.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/forward_enabled_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/sort_asc.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/sort_asc_disabled.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/sort_both.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/sort_desc.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/sort_desc_disabled.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/images/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/js/FixedColumns.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/js/jquery.dataTables.columnFilter.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/js/jquery.dataTables.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/js/jquery.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/media/js/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/as3/lib/AlivePDF.swc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/as3/lib/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/as3/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/as3/ZeroClipboard.as">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/as3/ZeroClipboardPdf.as">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/css/TableTools.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/css/TableTools_JUI.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/css/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/background.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/collection.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/collection_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/copy.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/copy_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/csv.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/csv_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/pdf.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/pdf_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/print.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/print_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/psd/collection.psd">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/psd/copy document.psd">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/psd/file_types.psd">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/psd/printer.psd">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/psd/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/xls.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/images/xls_hover.png">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/js/TableTools.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/js/TableTools.min.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/js/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/js/ZeroClipboard.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/swf/copy_csv_xls.swf">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/swf/copy_csv_xls_pdf.swf">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/advanced-datatable/tabletools/swf/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datepicker/css/datepicker.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datepicker/css/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datepicker/js/bootstrap-datepicker.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datepicker/js/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datetimepicker/css/datetimepicker.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datetimepicker/css/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-datetimepicker/js/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-fileupload/bootstrap-fileupload.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-fileupload/bootstrap-fileupload.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-inputmask/bootstrap-inputmask.min.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-inputmask/vssver2.scc">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js">
+      <publishTime>03/02/2017 15:59:47</publishTime>
+    </File>
+    <File Include="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/font-awesome.css">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/style-responsive.css">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/style.css">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/css/vssver2.scc">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/font/fontawesome-webfont.svg">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/font/fontawesome-webfontd41d.eot">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/font/fontawesome-webfontf77b.eot">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/font/fontawesome-webfontf77b.ttf">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/font/fontawesome-webfontf77b.woff">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="assets/font-awesome/font/vssver2.scc">
+      <publishTime>03/02/2017 15:59:48</publishTime>
+    </File>
+    <File Include="bin/DATOS.dll">
+      <publishTime>03/05/2017 03:31:32</publishTime>
+    </File>
+    <File Include="bin/DATOS.pdb">
+      <publishTime>03/05/2017 03:31:32</publishTime>
+    </File>
+    <File Include="bin/ENTIDAD.dll">
+      <publishTime>03/05/2017 03:31:32</publishTime>
+    </File>
+    <File Include="bin/ENTIDAD.pdb">
+      <publishTime>03/05/2017 03:31:32</publishTime>
+    </File>
+    <File Include="bin/NEGOCIOS.dll">
+      <publishTime>03/05/2017 03:31:33</publishTime>
+    </File>
+    <File Include="bin/NEGOCIOS.pdb">
+      <publishTime>03/05/2017 03:31:33</publishTime>
+    </File>
+    <File Include="bin/PRESENTACION.dll">
+      <publishTime>03/06/2017 17:43:46</publishTime>
+    </File>
+    <File Include="bin/PRESENTACION.pdb">
+      <publishTime>03/06/2017 17:43:46</publishTime>
+    </File>
+    <File Include="cambiarclave.aspx">
+      <publishTime>03/02/2017 17:15:36</publishTime>
+    </File>
+    <File Include="css/bootstrap-reset.css">
+      <publishTime>03/06/2017 11:36:19</publishTime>
+    </File>
+    <File Include="css/bootstrap.min.css">
+      <publishTime>03/06/2017 12:11:12</publishTime>
+    </File>
+    <File Include="css/style-responsive.css">
+      <publishTime>03/02/2017 16:11:08</publishTime>
+    </File>
+    <File Include="css/style.css">
+      <publishTime>03/03/2017 19:25:15</publishTime>
+    </File>
+    <File Include="default.aspx">
+      <publishTime>03/04/2017 22:46:33</publishTime>
+    </File>
+    <File Include="go.aspx">
+      <publishTime>03/02/2017 17:03:08</publishTime>
+    </File>
+    <File Include="img/ajax-loading.gif">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/arrow-up.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/avatar-mini4.jpg">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/cargando.gif">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/checkbox/check-off.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/checkbox/check-on.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/checkbox/radio-off.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/checkbox/radio-on.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/checkbox/Thumbs.db">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/customSelect-arrow.gif">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/Flip Flop.gif">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/icon.jpg">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/icons/desconocido.ico">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/icons/disponible.ico">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/icons/icon.ico">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/icons/ocupado.ico">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/icons/Thumbs.db">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/left-arrow.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/loading-box.gif">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/lock-bg.jpg">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/mask.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/nav-expand.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/noAvatar.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/right-arrow.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/search-icon.jpg">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/td_bg_drop.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/td_bg_falsa.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/td_bg_hooper.png">
+      <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="js/all/bootstrap.min.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/common-scripts.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/date.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/jquery-migrate-1.2.1.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/jquery.dcjqaccordion.2.7.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/jquery.history.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/jquery.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/jquery.nicescroll.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/jquery.scrollTo.min.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/all/respond.min.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/cambiarclave.js">
+      <publishTime>03/05/2017 03:16:51</publishTime>
+    </File>
+    <File Include="js/default.js">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="js/general.js">
+      <publishTime>03/02/2017 16:09:11</publishTime>
+    </File>
+    <File Include="js/login.js">
+      <publishTime>03/03/2017 13:06:07</publishTime>
+    </File>
+    <File Include="js/page/mantenimiento/cliente.js">
+      <publishTime>03/05/2017 02:04:07</publishTime>
+    </File>
+    <File Include="js/page/mantenimiento/habitacion.js">
+      <publishTime>03/03/2017 19:04:10</publishTime>
+    </File>
+    <File Include="js/page/mantenimiento/usuario.js">
+      <publishTime>03/05/2017 03:20:38</publishTime>
+    </File>
+    <File Include="js/page/operacion/alerta.js">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="js/page/operacion/atencion.js">
+      <publishTime>03/05/2017 02:17:28</publishTime>
+    </File>
+    <File Include="js/page/operacion/movimiento.js">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="js/page/operacion/reserva.js">
+      <publishTime>03/04/2017 02:28:42</publishTime>
+    </File>
+    <File Include="js/page/reporte/reporte.js">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="js/permiso.js">
+      <publishTime>03/03/2017 12:56:53</publishTime>
+    </File>
+    <File Include="login.aspx">
+      <publishTime>03/02/2017 17:00:03</publishTime>
+    </File>
+    <File Include="page/consulta/estado.aspx">
+      <publishTime>03/06/2017 16:07:50</publishTime>
+    </File>
+    <File Include="page/mantenimiento/cliente.aspx">
+      <publishTime>03/03/2017 19:26:23</publishTime>
+    </File>
+    <File Include="page/mantenimiento/habitacion.aspx">
+      <publishTime>03/03/2017 19:00:41</publishTime>
+    </File>
+    <File Include="page/mantenimiento/usuario.aspx">
+      <publishTime>03/03/2017 17:25:37</publishTime>
+    </File>
+    <File Include="page/operacion/alerta.aspx">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="page/operacion/atencion.aspx">
+      <publishTime>03/06/2017 18:14:31</publishTime>
+    </File>
+    <File Include="page/operacion/movimiento.aspx">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="page/operacion/reserva.aspx">
+      <publishTime>03/06/2017 18:11:02</publishTime>
+    </File>
+    <File Include="page/reporte/movimiento.aspx">
+      <publishTime>03/04/2017 03:19:14</publishTime>
+    </File>
+    <File Include="permiso.aspx">
+      <publishTime>03/02/2017 17:15:42</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>03/06/2017 18:19:01</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/06/2017 18:18:41</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
