@@ -1,0 +1,20 @@
+#fondo4{
+  background-image: url('../images/fondo4.png');
+    background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  background-position: center; 
+}
+
+#perritous{
+ background-image: url('../images/perritous.png');
+    background-repeat: no-repeat;
+  background-size: 100% 100%;
+height: 300px;
+  background-position: center; 	
+}
+
+.content_middle form{
+	max-width:600px;
+	margin:0 auto 80px auto;
+}

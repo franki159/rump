@@ -17,3 +17,22 @@ C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\PRESENTACION\obj\Debug\PRESENTACION.cs
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\PRESENTACION\obj\Debug\PRESENTACION.csproj.CopyComplete
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\PRESENTACION\obj\Debug\PRESENTACION.dll
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\PRESENTACION\obj\Debug\PRESENTACION.pdb
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\PRESENTACION.dll.config
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\PRESENTACION.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\PRESENTACION.pdb
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\ENTIDAD.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\Microsoft.ReportViewer.WebForms.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\NEGOCIOS.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\Newtonsoft.Json.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\DATOS.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\MySql.Data.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\ENTIDAD.pdb
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\NEGOCIOS.pdb
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\DATOS.pdb
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\DATOS.dll.config
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\bin\es\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\obj\Debug\PRESENTACION.csprojAssemblyReference.cache
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\obj\Debug\PRESENTACION.csproj.CoreCompileInputs.cache
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\obj\Debug\PRESENTACION.csproj.CopyComplete
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\obj\Debug\PRESENTACION.dll
+C:\Users\FCHARA\source\repos\rump\PRESENTACION\obj\Debug\PRESENTACION.pdb
