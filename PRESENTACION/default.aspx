@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="img/icons/favicon.ico" />
     <!-- Bootstrap core CSS -->
+
     <%--<link href="css/components.css?v=20180828" rel="stylesheet" />--%>
     <link href="css/bootstrap.css" rel="stylesheet" />
     <%--<link href="css/bootstrap-reset.css" rel="stylesheet" />--%>
