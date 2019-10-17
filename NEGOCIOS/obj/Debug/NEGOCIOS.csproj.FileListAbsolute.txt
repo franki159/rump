@@ -84,3 +84,16 @@ C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.Cor
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.CopyComplete
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\NEGOCIOS\obj\Debug\NEGOCIOS.dll
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\NEGOCIOS\obj\Debug\NEGOCIOS.pdb
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\NEGOCIOS.dll
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\NEGOCIOS.pdb
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\DATOS.dll
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.dll
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\MySql.Data.dll
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\DATOS.pdb
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\DATOS.dll.config
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.pdb
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csprojAssemblyReference.cache
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.CoreCompileInputs.cache
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.CopyComplete
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.dll
+C:\Users\FCHARA\source\repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.pdb

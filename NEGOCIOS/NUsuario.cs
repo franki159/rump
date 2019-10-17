@@ -18,5 +18,9 @@ namespace NEGOCIOS
         {
             return DUsuario.ObtenerPropietarioMascota(ent);
         }
+        public static EUsuario Login(EUsuario ent)
+        {
+            return DUsuario.Login(ent);
+        }
     }
 }

@@ -3,10 +3,10 @@
 
     $("#frmLogin input").keypress(function (e) {
         if (e.keyCode === 13) {
-            if ($("#usuario").val() !== "" && $("#clave").val() !== "") {
+            if ($("#txtEmail").val() !== "" && $("#txtPassword").val() !== "") {
                 $("#btnAcceder").click();
             } else {
-                if ($(this).attr("id") === "usuario") $("#clave").focus();
+                if ($(this).attr("id") === "usuario") $("#txtPassword").focus();
                 else $("#btnAcceder").click();
             }
         }
@@ -14,15 +14,15 @@
 
     $("#btnAcceder").click(function () {
         var msjValida = "";
-        if ($("#usuario").val() === "") msjValida += "Ingrese Usuario</br>";
-        if ($("#clave").val() === "") msjValida += "Ingrese Contraseña";
+        if ($("#txtEmail").val() === "") msjValida += "Ingrese Usuario</br>";
+        if ($("#txtPassword").val() === "") msjValida += "Ingrese Contraseña";
 
         if (msjValida !== "") {
             $("#msgError").html(GenerarAlertaError(msjValida));
-            $("#usuario").focus();
+            $("#txtEmail").focus();
             return;
         }
-
+        
         $.ajax({
             type: "POST",
             url: "login.aspx/AccederWM",
@@ -35,15 +35,15 @@
             },
             success: function (data) {
                 if (!data.d.Activo) {
-                    $("#msgError").html(GenerarAlertaError(data.d.Mensaje));
+                    alert_OpenDay("Error", data.d.Mensaje);
                     $("#frmLogin :input").removeAttr("disabled");
                     $("#usuario").focus();
                 } else {
-                    window.location = data.d.Resultado;
+                    alert_OpenDay("ok");
                 }
             },
             error: function (data) {
-                $("#msgError").html(GenerarAlertaError("Inconveniente en la operación"));
+                alert_OpenDay("Error", "Inconveniente en la operación");
                 $("#frmLogin :input").removeAttr("disabled");
                 $("#usuario").focus();
             }

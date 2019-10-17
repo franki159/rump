@@ -17,41 +17,41 @@ namespace PRESENTACION
 
         }
 
-        //[WebMethod()]
-        //public static object AccederWM(string usuario, string clave)
-        //{
-        //    ERespuestaJson objRespuesta = new ERespuestaJson();
-        //    try
-        //    {
-        //        /*Valida usuario*/
-        //        EUsuario eUsuario = new EUsuario();
-        //        eUsuario.DSC_USUARIO = usuario.Trim();
-        //        eUsuario.PASSWORD = clave.Trim();
-        //        eUsuario = NUsuario.Login(eUsuario);
+        [WebMethod()]
+        public static object AccederWM(string usuario, string clave)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                /*Valida usuario*/
+                EUsuario eUsuario = new EUsuario();
+                eUsuario.EMAIL = usuario.Trim();
+                eUsuario.PASSWORD = clave.Trim();
+                eUsuario = NUsuario.Login(eUsuario);
 
-        //        if (eUsuario == null)
-        //        {
-        //            objRespuesta.Error("El usuario no existe o Contraseña incorrecta");
-        //        }
-        //        else if (eUsuario.ESTADO == 2)
-        //        {
-        //            objRespuesta.Error("El usuario se encuentra desactivado");
-        //        }
-        //        else
-        //        {
-        //            HttpContext.Current.Session["UserData"] = eUsuario;
-        //            objRespuesta.Mensaje = System.Web.HttpContext.Current.Session.Timeout.ToString();
-        //            if (eUsuario.ESTADO == 3)
-        //                objRespuesta.Resultado = "cambiarclave.aspx";
-        //            else
-        //                objRespuesta.Resultado = "permiso.aspx";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-        //    }
-        //    return objRespuesta;
-        //}
+                if (eUsuario == null)
+                {
+                    objRespuesta.Error("El usuario no existe o Contraseña incorrecta");
+                }
+                //else if (eUsuario.ESTADO == 2)
+                //{
+                //    objRespuesta.Error("El usuario se encuentra desactivado");
+                //}
+                else
+                {
+                    HttpContext.Current.Session["UserRump"] = eUsuario;
+                    objRespuesta.Mensaje = System.Web.HttpContext.Current.Session.Timeout.ToString();
+                    //if (eUsuario.ESTADO == 3)
+                    //    objRespuesta.Resultado = "cambiarclave.aspx";
+                    //else
+                    //    objRespuesta.Resultado = "permiso.aspx";
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }

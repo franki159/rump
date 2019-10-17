@@ -11,7 +11,7 @@ namespace DATOS
     {
         public enum DataBase
         {
-            CnLasVegas = 1,
+            CnRumpSql = 1,
             CnRump = 2
         }
 
@@ -19,8 +19,8 @@ namespace DATOS
         {
             switch (tipo)
             {
-                case DataBase.CnLasVegas:
-                    return ConfigurationManager.ConnectionStrings["CnnLasVegas"].ConnectionString;
+                case DataBase.CnRumpSql:
+                    return ConfigurationManager.ConnectionStrings["CnnRumpSql"].ConnectionString;
                 case DataBase.CnRump:
                     return ConfigurationManager.ConnectionStrings["CnnRump"].ConnectionString;
                 default:

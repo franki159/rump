@@ -45,6 +45,7 @@
     <Compile Include="EParametro.cs" />
     <Compile Include="ERespuestaJson.cs" />
     <Compile Include="EUsuario.cs" />
+    <Compile Include="EUsuarioPerfil.cs" />
     <Compile Include="EUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
