@@ -8,7 +8,7 @@ namespace ENTIDAD
 {
     public class EUsuarioPerfil
     {
-        public int ID { get; set; }
+        public decimal ID { get; set; }
         public string PERFIL { get; set; }
     }
 }

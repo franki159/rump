@@ -34,13 +34,13 @@ namespace DATOS
                             while (dr.Read())
                             {
                                 eUsuario = new EUsuario();
-                                eUsuario.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetInt32(dr.GetOrdinal("id"));
+                                eUsuario.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
                                 eUsuario.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
                                 eUsuario.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
                                 eUsuario.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
                                 eUsuario.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
                                 eUsuario.USUARIO_PERFIL = new EUsuarioPerfil();
-                                eUsuario.USUARIO_PERFIL.ID = dr.IsDBNull(dr.GetOrdinal("usuario_perfil_id")) ? 0 : dr.GetInt32(dr.GetOrdinal("usuario_perfil_id"));
+                                eUsuario.USUARIO_PERFIL.ID = dr.IsDBNull(dr.GetOrdinal("usuario_perfil_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("usuario_perfil_id"));
                                 eUsuario.USUARIO_PERFIL.PERFIL = dr.IsDBNull(dr.GetOrdinal("perfil")) ? string.Empty : dr.GetString(dr.GetOrdinal("perfil"));
                             }
                         }

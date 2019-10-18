@@ -2,7 +2,7 @@
 
 function documentLoad() {
     var url = $(location).attr('href');
-
+    debugger;
     if (url.indexOf("#!") !== -1) {
        
         var elem = url.split("#!/");
@@ -25,7 +25,7 @@ function documentLoad() {
         });
 
     } else {
-        //$.get('page/operacion/RUMPmovimiento.aspx#', function (data) {
+        debugger;
         $.get('page/inicio.aspx#', function (data) {
             $(".wrapper").html(data);
 
@@ -38,10 +38,7 @@ function documentLoad() {
 
 $(document).ready(function () {
     $.history.init(documentLoad);
-
-    //InfoSesion();
-    //fc_listar_total_alertas();
-
+    InfoSesion();
     $("#cerrarSesion").click(function () {
         $.ajax({
             type: "POST",
@@ -55,93 +52,80 @@ $(document).ready(function () {
             error: function (data) { }
         });
     });
-    //Listar Configuracion
-    //$.ajax({
-    //    type: "POST",
-    //    url: "default.aspx/GetParametros",
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    data: JSON.stringify({ opcion: "COMPROBANTE" }),
-    //    async: true,
-    //    success: function (data) {
-    //        if (!data.d.Activo) {
-    //            $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-    //            $("#pleaseWaitDialog").modal('hide');
-    //            return;
-    //        }
-
-    //        for (var i = 0; i < data.d.Resultado.ListaParametro.length; i++) {
-    //            $('#cmbComprobante').append("<option value='" + data.d.Resultado.ListaParametro[i].CODIGO + "'>" + data.d.Resultado.ListaParametro[i].DESCRIPCION + "</option>");
-    //        }
-    //    },
-    //    error: function (data) {
-    //        $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-    //        $("#pleaseWaitDialog").modal('hide');
-    //    }
-    //});
 });
 
 function InfoSesion() {
-    var objE = {
-        ID: getUrlParameter('token')
-    };
-    
     $.ajax({
         type: "POST",
         url: "default.aspx/InfoSesionWM",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: JSON.stringify({ objE: objE }),
         async: false,
         success: function (data, status) {
             if (!data.d.Activo) {
                 alert(data.d.Mensaje);
-                window.location = "https://worldpetsperu.com";
+                window.location = "login.aspx";
                 return;
             }
-            $(".username").text(data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0]);
+            $(".name_user").text(data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0]);
+            $(".name_perfil").html('<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 name_perfil"></i>' + MaysPrimera(data.d.Resultado.USUARIO_PERFIL.PERFIL));
             /************************MENU****************************/
             var htmlMenu = '';
 
-            htmlMenu += '<li class="sub-menu">' +
-                '<a href="javascript:;" >' +
-                '<i class="fa fa-paw"></i>' +
-                '<span>Mascota</span>' +
-                '</a><ul class="sub">';
+            if (data.d.Resultado.USUARIO_PERFIL.ID === 1) {//Administrador                
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMascot" aria-expanded="true" aria-controls="collapseMascot">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseMascot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';
+                htmlMenu += '   <i class="fas fa-fw fa-user"></i><span>Usuarios</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Usuarios:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="cards.html">Usuarios</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 3) {//Asesor
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMascot" aria-expanded="true" aria-controls="collapseMascot">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseMascot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';
+                htmlMenu += '   <i class="fas fa-fw fa-user"></i><span>Usuarios</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Usuarios:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="cards.html">Usuarios</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 4) {//Panel
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMascot" aria-expanded="true" aria-controls="collapseMascot">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseMascot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="cards.html">Mascotas</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+            }
 
-            if (data.d.Resultado.PERFIL_ID === 1) {//Administrador                
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/asesorpanel/dni">Imprimir DNI</a></li>';
-                htmlMenu += '<li><a  href="#!/page/mantenimiento/mascota">Editar Mascota</a></li>';
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/administradorpanel/cliente">Administrar Clientes</a></li>';
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/administradorpanel/asesor">Administrar Asesores</a></li>';
-            } else if (data.d.Resultado.PERFIL_ID === 3) {//Asesor
-                htmlMenu += '<li><a  href="#!/page/mantenimiento/mascota">Registrar Mascota</a></li>';
-                htmlMenu += '<li><a  href="#!/page/mantenimiento/mascota">Editar Mascota</a></li>';
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/asesorpanel/dni">Imprimir DNI</a></li>';
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/asesorpanel/obtenermascota">Listar Mascotas</a></li>';
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/asesorpanel/registrarpropietario">Dueño de Mascota</a></li>';
-            } else if (data.d.Resultado.PERFIL_ID === 4) {//Panel
-                htmlMenu += '<li><a  href="#!/page/mantenimiento/mascota">Registrar Mascotas</a></li>';
-                htmlMenu += '<li><a  href="https://worldpetsperu.com/mipanel/adopcion">En adopción</a></li>';
-            } 
-
-            htmlMenu += '</ul></li>';
-            $(".sidebar-menu").html('<li><a href = "https://worldpetsperu.com" ><i class="icon-home"></i><span>Inicio</span></a></li>');
-            $(".sidebar-menu").append(htmlMenu);
-            sessionStorage.clear();
-            sessionStorage.setItem("ID", data.d.Resultado.ID);
-            sessionStorage.setItem("NOMBRE", data.d.Resultado.NOMBRE);
-            sessionStorage.setItem("APELLIDO", data.d.Resultado.APELLIDO);
-            sessionStorage.setItem("SEXO", data.d.Resultado.SEXO);
-            sessionStorage.setItem("PERFIL_ID", data.d.Resultado.PERFIL_ID);
-            
+            $(".menu-dinamic").append(htmlMenu);            
         },
         error: function (data) { }
     });
-    $.getScript("js/all/common-scripts.js")
-            .fail(function (jqxhr, settings, exception) {
-                alert("Error: No se ha cargando un complemento del sistema (common-scripts.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
-            });
 }
 
 function EnviarNotificacion(comprobante, idDoc) {

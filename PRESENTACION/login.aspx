@@ -94,8 +94,13 @@
   <!-- Facebook -->
   <script src="templateSoft/vendor/facebook/all.js"></script>
 
-  <script src="js/general.js"></script>
-  <script src="js/login.js"></script>
+  <script src="js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
+    <script type="text/javascript">
+        $.getScript("js/login.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema, porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+    </script>
 </body>
 
 </html>

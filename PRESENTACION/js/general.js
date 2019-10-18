@@ -218,8 +218,8 @@ function alert_OpenDay(heading, contenido) {
         '<div class= "modal-dialog">' +
         '   <div class="modal-content">' +
         '       <div class="modal-header modal-alert">' +
-        '           <button type="button" class="close" data-dismiss="modal">&times;</button>' +
         '           <h4 class="modal-title"><i class="fa fa-exclamation-triangle"></i> ' + heading + '</h4>' +
+        '           <button type="button" class="close" data-dismiss="modal">&times;</button>' +
         '       </div>' +
         '       <div class="modal-body">' +
         '           <p>' + contenido + '</p>' +
@@ -321,6 +321,11 @@ $(function () {
         return o;
     };
 });
+
+//**********************************FUNCIONES DE CADENA************************************/
+function MaysPrimera(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 
 //**********************************FUNCIONES DE VALIDACION************************************/
 function isEmail(email) {

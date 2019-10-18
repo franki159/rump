@@ -14,35 +14,26 @@ namespace PRESENTACION
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["UserData"] == null) Response.Redirect("~/login.aspx");
+            if (Page.IsPostBack == false)
+            {
+                if (Session["UserRump"] == null) Response.Redirect("~/login.aspx");
+            }
         }
 
         [WebMethod()]
-        public static object InfoSesionWM(EUsuario objE)
+        public static object InfoSesionWM()
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();
 
             try
             {
-                //if (HttpContext.Current.Session["UserData"] == null)
-                //{
-                //    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                //}
-                EUsuario objResultado = new EUsuario();
-                //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
-                //objE.ID = Convert.ToInt32(EUtil.desencriptaPHP("rumpWorldPets20603922990", "usuarioSesion", objE.IDENCRIPT));
-
-                objResultado = NUsuario.ListarUsuarios(objE);
-                if (objResultado.PERFIL_ID == 0)
+                if (HttpContext.Current.Session["userRump"] == null)
                 {
                     objRespuesta.Error("No se encontraron registros.");
                 }
                 else
                 {
-                    objResultado.ID = objE.ID;
-                    HttpContext.Current.Session["userRump"] = objResultado;
-                    objRespuesta.Resultado = objResultado;
+                    objRespuesta.Resultado = HttpContext.Current.Session["userRump"];
                 }
             }
             catch (Exception ex)

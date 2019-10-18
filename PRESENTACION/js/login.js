@@ -1,6 +1,6 @@
 ﻿$(function () {
     $("#usuario").focus();
-
+    $("#myModal10").modal('show');
     $("#frmLogin input").keypress(function (e) {
         if (e.keyCode === 13) {
             if ($("#txtEmail").val() !== "" && $("#txtPassword").val() !== "") {
@@ -39,7 +39,7 @@
                     $("#frmLogin :input").removeAttr("disabled");
                     $("#usuario").focus();
                 } else {
-                    alert_OpenDay("ok");
+                    window.location = "default.aspx";
                 }
             },
             error: function (data) {

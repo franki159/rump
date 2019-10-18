@@ -8,7 +8,7 @@ namespace ENTIDAD
 {
     public class EUsuario
     {
-        public int ID { get; set; }
+        public decimal ID { get; set; }
         public string IDENCRIPT { get; set; }
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
