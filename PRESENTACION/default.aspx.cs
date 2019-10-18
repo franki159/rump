@@ -43,5 +43,15 @@ namespace PRESENTACION
 
             return objRespuesta;
         }
+
+        [WebMethod()]
+        public static object CerrarSesionWM()
+        {
+            HttpContext.Current.Session.Clear();
+
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            objRespuesta.Resultado = "login.aspx";
+            return objRespuesta;
+        }
     }
 }

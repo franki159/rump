@@ -1,5 +1,6 @@
 ﻿var raza_id, prov_id, dis_id, foto_dsc;
 var id_mascota, foto_id;
+var _user_email;
 /*Inicializar Script*/
 $(function () {
     $(document).unbind("keydown");
@@ -11,19 +12,13 @@ $(function () {
     });
 
     $("#pnl_mascota").modal({show: false, backdrop: 'static' });
-
-    $(document).keyup(function (e) {
-        if (e.keyCode === 13) {
-            if ($(this).attr("id") === "pnl_busqueda") $("#btn_buscar").click();
-            else $("#pnl_busqueda").focus();
-        }
-    });
-
+    
     $('.continue').click(function () {
-        $('.nav-tabs > .active').next('li').find('a').trigger('click');
+        debugger;
+        $('.nav-tabs .active').parent().next('li').find('a').trigger('click');
     });
     $('.back').click(function () {
-        $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+        $('.nav-tabs .active').parent().prev('li').find('a').trigger('click');
     });
 
     $.ajax({
@@ -34,7 +29,6 @@ $(function () {
             $("#pleaseWaitDialog").modal();
         },
         success: function (data) {
-            window.parent.InfoSesion();
             fc_listar_inicio();
         },
         error: function (data) {
@@ -74,41 +68,42 @@ function fc_listar_inicio() {
                 $("#pleaseWaitDialog").modal('hide');
                 return;
             }
-
+            ;
             $('#sel_tipo').append("<option></option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_tipo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }
-        },
-        error: function (data) {
-            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#pleaseWaitDialog").modal('hide');
-        }
-    });
-    /************************ Departamento ****************************/
-    objE = {
-        CODIGO: "DEPARTAMENTO"
-    };
-    $.ajax({
-        type: "POST",
-        url: "page/mantenimiento/mascota.aspx/listarParametro",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify({ objE: objE }),
-        async: true,
-        success: function (data) {
-            if (!data.d.Activo) {
-                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                $("#pleaseWaitDialog").modal('hide');
-                return;
-            }
 
-            $('#sel_departamento').append("<option></option>");
-            for (var i = 0; i < data.d.Resultado.length; i++) {
-                $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
-            }
+            /************************ Departamento ****************************/
+            var objE = {
+                CODIGO: "DEPARTAMENTO"
+            };
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/listarParametro",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                success: function (data) {
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        $("#pleaseWaitDialog").modal('hide');
+                        return;
+                    }
+                    
+                    $('#sel_departamento').append("<option></option>");
+                    for (var i = 0; i < data.d.Resultado.length; i++) {
+                        $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+                    }
 
-            $("#pleaseWaitDialog").modal('hide');
+                    $("#pleaseWaitDialog").modal('hide');
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#pleaseWaitDialog").modal('hide');
+                }
+            });
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -154,8 +149,8 @@ function fc_listar_mascota() {
                 return;
             }
             
-            var htmlBotones = '<button name="editar" class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button> ' +
-                '<button name="anular" class="btn btn-danger btn-xs"><i class="icon-trash "></i></button> ';
+            var htmlBotones = '<button name="editar" class="btn btn-primary btn-xs"><i class="fas fa-file"></i></button> ' +
+                '<button name="anular" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button> ';
 
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {
@@ -421,6 +416,7 @@ function limpiarMascota() {
     $("#divAlergia").hide();
     $("#divEnfermedad").hide();
 
+    _user_email = 0;
     id_mascota = 0;
     foto_id = 0;
     foto_dsc = "";
@@ -677,10 +673,6 @@ $("#btn_nuevo").click(function () {
         $("#txt_nombre").focus();
     }
 });
-
-function miFuncion() {
-    // Aquí va tu código
-}
 $("#btn_guardar").click(function (evt) {
     $("#btn_guardar").button('loading');
 
@@ -756,7 +748,7 @@ $("#btn_guardar").click(function (evt) {
     var eMascota = {
         ID: id_mascota,
         //Nuevo*******
-        USUARIO_ID: sessionStorage.getItem('ID'),
+        USUARIO_ID: sessionStorage.getItem('PERFIL_ID') === "4" ? sessionStorage.getItem('ID') : _user_email,
         NOMBRE: $("#txt_nombre").val(),
         APELLIDO: $("#txt_apellido").val(),
         SEXO: $("#sel_sexo").val(),
@@ -903,10 +895,19 @@ $("#btn_select_prop").click(function (evt) {
 
             $("#pnl_mascota_prop").modal('hide');
             $("#btn_select_prop").button('reset');
-            sessionStorage.setItem("ID", data.d.Resultado.ID);
+            _user_email = data.d.Resultado.ID;
             limpiarMascota();
             activaTab('dato');
             $('#pnl_mascota .modal-title').html('Registrar Mascota');
+            $("#pnl_mascota").modal('show');
+
+            if (sessionStorage.getItem('SEXO') === "Masculino") {
+                $("#txt_nom_padre").val(sessionStorage.getItem('NOMBRE') + " " + sessionStorage.getItem('APELLIDO'));
+            } else if (sessionStorage.getItem('SEXO') === "Femenino") {
+                $("#txt_nom_madre").val(sessionStorage.getItem('NOMBRE') + " " + sessionStorage.getItem('APELLIDO'));
+            }
+            $("#txt_apellido").val(sessionStorage.getItem('APELLIDO'));
+            $("#txt_nombre").focus();
         },
         error: function (data) {
             $("#errorPropietario").html(GenerarAlertaError("Inconveniente en la operación"));

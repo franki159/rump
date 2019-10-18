@@ -475,8 +475,18 @@ legend.scheduler-border {
     }
 }
 
+.nav-tabs {
+    margin-bottom: 1rem!important;
+}
+
+.modal-extend-fgp {
+    width: 90% !important;
+    max-width: 90% !important;
+}
+
 .pre-scrollable {
     overflow-y: auto !important;
+    max-height: 60vh !important;
 }
 
 .table-fcp th{

@@ -1,63 +1,72 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mascota.aspx.cs" Inherits="PRESENTACION.page.mantenimiento.mascota" %>
 
- <link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
- <script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>
+<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
+<script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>
 
 <div id="errorDiv"></div>
 <input id="txh_idConfirm" type="hidden" />
 <input id="txh_idmovimiento" type="hidden" />
 <div class="row">
     <div class="col-md-12">
-        <section class="panel">
-            <div id="pnl_busqueda" class="panel-body">
-                <h4 class="drg-event-title">Mantenimiento de Mascotas</h4>
-                <div class="row" id="divBusqueda" style="display:none;">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Mantenimiento de Mascota</h6>
+            </div>
+            <div class="card-body" id="pnl_busqueda">
+                <div class="row mb-3" id="divBusqueda" style="display: none;">
                     <div class="col-md-4">
-                        <div class="form-group">
-                            <label>DNI</label>
-                            <input id="txt_bus_dni" name="tipo" placeholder="Ingrese el DNI de la mascota" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            <button id="btn_buscar" style="display: block;" type="button" class="btn btn-info btn-sm"><i class="fa fa-search" aria-hidden="true" /> BUSCAR</button>
+                        <div class="input-group">
+                            <label class="col-form-label">DNI: </label>
+                            <input type="text" id="txt_bus_dni" class="form-control bg-light border-0 small" placeholder="Buscar mascota..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button id="btn_buscar" class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button id="btn_nuevo" style="display: block;" type="button" class="btn btn-default btn-sm"><i class="fa fa-file" aria-hidden="true" /> NUEVO</button>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button id="btn_nuevo" class="btn btn-secondary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-file"></i>
+                            </span>
+                            <span class="text">Nuevo</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
-        <section class="panel">
-            <div class="panel-body">
-                <div class="panel pre-scrollable">
-                    <table id="tbl_mascota" class="table table-striped table-hover table-fcp">
-                        <thead>
-                            <tr>
-                                <th style="display: none"></th>
-                                <th></th>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Sexo</th>
-                                <th>Tamaño</th>
-                                <th>Color</th>
-                                <th>Tipo</th>
-                                <th>Raza</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-                <div style="text-align: right;">
-                    <span id="lblTotalReg" />
-                </div>
+        <div class="card shadow mb-4">
+            <div class="panel pre-scrollable">
+                <table id="tbl_mascota" class="table table-striped table-hover table-fcp">
+                    <thead>
+                        <tr>
+                            <th style="display: none"></th>
+                            <th></th>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Sexo</th>
+                            <th>Tamaño</th>
+                            <th>Color</th>
+                            <th>Tipo</th>
+                            <th>Raza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-        </section>
+            <div style="text-align: right;">
+                <span id="lblTotalReg" />
+            </div>
+        </div>
     </div>
 </div>
 <!--***********************  MASCOTA  **************************-->
@@ -65,29 +74,29 @@
     <div class="modal-dialog modal-extend-fgp">
         <div class="modal-content">
             <div class="modal-header">
-                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Registro de Mascotas</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="errorMascota"></div>
                 <div class="">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#dato" aria-controls="dato" role="tab" data-toggle="tab" aria-expanded="true">Datos</a>
+                        <li role="presentation" class="nav-item">
+                            <a class="nav-link active" id="dato-tab" data-toggle="tab" href="#dato" role="tab" aria-controls="dato" aria-selected="true">Datos</a>
                         </li>
-                        <li>
-                            <a href="#domicilio" aria-controls="domicilio" role="tab" data-toggle="tab" aria-expanded="false">Domicilio</a>
+                        <li class="nav-item">
+                            <a class="nav-link" id="domicilio-tab" data-toggle="tab" href="#domicilio" role="tab" aria-controls="domicilio" aria-selected="false">Domicilio</a>
                         </li>
-                        <li>
-                            <a href="#salud" aria-controls="salud" role="tab" data-toggle="tab" aria-expanded="false">Salud</a>
+                        <li class="nav-item">
+                            <a class="nav-link" id="salud-tab" data-toggle="tab" href="#salud" role="tab" aria-controls="salud" aria-selected="false">Salud</a>
                         </li>
-                        <li>
-                            <a href="#foto" aria-controls="salud" role="tab" data-toggle="tab" aria-expanded="false">Foto</a>
+                        <li class="nav-item">
+                            <a class="nav-link" id="foto-tab" data-toggle="tab" href="#foto" role="tab" aria-controls="foto" aria-selected="false">Foto</a>
                         </li>
                     </ul>
 
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active panel-body" id="dato">
+                        <div role="tabpanel" class="tab-pane fade show active" id="dato" aria-labelledby="dato-tab">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -112,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">                                
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Tamaño</label>
@@ -220,12 +229,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a class="btn btn-primary btn-sm continue">Siguiente</a>
+                                    <button class="btn btn-primary btn-sm continue">Siguiente</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane  panel-body" id="domicilio">
+                        <div role="tabpanel" class="tab-pane fade panel-body" id="domicilio" aria-labelledby="domicilio-tab">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -272,13 +281,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a class="btn btn-primary btn-sm back">Atras</a>
-                                    <a class="btn btn-primary btn-sm continue">Siguiente</a>
+                                    <button class="btn btn-primary btn-sm back">Atras</button>
+                                    <button class="btn btn-primary btn-sm continue">Siguiente</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane panel-body" id="salud">
+                        <div role="tabpanel" class="tab-pane fade panel-body" id="salud" aria-labelledby="salud-tab">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -455,28 +464,28 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a class="btn btn-primary btn-sm back">Atras</a>
-                                    <a class="btn btn-primary btn-sm continue">Siguiente</a>
+                                    <button class="btn btn-primary btn-sm back">Atras</button>
+                                    <button class="btn btn-primary btn-sm continue">Siguiente</button>
                                 </div>
                             </div>
-                            
+
                         </div>
 
-                        <div role="tabpanel" class="tab-pane panel-body" id="foto">
+                        <div role="tabpanel" class="tab-pane fade panel-body" id="foto" aria-labelledby="foto-tab">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Seleccione una foto de la mascota</label>
                                         <input type="file" class="form-control" id="imgMascota">
                                     </div>
-                                </div>    
+                                </div>
                                 <div class="col-md-6">
-                                    <img src="#" id="img_Foto" style="width:150px; height:180px;background-color: #d6d6d6;"/>
+                                    <img src="#" id="img_Foto" style="width: 150px; height: 180px; background-color: #d6d6d6;" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a class="btn btn-primary btn-sm back">Atras</a>
+                                    <button class="btn btn-primary btn-sm back">Atras</button>
                                 </div>
                             </div>
                         </div>
@@ -486,10 +495,10 @@
                 <div id="push"></div>
             </div>
             <div class="modal-footer">
-                <button id="btn_guardar" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-floppy-o" aria-hidden="true"></i> GUARDAR</button>
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cerrar</button>
+                <button id="btn_guardar" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-floppy-o" aria-hidden="true"></i>GUARDAR</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
-        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+        </div>
     </div>
 </div>
 <!--************************ MASCOTA PROPIETARIO *****************************-->
@@ -497,25 +506,23 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Seleccionar propietario</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <div id="errorPropietario"></div>
-                <div class="row" style="display:none;">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Correo</label>
-                            <input id="txt_correo" name="tipo" placeholder="Ingrese el DNI del propietario" class="form-control" />
-                        </div>
-                    </div>
-                </div>
+                <form>
+                  <div class="form-group">
+                    <label for="correo-name" class="col-form-label">Correo:</label>
+                    <input id="txt_correo" name="tipo" placeholder="Ingrese el correo del propietario" class="form-control" />
+                  </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button id="btn_select_prop" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-user-plus" aria-hidden="true"></i> GUARDAR</button>
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cerrar</button>
+                <button id="btn_select_prop" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-user-plus" aria-hidden="true"></i>GUARDAR</button>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
-        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+        </div>
     </div>
 </div>
 <!--***********************  MASCOTA VISTA  **************************-->
@@ -523,15 +530,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Detalles de la Mascota</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="errorMascota_v"></div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group text-center">
-                            <img src="#" id="img_Foto_v" style="width:150px; height:150px;background-color: #d6d6d6; border-radius: 50%;"/>
+                            <img src="#" id="img_Foto_v" style="width: 150px; height: 150px; background-color: #d6d6d6; border-radius: 50%;" />
                         </div>
                     </div>
                 </div>
@@ -572,22 +579,22 @@
                         <div class="form-group">
                             <label><strong>Calificación</strong></label>
                             <select id="sel_calificacion_v" disabled="disabled" class="form-control">
-                                            <option value="0">Seleccionar</option>
-                                            <option value="Rojo">Agresivo</option>
-                                            <option value="Verde">Amistoso</option>
-                                            <option value="Blanco">Discapacitado</option>
-                                            <option value="Azul">Entrenado</option>
-                                            <option value="Amarillo">Miedoso</option>
-                                            <option value="Naranja">Peleador</option>
+                                <option value="0">Seleccionar</option>
+                                <option value="Rojo">Agresivo</option>
+                                <option value="Verde">Amistoso</option>
+                                <option value="Blanco">Discapacitado</option>
+                                <option value="Azul">Entrenado</option>
+                                <option value="Amarillo">Miedoso</option>
+                                <option value="Naranja">Peleador</option>
                             </select>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"> Cerrar</button>
+                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
-        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+        </div>
     </div>
 </div>
 

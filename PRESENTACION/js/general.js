@@ -88,37 +88,39 @@ Date.prototype.getWeek = function () {
 
 
 function GenerarAlertaError(texto) {
-    return '<div class="alert alert-block alert-danger fade in">' +
-                '<button data-dismiss="alert" class="close close-sm" type="button">' +
-                    '<i class="icon-remove"></i>' +
-                '</button>' + texto + '</div>';
+    return '<div class="alert alert-dismissible alert-danger fade show">' +
+                texto +
+                '<button class="close" data-dismiss="alert" aria-label="Close" type="button">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+            '</div>';
 }
 
 function GenerarAlertaSuccess(texto) {
-    return ' <div class="alert alert-block alert-success fade in">' +
-                                  '<button data-dismiss="alert" class="close close-sm" type="button">' +
-                                      '<i class="icon-remove"></i>' +
-                                  '</button><i class="icon-ok"></i> ' +
-                                  texto +
-                              '</div>';
+    return ' <div class="alert alert-dismissible alert-success fade show">' +
+                '<i class="icon-ok"></i> ' + texto +
+                '<button class="close" data-dismiss="alert" aria-label="Close" type="button">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+             '</div>';
 }
 
 function GenerarAlertaInfo(texto) {
-    return ' <div class="alert alert-block alert-info fade in">' +
-                                  '<button data-dismiss="alert" class="close close-sm" type="button">' +
-                                      '<i class="icon-remove"></i>' +
-                                  '</button><i class="icon-info-sign"></i> ' +
-                                  texto +
-                              '</div>';
+    return ' <div class="alert alert-dismissible alert-info fade show">' +
+                '<i class="icon-info-sign"></i> ' + texto +
+                '<button class="close" data-dismiss="alert" aria-label="Close" type="button">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+             '</div>';
 }
 
 function GenerarAlertaWarning(texto) {
-    return ' <div class="alert alert-block alert-warning fade in">' +
-                                  '<button data-dismiss="alert" class="close close-sm" type="button">' +
-                                      '<i class="icon-remove"></i>' +
-                                  '</button><i class="icon-warning-sign"></i> ' +
-                                  texto +
-                              '</div>';
+    return ' <div class="alert alert-dismissible alert-warning fade show">' +
+                 '<i class="icon-warning-sign"></i> ' + texto +
+                '<button class="close" data-dismiss="alert" aria-label="Close" type="button">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                 '</button>' +
+             '</div>';
 }
 
 

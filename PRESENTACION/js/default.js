@@ -2,7 +2,7 @@
 
 function documentLoad() {
     var url = $(location).attr('href');
-    debugger;
+
     if (url.indexOf("#!") !== -1) {
        
         var elem = url.split("#!/");
@@ -25,7 +25,6 @@ function documentLoad() {
         });
 
     } else {
-        debugger;
         $.get('page/inicio.aspx#', function (data) {
             $(".wrapper").html(data);
 
@@ -39,7 +38,7 @@ function documentLoad() {
 $(document).ready(function () {
     $.history.init(documentLoad);
     InfoSesion();
-    $("#cerrarSesion").click(function () {
+    $("#logoutModal").click(function () {
         $.ajax({
             type: "POST",
             url: "default.aspx/CerrarSesionWM",
@@ -117,12 +116,19 @@ function InfoSesion() {
                 htmlMenu += '<div id="collapseMascot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
-                htmlMenu += '       <a class="collapse-item" href="cards.html">Mascotas</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
             }
 
-            $(".menu-dinamic").append(htmlMenu);            
+            sessionStorage.clear();
+            sessionStorage.setItem("ID", data.d.Resultado.ID);
+            sessionStorage.setItem("NOMBRE", data.d.Resultado.NOMBRE);
+            sessionStorage.setItem("APELLIDO", data.d.Resultado.APELLIDO);
+            sessionStorage.setItem("SEXO", data.d.Resultado.SEXO);
+            sessionStorage.setItem("PERFIL_ID", data.d.Resultado.USUARIO_PERFIL.ID);
+
+            $(".menu-dinamic").html(htmlMenu);            
         },
         error: function (data) { }
     });

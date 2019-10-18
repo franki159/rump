@@ -33,3 +33,9 @@ C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.csprojAsse
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.dll
 C:\DISCO D\CLASES\BUSSINESS\RUMP\pageRUMP\ENTIDAD\obj\Release\ENTIDAD.pdb
+C:\Users\FCHARA\source\repos\rump\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\Users\FCHARA\source\repos\rump\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.csprojAssemblyReference.cache
+C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.pdb

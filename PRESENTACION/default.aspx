@@ -13,6 +13,12 @@
 
   <title>SB Admin 2 - Dashboard</title>
   <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
+    <!-- Datetimepicker-->
+    <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+    <link href="assets/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+
+    <link href="css/stylePropio.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
+
   <!-- Custom fonts for this template-->
   <link href="templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -22,6 +28,26 @@
 </head>
 
 <body id="page-top">
+
+
+
+    <div id="pleaseWaitDialog" style="z-index: 6000;" class="modal fade" data-backdrop="static" data-keyboard="false"  role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border-bottom: 0px;">
+                            <div style="float: left; padding: 10px;">
+                                <h4 class="modal-title">Por favor espere...</h4>
+                            </div>
+                            <div style="float: right;">
+                                <div class="loadersmall"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -95,7 +121,7 @@
                   Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="#" data-toggle="modal" id="logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Cerrar Sesión
                 </a>
@@ -120,7 +146,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; World Pets Perú by <a href="http://charpe.somee.com/"><strong>Charpe</strong>
+            <span>Copyright &copy; World Pets Perú <%: DateTime.Now.Year %> by <a href="http://charpe.somee.com/"><strong>Charpe</strong>
                     <img src="img/charpe.png" alt="Logo Charpe Enterprise" /></a>
           </div>
         </div>
@@ -138,12 +164,16 @@
     <i class="fas fa-angle-up"></i>
   </a>
     
-  <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap core JavaScript-->
   <script src="templateSoft/vendor/jquery/jquery.min.js"></script>
     <%--<script src="js/all/jquery.js" type="text/javascript"></script>--%>
   <script src="js/all/jquery-migrate-1.2.1.js" type="text/javascript"></script>
   <script src="js/all/jquery.history.js"></script>
   <script src="templateSoft/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Datetimepicker-->
+    <script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="templateSoft/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -151,7 +181,7 @@
   <!-- Custom scripts for all pages-->
   <script src="templateSoft/js/sb-admin-2.min.js"></script>
 
-  <script src="js/general.js"></script>
-  <script src="js/default.js?v=210620191606" type="text/javascript"></script>
+  <script src="js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
+  <script src="js/default.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" type="text/javascript"></script>
 </body>
 </html>
