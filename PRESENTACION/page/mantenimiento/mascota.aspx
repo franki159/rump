@@ -50,7 +50,7 @@
                         <tr>
                             <th style="display: none"></th>
                             <th></th>
-                            <th>ID</th>
+                            <th>FOTO</th>
                             <th>Nombre</th>
                             <th>Sexo</th>
                             <th>Tamaño</th>
@@ -63,9 +63,7 @@
                     </tbody>
                 </table>
             </div>
-            <div style="text-align: right;">
-                <span id="lblTotalReg" />
-            </div>
+            <div id="lblTotalReg" class="footer-table-fcp"></div>
         </div>
     </div>
 </div>
@@ -101,18 +99,18 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombres <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nombre" placeholder="Escriba el nombre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_nombre" placeholder="Escriba el nombre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Apellidos <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_apellido" placeholder="Escriba el apellido" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_apellido" placeholder="Escriba el apellido..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Sexo</label>
+                                        <label>Sexo <strong class="text-danger">(*)</strong></label>
                                         <select id="sel_sexo" class="form-control">
                                             <option value="0">Seleccionar</option>
                                             <option value="Macho">Macho</option>
@@ -137,7 +135,7 @@
                                     <div class="form-group">
                                         <label>Tipo <strong class="text-danger">(*)</strong></label>
                                         <select id="sel_tipo" class="form-control sel_autocomplete" style="width: 100%;">
-                                            <option></option>
+                                            <option style="width: 100%;"></option>
                                         </select>
                                     </div>
                                 </div>
@@ -166,7 +164,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Color</label>
-                                        <input id="txt_color" placeholder="Escriba el color del pelaje" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_color" placeholder="Escriba el color del pelaje..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -183,19 +181,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombre del Padre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nom_padre" placeholder="Escriba el nombre del padre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_nom_padre" placeholder="Escriba el nombre del padre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>DNI del padre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_dni_padre" placeholder="Escriba el DNI del padre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_dni_padre" placeholder="Escriba el DNI del padre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teléfono del padre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_tel_padre" placeholder="Escriba el teléfono del padre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_tel_padre" placeholder="Escriba el teléfono del padre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>
@@ -203,19 +201,19 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nombre de la madre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nom_madre" placeholder="Escriba el nombre de la madre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_nom_madre" placeholder="Escriba el nombre de la madre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>DNI de la madre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_dni_madre" placeholder="Escriba el DNI de la madre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_dni_madre" placeholder="Escriba el DNI de la madre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teléfono de la madre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_tel_madre" placeholder="Escriba el teléfono de la madre" class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_tel_madre" placeholder="Escriba el teléfono de la madre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +221,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Biografía </label>
-                                        <textarea id="txt_biografia" placeholder="Escriba una referencia de la dirección" maxlength="500" class="form-control" rows="3"></textarea>
+                                        <textarea id="txt_biografia" placeholder="Escriba una referencia de la dirección..." maxlength="500" class="form-control" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -261,13 +259,13 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Dirección <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_direccion" placeholder="Escriba la dirección" class="form-control" type="text" maxlength="200" />
+                                        <input id="txt_direccion" placeholder="Escriba la dirección..." class="form-control" type="text" maxlength="200" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Piso</label>
-                                        <input id="txt_piso" placeholder="Escriba el piso" class="form-control integerFCP" type="text" maxlength="3" />
+                                        <input id="txt_piso" placeholder="Escriba el piso..." class="form-control integerFCP" type="text" maxlength="3" />
                                     </div>
                                 </div>
                             </div>
@@ -275,7 +273,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Referencia</label>
-                                        <textarea id="txt_referencia" placeholder="Escriba una referencia de la dirección" maxlength="500" class="form-control" rows="3"></textarea>
+                                        <textarea id="txt_referencia" placeholder="Escriba una referencia de la dirección..." maxlength="500" class="form-control" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -438,7 +436,7 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>¿Cuál?</label>
-                                            <input id="txt_alergia" placeholder="Describa la alergia" class="form-control" type="text" maxlength="100" />
+                                            <input id="txt_alergia" placeholder="Describa la alergia..." class="form-control" type="text" maxlength="100" />
                                         </div>
                                     </div>
                                 </div>
@@ -457,7 +455,7 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>¿Cuál?</label>
-                                            <input id="txt_enfermedad" placeholder="Describa la enfermedad" class="form-control" type="text" maxlength="100" />
+                                            <input id="txt_enfermedad" placeholder="Describa la enfermedad..." class="form-control" type="text" maxlength="100" />
                                         </div>
                                     </div>
                                 </div>
@@ -538,7 +536,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group text-center">
-                            <img src="#" id="img_Foto_v" style="width: 150px; height: 150px; background-color: #d6d6d6; border-radius: 50%;" />
+                            <img src="#" id="img_Foto_v" style="width: 150px; height: 150px; background-color: #d6d6d6; border-radius: 50%;" onerror="this.src='img/noPets.png';" />
                         </div>
                     </div>
                 </div>

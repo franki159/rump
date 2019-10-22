@@ -8,17 +8,17 @@ namespace ENTIDAD
 {
     public class EMascota
     {
-        public int ID { get; set; }
+        public decimal ID { get; set; }
         public string DNI { get; set; }
-        public int USUARIO_ID { get; set; }
+        public decimal USUARIO_ID { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string SEXO { get; set; }
         public string TAMANO { get; set; }
         public string TIPO { get; set; }
         public string RAZA { get; set; }
-        public int MASCOTA_TIPO_ID { get; set; }
-        public int MASCOTA_RAZA_ID { get; set; }
+        public decimal MASCOTA_TIPO_ID { get; set; }
+        public decimal MASCOTA_RAZA_ID { get; set; }
         public string CALIFICACION { get; set; }
         public string COLOR { get; set; }
         public string TIPO_DSC { get; set; }
@@ -34,6 +34,7 @@ namespace ENTIDAD
         public string DNIM { get; set; }
         public string TELEFONOM { get; set; }
         //DOMICILIO
+        public decimal GEOGRAFIA_ID { get; set; }
         public string DEPARTAMENTO { get; set; }
         public string PROVINCIA { get; set; }
         public string DISTRITO { get; set; }
@@ -41,7 +42,7 @@ namespace ENTIDAD
         public string PISO { get; set; }
         public string REFERENCIA { get; set; }
         //Foto
-        public int GALERIA_ID { get; set; }
+        public decimal GALERIA_ID { get; set; }
         public string FOTO { get; set; }
         public string EXTENSION { get; set; }
         //Mascota Salud
@@ -63,5 +64,6 @@ namespace ENTIDAD
         public int LEUCEMIA { get; set; }
         public Nullable<DateTime> FEC_LEUCEMIA { get; set; }
         public int LIMP_DENTAL { get; set; }
+        public int OPCION { get; set; }
     }
 }

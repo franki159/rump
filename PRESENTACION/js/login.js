@@ -1,4 +1,6 @@
 ﻿$(function () {
+    $("#page-loader").hide();
+
     $("#usuario").focus();
     $("#myModal10").modal('show');
     $("#frmLogin input").keypress(function (e) {
@@ -22,7 +24,7 @@
             $("#txtEmail").focus();
             return;
         }
-        
+
         $.ajax({
             type: "POST",
             url: "login.aspx/AccederWM",
@@ -32,10 +34,12 @@
             async: true,
             beforeSend: function () {
                 $("#frmLogin :input").attr("disabled", true);
+                $("#page-loader").show();
             },
             success: function (data) {
                 if (!data.d.Activo) {
-                    alert_OpenDay("Error", data.d.Mensaje);
+                    $("#page-loader").hide();
+                    msg_OpenDay("e", data.d.Mensaje);
                     $("#frmLogin :input").removeAttr("disabled");
                     $("#usuario").focus();
                 } else {
@@ -43,7 +47,8 @@
                 }
             },
             error: function (data) {
-                alert_OpenDay("Error", "Inconveniente en la operación");
+                $("#page-loader").hide();
+                msg_OpenDay("e", "Inconveniente en la operación");
                 $("#frmLogin :input").removeAttr("disabled");
                 $("#usuario").focus();
             }

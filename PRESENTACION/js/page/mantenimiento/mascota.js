@@ -14,28 +14,13 @@ $(function () {
     $("#pnl_mascota").modal({show: false, backdrop: 'static' });
     
     $('.continue').click(function () {
-        debugger;
         $('.nav-tabs .active').parent().next('li').find('a').trigger('click');
     });
     $('.back').click(function () {
         $('.nav-tabs .active').parent().prev('li').find('a').trigger('click');
     });
 
-    $.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        async: true,
-        beforeSend: function () {
-            $("#pleaseWaitDialog").modal();
-        },
-        success: function (data) {
-            fc_listar_inicio();
-        },
-        error: function (data) {
-            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#pleaseWaitDialog").modal('hide');
-        }
-    });
+    fc_listar_inicio();
 
     $("#txt_bus_dni").focus();
 });
@@ -54,18 +39,21 @@ function fc_listar_inicio() {
     var objE = {
         CODIGO: "TIPO"
     };
-
+    
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/listarParametro",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify({ objE: objE}),
-        async: true,
+        async: false,
+        beforeSend: function () {
+            openLoading();
+        },
         success: function (data) {
             if (!data.d.Activo) {
                 $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                $("#pleaseWaitDialog").modal('hide');
+                closeLoading();
                 return;
             }
             ;
@@ -88,7 +76,7 @@ function fc_listar_inicio() {
                 success: function (data) {
                     if (!data.d.Activo) {
                         $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                        $("#pleaseWaitDialog").modal('hide');
+                        closeLoading();
                         return;
                     }
                     
@@ -97,23 +85,23 @@ function fc_listar_inicio() {
                         $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
                     }
 
-                    $("#pleaseWaitDialog").modal('hide');
+                    closeLoading();
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                    $("#pleaseWaitDialog").modal('hide');
+                    closeLoading();
                 }
             });
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#pleaseWaitDialog").modal('hide');
+            closeLoading();
         }
     });
 }
 /*Funciones*/
 function fc_listar_mascota() {
-    $("#pleaseWaitDialog").modal();
+    openLoading();
 
     var eMascota = {
         DNI: $("#txt_bus_dni").val(),
@@ -135,7 +123,7 @@ function fc_listar_mascota() {
         data: JSON.stringify({
             objE: eMascota
         }),
-        async: true,
+        async: false,
         beforeSend: function () {
             $("#btn_buscar").attr("disabled", true);
             $('#tbl_mascota tbody').empty();
@@ -145,11 +133,11 @@ function fc_listar_mascota() {
 
             if (!data.d.Activo) {
                 $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                $("#pleaseWaitDialog").modal('hide');
+                closeLoading();
                 return;
             }
             
-            var htmlBotones = '<button name="editar" class="btn btn-primary btn-xs"><i class="fas fa-file"></i></button> ' +
+            var htmlBotones = '<button name="editar" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button> ' +
                 '<button name="anular" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button> ';
 
             var html = '';
@@ -197,8 +185,8 @@ function fc_listar_mascota() {
                         success: function (data) {
                             $("#tbl_mascota button").removeAttr("disabled");
 
-                            if (data.d.error) {
-                                $("#errorDiv").html(GenerarAlertaError(data.d.error));
+                            if (!data.d.Activo) {
+                                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
                                 return;
                             }
 
@@ -229,7 +217,7 @@ function fc_listar_mascota() {
                             //Domicilio
                             $("#sel_departamento").val(data.d.Resultado.DEPARTAMENTO).change();
                             prov_id = data.d.Resultado.PROVINCIA;//$("#sel_provincia").val(data.d.Resultado.PROVINCIA).change();
-                            dis_id = data.d.Resultado.DISTRITO;//$("#sel_distrito").val(data.d.Resultado.DISTRITO).change();
+                            dis_id = data.d.Resultado.GEOGRAFIA_ID;//$("#sel_distrito").val(data.d.Resultado.DISTRITO).change();
                             $("#txt_direccion").val(data.d.Resultado.DIRECCION);
                             $("#txt_piso").val(data.d.Resultado.PISO);
                             $("#txt_referencia").val(data.d.Resultado.REFERENCIA);
@@ -328,20 +316,18 @@ function fc_listar_mascota() {
                 }
             });
 
-            $("#pleaseWaitDialog").modal('hide');
+            closeLoading();
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
             $("#btn_buscar").removeAttr("disabled");
-            $("#pleaseWaitDialog").modal('hide');
+            closeLoading();
         }
     });
 }
 function aceptarConfirm() {
     switch ($("#txh_idConfirm").val()) {
         case "ANULAR":
-            $("#pleaseWaitDialog").modal();
-
             var objE = {
                 ID : id_mascota
             };
@@ -356,23 +342,24 @@ function aceptarConfirm() {
                 beforeSend: function () {
                     $("#errorDiv").html('');
                     $("#tbl_mascota button").attr("disabled", true);
+                    openLoading();
                 },
                 success: function (data) {
                     $("#tbl_mascota button").removeAttr("disabled");
-
-                    if (data.d.error) {
-                        $("#errorDiv").html(GenerarAlertaError(data.d.error));
-                        $("#pleaseWaitDialog").modal('hide');
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
                         return;
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    closeLoading();
                     fc_listar_mascota();
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
                     $("#tbl_mascota button").removeAttr("disabled");
-                    $("#pleaseWaitDialog").modal('hide');
+                    closeLoading();
                 }
             });
             event.preventDefault();
@@ -395,11 +382,10 @@ function guardarImagen(evt, nameId) {
         contentType: false,
         processData: false,
         success: function (result) {
-            //alert(result);
-            msg_OpenDay("Registro de mascota","Mascota registrada correctamente");
+            msg_OpenDay("c", "Mascota guardada correctamente");
         },
         error: function (err) {
-            alert_OpenDay("Registro de mascota", "Error al guardar imagen");
+            msg_OpenDay("e", "Error al guardar imagen");
         }
     });
 
@@ -427,6 +413,7 @@ function limpiarMascota() {
     $("#pnl_mascota select").val('0');
     $("#pnl_mascota input").val('');
     $("#pnl_mascota textarea").val('');
+    $("#pnl_mascota select").attr("disabled", false);
     $("#pnl_mascota input").attr("disabled", false);
     
     //$('#sel_tipo').val(null).trigger('change');
@@ -484,7 +471,7 @@ $("#sel_tipo").on('change', function () {
         success: function (data) {
             if (!data.d.Activo) {
                 $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
-                $("#pleaseWaitDialog").modal('hide');
+                closeLoading();
                 return;
             }
 
@@ -499,7 +486,7 @@ $("#sel_tipo").on('change', function () {
         },
         error: function (data) {
             $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#pleaseWaitDialog").modal('hide');
+            closeLoading();
         }
     });
 });
@@ -528,7 +515,7 @@ $("#sel_departamento").on('change', function () {
         success: function (data) {
             if (!data.d.Activo) {
                 $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
-                $("#pleaseWaitDialog").modal('hide');
+                closeLoading();
                 return;
             }
 
@@ -544,7 +531,7 @@ $("#sel_departamento").on('change', function () {
         },
         error: function (data) {
             $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#pleaseWaitDialog").modal('hide');
+            closeLoading();
         }
     });
 });
@@ -573,7 +560,7 @@ $("#sel_provincia").on('change', function () {
         success: function (data) {
             if (!data.d.Activo) {
                 $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
-                $("#pleaseWaitDialog").modal('hide');
+                closeLoading();
                 return;
             }
 
@@ -588,7 +575,7 @@ $("#sel_provincia").on('change', function () {
         },
         error: function (data) {
             $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#pleaseWaitDialog").modal('hide');
+            closeLoading();
         }
     });
 });
@@ -686,6 +673,12 @@ $("#btn_guardar").click(function (evt) {
             return;
         } else if (validIdInput($("#txt_fecha_nac").val())) {
             $("#errorMascota").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
+            $("#btn_guardar").button('reset');
+            activaTab('dato');
+            $("#txt_fecha_nac").focus();
+            return;
+        } else if (validIdInput($("#sel_sexo").val())) {
+            $("#errorMascota").html(GenerarAlertaWarning("Sexo: ingresar el sexo de su mascota"));
             $("#btn_guardar").button('reset');
             activaTab('dato');
             $("#txt_fecha_nac").focus();
@@ -793,7 +786,7 @@ $("#btn_guardar").click(function (evt) {
         ENFERMEDAD: $("#sel_enfermedad").val(),
         ENFERMEDAD_DSC: $("#txt_enfermedad").val()
     };
-    
+
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/ActualizarMascotaWM",
@@ -861,6 +854,8 @@ $("#btn_guardar").click(function (evt) {
                 }
             });
             event.preventDefault();
+        } else {
+            msg_OpenDay("c", "Mascota modificada correctamente");
         }
     }
 });

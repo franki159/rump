@@ -118,7 +118,7 @@ namespace PRESENTACION.page.mantenimiento
                     return objRespuesta;
                 }
 
-                int objResultado = 0;
+                decimal objResultado = 0;
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
                 //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
                 if (objE.ID != 0)

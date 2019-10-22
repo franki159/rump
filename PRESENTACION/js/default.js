@@ -128,9 +128,12 @@ function InfoSesion() {
             sessionStorage.setItem("SEXO", data.d.Resultado.SEXO);
             sessionStorage.setItem("PERFIL_ID", data.d.Resultado.USUARIO_PERFIL.ID);
 
-            $(".menu-dinamic").html(htmlMenu);            
+            $(".menu-dinamic").html(htmlMenu);
+            closeLoading();
         },
-        error: function (data) { }
+        error: function (data) {
+            closeLoading();
+        }
     });
 }
 
@@ -213,33 +216,6 @@ function InfoNotificacionUsuario() {
     });
 }
 
-function fc_listar_total_alertas() {
-    $.ajax({
-        type: "POST",
-        url: "default.aspx/ListaTotalAlertaWM",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        async: true,
-        success: function (data) {
-            if (data.d.error) {
-                return;
-            }
-            //alert(data.d.Resultado.toString());
-            var pNotif = data.d.Resultado;
-            if (pNotif > 0) {
-                $("#header_notification_bar").show();
-            } else {
-                $("#header_notification_bar").hide();
-            }
-
-            $(".cantidadNotificaciones").html(pNotif);
-        },
-        error: function (data) {
-            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-        }
-    });
-}
-
 function fc_mostrar_confirmacion(contenido) {
     $("#txtContenido").html(contenido);
     $("#modalConfirm").modal('show');
@@ -258,4 +234,12 @@ function openNav() {
 function closeNav() {
     $("#mySidenav").css("width", "0px");
     $(".backdrop-fcp").css("display", "none");
+}
+
+function openLoading() {
+    $("#page-loader").show();
+}
+
+function closeLoading() {
+    $("#page-loader").hide();
 }

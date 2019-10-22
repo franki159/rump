@@ -13,5 +13,6 @@ namespace ENTIDAD
         public int OPCION { get; set; }
         public string vPARAM1 { get; set; }
         public string vPARAM2 { get; set; }
+        public string TIPO { get; set; }
     }
 }

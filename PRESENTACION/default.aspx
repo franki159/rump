@@ -16,6 +16,8 @@
     <!-- Datetimepicker-->
     <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
     <link href="assets/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
+    <!-- Select 2 filtro-->
+    <link href="assets/select2/css/select2.css" rel="stylesheet" />
 
     <link href="css/stylePropio.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
 
@@ -29,23 +31,30 @@
 
 <body id="page-top">
 
-
-
-    <div id="pleaseWaitDialog" style="z-index: 6000;" class="modal fade" data-backdrop="static" data-keyboard="false"  role="dialog">
-                <div class="modal-dialog modal-sm">
+    <!-- Div carga -->        
+    <div id="page-loader"><span class="preloader-interior"></span></div> 
+            
+            <!-- Modal para confirmaciones inicio-->
+            <div class="modal fade" style="z-index: 1051;" id="modalConfirm" role="dialog">
+                <div class="modal-dialog"  role="document">
+                    <!-- Modal content-->
                     <div class="modal-content">
-                        <div class="modal-header" style="border-bottom: 0px;">
-                            <div style="float: left; padding: 10px;">
-                                <h4 class="modal-title">Por favor espere...</h4>
-                            </div>
-                            <div style="float: right;">
-                                <div class="loadersmall"></div>
-                            </div>
+                        <div class="modal-confirm">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><i class="icon-question-sign"></i> Confirmar</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="txtContenido">Seguro que desea?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnAceptar" onclick="fc_aceptar_confirmacion();" class="btn btn-primary btn-sm">Aceptar</button>
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
-                </div>
-            </div>    
 
+                </div>
+            </div>
+            <!-- Modal para confirmaciones fin-->
 
 
 
@@ -183,5 +192,8 @@
 
   <script src="js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
   <script src="js/default.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" type="text/javascript"></script>
+  <script src="js/all/date.js" type="text/javascript"></script>
+    <!-- Select 2 filtro-->
+    <script src="assets/select2/js/select2.full.js"></script>
 </body>
 </html>

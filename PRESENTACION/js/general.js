@@ -30,17 +30,17 @@ $(function () {
         return event.charCode === 46 || (event.charCode >= 48 && event.charCode <= 57);
     });
     //SELECT2
-    //$(".sel_autocomplete").select2({
-    //    containerCssClass: "btn btn-circle green",
-    //    placeholder: "Seleccione",
-    //    language: "es"
-    //});
+    $(".sel_autocomplete").select2({
+        containerCssClass: "btn btn-circle green",
+        placeholder: "Seleccione",
+        language: "es"
+    });
 
-    //$(".sel_autocomplete_bus").select2({
-    //    containerCssClass: "btn btn-circle green",
-    //    placeholder: "TODOS",
-    //    language: "es"
-    //});
+    $(".sel_autocomplete_bus").select2({
+        containerCssClass: "btn btn-circle green",
+        placeholder: "TODOS",
+        language: "es"
+    });
 
     
     //HORA FCP
@@ -236,22 +236,39 @@ function alert_OpenDay(heading, contenido) {
     $("#modalAlert").modal();
 }
 
-function msg_OpenDay(heading, contenido) {
+function msg_OpenDay(tipo, contenido) {
+    var heading, cssClas, icono = '';
+    switch (tipo) {
+        case 'c':
+            heading = 'Correcto';
+            icono = 'far fa-check-circle';
+            cssClas = 'success'; break;
+        case 'a':
+            heading = 'Alerta';
+            icono = 'far fa-exclamation-circle';
+            cssClas = 'warning'; break;
+        case 'e':
+            heading = 'Error';
+            icono = 'fas fa-times';
+            cssClas = 'danger'; break;
+        default:
+    }
+
     $('#modalAlert').remove();
 
     $('body').append(
         '<div class= "modal fade" style = "z-index: 1051;" id = "modalAlert" role = "dialog" > ' +
         '<div class= "modal-dialog">' +
         '   <div class="modal-content">' +
-        '       <div class="modal-successs">' +
+        '       <div class="modal-' + cssClas + '">' +
         '           <button type="button" class="close" data-dismiss="modal">&times;</button>' +
-        '           <h4 class="modal-title"><i class="fa fa-check"></i> ' + heading + '</h4>' +
+        '           <h4 class="modal-title"><i class="' + icono +'"></i> ' + heading + '</h4>' +
         '       </div>' +
         '       <div class="modal-body">' +
         '           <p>' + contenido + '</p>' +
         '       </div>' +
         '       <div class="modal-footer">' +
-        '           <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Aceptar</button>' +
+        '           <button type="button" class="btn btn-' + cssClas + ' btn-sm" data-dismiss="modal">Aceptar</button>' +
         '       </div>' +
         '   </div>' +
         '</div> ' +
