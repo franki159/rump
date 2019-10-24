@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DConexion.cs" />
+    <Compile Include="DConvenio.cs" />
     <Compile Include="DMascota.cs" />
     <Compile Include="DParametro.cs" />
     <Compile Include="DUsuario.cs" />

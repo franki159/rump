@@ -256,6 +256,8 @@
     <Content Include="assets\font-awesome\scss\_variables.scss" />
     <Content Include="img\logoComprobante_small.jpg" />
     <Content Include="img\logoRUMP.png" />
+    <Content Include="img\map_dog.png" />
+    <Content Include="img\map_marker.png" />
     <Content Include="img\noPets.png" />
     <Content Include="img\worldpetsperu_logo.png" />
     <Content Include="indexPage.aspx" />
@@ -299,6 +301,8 @@
     <Content Include="public\front_estilos\lib\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="public\front_estilos\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="public\front_estilos\lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="public\front_estilos\lib\gmap3\gmap3.js" />
+    <Content Include="public\front_estilos\lib\gmap3\gmap3.min.js" />
     <Content Include="public\front_estilos\lib\ionicons\fonts\ionicons.eot" />
     <Content Include="public\front_estilos\lib\ionicons\fonts\ionicons.ttf" />
     <Content Include="public\front_estilos\lib\ionicons\fonts\ionicons.woff" />
