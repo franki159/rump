@@ -88,7 +88,7 @@ function InfoSesion() {
                 htmlMenu += '<div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Usuarios:</h6>';
-                htmlMenu += '       <a class="collapse-item" href="cards.html">Usuarios</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/usuario">Usuarios</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
             } else if (data.d.Resultado.USUARIO_PERFIL.ID === 3) {//Asesor
@@ -107,7 +107,7 @@ function InfoSesion() {
                 htmlMenu += '<div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Usuarios:</h6>';
-                htmlMenu += '       <a class="collapse-item" href="cards.html">Usuarios</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/usuario">Usuarios</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
             } else if (data.d.Resultado.USUARIO_PERFIL.ID === 4) {//Panel

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NConvenio.cs" />
     <Compile Include="NMascota.cs" />
     <Compile Include="NParametro.cs" />
     <Compile Include="NUsuario.cs" />

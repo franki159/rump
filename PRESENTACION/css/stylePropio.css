@@ -538,6 +538,14 @@ legend.scheduler-border {
     border-radius: 50%;
     overflow: hidden;
 }
+
+.img-row-usuario {
+    width: 30px;
+    height: 30px;
+    border-radius: 40%;
+    overflow: hidden;
+}
+
 /*********  fin loading popup ************/
 .sel_autocomplete, .sel_autocomplete_bus {
     width: 100%!important;
