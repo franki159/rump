@@ -13,6 +13,7 @@ function documentLoad() {
         $(".wrapper").empty().html("Cargando...");
 
         $.get(get + '.aspx', function (data) {
+            openLoading();
             $(".wrapper").html(data);
 
             if ($("#sidebar").css("position") === "absolute") $('#sidebar > ul').hide();
@@ -129,7 +130,7 @@ function InfoSesion() {
             sessionStorage.setItem("PERFIL_ID", data.d.Resultado.USUARIO_PERFIL.ID);
 
             $(".menu-dinamic").html(htmlMenu);
-            closeLoading();
+            //closeLoading();
         },
         error: function (data) {
             closeLoading();

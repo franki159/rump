@@ -27,7 +27,7 @@ namespace ENTIDAD
             return Convert.ToBase64String(ArrayResultado, 0, ArrayResultado.Length);
         }
 
-        static string key = "ABCDEFG54669525PQRSTUVWXYZabcdef852846opqrstuvwxyz";
+        static string key = "charpeTechnologyABCD51234PQRSWXYZabcd8528opqryz";
 
         public static string getEncriptar(string cadena)
         {

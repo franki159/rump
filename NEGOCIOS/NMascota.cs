@@ -36,7 +36,12 @@ namespace NEGOCIOS
         {
             return DMascota.ActualizarFotoMascotaWM(ent);
         }
-        public static decimal RegistrarMascotaWM(EMascota ent)
+        public static string InsertarFotoMascotaWM(EMascota ent)
+        {
+            return DMascota.InsertarFotoMascotaWM(ent);
+        }
+        
+        public static string RegistrarMascotaWM(EMascota ent)
         {
             return DMascota.RegistrarMascotaWM(ent);
         }

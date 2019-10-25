@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>World Pets Perú</title>
   <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
     <!-- Datetimepicker-->
     <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" id="btnAceptar" onclick="fc_aceptar_confirmacion();" class="btn btn-primary btn-sm">Aceptar</button>
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
 

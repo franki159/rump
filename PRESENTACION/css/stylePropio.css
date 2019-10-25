@@ -493,6 +493,15 @@ legend.scheduler-border {
     font-size: 0.8rem!important;
 }
 
+.icon-circle {
+    height: 2rem!important;
+    width: 2rem!important;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .table-fcp th {
     text-transform: uppercase;
     text-align: center;
@@ -506,6 +515,16 @@ legend.scheduler-border {
     padding: 6px !important;
 }
 
+.table-fcp td {
+    padding: 0.65rem!important;
+    vertical-align: middle !important;
+    border-top: 1px solid #e3e6f0;
+}
+
+.table-fcp .nav-link {
+        display: block;
+        padding: 0!important;
+}
 
 .footer-table-fcp {
     text-align: right;

@@ -206,6 +206,8 @@
     <Content Include="assets\select2\js\i18n\zh-CN.js" />
     <Content Include="assets\select2\js\i18n\zh-TW.js" />
     <Content Include="assets\select2\js\select2.full.js" />
+    <Content Include="assets\upGalleryFCP\upGalleryFCP.css" />
+    <Content Include="assets\upGalleryFCP\upGalleryFCP.js" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\components.css" />
     <Content Include="css\stylePropio.css" />

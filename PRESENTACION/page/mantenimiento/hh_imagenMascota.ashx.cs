@@ -22,13 +22,10 @@ namespace PRESENTACION.page.mantenimiento
             foreach (string s in context.Request.Files)
             {
                 HttpPostedFile file = context.Request.Files[s];
-                string fileName = context.Request.Form["name"];
-                string fileExtension = file.ContentType;
+                str_image = context.Request.Form["name"];
 
-                if (!string.IsNullOrEmpty(fileName))
+                if (!string.IsNullOrEmpty(str_image))
                 {
-                    fileExtension = Path.GetExtension(file.FileName);
-                    str_image = EUtil.getEncriptar(fileName) + fileExtension;
                     string pathToSave = HttpContext.Current.Server.MapPath("~/img/mascota/") + str_image;
                     file.SaveAs(pathToSave);
                 }

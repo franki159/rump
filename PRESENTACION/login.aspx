@@ -11,8 +11,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
-
+  <title>World Pets Perú::Login</title>
+    <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
   <!-- Custom fonts for this template-->
   <link href="templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 

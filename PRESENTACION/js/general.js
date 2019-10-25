@@ -14,7 +14,7 @@ $(document).ready(function () {
     
     $(".nom-empresa").html("World Pets Peru");
     $(".nom-empresa-small").html("RUMP");
-    $("title").text('RUMP');
+    //$("title").text('RUMP');
 });
 
 $(function () {
@@ -449,3 +449,26 @@ function getExtension(filename) {
     // handle cases like, .htaccess, filename
     return (idx < 1) ? "" : filename.substr(idx + 1);
 }
+
+function readURLImage(input, image) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#' + image).attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+//*********************************** Efectos BS 4 *****************************************************
+//Button spinner
+function loadingControl(id, msg) {
+    $('#' + id).html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>' + msg).addClass('disabled');
+}
+
+function resetControl(id) {
+    $('#' + id).html('').removeClass('disabled');
+}
+

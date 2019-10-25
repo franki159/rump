@@ -1,6 +1,7 @@
 ﻿/*Inicializar Script*/
 //Variacion de la zona horaria
 $(function () {
+    closeLoading();
     $(document).prop("title", "::Inicio");
     $(document).unbind("keydown");   
 });

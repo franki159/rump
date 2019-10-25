@@ -30,7 +30,8 @@ namespace DATOS
                     while (dr.Read())
                     {
                         EMascota mItem = new EMascota();
-                        mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
+                        mItem.ESTADO = dr.IsDBNull(dr.GetOrdinal("estado")) ? 0 : dr.GetInt16(dr.GetOrdinal("estado"));
                         mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
                         mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
                         mItem.TAMANO = dr.IsDBNull(dr.GetOrdinal("tamano")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano"));
@@ -52,12 +53,11 @@ namespace DATOS
             {
 
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@opcion", 2);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -86,9 +86,6 @@ namespace DATOS
                         mItem.DIRECCION = dr.IsDBNull(dr.GetOrdinal("direccion")) ? string.Empty : dr.GetString(dr.GetOrdinal("direccion"));
                         mItem.PISO = dr.IsDBNull(dr.GetOrdinal("piso")) ? string.Empty : dr.GetString(dr.GetOrdinal("piso"));
                         mItem.REFERENCIA = dr.IsDBNull(dr.GetOrdinal("referencia")) ? string.Empty : dr.GetString(dr.GetOrdinal("referencia"));
-                        //Foto
-                        mItem.GALERIA_ID = dr.IsDBNull(dr.GetOrdinal("galeria_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("galeria_id"));
-                        mItem.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
                         //Salud
                         mItem.CASTRADO = dr.IsDBNull(dr.GetOrdinal("castrado")) ? 0 : dr.GetInt16(dr.GetOrdinal("castrado"));
                         mItem.VISITA = dr.IsDBNull(dr.GetOrdinal("visita")) ? 0 : dr.GetInt16(dr.GetOrdinal("visita"));
@@ -110,6 +107,20 @@ namespace DATOS
                         mItem.LIMP_DENTAL = dr.IsDBNull(dr.GetOrdinal("limp_dental")) ? 0 : dr.GetInt16(dr.GetOrdinal("limp_dental"));
                         mItem.ALERGIA_DSC = dr.IsDBNull(dr.GetOrdinal("alergia_descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("alergia_descripcion"));
                     }
+
+                    if (dr.NextResult())
+                    {
+                        mItem.lMASCOTA = new List<EMascota>();
+                        while (dr.Read())
+                        {                            
+                            EMascota itemTemp = new EMascota();
+                            //Foto
+                            itemTemp.GALERIA_ID = dr.IsDBNull(dr.GetOrdinal("galeria_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("galeria_id"));
+                            itemTemp.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
+
+                            mItem.lMASCOTA.Add(itemTemp);
+                        }
+                    }
                 }
             }
             return mItem;
@@ -120,7 +131,7 @@ namespace DATOS
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@opcion", 3);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
@@ -132,8 +143,8 @@ namespace DATOS
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
-
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@tamano", objE.TAMANO);
                 cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);
                 cmd.Parameters.AddWithValue("@calificacion", objE.CALIFICACION);
@@ -188,7 +199,33 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
-        public static decimal RegistrarMascotaWM(EMascota objE)
+        public static string InsertarFotoMascotaWM(EMascota objE)
+        {
+            string foto = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@foto", objE.FOTO);
+                cmd.Parameters.AddWithValue("@opcion", 8);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            foto = dr.IsDBNull(dr.GetOrdinal("FOTO")) ? string.Empty : dr.GetString(dr.GetOrdinal("FOTO"));
+                        }
+                    }
+                }
+
+                return foto;
+            }
+        }
+
+        public static string RegistrarMascotaWM(EMascota objE)
         {
             decimal ID_MASCOTA = 0;
 
@@ -281,7 +318,7 @@ namespace DATOS
                 cn.Close();
             }
 
-            return ID_MASCOTA;
+            return EUtil.getEncriptar(ID_MASCOTA.ToString());
         }
     }
 }

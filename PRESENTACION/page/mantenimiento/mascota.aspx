@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mascota.aspx.cs" Inherits="PRESENTACION.page.mantenimiento.mascota" %>
 
-<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
-<script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>
+<%--<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
+<script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>--%>
+<link href="../../assets/upGalleryFCP/upGalleryFCP.css" rel="stylesheet" />
+<script src="../../assets/upGalleryFCP/upGalleryFCP.js"></script>
 
 <div id="errorDiv"></div>
 <input id="txh_idConfirm" type="hidden" />
@@ -44,13 +46,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow mb-4">
-            <div class="panel pre-scrollable">
+            <div class="panel">
                 <table id="tbl_mascota" class="table table-striped table-hover table-fcp">
                     <thead>
                         <tr>
                             <th style="display: none"></th>
                             <th></th>
-                            <th>FOTO</th>
+                            <th>MASCOTA</th>
                             <th>Nombre</th>
                             <th>Sexo</th>
                             <th>Tamaño</th>
@@ -471,7 +473,20 @@
 
                         <div role="tabpanel" class="tab-pane fade panel-body" id="foto" aria-labelledby="foto-tab">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <div class="container container-file">
+                                        <div class="row">
+                                            <div class="col-sm-2 imgUp">
+                                                <div class="imagePreview"></div>
+                                                <label class="btn btn-primary btn-upload">
+										            Subir<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+				                                </label>
+                                            </div><!-- col-2 -->
+                                            <i class="fa fa-plus imgAdd"></i>
+                                        </div><!-- row -->
+                                    </div><!-- container -->
+                                </div>
+                                <%--<div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Seleccione una foto de la mascota</label>
                                         <input type="file" class="form-control" id="imgMascota">
@@ -479,7 +494,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <img src="#" id="img_Foto" style="width: 150px; height: 180px; background-color: #d6d6d6;" />
-                                </div>
+                                </div>--%>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">

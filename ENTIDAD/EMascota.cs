@@ -9,6 +9,7 @@ namespace ENTIDAD
     public class EMascota
     {
         public decimal ID { get; set; }
+        public string ID_ENCRIP { get; set; }
         public string DNI { get; set; }
         public decimal USUARIO_ID { get; set; }
         public string NOMBRE { get; set; }
@@ -65,5 +66,8 @@ namespace ENTIDAD
         public Nullable<DateTime> FEC_LEUCEMIA { get; set; }
         public int LIMP_DENTAL { get; set; }
         public int OPCION { get; set; }
+        public int ESTADO { get; set; }
+
+        public List<EMascota> lMASCOTA { get; set; }
     }
 }

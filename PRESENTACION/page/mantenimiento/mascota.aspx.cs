@@ -32,7 +32,6 @@ namespace PRESENTACION.page.mantenimiento
 
                 List<EMascota> objResultado = new List<EMascota>();
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
                 objResultado = NMascota.listarMascota(objE);
                 if (objResultado.Count == 0)
                 {
@@ -63,7 +62,6 @@ namespace PRESENTACION.page.mantenimiento
 
                 EMascota objResultado = new EMascota();
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
                 objResultado = NMascota.ObtenerMascota(objE);
                 objRespuesta.Resultado = objResultado;
             }
@@ -88,7 +86,7 @@ namespace PRESENTACION.page.mantenimiento
 
                 int objResultado = 0;
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
+
                 objResultado = NMascota.AnularMascotaWM(objE);
 
                 if (objResultado == 0)
@@ -118,12 +116,11 @@ namespace PRESENTACION.page.mantenimiento
                     return objRespuesta;
                 }
 
-                decimal objResultado = 0;
+                string objResultado = "";
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
-                if (objE.ID != 0)
+                if (objE.ID_ENCRIP != "")
                 {
-                    objResultado = NMascota.ActualizarMascotaWM(objE);
+                    objResultado = NMascota.ActualizarMascotaWM(objE).ToString();
                 }
                 else
                 {
@@ -131,7 +128,7 @@ namespace PRESENTACION.page.mantenimiento
                 }
                 
 
-                if (objResultado == 0)
+                if (objResultado == "")
                 {
                     objRespuesta.Error("No se pudo actualizar.");
                 }
@@ -147,6 +144,7 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
+                
         [WebMethod()]
         public static object ActualizarFotoMascotaWM(EMascota objE)
         {
@@ -161,8 +159,7 @@ namespace PRESENTACION.page.mantenimiento
 
                 int objResultado = 0;
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
-                objE.FOTO = EUtil.getEncriptar(objE.ID.ToString()) + "." + objE.EXTENSION;
+                objE.FOTO = EUtil.getEncriptar(EUtil.getDesencriptar(objE.ID_ENCRIP)) + "." + objE.EXTENSION;
                 objResultado = NMascota.ActualizarFotoMascotaWM(objE);
 
 
@@ -172,6 +169,41 @@ namespace PRESENTACION.page.mantenimiento
                 }
                 else
                 {
+                    objRespuesta.Success("Se guardó la información correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+
+        [WebMethod()]
+        public static object InsertarFotoMascotaWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                string objResultado = "";
+                //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
+                objE.FOTO = objE.EXTENSION;
+                objResultado = NMascota.InsertarFotoMascotaWM(objE);
+
+
+                if (objResultado == "")
+                {
+                    objRespuesta.Error("No se pudo actualizar.");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
                     objRespuesta.Success("Se guardó la información correctamente");
                 }
             }
@@ -194,7 +226,6 @@ namespace PRESENTACION.page.mantenimiento
                 }
                 List<EGeneral> objResultado = new List<EGeneral>();
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                //objE.ID_LOCAL = eSession.LOCAL.ID_LOCAL;
                 objResultado = NParametro.listarParametro(objE);
                 if (objResultado.Count == 0)
                 {

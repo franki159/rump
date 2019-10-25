@@ -1,10 +1,11 @@
 ﻿var raza_id, prov_id, dis_id, foto_dsc;
 var id_mascota, foto_id;
 var _user_email;
+var valRND = Math.floor(Math.random() * 100);
 /*Inicializar Script*/
 $(function () {
     $(document).unbind("keydown");
-
+    openLoading();
     $('.dtOp').datepicker({
         format: 'dd/mm/yyyy',
         autoclose: true,
@@ -137,17 +138,74 @@ function fc_listar_mascota() {
                 return;
             }
             
-            var htmlBotones = '<button name="editar" class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button> ' +
-                '<button name="anular" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button> ';
-
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {
-                html += '<tr><td style="display:none">' + data.d.Resultado[i].ID + '</td>';
-                html += '<td>' + htmlBotones + '</td>';
+                var htmlBotones = '';
+                htmlBotones += '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="row_' + i*100 +'">';
+                htmlBotones += '    <h6 class="dropdown-header">';
+                htmlBotones += '        Opciones de mascota';
+                htmlBotones += '    </h6>';
+                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="edit-mascota">';
+                htmlBotones += '        <div class="mr-3">';
+                htmlBotones += '            <div class="icon-circle bg-primary">';
+                htmlBotones += '                <i class="fas fa-pencil-alt text-white"></i>';
+                htmlBotones += '            </div>';
+                htmlBotones += '        </div>';
+                htmlBotones += '        <div>';
+                htmlBotones += '            <span class="font-weight-bold">Editar</span>';
+                htmlBotones += '        </div>';
+                htmlBotones += '    </a>';
+
+                if (data.d.Resultado[i].ESTADO === 2) {
+                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="soli-dni">';
+                    htmlBotones += '        <div class="mr-3">';
+                    htmlBotones += '            <div class="icon-circle bg-success">';
+                    htmlBotones += '                <i class="fas fa-address-card text-white"></i>';
+                    htmlBotones += '            </div>';
+                    htmlBotones += '        </div>';
+                    htmlBotones += '        <div>';
+                    htmlBotones += '            <span class="font-weight-bold">Solicitar DNI</span>';
+                    htmlBotones += '        </div>';
+                    htmlBotones += '    </a>';
+                }
+
+                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" style="" name="delete-mascota">';
+                htmlBotones += '        <div class="mr-3">';
+                htmlBotones += '            <div class="icon-circle bg-danger">';
+                htmlBotones += '                <i class="fas fa-trash-alt text-white"></i>';
+                htmlBotones += '            </div>';
+                htmlBotones += '        </div>';
+                htmlBotones += '        <div>';
+                htmlBotones += '            <span class="font-weight-bold">Eliminar</span>';
+                htmlBotones += '        </div>';
+                htmlBotones += '    </a>';
+
+                htmlBotones += '</div>';
+                   
+                html += '<tr><td style="display:none">' + data.d.Resultado[i].ID_ENCRIP + '</td>';
+                html += '<td>';
+                html += '   <ul class="navbar-nav ml-auto">';
+                //html += '   <div class="dropdown">';
+                html += '       <li class="nav-item dropdown no-arrow mx-1">';
+                html += '           <a class="nav-link dropdown-toggle" href="#" id="row_' + i * 100 + '" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                //html += '           <a class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="row_' + + i * 100 + '">';
+                html += '               <i class="fas fa-bars" style="font-size: 30px;"></i>';
+                html += '           </a>';
+                html += '       ' + htmlBotones;
+                //html += '           <div class="dropdown-menu" aria-labelledby="row_' + + i * 100 + '">';
+                //html += '               <button class="dropdown-item" type = "button" > Action</button >';
+                //html += '               <button class="dropdown-item" type="button">Another action</button>';
+                //html += '               <button class="dropdown-item" type="button">Something else here</button>';
+                //html += '           </div>';
+                html += '       </li>';
+                //html += '   </div>';
+                html += '   </ul>';
+                html += '</td> ';
+                
                 html += '<td>' +
                             '<div>' +
-                                '<a href="#" name="detalles" id="' + data.d.Resultado[i].ID + '" data-toggle="modal" data-target="#modalVerMascota">' +
-                    '<img class="img-row-mascota" src="img/mascota/' + data.d.Resultado[i].FOTO + '" onerror="this.src=\'img/noPets.png\';">' +
+                                '<a href="#" name="detalles" id="' + data.d.Resultado[i].ID_ENCRIP + '" data-toggle="modal" data-target="#modalVerMascota">' +
+                    '<img class="img-row-mascota" src="img/mascota/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND +'" onerror="this.src=\'img/noPets.png\';">' +
                                 '</a>' +
                             '</div>'+
                         '</td>';
@@ -162,14 +220,13 @@ function fc_listar_mascota() {
             $("#tbl_mascota tbody").append(html);
             $("#lblTotalReg").html("Total Registros: " + data.d.Resultado.length);
 
-            $("#tbl_mascota button").click(function () {
-                limpiarMascota();
-                id_mascota = $(this).parent().parent().find("td").eq(0).html();
-
-                if ($(this).attr("name") === "editar") {
+            $("#tbl_mascota a").click(function () {
+                if ($(this).attr("name") === "edit-mascota") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $('#pnl_mascota .modal-title').html('Editar Mascota');
                     var objE = {
-                        ID: id_mascota
+                        ID_ENCRIP: id_mascota
                     };
                     
                     $.ajax({
@@ -255,9 +312,23 @@ function fc_listar_mascota() {
                             $("#txt_alergia").val(data.d.Resultado.ALERGIA_DSC);
                             $("#sel_enfermedad").val(data.d.Resultado.ENFERMEDAD).change();
                             $("#txt_enfermedad").val(data.d.Resultado.ENFERMEDAD_DSC);
-                            foto_id = data.d.Resultado.GALERIA_ID;
-                            foto_dsc = data.d.Resultado.FOTO;
-                            $("#img_Foto").attr("src", "img/mascota/" + data.d.Resultado.FOTO);
+                            
+                            //Fotos de Mascota
+                            for (var masc = 0; masc < data.d.Resultado.lMASCOTA.length; masc++) {
+                                if (masc === 0) {
+                                    $('.imagePreview').css("background-image", "url(../../img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + "?v=" + valRND+")");
+                                    $('.imagePreview').attr('img-fcp-url', data.d.Resultado.lMASCOTA[0].FOTO);
+                                    $('.imagePreview').attr('id', 'imgGal_' + + data.d.Resultado.lMASCOTA[0].GALERIA_ID);
+                                }else {
+                                    $(".container-file").closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp imgSecond"><div class="imagePreview" id="imgGal_' + data.d.Resultado.lMASCOTA[masc].GALERIA_ID + '"></div><label class="btn btn-primary btn-upload">Subir<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+                                    $("#imgGal_" + data.d.Resultado.lMASCOTA[masc].GALERIA_ID).css("background-image", "url(img/mascota/" + data.d.Resultado.lMASCOTA[masc].FOTO + "?v=" + valRND +")");
+                                    $("#imgGal_" + data.d.Resultado.lMASCOTA[masc].GALERIA_ID).attr('img-fcp-url', data.d.Resultado.lMASCOTA[masc].FOTO);
+                                }
+                            }
+
+                            //foto_id = data.d.Resultado.GALERIA_ID;
+                            //foto_dsc = data.d.Resultado.FOTO;
+                            //$("#img_Foto").attr("src", "img/mascota/" + data.d.Resultado.FOTO + "?v=" + Date().toString());
                             activaTab('dato');
                             $("#pnl_mascota").modal('show');
                         },
@@ -267,7 +338,9 @@ function fc_listar_mascota() {
                         }
                     });
                     event.preventDefault();
-                } else if ($(this).attr("name") === "anular") {
+                } else if ($(this).attr("name") === "delete-mascota") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $("#txh_idConfirm").val('ANULAR');
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la mascota?");
                 }
@@ -276,7 +349,7 @@ function fc_listar_mascota() {
             $("#tbl_mascota a").click(function () {
                 if ($(this).attr("name") === "detalles") {
                     var objE = {
-                        ID: $(this).attr("id")
+                        ID_ENCRIP: $(this).attr("id")
                     };
 
                     $.ajax({
@@ -298,7 +371,7 @@ function fc_listar_mascota() {
                                 return;
                             }
 
-                            $("#img_Foto_v").attr("src", "img/mascota/" + data.d.Resultado.FOTO);
+                            $("#img_Foto_v").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + "?v=" + valRND);
                             $("#txt_nombre_v").val(data.d.Resultado.NOMBRE + ' ' + data.d.Resultado.APELLIDO);
                             $("#txt_dni_v").val(data.d.Resultado.DNI);
                             $("#txt_tel_v").val(data.d.Resultado.TELEFONOP);
@@ -329,9 +402,9 @@ function aceptarConfirm() {
     switch ($("#txh_idConfirm").val()) {
         case "ANULAR":
             var objE = {
-                ID : id_mascota
+                ID_ENCRIP : id_mascota
             };
-
+   
             $.ajax({
                 type: "POST",
                 url: "page/mantenimiento/mascota.aspx/AnularMascotaWM",
@@ -368,28 +441,30 @@ function aceptarConfirm() {
             break;
     }
 }
-function guardarImagen(evt, nameId) {
-    if ($("#imgMascota")[0].files[0] !== undefined) {
-        var dataImagen = new FormData();
-        dataImagen.append('file', $("#imgMascota")[0].files[0]);
-        dataImagen.append('name', nameId);
-    }
+function guardarImagen(evt, nameId, file) {
+    var objResp = 0;
+    var dataImagen = new FormData();
+    dataImagen.append('file', file);
+    dataImagen.append('name', nameId);
 
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/hh_imagenMascota.ashx",
         data: dataImagen,
+        async: false,
         contentType: false,
         processData: false,
         success: function (result) {
-            msg_OpenDay("c", "Mascota guardada correctamente");
+            //msg_OpenDay("c", "Mascota guardada correctamente");
+            objResp = 0;
         },
         error: function (err) {
-            msg_OpenDay("e", "Error al guardar imagen");
+            //msg_OpenDay("e", "Error al guardar imagen");
+            objResp = 1;
         }
     });
 
-    evt.preventDefault();
+    return objResp;
 }
 function limpiarMascota() {
     $("#errorDiv").html('');
@@ -403,7 +478,7 @@ function limpiarMascota() {
     $("#divEnfermedad").hide();
 
     _user_email = 0;
-    id_mascota = 0;
+    id_mascota = "";
     foto_id = 0;
     foto_dsc = "";
     raza_id = 0;
@@ -422,7 +497,12 @@ function limpiarMascota() {
     $('#sel_departamento').val(null).change();
     $("#sel_provincia").empty();
     $("#sel_distrito").empty();
-    $("#img_Foto").attr("src", "");
+
+    $(".container-file").find($(".imgSecond")).each(function () {
+        $(this).remove();
+    });
+    
+    $(".container-file").find($(".imagePreview")).css("background-image", "url(../../img/noPets.png)");
 }
 /*Eventos por Control*/
 $(document).keydown(function (evt) {
@@ -627,6 +707,9 @@ $("#sel_enfermedad").on('change', function () {
         $("#divEnfermedad").show();
     }
 });
+$("#imgMascota").change(function () {
+    readURLImage(this, "img_Foto");
+});
 
 $("#btn_buscar").click(function () {
     $("#btn_buscar").button('loading');
@@ -661,85 +744,89 @@ $("#btn_nuevo").click(function () {
     }
 });
 $("#btn_guardar").click(function (evt) {
-    $("#btn_guardar").button('loading');
-
+    openLoading();
     $("#errorMascota").html('');
-    if (id_mascota === 0) {//Nuevo
+    if (id_mascota === "") {//Nuevo
+        //Validando las fotos seleccionadas
+        var error_img = 0;
+        $(".container-file").find($("input")).each(function () {
+            if ($(this).get(0).files.length === 0) {                    
+                error_img++;
+             }
+        });
+
         if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
             $("#errorMascota").html(GenerarAlertaWarning("Nombre: Debe ingresar el nombre y el apellido"));
-            $("#btn_guardar").button('reset');
+            closeLoading();
             activaTab('dato');
             $("#txt_nombre").focus();
             return;
         } else if (validIdInput($("#txt_fecha_nac").val())) {
             $("#errorMascota").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
-            $("#btn_guardar").button('reset');
+            closeLoading();
             activaTab('dato');
             $("#txt_fecha_nac").focus();
             return;
         } else if (validIdInput($("#sel_sexo").val())) {
             $("#errorMascota").html(GenerarAlertaWarning("Sexo: ingresar el sexo de su mascota"));
-            $("#btn_guardar").button('reset');
+            closeLoading();
             activaTab('dato');
-            $("#txt_fecha_nac").focus();
+            $("#sel_sexo").focus();
             return;
-        } else if ($('#imgMascota').get(0).files.length === 0) {
+        } else if (error_img > 0) {
             $("#errorMascota").html(GenerarAlertaWarning("Imagen: seleccione una foto de su mascota"));
-            $("#btn_guardar").button('reset');
+            closeLoading();
             activaTab('foto');
             return;
         }
-
-        foto_dsc = $("#imgMascota")[0].files[0].name;
-        foto_dsc = getExtension(foto_dsc);
     }
     
     if (validIdInput($("#sel_tipo").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Tipo: seleccione un Tipo de mascota"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('dato');
         $("#sel_tipo").focus();
         return;
     } else if (validIdInput($("#sel_raza").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Raza: seleccione una Raza"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('dato');
         $("#sel_raza").focus();
         return;
     } else if (validIdInput($("#sel_calificacion").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Calificación: seleccione una Calificación"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('dato');
         $("#sel_calificacion").focus();
         return;
     } else if (validIdInput($("#sel_departamento").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Departamento: seleccione un Departamento"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('domicilio');
         $("#sel_departamento").focus();
         return;
     } else if (validIdInput($("#sel_provincia").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Provincia: seleccione una Provincia"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('domicilio');
         $("#sel_provincia").focus();
         return;
     } else if (validIdInput($("#sel_distrito").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Distrito: seleccione un Distrito"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('domicilio');
         $("#sel_distrito").focus();
         return;
     } else if (validIdInput($("#txt_direccion").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Dirección: seleccione una Dirección"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('domicilio');
         $("#txt_direccion").focus();
         return;
     }
 
     var eMascota = {
-        ID: id_mascota,
+        ID_ENCRIP: id_mascota,
         //Nuevo*******
         USUARIO_ID: sessionStorage.getItem('PERFIL_ID') === "4" ? sessionStorage.getItem('ID') : _user_email,
         NOMBRE: $("#txt_nombre").val(),
@@ -801,63 +888,131 @@ $("#btn_guardar").click(function (evt) {
             if (!data.d.Activo) {
                 $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
                 $("#pnl_mascota").css("pointer-events", "visible");
-                $("#btn_guardar").button('reset');
+                closeLoading();
                 return;
             }
 
-            if (id_mascota === 0) {//Solo para nuevos
-                guardarImagen(evt, data.d.Resultado);
-            }
-
-            $("#pnl_mascota").modal('hide');
-            $("#btn_guardar").button('reset');
+            valRND = Math.floor(Math.random() * 1000);
             
-            fc_listar_mascota();
+            if (id_mascota === "") {//Solo para nuevos
+                //Guardando todas las imagenes BD
+                var error_img = 0;
+
+                $(".container-file").find($("input")).each(function () {
+                    if ($(this).get(0).files.length !== 0) {
+                        var imgTemp = $(this)[0].files[0];
+
+                        eMascota = {
+                            ID_ENCRIP: data.d.Resultado,
+                            EXTENSION: getExtension(imgTemp.name),
+                            GALERIA_ID: 0
+                        };
+
+                        $.ajax({
+                            type: "POST",
+                            url: "page/mantenimiento/mascota.aspx/InsertarFotoMascotaWM",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            data: JSON.stringify({ objE: eMascota }),
+                            async: false,
+                            success: function (dataImg) {
+                                if (!dataImg.d.Activo) {
+                                    $("#errorMascota").html(GenerarAlertaError(dataImg.d.Mensaje));
+                                    closeLoading();
+                                    return;
+                                }
+                                
+                                error_img += guardarImagen(evt, dataImg.d.Resultado, imgTemp);
+                            },
+                            error: function (data) {
+                                $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+                                closeLoading();
+                            }
+                        });
+
+                        event.preventDefault();
+                    }
+                });
+
+                if (error_img > 0) {
+                    msg_OpenDay("e", "Error al guardar imagen");
+                } else {
+                    msg_OpenDay("c", "Mascota guardada correctamente");
+                }
+
+                fc_listar_mascota();
+                $("#pnl_mascota").modal('hide');
+                closeLoading();
+            } else if (id_mascota !== "") {//Modificar
+                //Guardando todas las imagenes BD
+                error_img = 0;
+
+                //Las imagenes cambiadas (solo actualiza las imagenes en el servidor no BD)
+                $(".container-file").find($("input")).each(function () {
+                    if ($(this).get(0).files.length !== 0) {
+                        if ($(this).parent().parent().children(0)[0].id !== "") {//Solo los que tiene id
+                            var imgTemp = $(this)[0].files[0];
+                            var nameAct = $(this).parent().parent().children(0).attr("img-fcp-url");
+                            
+                            error_img += guardarImagen(evt, nameAct, imgTemp);
+                        }                        
+                    }
+                });
+                //Si agrego mas imagenes (los que no tienen id, insertan en la bd)
+                $(".container-file").find($("input")).each(function () {
+                    if ($(this).get(0).files.length !== 0) {
+                        if ($(this).parent().parent().children(0)[0].id === "") {//Solo los que no tiene id
+                            var imgTemp = $(this)[0].files[0];
+                            eMascota = {
+                                ID_ENCRIP: id_mascota,
+                                EXTENSION: getExtension(imgTemp.name),
+                                GALERIA_ID: 0
+                            };
+
+                            $.ajax({
+                                type: "POST",
+                                url: "page/mantenimiento/mascota.aspx/InsertarFotoMascotaWM",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify({ objE: eMascota }),
+                                async: false,
+                                success: function (dataImg) {
+                                    if (!dataImg.d.Activo) {
+                                        $("#errorMascota").html(GenerarAlertaError(dataImg.d.Mensaje));
+                                        closeLoading();
+                                        error_img ++;
+                                        return;
+                                    }
+
+                                    error_img += guardarImagen(evt, dataImg.d.Resultado, imgTemp);
+                                },
+                                error: function (data) {
+                                    $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+                                    closeLoading();
+                                }
+                            });
+                        }                        
+                    }
+                });
+
+                if (error_img > 0) {
+                    msg_OpenDay("e", "Error al guardar imagen");
+                } else {
+                    msg_OpenDay("c", "Mascota guardada correctamente");
+                }
+
+                fc_listar_mascota();
+                $("#pnl_mascota").modal('hide');
+                closeLoading();
+            }
         },
         error: function (data) {
             $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
             $("#pnl_mascota").css("pointer-events", "visible");
-            $("#btn_guardar").button('reset');
+            closeLoading();
         }
     });
     event.preventDefault();
-    //Subir Foto MODIFICAR 
-    if (id_mascota !== 0) {//Modificar
-        if ($('#imgMascota').get(0).files.length !== 0) {//Si cambio la imagen
-            foto_dsc = $("#imgMascota")[0].files[0].name;
-            foto_dsc = getExtension(foto_dsc);
-            eMascota = {
-                ID: id_mascota,
-                EXTENSION: foto_dsc,
-                GALERIA_ID: foto_id
-            };
-
-            $.ajax({
-                type: "POST",
-                url: "page/mantenimiento/mascota.aspx/ActualizarFotoMascotaWM",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ objE: eMascota }),
-                async: true,
-                success: function (data) {
-                    if (!data.d.Activo) {
-                        $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
-                        $("#btn_guardar").button('reset');
-                        return;
-                    }
-
-                    guardarImagen(evt, id_mascota);
-                },
-                error: function (data) {
-                    $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
-                    $("#btn_guardar").button('reset');
-                }
-            });
-            event.preventDefault();
-        } else {
-            msg_OpenDay("c", "Mascota modificada correctamente");
-        }
-    }
 });
 $("#btn_select_prop").click(function (evt) {
     $("#btn_select_prop").button('loading');
