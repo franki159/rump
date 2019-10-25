@@ -16,7 +16,12 @@ namespace ENTIDAD
         public string APELLIDO { get; set; }
         public string FOTO { get; set; }
         public string SEXO { get; set; }
-        public int PERFIL_ID { get; set; }
+        public string TELEFONO { get; set; }
+        public string CELULAR { get; set; }
+        public Nullable<DateTime> FECHA_NAC { get; set; }
+        public decimal PERFIL_ID { get; set; }
+        public int ACTIVO{ get; set; }
+        public int ESTADO { get; set; }
         public EUsuarioPerfil USUARIO_PERFIL { get; set; }
     }
 }

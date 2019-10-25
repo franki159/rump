@@ -264,7 +264,9 @@
     <Content Include="js\all\jquery.base64.min.js" />
     <Content Include="js\all\jquery.min.js" />
     <Content Include="js\all\moment.min.js" />
+    <Content Include="js\page\mantenimiento\usuario.js" />
     <Content Include="js\page\mantenimiento\mascota.js" />
+    <Content Include="page\mantenimiento\usuario.aspx" />
     <Content Include="page\mantenimiento\mascota.aspx" />
     <Content Include="page\pageError.aspx" />
     <Content Include="js\all\jspdf.min.js" />
@@ -291,6 +293,7 @@
     <Content Include="assets\dropzone\dropzone-master\test.sh" />
     <Content Include="assets\dropzone\dropzone-master\test\test.coffee" />
     <Content Include="page\mantenimiento\hh_imagenMascota.ashx" />
+    <Content Include="page\mantenimiento\hh_imagenUsuario.ashx" />
     <None Include="Properties\PublishProfiles\Carpeta para FTP.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Godaddy.pubxml" />
@@ -2477,8 +2480,18 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="page\mantenimiento\hh_imagenUsuario.ashx.cs">
+      <DependentUpon>hh_imagenUsuario.ashx</DependentUpon>
+    </Compile>
     <Compile Include="page\mantenimiento\hh_imagenMascota.ashx.cs">
       <DependentUpon>hh_imagenMascota.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="page\mantenimiento\usuario.aspx.cs">
+      <DependentUpon>usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\mantenimiento\usuario.aspx.designer.cs">
+      <DependentUpon>usuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="page\mantenimiento\mascota.aspx.cs">
       <DependentUpon>mascota.aspx</DependentUpon>
@@ -2522,6 +2535,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\mascota\" />
+    <Folder Include="img\usuario\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
