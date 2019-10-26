@@ -16,6 +16,7 @@ namespace PRESENTACION
         {
             if (Page.IsPostBack == false)
             {
+
                 if (Session["UserRump"] == null) Response.Redirect("~/login.aspx");
             }
         }
