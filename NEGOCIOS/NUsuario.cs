@@ -43,11 +43,11 @@ namespace NEGOCIOS
         {
             return DUsuario.ActualizarUsuario(ent);
         }
-        public static int ActualizarFotoUsuario(EUsuario ent)
+        public static string ActualizarFotoUsuario(EUsuario ent)
         {
             return DUsuario.ActualizarFotoUsuario(ent);
         }
-        public static decimal RegistrarUsuario(EUsuario ent)
+        public static string RegistrarUsuario(EUsuario ent)
         {
             return DUsuario.RegistrarUsuario(ent);
         }

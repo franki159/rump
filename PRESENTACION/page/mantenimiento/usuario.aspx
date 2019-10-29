@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="usuario.aspx.cs" Inherits="PRESENTACION.page.mantenimiento.usuario" %>
 
-<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
-<script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>
+<%--<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
+<script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>--%>
+<link href="../../assets/upGalleryFCP/upGalleryFCP.css" rel="stylesheet" />
+<script src="../../assets/upGalleryFCP/upGalleryFCP.js"></script>
 
 <div id="errorDiv"></div>
 <input id="txh_idConfirm" type="hidden" />
@@ -174,7 +176,19 @@
 
                         <div role="tabpanel" class="tab-pane fade panel-body" id="foto" aria-labelledby="foto-tab">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <div class="container container-file">
+                                        <div class="row">
+                                            <div class="col-sm-2 imgUp">
+                                                <div class="imagePreview"></div>
+                                                <label class="btn btn-primary btn-upload">
+										            Subir<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+				                                </label>
+                                            </div><!-- col-2 -->
+                                        </div><!-- row -->
+                                    </div><!-- container -->
+                                </div>
+                                <%--<div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Seleccione una foto de perfil</label>
                                         <input type="file" class="form-control" id="imgUsuario">
@@ -182,7 +196,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <img src="#" id="img_Foto" style="width: 150px; height: 180px; background-color: #d6d6d6;" />
-                                </div>
+                                </div>--%>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">

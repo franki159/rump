@@ -15,7 +15,7 @@ namespace PRESENTACION.page.mantenimiento
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         [WebMethod()]
@@ -61,17 +61,19 @@ namespace PRESENTACION.page.mantenimiento
                 }
 
                 List<EUsuario> objResultado = new List<EUsuario>();
-                
+
                 objResultado = NUsuario.listarUsuario(objE);
 
-                if (objResultado.Count == 0)
+                /*if (objResultado.Count == 0)
                 {
                     objRespuesta.Error("No se encontraron registros.");
                 }
                 else
                 {
                     objRespuesta.Resultado = objResultado;
-                }
+                }*/
+
+                objRespuesta.Resultado = objResultado;
             }
             catch (Exception ex)
             {
@@ -144,19 +146,54 @@ namespace PRESENTACION.page.mantenimiento
                     return objRespuesta;
                 }
 
-                decimal objResultado = 0;
-                
-                if (objE.ID != 0)
+                string objResultado = "";
+
+                if (objE.ID_ENCRIP != "")
                 {
-                    objResultado = NUsuario.ActualizarUsuario(objE);
+                    if (NUsuario.ActualizarUsuario(objE) > 0)
+                    {
+                        objResultado = objE.ID_ENCRIP;
+                    }
                 }
                 else
                 {
                     objResultado = NUsuario.RegistrarUsuario(objE);
                 }
-                
 
-                if (objResultado == 0)
+
+                if (objResultado == "")
+                {
+                    objRespuesta.Error("No se pudo actualizar.");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
+                    objRespuesta.Success("Se guardó la información correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object InsertarFotoUsuarioWM(EUsuario objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                string objResultado = "";
+                objE.FOTO = objE.EXTENSION;
+                objResultado = NUsuario.ActualizarFotoUsuario(objE);
+
+                if (objResultado == "")
                 {
                     objRespuesta.Error("No se pudo actualizar.");
                 }

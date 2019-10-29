@@ -360,6 +360,12 @@ function validIdInput(valor) {
         return false;
 }
 
+function validPasswordInput(valor) {
+    var regex = /^[a-zA-Z0-9]*$/;
+
+    return !regex.test(valor);
+}
+
 function validate_hour(inputStr) {
     if (inputStr === "") {
         return false;

@@ -2468,11 +2468,11 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\mantenimiento\hh_imagenUsuario.ashx.cs">
-      <DependentUpon>hh_imagenUsuario.ashx</DependentUpon>
-    </Compile>
     <Compile Include="page\mantenimiento\hh_imagenMascota.ashx.cs">
       <DependentUpon>hh_imagenMascota.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="page\mantenimiento\hh_imagenUsuario.ashx.cs">
+      <DependentUpon>hh_imagenUsuario.ashx</DependentUpon>
     </Compile>
     <Compile Include="page\mantenimiento\usuario.aspx.cs">
       <DependentUpon>usuario.aspx</DependentUpon>

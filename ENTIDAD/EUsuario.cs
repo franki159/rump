@@ -9,12 +9,13 @@ namespace ENTIDAD
     public class EUsuario
     {
         public decimal ID { get; set; }
-        public string IDENCRIPT { get; set; }
+        public string ID_ENCRIP { get; set; }
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string FOTO { get; set; }
+        public string EXTENSION { get; set; }
         public string SEXO { get; set; }
         public string TELEFONO { get; set; }
         public string CELULAR { get; set; }
