@@ -8,6 +8,8 @@ using System.Web.Services;
 using System.IO;
 using ENTIDAD;
 using NEGOCIOS;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace PRESENTACION.page.mantenimiento
 {
@@ -257,6 +259,7 @@ namespace PRESENTACION.page.mantenimiento
                 EUsuario objResultado = new EUsuario();
                 objResultado = NUsuario.ObtenerPropietarioMascota(objE);
                 objRespuesta.Resultado = objResultado;
+
             }
             catch (Exception ex)
             {

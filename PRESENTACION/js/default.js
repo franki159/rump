@@ -80,6 +80,7 @@ function InfoSesion() {
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
                 htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';

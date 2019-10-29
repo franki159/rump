@@ -33,6 +33,9 @@
 
     <!-- Div carga -->        
     <div id="page-loader"><span class="preloader-interior"></span></div> 
+    <%--<div id="preloader">
+        <div class="loader"></div>
+    </div>--%>
             
             <!-- Modal para confirmaciones inicio-->
             <div class="modal fade" style="z-index: 1051;" id="modalConfirm" role="dialog">
@@ -155,7 +158,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; World Pets Perú <%: DateTime.Now.Year %> by <a href="http://charpe.somee.com/"><strong>Charpe</strong>
+            <span>Copyright &copy; World Pets Perú <%: DateTime.Now.Year %> by <a href="http://charpetechnology.com/"><strong>Charpe</strong>
                     <img src="img/charpe.png" alt="Logo Charpe Enterprise" /></a>
           </div>
         </div>

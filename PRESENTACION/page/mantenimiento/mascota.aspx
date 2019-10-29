@@ -18,8 +18,7 @@
                 <div class="row mb-3" id="divBusqueda" style="display: none;">
                     <div class="col-md-4">
                         <div class="input-group">
-                            <label class="col-form-label">DNI: </label>
-                            <input type="text" id="txt_bus_dni" class="form-control bg-light border-0 small" placeholder="Buscar mascota..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" id="txt_bus_dni" class="form-control bg-light border-0 small" placeholder="Ingrese DNI mascota..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="btn_buscar" class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>

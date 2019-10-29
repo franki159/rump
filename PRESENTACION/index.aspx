@@ -28,7 +28,7 @@
     <!-- /Preloader -->
 
     <!-- Header Area Start -->
-    <header class="header-area">
+    <header class="header-area">        
         <!-- Search Form -->
         <div class="search-form d-flex align-items-center">
             <div class="container">
@@ -96,14 +96,14 @@
                                     <li class="active"><a href="./">Inicio</a></li>
                                     <li><a href="templatePage/servicios.aspx">Servicios</a></li>
 									<li><a href="#">Mascotas extraviadas</a></li>
-                                    <li><a href="./adoptame.html">Adóptame</a>
+                                    <li><a href="templatePage/adoptame.aspx">Adóptame</a>
 									    <ul class="dropdown">
                                             <li><a href="#">Enciclopedia de Razas</a></li><br>
 									    </ul>
 									</li>	
 									<li><a href="#">¿Quiénes somos?</a></li>
 							       
-                                    <li><a href="./contacto.html">Contacto</a></li>
+                                    <li><a href="templatePage/contacto.aspx">Contacto</a></li>
                                 </ul>
 
                                 <!-- Search -->
@@ -584,11 +584,11 @@
                             <!-- Footer Nav -->
                             <ul class="footer-nav">
                                 <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Noticias</a></li>
-								<li><a href="./servicios.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
+								<li><a href="templatePage/servicios.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
-								<li><a href="./adoptame.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
+								<li><a href="templatePage/adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
                                 <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
-                                <li><a href="./contacto.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
+                                <li><a href="templatePage/contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
                             </ul>
                         </div>
                     </div>
