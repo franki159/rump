@@ -69,7 +69,8 @@ namespace DATOS
                     while (dr.Read())
                     {
                         EUsuario mItem = new EUsuario();
-                        mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        //mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
                         mItem.ACTIVO = dr.IsDBNull(dr.GetOrdinal("activo")) ? 0 : dr.GetInt16(dr.GetOrdinal("activo"));
                         mItem.EMAIL = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
                         mItem.PASSWORD = dr.IsDBNull(dr.GetOrdinal("password")) ? string.Empty : dr.GetString(dr.GetOrdinal("password"));
@@ -99,7 +100,7 @@ namespace DATOS
             {
 
                 SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@opcion", 2);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
@@ -138,7 +139,7 @@ namespace DATOS
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@opcion", 3);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
@@ -151,7 +152,7 @@ namespace DATOS
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
 
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@email", objE.EMAIL);
                 cmd.Parameters.AddWithValue("@password", objE.PASSWORD);
                 cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
@@ -170,20 +171,32 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
-        public static int ActualizarFotoUsuario(EUsuario objE)
+        public static string ActualizarFotoUsuario(EUsuario objE)
         {
+            string foto = "";
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
-                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@foto", objE.FOTO);
                 cmd.Parameters.AddWithValue("@opcion", 5);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
-                return cmd.ExecuteNonQuery();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            foto = dr.IsDBNull(dr.GetOrdinal("FOTO")) ? string.Empty : dr.GetString(dr.GetOrdinal("FOTO"));
+                        }
+                    }
+                }
+
+                return foto;
             }
         }
-        public static decimal RegistrarUsuario(EUsuario objE)
+        public static string RegistrarUsuario(EUsuario objE)
         {
             decimal ID_USUARIO = 0;
 
@@ -235,7 +248,7 @@ namespace DATOS
                 cn.Close();
             }
 
-            return ID_USUARIO;
+            return EUtil.getEncriptar(ID_USUARIO.ToString());
         }
 
         /*

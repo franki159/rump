@@ -1,5 +1,6 @@
 ﻿var foto_dsc;
 var id_usuario;
+var valRND = Math.floor(Math.random() * 100);
 /*Inicializar Script*/
 $(function () {
     $(document).unbind("keydown");
@@ -10,8 +11,8 @@ $(function () {
         orientation: "top left"
     });
 
-    $("#pnl_usuario").modal({show: false, backdrop: 'static' });
-    
+    $("#pnl_usuario").modal({ show: false, backdrop: 'static' });
+
     $('.continue').click(function () {
         $('.nav-tabs .active').parent().next('li').find('a').trigger('click');
     });
@@ -31,13 +32,13 @@ function fc_listar_inicio() {
     var objE = {
         CODIGO: "PERFIL"
     };
-    
+
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/usuario.aspx/listarParametro",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: JSON.stringify({ objE: objE}),
+        data: JSON.stringify({ objE: objE }),
         async: false,
         beforeSend: function () {
             openLoading();
@@ -91,23 +92,23 @@ function fc_listar_usuario() {
                 closeLoading();
                 return;
             }
-            
+
             var htmlBotones = '<button name="editar" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></button> ' +
                 '<button name="anular" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button> ';
 
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {
-                html += '<tr><td style="display:none">' + data.d.Resultado[i].ID + '</td>';
+                html += '<tr><td style="display:none">' + data.d.Resultado[i].ID_ENCRIP + '</td>';
                 html += '<td>' + htmlBotones + '</td>';
                 html += '<td style="text-align:center">' +
-                            '<div>' +
-                                '<img class="img-row-usuario" src="img/usuario/' + data.d.Resultado[i].FOTO + '" onerror="this.src=\'img/noAvatar.png\';">' +
-                            '</div>'+
+                    '<div>' +
+                    '<img class="img-row-usuario" src="img/usuario/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND + '" onerror="this.src=\'img/noAvatar.png\';">' +
+                    '</div>' +
                     '</td>';
                 html += '<td style="text-align:center">' +
-                            '<div>' +
-                                '<img class="img-row-usuario" src="img/checkbox/' + (data.d.Resultado[i].ACTIVO == 1 ? 'check-on' : 'check-off') + '.png">' +
-                            '</div>' +
+                    '<div>' +
+                    '<img class="img-row-usuario" src="img/checkbox/' + (data.d.Resultado[i].ACTIVO == 1 ? 'check-on' : 'check-off') + '.png">' +
+                    '</div>' +
                     '</td>';
                 html += '<td>' + data.d.Resultado[i].USUARIO_PERFIL.PERFIL + '</td>';
                 html += '<td>' + data.d.Resultado[i].EMAIL + '</td>';
@@ -125,9 +126,9 @@ function fc_listar_usuario() {
                 if ($(this).attr("name") === "editar") {
                     $('#pnl_usuario .modal-title').html('Editar Usuario');
                     var objE = {
-                        ID: id_usuario
+                        ID_ENCRIP: id_usuario
                     };
-                    
+
                     $.ajax({
                         type: "POST",
                         url: "page/mantenimiento/usuario.aspx/ObtenerUsuarioWM",
@@ -156,14 +157,16 @@ function fc_listar_usuario() {
                                 $("#txt_fecha_nac").val(formatDate(parseDateServer(data.d.Resultado.FECHA_NAC), "dd/MM/yyyy")).change();
                                 $("#txt_fecha_nac").parent().datepicker("update", $("#txt_fecha_nac").val());
                             }
-                            
+
                             $("#sel_perfil").val(data.d.Resultado.PERFIL_ID).change();
                             $("#txt_email").val(data.d.Resultado.EMAIL);
-                            $("#txt_clave").val(data.d.Resultado.PASSWORD);
-                            $("#txt_clave_rep").val(data.d.Resultado.PASSWORD);
+                            //$("#txt_clave").val(data.d.Resultado.PASSWORD);
+                            //$("#txt_clave_rep").val(data.d.Resultado.PASSWORD);
 
-                            foto_dsc = data.d.Resultado.FOTO;
-                            $("#img_Foto").attr("src", "img/mascota/" + data.d.Resultado.FOTO);
+                            if (data.d.Resultado.FOTO != '' && data.d.Resultado.FOTO != null) {
+                                $('.imagePreview').css("background-image", "url(../../img/usuario/" + data.d.Resultado.FOTO + "?v=" + valRND + ")");
+                            }
+
                             activaTab('dato');
                             $("#pnl_usuario").modal('show');
                         },
@@ -192,7 +195,7 @@ function aceptarConfirm() {
     switch ($("#txh_idConfirm").val()) {
         case "ANULAR":
             var objE = {
-                ID : id_usuario
+                ID_ENCRIP: id_usuario
             };
 
             $.ajax({
@@ -231,34 +234,36 @@ function aceptarConfirm() {
             break;
     }
 }
-function guardarImagen(evt, nameId) {
-    if ($("#imgUsuario")[0].files[0] !== undefined) {
-        var dataImagen = new FormData();
-        dataImagen.append('file', $("#imgUsuario")[0].files[0]);
-        dataImagen.append('name', nameId);
-    }
+function guardarImagen(evt, nameId, file) {
+    var objResp = 0;
+    var dataImagen = new FormData();
+    dataImagen.append('file', file);
+    dataImagen.append('name', nameId);
 
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/hh_imagenUsuario.ashx",
         data: dataImagen,
+        async: false,
         contentType: false,
         processData: false,
         success: function (result) {
-            msg_OpenDay("c", "Usuario guardado correctamente");
+            //msg_OpenDay("c", "Mascota guardada correctamente");
+            objResp = 0;
         },
         error: function (err) {
-            msg_OpenDay("e", "Error al guardar imagen");
+            //msg_OpenDay("e", "Error al guardar imagen");
+            objResp = 1;
         }
     });
 
-    evt.preventDefault();
+    return objResp;
 }
 function limpiarUsuario() {
     $("#errorDiv").html('');
     $("#errorUsuario").html('');
 
-    id_usuario = 0;
+    id_usuario = "";
     foto_dsc = "";
     $("#pnl_usuario").css("pointer-events", "visible");
     $("#pnl_usuario select").val('0');
@@ -266,9 +271,14 @@ function limpiarUsuario() {
     $("#pnl_usuario textarea").val('');
     $("#pnl_usuario select").attr("disabled", false);
     $("#pnl_usuario input").attr("disabled", false);
-    
+
     $('#sel_perfil').val(null).change();
-    $("#img_Foto").attr("src", "");
+
+    $(".container-file").find($(".imgSecond")).each(function () {
+        $(this).remove();
+    });
+
+    $(".container-file").find($(".imagePreview")).css("background-image", "url(../../img/noPets.png)");
 }
 /*Eventos por Control*/
 $(document).keydown(function (evt) {
@@ -317,56 +327,74 @@ $("#btn_guardar").click(function (evt) {
     $("#btn_guardar").button('loading');
 
     $("#errorUsuario").html('');
-    if (id_usuario === 0) {//Nuevo
-        if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
-            $("#errorUsuario").html(GenerarAlertaWarning("Nombre: Debe ingresar el nombre y el apellido"));
-            $("#btn_guardar").button('reset');
-            activaTab('dato');
-            $("#txt_nombre").focus();
-            return;
-        } else if (validIdInput($("#txt_fecha_nac").val())) {
-            $("#errorUsuario").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
-            $("#btn_guardar").button('reset');
-            activaTab('dato');
-            $("#txt_fecha_nac").focus();
-            return;
-        } else if (validIdInput($("#sel_sexo").val())) {
-            $("#errorUsuario").html(GenerarAlertaWarning("Sexo: ingresar el sexo"));
-            $("#btn_guardar").button('reset');
-            activaTab('dato');
-            $("#txt_fecha_nac").focus();
-            return;
-        } else if ($('#imgUsuario').get(0).files.length === 0) {
-            $("#errorUsuario").html(GenerarAlertaWarning("Imagen: seleccione una foto de perfil"));
-            $("#btn_guardar").button('reset');
-            activaTab('foto');
-            return;
-        }
 
-        foto_dsc = $("#imgUsuario")[0].files[0].name;
-        foto_dsc = getExtension(foto_dsc);
-    }
-    
-    if (validIdInput($("#sel_perfil").val())) {
+    if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
+        $("#errorUsuario").html(GenerarAlertaWarning("Nombre: Debe ingresar el nombre y el apellido"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_nombre").focus();
+        return;
+    } else if (validIdInput($("#sel_sexo").val())) {
+        $("#errorUsuario").html(GenerarAlertaWarning("Sexo: ingresar el sexo"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_fecha_nac").focus();
+        return;
+    } else if (validIdInput($("#txt_fecha_nac").val())) {
+        $("#errorUsuario").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_fecha_nac").focus();
+        return;
+    } else if (validIdInput($("#sel_perfil").val())) {
         $("#errorUsuario").html(GenerarAlertaWarning("Perfil: seleccione un perfil"));
-        $("#btn_guardar").button('reset');
+        closeLoading();
         activaTab('dato');
         $("#sel_perfil").focus();
         return;
+    } else if (!isEmail($("#txt_email").val())) {
+        $("#errorUsuario").html(GenerarAlertaWarning("E-mail: ingrese correo valido"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_email").focus();
+        return;
+    }
+
+    if (id_usuario != '' && $("#txt_clave").val() == '' && $("#txt_clave_rep").val() == '') {
+    } else {
+        if (validIdInput($("#txt_clave").val()) || validPasswordInput($("#txt_clave").val())) {
+            $("#errorUsuario").html(GenerarAlertaWarning("Contraseña: ingrese contraseña valida"));
+            closeLoading();
+            activaTab('dato');
+            $("#txt_clave").focus();
+            return;
+        } else if (validIdInput($("#txt_clave_rep").val()) || validPasswordInput($("#txt_clave_rep").val())) {
+            $("#errorUsuario").html(GenerarAlertaWarning("Confirmar Contraseña: ingrese contraseña valida"));
+            closeLoading();
+            activaTab('dato');
+            $("#txt_clave_rep").focus();
+            return;
+        } else if ($("#txt_clave").val() != $("#txt_clave_rep").val()) {
+            $("#errorUsuario").html(GenerarAlertaWarning("Contraseña: ambas constraseñas no son iguales"));
+            closeLoading();
+            activaTab('dato');
+            $("#txt_clave_rep").focus();
+            return;
+        }
     }
 
     var eUsuario = {
-        ID: id_usuario,
+        ID_ENCRIP: id_usuario,
 
         EMAIL: $("#txt_email").val(),
         PASSWORD: $("#txt_clave").val(),
-
         NOMBRE: $("#txt_nombre").val(),
         APELLIDO: $("#txt_apellido").val(),
-        SEXO: $("#sel_sexo").val(),
         FECHA_NAC: getDateFromFormat($("#txt_fecha_nac").val(), 'dd/MM/yyyy'),
         TELEFONO: $("#txt_telefono").val(),
-        CELULAR: $("#txt_celular").val()
+        CELULAR: $("#txt_celular").val(),
+        SEXO: $("#sel_sexo").val(),
+        PERFIL_ID: $("#sel_perfil").val()
     };
 
     $.ajax({
@@ -383,18 +411,51 @@ $("#btn_guardar").click(function (evt) {
             if (!data.d.Activo) {
                 $("#errorUsuario").html(GenerarAlertaError(data.d.Mensaje));
                 $("#pnl_usuario").css("pointer-events", "visible");
-                $("#btn_guardar").button('reset');
+                closeLoading();
                 return;
             }
 
-            if (id_usuario === 0) {//Solo para nuevos
-                guardarImagen(evt, data.d.Resultado);
-            }
+            valRND = Math.floor(Math.random() * 1000);
 
-            $("#pnl_usuario").modal('hide');
-            $("#btn_guardar").button('reset');
-            
+            $(".container-file").find($("input")).each(function () {
+                if ($(this).get(0).files.length !== 0) {
+                    var imgTemp = $(this)[0].files[0];
+
+                    eUsuario = {
+                        ID_ENCRIP: data.d.Resultado,
+                        EXTENSION: getExtension(imgTemp.name)
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "page/mantenimiento/usuario.aspx/InsertarFotoUsuarioWM",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify({ objE: eUsuario }),
+                        async: false,
+                        success: function (dataImg) {
+                            if (!dataImg.d.Activo) {
+                                $("#errorUsuario").html(GenerarAlertaError(dataImg.d.Mensaje));
+                                closeLoading();
+                                return;
+                            }
+
+                            guardarImagen(evt, dataImg.d.Resultado, imgTemp);
+                        },
+                        error: function (data) {
+                            $("#errorUsuario").html(GenerarAlertaError("Inconveniente en la operación"));
+                            closeLoading();
+                        }
+                    });
+
+                    event.preventDefault();
+                }
+            });
+
+            $("#txt_bus_email").val($("#txt_email").val());
             fc_listar_usuario();
+            $("#pnl_usuario").modal('hide');
+            closeLoading();
         },
         error: function (data) {
             $("#errorUsuario").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -403,40 +464,4 @@ $("#btn_guardar").click(function (evt) {
         }
     });
     event.preventDefault();
-    //Subir Foto MODIFICAR 
-    if (id_usuario !== 0) {//Modificar
-        if ($('#imgUsuario').get(0).files.length !== 0) {//Si cambio la imagen
-            foto_dsc = $("#imgUsuario")[0].files[0].name;
-            foto_dsc = getExtension(foto_dsc);
-            eUsuario = {
-                ID: id_usuario,
-                FOTO: foto_dsc
-            };
-
-            $.ajax({
-                type: "POST",
-                url: "page/mantenimiento/usuario.aspx/ActualizarFotoUsuarioWM",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ objE: eUsuario }),
-                async: true,
-                success: function (data) {
-                    if (!data.d.Activo) {
-                        $("#errorUsuario").html(GenerarAlertaError(data.d.Mensaje));
-                        $("#btn_guardar").button('reset');
-                        return;
-                    }
-
-                    guardarImagen(evt, id_usuario);
-                },
-                error: function (data) {
-                    $("#errorUsuario").html(GenerarAlertaError("Inconveniente en la operación"));
-                    $("#btn_guardar").button('reset');
-                }
-            });
-            event.preventDefault();
-        } else {
-            msg_OpenDay("c", "Usuario modificada correctamente");
-        }
-    }
 });

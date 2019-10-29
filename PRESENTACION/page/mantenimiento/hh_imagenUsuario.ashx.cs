@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.IO;
-using ENTIDAD;
-using NEGOCIOS;
 
 namespace PRESENTACION.page.mantenimiento
 {
     /// <summary>
-    /// Descripción breve de hh_imagenMascota
+    /// Descripción breve de hh_imagenUsuario
     /// </summary>
     public class hh_imagenUsuario : IHttpHandler
     {
@@ -22,20 +19,17 @@ namespace PRESENTACION.page.mantenimiento
             foreach (string s in context.Request.Files)
             {
                 HttpPostedFile file = context.Request.Files[s];
-                string fileName = context.Request.Form["name"];
-                string fileExtension = file.ContentType;
+                str_image = context.Request.Form["name"];
 
-                if (!string.IsNullOrEmpty(fileName))
+                if (!string.IsNullOrEmpty(str_image))
                 {
-                    fileExtension = Path.GetExtension(file.FileName);
-                    str_image = EUtil.getEncriptar(fileName) + fileExtension;
                     string pathToSave = HttpContext.Current.Server.MapPath("~/img/usuario/") + str_image;
                     file.SaveAs(pathToSave);
                 }
             }
             context.Response.Write(str_image);
         }
-        
+
         public bool IsReusable
         {
             get
