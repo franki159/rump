@@ -95,7 +95,15 @@ namespace PRESENTACION.page.proceso
                             cell.HorizontalAlignment = 1;
                             tbody.AddCell(cell);
 
-                            var imgMascota = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/mascota/"+ objE.lMASCOTA[0].FOTO));
+                            string url_img_mascota = Server.MapPath("~/img/mascota/" + objE.lMASCOTA[0].FOTO);
+                            iTextSharp.text.Image imgMascota;
+                            if (File.Exists(url_img_mascota))
+                            {
+                                imgMascota = iTextSharp.text.Image.GetInstance(url_img_mascota);
+                            }
+                            else {
+                                imgMascota = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/noPets.png" ));
+                            }
                             imgMascota.ScaleAbsolute(65, 85);
                             imgMascota.SpacingBefore = 5f;
                             cell = new PdfPCell(imgMascota);
@@ -183,7 +191,16 @@ namespace PRESENTACION.page.proceso
                             cell.PaddingTop = -2;
                             tFechas.AddCell(cell);
 
-                            var imgMascotaSmall = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/mascota/"+ objE.lMASCOTA[0].FOTO));
+                            iTextSharp.text.Image imgMascotaSmall;
+                            if (File.Exists(url_img_mascota))
+                            {
+                                imgMascotaSmall = iTextSharp.text.Image.GetInstance(url_img_mascota);
+                            }
+                            else
+                            {
+                                imgMascotaSmall = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/noPets.png"));
+                            }
+
                             imgMascotaSmall.ScaleAbsolute(33, 41);
                             imgMascotaSmall.SpacingBefore = 10f;
                             cell = new PdfPCell(imgMascotaSmall);
@@ -203,13 +220,15 @@ namespace PRESENTACION.page.proceso
                             tmayor.LockedWidth = true;
                             tmayor.HorizontalAlignment = 0;
 
-                            cell = new PdfPCell(new Phrase(objE.TIPO.Substring(0, 1) + "<PER" + objE.APELLIDO.Replace(" ", "") + "<<<<<<"+ objE.NOMBRE.ToUpper() +"<<", titleSmall7B));
+                            int cant_str_nom = 0;
+                            cant_str_nom += (objE.TIPO.Substring(0, 1) + "<PER" + objE.NOMBRE.ToUpper() + "<<").Length;
+                            cell = new PdfPCell(new Phrase(objE.TIPO.Substring(0, 1) + "<PER" + objE.APELLIDO.Replace(" ", "").PadRight(33 - cant_str_nom, Convert.ToChar("<")) + objE.NOMBRE.ToUpper() +"<<", titleSmall7B));
                             cell.Border = 0;
                             cell.PaddingTop = -6;
                             cell.PaddingLeft = 18;
                             tmayor.AddCell(cell);
 
-                            cell = new PdfPCell(new Phrase(objE.DNI + "<1<<<<<<<<<<<<<<<<<", titleSmall7B));
+                            cell = new PdfPCell(new Phrase(objE.DNI + "<1<<<<<<<<<<<<<<<<<<<<<<<<", titleSmall7B));
                             cell.Border = 0;
                             cell.PaddingLeft = 18;
                             cell.PaddingTop = -2;
@@ -285,7 +304,7 @@ namespace PRESENTACION.page.proceso
                             cell.HorizontalAlignment = 1;
                             tposterior.AddCell(cell);
 
-                            cell = new PdfPCell(new Phrase(objE.RAZA, titleSmall6B));
+                            cell = new PdfPCell(new Phrase(objE.RAZA.ToUpper(), titleSmall6B));
                             cell.Border = 0;
                             tposterior.AddCell(cell);
 

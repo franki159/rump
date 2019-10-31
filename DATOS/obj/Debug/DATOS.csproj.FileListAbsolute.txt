@@ -79,3 +79,14 @@ C:\Users\FCHARA\source\repos\rump\DATOS\obj\Debug\DATOS.csproj.CoreCompileInputs
 C:\Users\FCHARA\source\repos\rump\DATOS\obj\Debug\DATOS.csproj.CopyComplete
 C:\Users\FCHARA\source\repos\rump\DATOS\obj\Debug\DATOS.dll
 C:\Users\FCHARA\source\repos\rump\DATOS\obj\Debug\DATOS.pdb
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\bin\Debug\DATOS.dll.config
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\bin\Debug\DATOS.dll
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\bin\Debug\DATOS.pdb
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\bin\Debug\ENTIDAD.dll
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\bin\Debug\MySql.Data.dll
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\bin\Debug\ENTIDAD.pdb
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csprojAssemblyReference.cache
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csproj.CoreCompileInputs.cache
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csproj.CopyComplete
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.dll
+C:\Users\chara\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.pdb

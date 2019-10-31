@@ -47,3 +47,9 @@ C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileIn
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Debug\ENTIDAD.dll
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Debug\ENTIDAD.pdb
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+C:\Users\chara\Source\Repos\franki159\rump\ENTIDAD\bin\Debug\ENTIDAD.dll
+C:\Users\chara\Source\Repos\franki159\rump\ENTIDAD\bin\Debug\ENTIDAD.pdb
+C:\Users\chara\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+C:\Users\chara\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\Users\chara\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.dll
+C:\Users\chara\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.pdb
