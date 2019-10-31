@@ -775,124 +775,127 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/24/2019 19:47:30</publishTime>
     </File>
     <File Include="bin/adoptame.aspx.9d1eb9af.compiled">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:58</publishTime>
     </File>
     <File Include="bin/App_Web_adoptame.aspx.9d1eb9af.dll">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:58</publishTime>
     </File>
     <File Include="bin/App_Web_cambiarclave.aspx.cdcab7d2.dll">
       <publishTime>10/18/2019 12:43:45</publishTime>
     </File>
     <File Include="bin/App_Web_contacto.aspx.9d1eb9af.dll">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:58</publishTime>
     </File>
     <File Include="bin/App_Web_default.aspx.cdcab7d2.dll">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/App_Web_footerpage.aspx.9d1eb9af.dll">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:59</publishTime>
     </File>
     <File Include="bin/App_Web_go.aspx.cdcab7d2.dll">
       <publishTime>10/18/2019 12:43:46</publishTime>
     </File>
     <File Include="bin/App_Web_headerpage.aspx.9d1eb9af.dll">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:59</publishTime>
     </File>
     <File Include="bin/App_Web_imprimirdni.aspx.52dee6b9.dll">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/App_Web_index.aspx.cdcab7d2.dll">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/App_Web_indexpage.aspx.cdcab7d2.dll">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/App_Web_inicio.aspx.a003eb5b.dll">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/App_Web_login.aspx.cdcab7d2.dll">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/App_Web_mascota.aspx.1187a5e6.dll">
-      <publishTime>10/28/2019 19:45:45</publishTime>
+      <publishTime>10/30/2019 19:05:56</publishTime>
     </File>
     <File Include="bin/App_Web_pageerror.aspx.a003eb5b.dll">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/App_Web_permiso.aspx.cdcab7d2.dll">
       <publishTime>10/18/2019 12:43:46</publishTime>
     </File>
     <File Include="bin/App_Web_servicios.aspx.9d1eb9af.dll">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:05:59</publishTime>
     </File>
     <File Include="bin/App_Web_usuario.aspx.1187a5e6.dll">
-      <publishTime>10/28/2019 19:45:45</publishTime>
+      <publishTime>10/30/2019 19:05:56</publishTime>
+    </File>
+    <File Include="bin/App_Web_visorweb.aspx.52dee6b9.dll">
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/cambiarclave.aspx.cdcab7d2.compiled">
       <publishTime>10/18/2019 12:43:45</publishTime>
     </File>
     <File Include="bin/contacto.aspx.9d1eb9af.compiled">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:58</publishTime>
     </File>
     <File Include="bin/DATOS.dll">
-      <publishTime>10/28/2019 18:45:59</publishTime>
+      <publishTime>10/30/2019 19:05:08</publishTime>
     </File>
     <File Include="bin/DATOS.dll.config">
       <publishTime>09/18/2019 14:56:51</publishTime>
     </File>
     <File Include="bin/DATOS.pdb">
-      <publishTime>10/28/2019 18:45:59</publishTime>
+      <publishTime>10/30/2019 19:05:08</publishTime>
     </File>
     <File Include="bin/default.aspx.cdcab7d2.compiled">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/ENTIDAD.dll">
-      <publishTime>10/28/2019 18:45:58</publishTime>
+      <publishTime>10/30/2019 19:05:07</publishTime>
     </File>
     <File Include="bin/ENTIDAD.pdb">
-      <publishTime>10/28/2019 18:45:58</publishTime>
+      <publishTime>10/30/2019 19:05:07</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>05/29/2015 21:25:26</publishTime>
     </File>
     <File Include="bin/footerpage.aspx.9d1eb9af.compiled">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:59</publishTime>
     </File>
     <File Include="bin/go.aspx.cdcab7d2.compiled">
       <publishTime>10/18/2019 12:43:46</publishTime>
     </File>
     <File Include="bin/headerpage.aspx.9d1eb9af.compiled">
-      <publishTime>10/28/2019 19:45:47</publishTime>
+      <publishTime>10/30/2019 19:05:59</publishTime>
     </File>
     <File Include="bin/hh_imagenmascota.ashx.1187a5e6.compiled">
-      <publishTime>10/28/2019 19:45:44</publishTime>
+      <publishTime>10/30/2019 19:05:55</publishTime>
     </File>
     <File Include="bin/hh_imagenusuario.ashx.1187a5e6.compiled">
-      <publishTime>10/28/2019 19:45:44</publishTime>
+      <publishTime>10/30/2019 19:05:55</publishTime>
     </File>
     <File Include="bin/hh_imprimirdni.ashx.52dee6b9.compiled">
       <publishTime>10/28/2019 19:45:45</publishTime>
     </File>
     <File Include="bin/imprimirdni.aspx.52dee6b9.compiled">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/index.aspx.cdcab7d2.compiled">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/indexpage.aspx.cdcab7d2.compiled">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/inicio.aspx.a003eb5b.compiled">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
       <publishTime>06/20/2019 17:39:40</publishTime>
     </File>
     <File Include="bin/login.aspx.cdcab7d2.compiled">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:00</publishTime>
     </File>
     <File Include="bin/mascota.aspx.1187a5e6.compiled">
-      <publishTime>10/28/2019 19:45:45</publishTime>
+      <publishTime>10/30/2019 19:05:56</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
       <publishTime>05/29/2015 21:27:38</publishTime>
@@ -901,34 +904,37 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/02/2015 17:37:58</publishTime>
     </File>
     <File Include="bin/NEGOCIOS.dll">
-      <publishTime>10/28/2019 18:45:59</publishTime>
+      <publishTime>10/30/2019 19:05:08</publishTime>
     </File>
     <File Include="bin/NEGOCIOS.pdb">
-      <publishTime>10/28/2019 18:45:59</publishTime>
+      <publishTime>10/30/2019 19:05:08</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>01/28/2016 14:22:24</publishTime>
     </File>
     <File Include="bin/pageerror.aspx.a003eb5b.compiled">
-      <publishTime>10/28/2019 19:45:46</publishTime>
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="bin/permiso.aspx.cdcab7d2.compiled">
       <publishTime>10/18/2019 12:43:46</publishTime>
     </File>
     <File Include="bin/PRESENTACION.dll">
-      <publishTime>10/28/2019 19:45:41</publishTime>
+      <publishTime>10/30/2019 19:05:44</publishTime>
     </File>
     <File Include="bin/PRESENTACION.pdb">
-      <publishTime>10/28/2019 19:45:41</publishTime>
+      <publishTime>10/30/2019 19:05:44</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>02/17/2018 12:02:24</publishTime>
     </File>
     <File Include="bin/servicios.aspx.9d1eb9af.compiled">
-      <publishTime>10/28/2019 19:45:48</publishTime>
+      <publishTime>10/30/2019 19:05:59</publishTime>
     </File>
     <File Include="bin/usuario.aspx.1187a5e6.compiled">
-      <publishTime>10/28/2019 19:45:45</publishTime>
+      <publishTime>10/30/2019 19:05:56</publishTime>
+    </File>
+    <File Include="bin/visorweb.aspx.52dee6b9.compiled">
+      <publishTime>10/30/2019 19:05:57</publishTime>
     </File>
     <File Include="cambiarclave.aspx">
       <publishTime>10/18/2019 12:43:51</publishTime>
@@ -958,7 +964,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>06/20/2018 16:58:45</publishTime>
     </File>
     <File Include="default.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:05</publishTime>
     </File>
     <File Include="go.aspx">
       <publishTime>10/18/2019 12:43:52</publishTime>
@@ -1001,6 +1007,9 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     </File>
     <File Include="img/customSelect-arrow.gif">
       <publishTime>03/02/2017 17:24:58</publishTime>
+    </File>
+    <File Include="img/dni/fondo.jpg">
+      <publishTime>10/29/2019 16:22:27</publishTime>
     </File>
     <File Include="img/Flip Flop.gif">
       <publishTime>03/02/2017 17:24:58</publishTime>
@@ -1081,10 +1090,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/17/2019 10:13:29</publishTime>
     </File>
     <File Include="index.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:06</publishTime>
     </File>
     <File Include="indexPage.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:06</publishTime>
     </File>
     <File Include="js/all/bootstrap.min.js">
       <publishTime>03/02/2017 16:09:11</publishTime>
@@ -1135,7 +1144,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/28/2019 14:51:21</publishTime>
     </File>
     <File Include="js/general.js">
-      <publishTime>10/23/2019 14:35:33</publishTime>
+      <publishTime>10/29/2019 11:14:32</publishTime>
     </File>
     <File Include="js/index.js">
       <publishTime>10/28/2019 18:42:13</publishTime>
@@ -1162,7 +1171,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/15/2018 08:55:29</publishTime>
     </File>
     <File Include="js/page/mantenimiento/mascota.js">
-      <publishTime>10/25/2019 15:11:55</publishTime>
+      <publishTime>10/29/2019 10:12:44</publishTime>
     </File>
     <File Include="js/page/mantenimiento/parametro.js">
       <publishTime>11/15/2018 08:58:31</publishTime>
@@ -1174,7 +1183,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2019 17:05:39</publishTime>
     </File>
     <File Include="js/page/mantenimiento/usuario.js">
-      <publishTime>10/25/2019 15:25:24</publishTime>
+      <publishTime>10/29/2019 11:14:32</publishTime>
     </File>
     <File Include="js/page/operacion/alerta.js">
       <publishTime>02/28/2019 17:40:48</publishTime>
@@ -1198,7 +1207,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/26/2019 17:26:02</publishTime>
     </File>
     <File Include="js/page/proceso/imprimirDNI.js">
-      <publishTime>10/28/2019 15:29:24</publishTime>
+      <publishTime>10/30/2019 18:16:08</publishTime>
     </File>
     <File Include="js/page/reporte/comprobante.js">
       <publishTime>09/16/2018 11:15:45</publishTime>
@@ -1213,13 +1222,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>05/06/2019 11:55:33</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/consulta/consultaComprobante.aspx">
       <publishTime>11/23/2018 19:21:42</publishTime>
     </File>
     <File Include="page/inicio.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/mantenimiento/cliente.aspx">
       <publishTime>02/15/2019 17:58:51</publishTime>
@@ -1231,13 +1240,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/18/2019 17:31:52</publishTime>
     </File>
     <File Include="page/mantenimiento/hh_imagenMascota.ashx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/mantenimiento/hh_imagenUsuario.ashx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/mantenimiento/mascota.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/mantenimiento/parametro.aspx">
       <publishTime>02/18/2019 15:33:55</publishTime>
@@ -1249,7 +1258,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2019 16:35:19</publishTime>
     </File>
     <File Include="page/mantenimiento/usuario.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/operacion/alerta.aspx">
       <publishTime>09/11/2018 08:17:52</publishTime>
@@ -1279,13 +1288,16 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/26/2019 17:26:56</publishTime>
     </File>
     <File Include="page/pageError.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/proceso/hh_imprimirDNI.ashx">
       <publishTime>10/28/2019 19:45:49</publishTime>
     </File>
     <File Include="page/proceso/imprimirDNI.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
+    </File>
+    <File Include="page/proceso/visorWeb.aspx">
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="page/reporte/amcharts/amcharts-ant.js">
       <publishTime>06/25/2018 16:33:49</publishTime>
@@ -2239,7 +2251,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/18/2019 12:43:52</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/28/2019 19:45:43</publishTime>
+      <publishTime>10/30/2019 19:05:53</publishTime>
     </File>
     <File Include="public/css/app.css">
       <publishTime>10/14/2019 17:13:30</publishTime>
@@ -3058,13 +3070,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/25/2019 18:05:17</publishTime>
     </File>
     <File Include="templatePage/adoptame.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="templatePage/changelog.txt">
       <publishTime>10/25/2019 18:05:19</publishTime>
     </File>
     <File Include="templatePage/contacto.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:07</publishTime>
     </File>
     <File Include="templatePage/css/animate.css">
       <publishTime>10/25/2019 18:05:17</publishTime>
@@ -3154,13 +3166,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/25/2019 18:05:18</publishTime>
     </File>
     <File Include="templatePage/footerPage.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:08</publishTime>
     </File>
     <File Include="templatePage/gulpfile.js">
       <publishTime>10/25/2019 18:05:19</publishTime>
     </File>
     <File Include="templatePage/headerPage.aspx">
-      <publishTime>10/28/2019 19:45:49</publishTime>
+      <publishTime>10/30/2019 19:06:08</publishTime>
     </File>
     <File Include="templatePage/img/add.jpg">
       <publishTime>10/25/2019 18:05:18</publishTime>
@@ -3676,7 +3688,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/25/2019 18:05:19</publishTime>
     </File>
     <File Include="templatePage/servicios.aspx">
-      <publishTime>10/28/2019 19:45:50</publishTime>
+      <publishTime>10/30/2019 19:06:14</publishTime>
     </File>
     <File Include="templatePage/style.css">
       <publishTime>10/28/2019 12:37:44</publishTime>
@@ -9022,7 +9034,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/16/2019 14:53:14</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/28/2019 19:45:35</publishTime>
+      <publishTime>10/30/2019 19:05:11</publishTime>
     </File>
   </ItemGroup>
 </Project>

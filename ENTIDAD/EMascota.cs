@@ -26,6 +26,7 @@ namespace ENTIDAD
         public string RAZA_DSC { get; set; }
         public string BIOGRAFIA { get; set; }
         public Nullable<DateTime> FEC_NAC { get; set; }
+        public Nullable<DateTime> FEC_CREA { get; set; }
         //FAMILIA PADRE
         public string FAMILIARP { get; set; }
         public string DNIP { get; set; }

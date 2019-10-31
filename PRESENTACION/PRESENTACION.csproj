@@ -219,6 +219,7 @@
     <Content Include="img\avatarUser.png" />
     <Content Include="img\charpe.png" />
     <Content Include="img\checkbox\Thumbs.db" />
+    <Content Include="img\dni\fondo.jpg" />
     <Content Include="img\icons\favicon.ico" />
     <Content Include="img\icons\Thumbs.db" />
     <Content Include="assets\font-awesome\css\font-awesome.css.map" />
@@ -304,13 +305,13 @@
     <Content Include="page\mantenimiento\hh_imagenMascota.ashx" />
     <Content Include="page\mantenimiento\hh_imagenUsuario.ashx" />
     <None Include="packages.config" />
-    <Content Include="page\proceso\hh_imprimirDNI.ashx" />
     <None Include="Properties\PublishProfiles\Carpeta para FTP.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Godaddy.pubxml" />
     <None Include="Properties\PublishProfiles\LasVegas.pubxml" />
     <None Include="Properties\PublishProfiles\SomeePublic.pubxml" />
     <Content Include="page\proceso\imprimirDNI.aspx" />
+    <Content Include="page\proceso\visorWeb.aspx" />
     <Content Include="templatePage\adoptame.aspx" />
     <Content Include="templatePage\contacto.aspx" />
     <Content Include="templatePage\footerPage.aspx" />
@@ -2502,15 +2503,19 @@
     <Compile Include="page\inicio.aspx.designer.cs">
       <DependentUpon>inicio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\proceso\hh_imprimirDNI.ashx.cs">
-      <DependentUpon>hh_imprimirDNI.ashx</DependentUpon>
-    </Compile>
     <Compile Include="page\proceso\imprimirDNI.aspx.cs">
       <DependentUpon>imprimirDNI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="page\proceso\imprimirDNI.aspx.designer.cs">
       <DependentUpon>imprimirDNI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="page\proceso\visorWeb.aspx.cs">
+      <DependentUpon>visorWeb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\proceso\visorWeb.aspx.designer.cs">
+      <DependentUpon>visorWeb.aspx</DependentUpon>
     </Compile>
     <Compile Include="templatePage\adoptame.aspx.cs">
       <DependentUpon>adoptame.aspx</DependentUpon>

@@ -1,6 +1,7 @@
 ﻿/*Inicializar Script*/
 $(function () {
     closeLoading();
+    $("#txt_dni").focus();
 });
 /*Eventos por Control*/
 $(document).keydown(function (evt) {
@@ -43,6 +44,6 @@ $(document).keydown(function (evt) {
 
 //    evt.preventDefault();
 //}
-//$("#btnImprimir").click(function (evt) {
-//    guardarImagen(evt);
-//});
+$("#btn_print").click(function (evt) {
+    window.open('page/proceso/visorWeb.aspx?numIdentify=' + $("#txt_dni").val(), '_blank');
+});

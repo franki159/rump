@@ -24,6 +24,12 @@ namespace NEGOCIOS
         {
             return DMascota.ObtenerMascota(ent);
         }
+
+        public static EMascota ObtenerMascotaxDNI(EMascota ent)
+        {
+            return DMascota.ObtenerMascotaxDNI(ent);
+        }
+        
         public static int AnularMascotaWM(EMascota ent)
         {
             return DMascota.AnularMascotaWM(ent);

@@ -126,6 +126,93 @@ namespace DATOS
             return mItem;
 
         }
+
+        public static EMascota ObtenerMascotaxDNI(EMascota objE)
+        {
+            EMascota mItem = new EMascota();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@dni", objE.DNI);
+                cmd.Parameters.AddWithValue("@opcion", 9);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        mItem = new EMascota();
+                        mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
+                        mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                        mItem.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
+                        mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
+                        mItem.TAMANO = dr.IsDBNull(dr.GetOrdinal("tamano")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano"));
+                        mItem.MASCOTA_TIPO_ID = dr.IsDBNull(dr.GetOrdinal("mascota_tipo_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("mascota_tipo_id"));
+                        mItem.MASCOTA_RAZA_ID = dr.IsDBNull(dr.GetOrdinal("mascota_raza_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("mascota_raza_id"));
+                        mItem.CALIFICACION = dr.IsDBNull(dr.GetOrdinal("calificacion")) ? string.Empty : dr.GetString(dr.GetOrdinal("calificacion"));
+                        mItem.COLOR = dr.IsDBNull(dr.GetOrdinal("color")) ? string.Empty : dr.GetString(dr.GetOrdinal("color"));
+                        mItem.FEC_NAC = dr.IsDBNull(dr.GetOrdinal("fecha_nacimiento")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento"));
+                        mItem.BIOGRAFIA = dr.IsDBNull(dr.GetOrdinal("biografia")) ? string.Empty : dr.GetString(dr.GetOrdinal("biografia"));
+                        mItem.FAMILIARP = dr.IsDBNull(dr.GetOrdinal("familiarp")) ? string.Empty : dr.GetString(dr.GetOrdinal("familiarp"));
+                        mItem.DNIP = dr.IsDBNull(dr.GetOrdinal("dnip")) ? string.Empty : dr.GetString(dr.GetOrdinal("dnip"));
+                        mItem.TELEFONOP = dr.IsDBNull(dr.GetOrdinal("telefonop")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefonop"));
+                        mItem.FAMILIARM = dr.IsDBNull(dr.GetOrdinal("familiarm")) ? string.Empty : dr.GetString(dr.GetOrdinal("familiarm"));
+                        mItem.DNIM = dr.IsDBNull(dr.GetOrdinal("dnim")) ? string.Empty : dr.GetString(dr.GetOrdinal("dnim"));
+                        mItem.TELEFONOM = dr.IsDBNull(dr.GetOrdinal("telefonom")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefonom"));
+                        mItem.DEPARTAMENTO = dr.IsDBNull(dr.GetOrdinal("departamento")) ? string.Empty : dr.GetString(dr.GetOrdinal("departamento"));
+                        mItem.PROVINCIA = dr.IsDBNull(dr.GetOrdinal("provincia")) ? string.Empty : dr.GetString(dr.GetOrdinal("provincia"));
+                        mItem.DISTRITO = dr.IsDBNull(dr.GetOrdinal("distrito")) ? string.Empty : dr.GetString(dr.GetOrdinal("distrito"));
+                        mItem.GEOGRAFIA_ID = dr.IsDBNull(dr.GetOrdinal("geografia_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("geografia_id"));
+                        mItem.DIRECCION = dr.IsDBNull(dr.GetOrdinal("direccion")) ? string.Empty : dr.GetString(dr.GetOrdinal("direccion"));
+                        mItem.PISO = dr.IsDBNull(dr.GetOrdinal("piso")) ? string.Empty : dr.GetString(dr.GetOrdinal("piso"));
+                        mItem.REFERENCIA = dr.IsDBNull(dr.GetOrdinal("referencia")) ? string.Empty : dr.GetString(dr.GetOrdinal("referencia"));
+                        mItem.TIPO = dr.IsDBNull(dr.GetOrdinal("tipo")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo"));
+                        mItem.RAZA = dr.IsDBNull(dr.GetOrdinal("raza")) ? string.Empty : dr.GetString(dr.GetOrdinal("raza"));
+                        mItem.FEC_CREA = dr.IsDBNull(dr.GetOrdinal("created_at")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("created_at"));
+                        //Salud
+                        mItem.CASTRADO = dr.IsDBNull(dr.GetOrdinal("castrado")) ? 0 : dr.GetInt16(dr.GetOrdinal("castrado"));
+                        mItem.VISITA = dr.IsDBNull(dr.GetOrdinal("visita")) ? 0 : dr.GetInt16(dr.GetOrdinal("visita"));
+                        mItem.ALERGIA_MEDICAMENTO = dr.IsDBNull(dr.GetOrdinal("alergia_medicamento")) ? 0 : dr.GetInt16(dr.GetOrdinal("alergia_medicamento"));
+                        mItem.VACUNACION = dr.IsDBNull(dr.GetOrdinal("vacunacion")) ? 0 : dr.GetInt16(dr.GetOrdinal("vacunacion"));
+                        mItem.ANTIRRABICA = dr.IsDBNull(dr.GetOrdinal("antirrabica")) ? 0 : dr.GetInt16(dr.GetOrdinal("antirrabica"));
+                        mItem.ALERGIA = dr.IsDBNull(dr.GetOrdinal("alergia")) ? 0 : dr.GetInt16(dr.GetOrdinal("alergia"));
+                        mItem.ENFERMEDAD = dr.IsDBNull(dr.GetOrdinal("enfermedad")) ? 0 : dr.GetInt16(dr.GetOrdinal("enfermedad"));
+                        mItem.FEC_DESPARACITACION = dr.IsDBNull(dr.GetOrdinal("fecha_desparacitacion")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_desparacitacion"));
+                        mItem.ENFERMEDAD_DSC = dr.IsDBNull(dr.GetOrdinal("enfermedad_descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("enfermedad_descripcion"));
+                        //----------- Nuevo
+                        mItem.SEXTUPLE = dr.IsDBNull(dr.GetOrdinal("sextuple")) ? 0 : dr.GetInt16(dr.GetOrdinal("sextuple"));
+                        mItem.FEC_SEXTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_sextuple")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_sextuple"));
+                        mItem.TRIPLEFEL = dr.IsDBNull(dr.GetOrdinal("triplefel")) ? 0 : dr.GetInt16(dr.GetOrdinal("triplefel"));
+                        mItem.FEC_TRIPLEFEL = dr.IsDBNull(dr.GetOrdinal("fecha_triplefel")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_triplefel"));
+                        mItem.LEUCEMIA = dr.IsDBNull(dr.GetOrdinal("leucemia")) ? 0 : dr.GetInt16(dr.GetOrdinal("leucemia"));
+                        mItem.FEC_LEUCEMIA = dr.IsDBNull(dr.GetOrdinal("fecha_leucemia")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_leucemia"));
+                        mItem.FEC_ANTIRRABICA = dr.IsDBNull(dr.GetOrdinal("fecha_antirrabica")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_antirrabica"));
+                        mItem.LIMP_DENTAL = dr.IsDBNull(dr.GetOrdinal("limp_dental")) ? 0 : dr.GetInt16(dr.GetOrdinal("limp_dental"));
+                        mItem.ALERGIA_DSC = dr.IsDBNull(dr.GetOrdinal("alergia_descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("alergia_descripcion"));
+                    }
+
+                    if (dr.NextResult())
+                    {
+                        mItem.lMASCOTA = new List<EMascota>();
+                        while (dr.Read())
+                        {
+                            EMascota itemTemp = new EMascota();
+                            //Foto
+                            itemTemp.GALERIA_ID = dr.IsDBNull(dr.GetOrdinal("galeria_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("galeria_id"));
+                            itemTemp.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
+
+                            mItem.lMASCOTA.Add(itemTemp);
+                        }
+                    }
+                }
+            }
+            return mItem;
+
+        }
+        
         public static int AnularMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
