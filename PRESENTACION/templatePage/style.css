@@ -2991,3 +2991,44 @@ html .ui-button.ui-state-disabled:active {
 .textoadd{
 	color: #ffffff; 
 }
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+#mapa {
+    height: 100%;
+    width: 65%;
+    float: left;
+}
+
+#menu_buscar {
+    height: 100%;
+    width: 35%;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#pnlTipoConvenio label {
+    color: black;
+}
+@media only screen and (max-width: 768px) {
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+
+    #mapa {
+        height: 200px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #menu_buscar {
+        height: 200px;
+        width: 100%;
+        margin-top: 5px;
+    }
+}

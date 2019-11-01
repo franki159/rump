@@ -65,3 +65,13 @@ C:\Users\FCHARA\source\repos\rump\DATOS\obj\Release\DATOS.csproj.CoreCompileInpu
 C:\Users\FCHARA\source\repos\rump\DATOS\obj\Release\DATOS.csproj.CopyComplete
 C:\Users\FCHARA\source\repos\rump\DATOS\obj\Release\DATOS.dll
 C:\Users\FCHARA\source\repos\rump\DATOS\obj\Release\DATOS.pdb
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Release\DATOS.dll.config
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Release\DATOS.dll
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Release\DATOS.pdb
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Release\ENTIDAD.dll
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Release\MySql.Data.dll
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Release\ENTIDAD.pdb
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Release\DATOS.csprojAssemblyReference.cache
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Release\DATOS.csproj.CopyComplete
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Release\DATOS.dll
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Release\DATOS.pdb

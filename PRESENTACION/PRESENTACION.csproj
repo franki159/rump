@@ -273,6 +273,7 @@
     <Content Include="js\all\moment.min.js" />
     <Content Include="js\index.js" />
     <Content Include="js\inicioSesion.js" />
+    <Content Include="js\map.js" />
     <Content Include="js\page\mantenimiento\usuario.js" />
     <Content Include="js\page\mantenimiento\mascota.js" />
     <Content Include="js\page\proceso\imprimirDNI.js" />
@@ -316,6 +317,7 @@
     <Content Include="templatePage\contacto.aspx" />
     <Content Include="templatePage\footerPage.aspx" />
     <Content Include="templatePage\headerPage.aspx" />
+    <Content Include="templatePage\js\gmap3.min.js" />
     <Content Include="templatePage\servicios.aspx" />
     <Content Include="templatePage\changelog.txt" />
     <Content Include="templatePage\css\animate.css" />
