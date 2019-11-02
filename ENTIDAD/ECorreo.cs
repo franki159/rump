@@ -14,8 +14,10 @@ namespace ENTIDAD
             public static string no_email = "worldpetsperu.2210@gmail.com";
             public static string no_usuario = "RUMP - World Pets";
             public static string no_clave = "registrodemascotas-wpp";
-            public static string no_host = "smtp.gmail.com";
-            public static int nu_port = 587;
+            //public static string no_host = "smtp.gmail.com";
+            //public static int nu_port = 587;
+            public static string no_host = "relay-hosting.secureserver.net";
+            public static int nu_port = 25;
             public static int nu_ssl = 0;
         }
 
@@ -61,9 +63,9 @@ namespace ENTIDAD
 
             ObjectSmtp.Host = Cuenta.no_host;
             ObjectSmtp.Port = Cuenta.nu_port;
-            if (Cuenta.nu_ssl == 0)
-                ObjectSmtp.EnableSsl = true;
-            else
+            //if (Cuenta.nu_ssl == 0)
+            //    ObjectSmtp.EnableSsl = true;
+            //else
                 ObjectSmtp.EnableSsl = false;
             ObjectSmtp.Credentials = new System.Net.NetworkCredential(Cuenta.no_email, Cuenta.no_clave);
 
