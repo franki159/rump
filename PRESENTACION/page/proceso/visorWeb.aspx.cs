@@ -35,6 +35,7 @@ namespace PRESENTACION.page.proceso
                         using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
                         {
                             doc.Open();
+                            doc.NewPage();
                             //Estilos
                             var titleHeader = FontFactory.GetFont("Arial", 7, Font.BOLD, new BaseColor(76, 76, 76));
                             var titleRUMP = FontFactory.GetFont("Arial", 7, Font.BOLD, new BaseColor(0, 0, 0));
@@ -423,7 +424,7 @@ namespace PRESENTACION.page.proceso
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                Response.Write(ex.Message + " " + ex.StackTrace);
             }
         }
     }
