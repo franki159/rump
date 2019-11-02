@@ -158,6 +158,20 @@ namespace PRESENTACION.page.mantenimiento
                 else
                 {
                     objResultado = NUsuario.RegistrarUsuario(objE);
+
+                    if (objE.EMAIL.Contains("@"))
+                    {
+                        objE.ID_ENCRIP = objResultado;
+                        objE.TOKEN_ACTIVACION = objResultado;
+                        int objResultadoACtivacion = NUsuario.TokenActivoUsuario(objE);
+
+                        ECorreo correo = new ECorreo();
+                        correo.Para = objE.EMAIL;
+                        correo.Asunto = "Activación de Usuario";
+                        correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
+                            "<a href=\"https://rumpp.charpetechnology.com/active.aspx?user=" + objResultado + "\">ACTIVAR CUENTA</a>";
+                        correo.Enviar();
+                    }
                 }
 
 

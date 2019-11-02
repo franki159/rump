@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="PRESENTACION.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="password.aspx.cs" Inherits="PRESENTACION.password" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>World Pets Perú::Login</title>
+    <title>World Pets Perú::Reestablecer Usuario</title>
     <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
     <!-- Custom fonts for this template-->
     <link href="templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,6 +23,7 @@
 </head>
 
 <body class="bg-gradient-primary">
+    <input type="hidden" id="txtEmail" runat="server" />
     <div id="page-loader"><span class="preloader-interior"></span></div>
     <div class="container">
 
@@ -40,21 +41,17 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido a RUMP!</h1>
+                                        <h1 class="h5 text-gray-900 mb-4">Reestablecer Usuario</h1>
                                     </div>
                                     <form class="user" id="frmLogin">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="usuario" id="txtEmail" aria-describedby="emailHelp" placeholder="Ingrese Email o usuario...">
-                                        </div>
+                                        <div id="msgError"></div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="clave" id="txtPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <%--<label class="custom-control-label" for="customCheck">Remember Me</label>--%>
-                                            </div>
+                                            <input type="password" class="form-control form-control-user" name="clave" id="txtPassword2" placeholder="Confirma la Password">
                                         </div>
-                                        <a href="#" id="btnAcceder" class="btn btn-primary btn-user btn-block">Ingresar
+                                        <a href="#" id="btnAcceder" class="btn btn-primary btn-user btn-block">ACEPTAR
                                         </a>
                                         <hr>
                                         <%--<a href="index.html" class="btn btn-google btn-user btn-block">
@@ -66,7 +63,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgotPassword.aspx">Olvidó Password?</a>
+                                        <a class="small" href="login.aspx">Volver al Inicio de Sesion</a>
                                     </div>
                                     <%--<div class="text-center">
                                         <a class="small" href="register.html">Crear una Cuenta!</a>
@@ -96,7 +93,7 @@
     <script src="assets/select2/js/select2.full.js"></script>
     <script src="js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
     <script type="text/javascript">
-        $.getScript("js/login.js")
+        $.getScript("js/password.js")
             .fail(function (jqxhr, settings, exception) {
                 alert("Error: No se ha cargando un complemento del sistema, porfavor actualize la pagina para poder cargar el complemento. " + exception);
             });

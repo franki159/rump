@@ -122,6 +122,8 @@ namespace DATOS
                         mItem.CELULAR = dr.IsDBNull(dr.GetOrdinal("celular")) ? string.Empty : dr.GetString(dr.GetOrdinal("celular"));
                         mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
                         mItem.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
+                        mItem.TOKEN_ACTIVACION = dr.IsDBNull(dr.GetOrdinal("token_activacion")) ? string.Empty : dr.GetString(dr.GetOrdinal("token_activacion"));
+                        mItem.TOKEN_PASSWORD = dr.IsDBNull(dr.GetOrdinal("token_password")) ? string.Empty : dr.GetString(dr.GetOrdinal("token_password"));
 
                         mItem.USUARIO_PERFIL = new EUsuarioPerfil()
                         {
@@ -249,6 +251,85 @@ namespace DATOS
             }
 
             return EUtil.getEncriptar(ID_USUARIO.ToString());
+        }
+        public static int TokenActivoUsuario(EUsuario objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
+
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@token", objE.TOKEN_ACTIVACION);
+                cmd.Parameters.AddWithValue("@opcion", 7);
+                cmd.CommandType = CommandType.StoredProcedure;
+                /////////
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public static string ActivarUsuario(EUsuario objE)
+        {
+            string msj = "";
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlTransaction transaccRegistro;
+                cn.Open();
+                transaccRegistro = cn.BeginTransaction();
+
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn, transaccRegistro))
+                    {
+                        cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                        cmd.Parameters.AddWithValue("@opcion", 8);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        msj = cmd.ExecuteScalar().ToString();
+                    }
+
+                    transaccRegistro.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaccRegistro.Rollback();
+                    throw (ex);
+                }
+                cn.Close();
+            }
+
+            return msj;
+        }
+        public static int TokenClaveUsuario(EUsuario objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
+
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@token", objE.TOKEN_PASSWORD);
+                cmd.Parameters.AddWithValue("@opcion", 9);
+                cmd.CommandType = CommandType.StoredProcedure;
+                /////////
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public static int CambiarClaveUsuario(EUsuario objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
+
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@password", objE.PASSWORD);
+                cmd.Parameters.AddWithValue("@opcion", 10);
+                cmd.CommandType = CommandType.StoredProcedure;
+                /////////
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
         }
 
         /*

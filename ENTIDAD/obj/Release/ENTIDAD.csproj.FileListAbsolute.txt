@@ -39,3 +39,8 @@ C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.csprojAssemblyRefe
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.csproj.CoreCompileInputs.cache
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.dll
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Release\ENTIDAD.pdb
+C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\bin\Release\ENTIDAD.dll
+C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\bin\Release\ENTIDAD.pdb
+C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\obj\Release\ENTIDAD.csprojAssemblyReference.cache
+C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\obj\Release\ENTIDAD.dll
+C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\obj\Release\ENTIDAD.pdb

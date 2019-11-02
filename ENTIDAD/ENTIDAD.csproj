@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ECorreo.cs" />
     <Compile Include="EGeneral.cs" />
     <Compile Include="EMapa.cs" />
     <Compile Include="EMascota.cs" />

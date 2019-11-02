@@ -57,4 +57,3 @@ C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\bin\Debug\ENTIDAD.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\bin\Debug\ENTIDAD.pdb
 C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.pdb
-C:\Users\Desarrollo\Source\Repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache

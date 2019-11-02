@@ -51,5 +51,21 @@ namespace NEGOCIOS
         {
             return DUsuario.RegistrarUsuario(ent);
         }
+        public static int TokenActivoUsuario(EUsuario ent)
+        {
+            return DUsuario.TokenActivoUsuario(ent);
+        }
+        public static string ActivarUsuario(EUsuario ent)
+        {
+            return DUsuario.ActivarUsuario(ent);
+        }
+        public static int TokenClaveUsuario(EUsuario ent)
+        {
+            return DUsuario.TokenClaveUsuario(ent);
+        }
+        public static int CambiarClaveUsuario(EUsuario ent)
+        {
+            return DUsuario.CambiarClaveUsuario(ent);
+        }
     }
 }

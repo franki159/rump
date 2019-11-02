@@ -352,7 +352,7 @@ $("#btn_guardar").click(function (evt) {
         activaTab('dato');
         $("#sel_perfil").focus();
         return;
-    } else if (!isEmail($("#txt_email").val())) {
+    } else if (validIdInput($("#txt_email").val())) {
         $("#errorUsuario").html(GenerarAlertaWarning("E-mail: ingrese correo valido"));
         closeLoading();
         activaTab('dato');

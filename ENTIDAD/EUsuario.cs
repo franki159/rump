@@ -23,6 +23,8 @@ namespace ENTIDAD
         public decimal PERFIL_ID { get; set; }
         public int ACTIVO{ get; set; }
         public int ESTADO { get; set; }
+        public string TOKEN_ACTIVACION { get; set; }
+        public string TOKEN_PASSWORD { get; set; }
         public EUsuarioPerfil USUARIO_PERFIL { get; set; }
     }
 }

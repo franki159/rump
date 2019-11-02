@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="PRESENTACION.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forgotPassword.aspx.cs" Inherits="PRESENTACION.forgotPassword" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>World Pets Perú::Login</title>
+    <title>World Pets Perú::Recuperar Clave</title>
     <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
     <!-- Custom fonts for this template-->
     <link href="templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,34 +43,21 @@
                                     </div>
                                     <form class="user" id="frmLogin">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="usuario" id="txtEmail" aria-describedby="emailHelp" placeholder="Ingrese Email o usuario...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="clave" id="txtPassword" placeholder="Password">
+                                            <input type="email" class="form-control form-control-user" name="usuario" id="txtEmail" aria-describedby="emailHelp" placeholder="Ingrese Email...">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <%--<label class="custom-control-label" for="customCheck">Remember Me</label>--%>
                                             </div>
                                         </div>
-                                        <a href="#" id="btnAcceder" class="btn btn-primary btn-user btn-block">Ingresar
+                                        <a href="#" id="btnAcceder" class="btn btn-primary btn-user btn-block">Reestablecer Contraseña
                                         </a>
                                         <hr>
-                                        <%--<a href="index.html" class="btn btn-google btn-user btn-block">
-                                          <i class="fab fa-google fa-fw"></i> Ingresar con Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                          <i class="fab fa-facebook-f fa-fw"></i> Ingresar con Facebook
-                                        </a>--%>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgotPassword.aspx">Olvidó Password?</a>
+                                        <a class="small" href="login.aspx">Volver al Inicio de Sesión</a>
                                     </div>
-                                    <%--<div class="text-center">
-                                        <a class="small" href="register.html">Crear una Cuenta!</a>
-                                      </div>--%>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +83,7 @@
     <script src="assets/select2/js/select2.full.js"></script>
     <script src="js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
     <script type="text/javascript">
-        $.getScript("js/login.js")
+        $.getScript("js/forgotPassword.js")
             .fail(function (jqxhr, settings, exception) {
                 alert("Error: No se ha cargando un complemento del sistema, porfavor actualize la pagina para poder cargar el complemento. " + exception);
             });

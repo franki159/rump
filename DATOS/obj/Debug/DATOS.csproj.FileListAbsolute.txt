@@ -96,7 +96,7 @@ C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Debug\DATOS.pdb
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Debug\ENTIDAD.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Debug\MySql.Data.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\bin\Debug\ENTIDAD.pdb
+C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csprojAssemblyReference.cache
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csproj.CopyComplete
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.pdb
-C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csprojAssemblyReference.cache

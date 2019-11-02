@@ -273,10 +273,15 @@
     <Content Include="js\all\moment.min.js" />
     <Content Include="js\index.js" />
     <Content Include="js\inicioSesion.js" />
+    <Content Include="js\forgotPassword.js" />
+    <Content Include="js\password.js" />
     <Content Include="js\map.js" />
     <Content Include="js\page\mantenimiento\usuario.js" />
     <Content Include="js\page\mantenimiento\mascota.js" />
     <Content Include="js\page\proceso\imprimirDNI.js" />
+    <Content Include="active.aspx" />
+    <Content Include="forgotPassword.aspx" />
+    <Content Include="password.aspx" />
     <Content Include="page\mantenimiento\usuario.aspx" />
     <Content Include="page\mantenimiento\mascota.aspx" />
     <Content Include="page\pageError.aspx" />
@@ -650,32 +655,6 @@
     <Content Include="templateSoft\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="templateSoft\vendor\jquery\jquery.min.map" />
     <Content Include="templateSoft\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="templatePage\.sass-cache\357264b6bcfa5688031be03143d19ce337b692cf\_color.scssc" />
-    <Content Include="templatePage\.sass-cache\357264b6bcfa5688031be03143d19ce337b692cf\_fonts.scssc" />
-    <Content Include="templatePage\.sass-cache\357264b6bcfa5688031be03143d19ce337b692cf\_responsive.scssc" />
-    <Content Include="templatePage\.sass-cache\357264b6bcfa5688031be03143d19ce337b692cf\_variables.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\style.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_about.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_backtotop.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_blog.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_breadcrumb.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_buttons.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_contact.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_cta.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_footer.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_header.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_heading.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_hero.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_partner.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_preloader.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_project.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_reboot.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_room.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_spacing.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_testimonial.scssc" />
-    <Content Include="templatePage\.sass-cache\3902a1fa82042bed87224f4e74fbe61239086016\_widget.scssc" />
-    <Content Include="templatePage\.sass-cache\e5c5155ff3084da2ff3dce897af03a531ae2c329\_flex.scssc" />
-    <Content Include="templatePage\.sass-cache\e5c5155ff3084da2ff3dce897af03a531ae2c329\_miscellaneous.scssc" />
     <Content Include="templatePage\css\fonts\ElegantIcons.eot" />
     <Content Include="templatePage\css\fonts\ElegantIcons.ttf" />
     <Content Include="templatePage\css\fonts\ElegantIcons.woff" />
@@ -2463,6 +2442,27 @@
     </Compile>
     <Compile Include="indexPage.aspx.designer.cs">
       <DependentUpon>indexPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="active.aspx.cs">
+      <DependentUpon>active.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="active.aspx.designer.cs">
+      <DependentUpon>active.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forgotPassword.aspx.cs">
+      <DependentUpon>forgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forgotPassword.aspx.designer.cs">
+      <DependentUpon>forgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="password.aspx.cs">
+      <DependentUpon>password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="password.aspx.designer.cs">
+      <DependentUpon>password.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
