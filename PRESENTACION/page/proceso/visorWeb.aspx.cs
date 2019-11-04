@@ -32,8 +32,9 @@ namespace PRESENTACION.page.proceso
                 {
                     using (var doc = new Document(PageSize.LETTER, 25, 20, 20, 20))
                     {
-                        using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
-                        {
+                        iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
+                        //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
+                        //{
                             doc.Open();
                             doc.NewPage();
                             //Estilos
@@ -410,9 +411,8 @@ namespace PRESENTACION.page.proceso
                             doc.Add(tposterior);
                             doc.Add(tdireccion);
 
-
                             doc.Close();
-                        }
+                        //}
                     }
 
                     Response.ContentType = "application/pdf";
