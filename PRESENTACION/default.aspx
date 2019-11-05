@@ -32,7 +32,7 @@
 <body id="page-top">
 
     <!-- Div carga -->        
-    <div id="page-loader"><span class="preloader-interior"></span></div> 
+    <div id="page-loader"><img style="-webkit-user-select: none;margin: auto;" src="img/loader-pet.gif"></div> 
     <%--<div id="preloader">
         <div class="loader"></div>
     </div>--%>

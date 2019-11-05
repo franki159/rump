@@ -311,7 +311,23 @@ namespace DATOS
                 return foto;
             }
         }
-
+        
+        public static int ReportarMascotaWM(EMascota objE) {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_reportar_mascota", cn);
+                cmd.Parameters.AddWithValue("@dni", objE.DNI);
+                cmd.Parameters.AddWithValue("@fecha", objE.FEC_CREA);
+                cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
+                cmd.Parameters.AddWithValue("@correo", objE.CORREO);
+                cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
+                cmd.Parameters.AddWithValue("@observacion", objE.OBSERVACION);
+                cmd.Parameters.AddWithValue("@opcion", 1);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
         public static string RegistrarMascotaWM(EMascota objE)
         {
             decimal ID_MASCOTA = 0;

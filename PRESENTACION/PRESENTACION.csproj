@@ -260,6 +260,7 @@
     <Content Include="assets\font-awesome\scss\_spinning.scss" />
     <Content Include="assets\font-awesome\scss\_stacked.scss" />
     <Content Include="assets\font-awesome\scss\_variables.scss" />
+    <Content Include="img\loader-pet.gif" />
     <Content Include="img\logoComprobante_small.jpg" />
     <Content Include="img\logoRUMP.png" />
     <Content Include="img\map_dog.png" />

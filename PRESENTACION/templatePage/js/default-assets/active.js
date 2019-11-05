@@ -8,8 +8,8 @@
     // ****************************
 
     roberto_window.on('load', function () {
-        $('#preloader').fadeOut('1000', function () {
-            $(this).remove();
+        $('#page-loader').fadeOut('1000', function () {
+            $("#page-loader").hide();
         });
     });
 

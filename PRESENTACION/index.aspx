@@ -17,18 +17,80 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="templatePage/style.css">
-
 </head>
 
 <body>
     <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
+    <div id="page-loader"><img style="-webkit-user-select: none;margin: auto;" src="img/loader-pet.gif"></div> 
     <!-- /Preloader -->
+    <!-- REPORTAR MASCOTA EXTRAVIADA -->
+
+    <div class='modal modal-scroll fade' id='pnl_report_mascota' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Reportar Mascota Extraviada</h4>
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="errorReporte"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Código de Chapa: <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control" id="txt_dni_mascota" name="txt_dni_mascota" placeholder="Código chapa de la mascota encontrada" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Fecha que Encontró la Mascota:</strong></h6>
+                                <input type="date" class="form-control" id="txt_fecha" name="txt_fecha" required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h6><strong>Nombre Completo:</strong></h6>
+                                <input class="form-control" id="txt_nombre" name="txt_nombre" placeholder="Ingrese su Nombre completo" required="">
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Correo Electrónico: <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control" type="email" id="txt_correo" name="txt_correo" placeholder="Ingrese su correo electrónico" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Número Telefónico: <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control integerFCP" id="txt_telefono" name="txt_telefono" placeholder="Ingrese su número teléfonico" required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h6><strong>Observación:</strong></h6>
+                                <textarea class="form-control" id="txt_observacion" name="txt_observacion" placeholder="Observación" required=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_reportar_mascota" type="button" class="btn btn-warning"><i class="fa fa-paw" aria-hidden="true"></i> Reportar</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal"> Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /REPORTAR MASCOTA EXTRAVIADA -->
 
     <!-- Header Area Start -->
-    <header class="header-area">        
+    <header class="header-area">
         <!-- Search Form -->
         <div class="search-form d-flex align-items-center">
             <div class="container">
@@ -46,8 +108,8 @@
 
                     <div class="col-6">
                         <div class="top-header-content">
-                            <a href="#"><i class="icon_phone"></i> <span>(01) 7316407</span></a>
-                            <a href="#"><i class="icon_mail"></i> <span>worldpetsperú.2210@gmail.com</span></a>
+                            <a href="#"><i class="icon_phone"></i><span>(01) 7316407</span></a>
+                            <a href="#"><i class="icon_mail"></i><span>worldpetsperú.2210@gmail.com</span></a>
                         </div>
                     </div>
 
@@ -59,7 +121,7 @@
                                 <a href="https://twitter.com/PeruRump?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><i class="fa fa-play-circle" aria-hidden="true"></i></a>
                                 <a href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-							
+
                             </div>
                         </div>
                     </div>
@@ -77,7 +139,8 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="home.html"><img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
+                        <a class="nav-brand" href="home.html">
+                            <img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -95,14 +158,15 @@
                                 <ul id="nav">
                                     <li class="active"><a href="./">Inicio</a></li>
                                     <li><a href="templatePage/servicios.aspx">Servicios</a></li>
-									<li><a href="#">Mascotas extraviadas</a></li>
+                                    <li><a href="#">Mascotas extraviadas</a></li>
                                     <li><a href="templatePage/adoptame.aspx">Adóptame</a>
-									    <ul class="dropdown">
-                                            <li><a href="#">Enciclopedia de Razas</a></li><br>
-									    </ul>
-									</li>	
-									<li><a href="#">¿Quiénes somos?</a></li>
-							       
+                                        <ul class="dropdown">
+                                            <li><a href="#">Enciclopedia de Razas</a></li>
+                                            <br>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">¿Quiénes somos?</a></li>
+
                                     <li><a href="templatePage/contacto.aspx">Contacto</a></li>
                                 </ul>
 
@@ -133,16 +197,16 @@
                 <!-- Welcome Content -->
                 <div class="welcome-content h-100">
                     <div class="container h-100">
-					
+
                         <div class="row h-100 align-items-center">
-								<!-- Welcome Text -->
-							 <div class="welcome-text text-center">
-									<h6 data-animation="fadeInUp" data-delay="200ms">Bienvenido a RUMP</h6>
-									<h2 data-animation="fadeInUp" data-delay="500ms">1er Servicio profesional de registro de mascotas en el Perú</h2>
-                                 
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="900ms">Conocenos más</a>
-                                </div>
-						
+                            <!-- Welcome Text -->
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInUp" data-delay="200ms">Bienvenido a RUMP</h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms">1er Servicio profesional de registro de mascotas en el Perú</h2>
+
+                                <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="900ms">Conocenos más</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -153,15 +217,16 @@
                 <!-- Welcome Content -->
                 <div class="welcome-content h-100">
                     <div class="container h-100">
-						
+
                         <div class="row h-100 align-items-center">
                             <!-- Welcome Text -->
-							<div class="welcome-text text-center">
-                                    <h6 data-animation="fadeInUp" data-delay="200ms">Desde el registro único de mascotas fomentamos la tenencia responsable.</h6>
-                                    <h2 data-animation="fadeInUp" data-delay="500ms">Registramos a todos los animales domesticos
-										<br/>¡No esperes más y regístralo ahora!</h2>
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInUp" data-delay="1200ms">Registrar</a>
-                                </div>	
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInUp" data-delay="200ms">Desde el registro único de mascotas fomentamos la tenencia responsable.</h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms">Registramos a todos los animales domesticos
+										<br />
+                                    ¡No esperes más y regístralo ahora!</h2>
+                                <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInUp" data-delay="1200ms">Registrar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,7 +242,8 @@
                             <div class="col-12">
                                 <div class="welcome-text text-center">
                                     <h6 data-animation="fadeInDown" data-delay="200ms">Solicita ahora tu sistema de identificación </h6>
-                                    <h2 data-animation="fadeInDown" data-delay="500ms">Chapita identificadora + DNI<br/>Accederás a muchos servicios más</h2>
+                                    <h2 data-animation="fadeInDown" data-delay="500ms">Chapita identificadora + DNI<br />
+                                        Accederás a muchos servicios más</h2>
                                     <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
                                 </div>
                             </div>
@@ -189,21 +255,20 @@
     </section>
     <!-- Welcome Area End -->
 
-	
-   
- <!-- Projects Area Start -->
+
+
+    <!-- Projects Area Start -->
     <section class="roberto-project-area section-padding-100-0">
-		
-		<div class="row">
-                <!-- Section Heading -->
-                <div class="col-12">
-                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                         <img src="templatePage/img/core-img/notirump.png" alt="">
-						
-                    </div>
+
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                    <img src="templatePage/img/core-img/notirump.png" alt="">
                 </div>
             </div>
-		
+        </div>
+
         <!-- Projects Slide -->
         <div class="projects-slides owl-carousel">
             <!-- Single Project Slide -->
@@ -308,9 +373,9 @@
         </div>
     </section>
     <!-- Projects Area End -->
-    
 
-   
+
+
 
     <!-- Blog Area Start -->
     <section class="roberto-blog-area section-padding-100-0">
@@ -329,7 +394,8 @@
                 <!-- Single Post Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
-                        <a href="#" class="post-thumbnail"><img src="templatePage/img/bg-img/news1.jpg" alt=""></a>
+                        <a href="#" class="post-thumbnail">
+                            <img src="templatePage/img/bg-img/news1.jpg" alt=""></a>
                         <!-- Post Meta -->
                         <div class="post-meta">
                             <a href="#" class="post-date">Oct 02, 2019</a>
@@ -345,7 +411,8 @@
                 <!-- Single Post Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <a href="#" class="post-thumbnail"><img src="templatePage/img/bg-img/news2.jpg" alt=""></a>
+                        <a href="#" class="post-thumbnail">
+                            <img src="templatePage/img/bg-img/news2.jpg" alt=""></a>
                         <!-- Post Meta -->
                         <div class="post-meta">
                             <a href="#" class="post-date">Oct 06, 2019</a>
@@ -361,7 +428,8 @@
                 <!-- Single Post Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="700ms">
-                        <a href="#" class="post-thumbnail"><img src="templatePage/img/bg-img/news3.jpg" alt=""></a>
+                        <a href="#" class="post-thumbnail">
+                            <img src="templatePage/img/bg-img/news3.jpg" alt=""></a>
                         <!-- Post Meta -->
                         <div class="post-meta">
                             <a href="#" class="post-date">Oct 12, 2019</a>
@@ -379,45 +447,53 @@
     </section>
     <!-- Blog Area End -->
 
-	   <!-- Breadcrumb Area Start -->
+    <!-- Breadcrumb Area Start -->
     <div class="breadcrumb-area bg-img jarallax" style="background-image: url(templatePage/img/bg-img/registrarmascotas.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-						 <img src="templatePage/img/core-img/porqueregistraratumascota.png" alt="">
+                        <img src="templatePage/img/core-img/porqueregistraratumascota.png" alt="">
                         <nav aria-label="breadcrumb">
-                             <br/>
-							   
-                              <li class="regismasco" aria-current="page">En RUMP buscamos disminuir la población animal en las calles. Una forma para lograrlo es el registro nacional de mascotas, así nos aseguramos de que tu mascota siempre podrá volver a casa. Organizamos campañas de salud y concienciación para educar a la sociedad en la importancia del respeto hacia los animales. Con nuestros diversos convenios en todo el Perú, ofrecemos descuentos y servicios exclusivos que tu mascota podrá disfrutar. <br/></li>
-							<li class="regismasco" aria-current="page"><br/> Saber más</li>
-							<li class="regismasco" aria-current="page"><br/> Entonces, ¿qué esperas? Registra aquí a tu engreído, pide tu DNI y su chapita. </li>
+                            <br />
+
+                            <li class="regismasco" aria-current="page">En RUMP buscamos disminuir la población animal en las calles. Una forma para lograrlo es el registro nacional de mascotas, así nos aseguramos de que tu mascota siempre podrá volver a casa. Organizamos campañas de salud y concienciación para educar a la sociedad en la importancia del respeto hacia los animales. Con nuestros diversos convenios en todo el Perú, ofrecemos descuentos y servicios exclusivos que tu mascota podrá disfrutar.
+                                <br />
+                            </li>
+                            <li class="regismasco" aria-current="page">
+                                <br />
+                                Saber más</li>
+                            <li class="regismasco" aria-current="page">
+                                <br />
+                                Entonces, ¿qué esperas? Registra aquí a tu engreído, pide tu DNI y su chapita. </li>
                         </nav>
-						<br/>
-						 <a href="registrar.html" class="btn roberto-btnM " >REGISTRAR</a>
+                        <br />
+                        <a href="registrar.html" class="btn roberto-btnM ">REGISTRAR</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Breadcrumb Area End -->
-	
-	 <!-- Breadcrumb2 Area Start -->
+
+    <!-- Breadcrumb2 Area Start -->
     <div class="breadcrumb-area3 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/mascotasextraviadas.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-						<img src="templatePage/img/core-img/encontrasteunamascota.png" alt="">
-   
+                        <img src="templatePage/img/core-img/encontrasteunamascota.png" alt="">
+
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
-                             <br/>
-                              <li class="textoextraviada active" aria-current="page">Ahora puedes ayudar al cambio poniendo de tu parte para disminuir la tasa de animales en las calles. Si eres dueño de una mascota, es importante que la identifiques. Con RUMP te aseguras de que tu consentido siempre volverá a casa. <strong>Si has encontrado una mascota, con nuestra chapita identificadora puedes reportarla aquí como perdida, ayudando a que encuentre a su familia.</strong> <br/></li>
-							  </ol>
-							<br/>
-							<br/>
-							 <a href="registrar.html" class="btn roberto-btnR " >REPORTAR</a>
+                                <br />
+                                <li class="textoextraviada active" aria-current="page">Ahora puedes ayudar al cambio poniendo de tu parte para disminuir la tasa de animales en las calles. Si eres dueño de una mascota, es importante que la identifiques. Con RUMP te aseguras de que tu consentido siempre volverá a casa. <strong>Si has encontrado una mascota, con nuestra chapita identificadora puedes reportarla aquí como perdida, ayudando a que encuentre a su familia.</strong>
+                                    <br />
+                                </li>
+                            </ol>
+                            <br />
+                            <br />
+                            <a href="#" class="btn roberto-btnR reportar-msct-etv">REPORTAR</a>
                         </nav>
                     </div>
                 </div>
@@ -425,108 +501,115 @@
         </div>
     </div>
     <!-- Breadcrumb2 Area End -->
-	
-	
-	<!-- Breadcrumb ADD Area Start -->
-<div class="breadcrumb-area2 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/add-dog.jpg);">
-		
-    <div class="container h-100 align-content-center">
+
+
+    <!-- Breadcrumb ADD Area Start -->
+    <div class="breadcrumb-area2 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/add-dog.jpg);">
+
+        <div class="container h-100 align-content-center">
             <div class="row h-50 align-items-center">
-                
-		      
-                <!-- Single Post Area -->
-                  <div class="col-12 col-md-6 align-content-center">
-                        <!-- Post Title -->
-					    <div class="breadcrumb-content text-center">
-                      <h2 class="mascotas-extraviadas">Mascotas Extraviadas</h2>
-                      <h6 class="textoadd"> Ellos te siguen buscando ayúdanos a encontrarlos</h6>
-                     </div>
-                  </div>
+
 
                 <!-- Single Post Area -->
-                  <div class="col-12 col-md-6 align-content-center">
-					  <div class="breadcrumb-content text-center">
-                   <a href="#" class="btn roberto-btnR align-content-center" >Buscala aquí</a>
-					</div>
-                  </div>
-               
-	
-	        </div>
-      </div>
-</div>
-	
-	 <!-- Breadcrumb3 Area Start -->
+                <div class="col-12 col-md-6 align-content-center">
+                    <!-- Post Title -->
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="mascotas-extraviadas">Mascotas Extraviadas</h2>
+                        <h6 class="textoadd">Ellos te siguen buscando ayúdanos a encontrarlos</h6>
+                    </div>
+                </div>
+
+                <!-- Single Post Area -->
+                <div class="col-12 col-md-6 align-content-center">
+                    <div class="breadcrumb-content text-center">
+                        <a href="#" class="btn roberto-btnR align-content-center">Buscala aquí</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb3 Area Start -->
     <div class="breadcrumb-area4 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/buscadordem.jpg);">
         <div class="container h-50">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-						 <br> <br> 
-						<img src="templatePage/img/core-img/buscadordemascotas.png" alt="">
-                   
-			            <div class="row align-items-center">
-                             <div class="col-12 col-lg-6 align-items-center">
-                	         <img src="templatePage/img/core-img/dniychapita.png" alt="">
-                             </div>
+                        <br>
+                        <br>
+                        <img src="templatePage/img/core-img/buscadordemascotas.png" alt="">
 
-                             <div class="col-12 col-lg-6 align-items-center">
-					         <h5 class="textoadd"> Buscador vía código RUMP</h5>
-                                 <div class="single-footer-widget">
-                                      <form action="home.html" class="nl-form">
-                                      <input type="email" class="form-control" placeholder="Código RUMP de mascota">
-                                      </form>
-                                 </div>
-					              <br>
-					             <button type="email" href="#" class="btn roberto-btnO align-content-center" aria-hidden="true">Buscar</button>
-                             </div>
-                       </div>		
-						
-						
-						 <div class="row align-items-center">
-                             <div class="col-12 col-lg-6 align-items-center">
-                	         <img src="templatePage/img/core-img/reconocimientofacial.png" alt="">
-                             </div>
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <img src="templatePage/img/core-img/dniychapita.png" alt="">
+                            </div>
 
-                             <div class="col-12 col-lg-6 align-items-center">
-					         <h5 class="textoadd"> Buscador de reconocimieto facial</h5>
-                                 <div class="single-footer-widget">
-                                      <form action="home.html" class="nl-form">
-                                      <input type="photo" class="form-control" placeholder="Sube una foto aquí">
-                                      </form>
-                                 </div>
-					              <br>
-					             <button type="send" href="#" class="btn roberto-btnO align-content-center" aria-hidden="true">Buscar</button>
-                             </div>
-                       </div>	
-						
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <h5 class="textoadd">Buscador vía código RUMP</h5>
+                                <div class="single-footer-widget">
+                                    <form action="home.html" class="nl-form">
+                                        <input type="email" class="form-control" placeholder="Código RUMP de mascota">
+                                    </form>
+                                </div>
+                                <br>
+                                <button type="email" href="#" class="btn roberto-btnO align-content-center" aria-hidden="true">Buscar</button>
+                            </div>
+                        </div>
+
+
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <img src="templatePage/img/core-img/reconocimientofacial.png" alt="">
+                            </div>
+
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <h5 class="textoadd">Buscador de reconocimieto facial</h5>
+                                <div class="single-footer-widget">
+                                    <form action="home.html" class="nl-form">
+                                        <input type="photo" class="form-control" placeholder="Sube una foto aquí">
+                                    </form>
+                                </div>
+                                <br>
+                                <button type="send" href="#" class="btn roberto-btnO align-content-center" aria-hidden="true">Buscar</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Breadcrumb3 Area End -->
-	
-	 <!-- Breadcrumb4 Area Start -->
+
+    <!-- Breadcrumb4 Area Start -->
     <div class="breadcrumb-area5 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/fondoapp.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-						 <br> <br> 
+                        <br>
+                        <br>
 
-			            <div class="row align-items-center">
-                             <div class="col-12 col-lg-6 align-items-center">
-                	         <img src="templatePage/img/core-img/imgapp.png" >
-                             </div>
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <img src="templatePage/img/core-img/imgapp.png">
+                            </div>
 
-                             <div class="col-12 col-lg-6 align-items-center">
-                             <img src="templatePage/img/core-img/descargaapp.png" > <br><br>   
-					            
-					              <a href="https://play.google.com/store" class="post-thumbnail"><img src="templatePage/img/core-img/botongoogleplay.png" alt=""></a>
-								 <br><br>
-								 <a href="https://www.apple.com/la/ios/app-store/" class="post-thumbnail"><img src="templatePage/img/core-img/botonappstore.png" alt=""></a>
-                             </div>
-                       </div>		
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <img src="templatePage/img/core-img/descargaapp.png">
+                                <br>
+                                <br>
+
+                                <a href="https://play.google.com/store" class="post-thumbnail">
+                                    <img src="templatePage/img/core-img/botongoogleplay.png" alt=""></a>
+                                <br>
+                                <br>
+                                <a href="https://www.apple.com/la/ios/app-store/" class="post-thumbnail">
+                                    <img src="templatePage/img/core-img/botonappstore.png" alt=""></a>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -534,8 +617,8 @@
         </div>
     </div>
     <!-- Breadcrumb4 Area End -->
-	
-	
+
+
     <!-- Footer Area Start -->
     <footer class="footer-area section-padding-80-0">
         <!-- Main Footer Area -->
@@ -546,7 +629,8 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="single-footer-widget mb-80">
                             <!-- Footer Logo -->
-                            <a href="./" class="footer-logo"><img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
+                            <a href="./" class="footer-logo">
+                                <img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
 
                             <h4>(01) 7316407</h4>
                             <span>contacto.worldpetsperu@gmail.com</span>
@@ -564,7 +648,7 @@
                             <div class="latest-blog-area">
                                 <a class="post-title">Contacto Comercial:
 									contacto.worldpetsperu@gmail.com</a>
-                                <span class="post-date"><i class="fa fa-phone" aria-hidden="true"></i> 992 975 292</span>
+                                <span class="post-date"><i class="fa fa-phone" aria-hidden="true"></i>992 975 292</span>
                             </div>
 
                             <!-- Single Blog Area -->
@@ -583,12 +667,12 @@
 
                             <!-- Footer Nav -->
                             <ul class="footer-nav">
-                                <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Noticias</a></li>
-								<li><a href="templatePage/servicios.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
-								<li><a href="templatePage/adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
-                                <li><a href="templatePage/contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
+                                <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Noticias</a></li>
+                                <li><a href="templatePage/servicios.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Servicios</a></li>
+                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Mascotas extraviadas</a></li>
+                                <li><a href="templatePage/adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Adóptame</a></li>
+                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>¿Quiénes somos?</a></li>
+                                <li><a href="templatePage/contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
                             </ul>
                         </div>
                     </div>
@@ -618,9 +702,12 @@
                     <div class="col-12 col-md-8">
                         <!-- Copywrite Text -->
                         <div class="copywrite-text">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                                All rights reserved | This template is made with <i class="fa" aria-hidden="true"></i>by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">
@@ -649,12 +736,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="templatePage/js/roberto.bundle.js"></script>
     <!-- Active -->
     <script src="templatePage/js/default-assets/active.js"></script>
+
+    <script src="assets/select2/js/select2.full.js"></script>
+    <script src="js/all/date.js"></script>
     <script type="text/javascript">
-    $.getScript("js/index.js")
-        .fail(function (jqxhr, settings, exception) {
-            alert("Error: No se ha cargando un complemento del sistema (index.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
-        });
-</script>
+        $.getScript("js/general.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema (general.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+
+        $.getScript("js/index.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema (index.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+    </script>
 </body>
 
 </html>

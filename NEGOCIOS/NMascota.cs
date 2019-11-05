@@ -51,5 +51,10 @@ namespace NEGOCIOS
         {
             return DMascota.RegistrarMascotaWM(ent);
         }
+
+        public static int ReportarMascotaWM(EMascota ent)
+        {
+            return DMascota.ReportarMascotaWM(ent);
+        }
     }
 }
