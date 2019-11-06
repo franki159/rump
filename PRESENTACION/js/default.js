@@ -119,6 +119,7 @@ function InfoSesion() {
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/citaMedica">Cita</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
             }

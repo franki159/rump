@@ -1,17 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mascota.aspx.cs" Inherits="PRESENTACION.page.mantenimiento.mascota" %>
-
-<%--<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
-<script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>--%>
-<link href="../../assets/upGalleryFCP/upGalleryFCP.css" rel="stylesheet" />
-<script src="../../assets/upGalleryFCP/upGalleryFCP.js"></script>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="citaMedica.aspx.cs" Inherits="PRESENTACION.page.mantenimiento.citaMedica" %>
 
 <div id="errorDiv"></div>
-<input id="txh_idConfirm" type="hidden" />
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Mantenimiento de Mascota</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Cita Médica de Mascota</h6>
             </div>
             <div class="card-body" id="pnl_busqueda">
                 <div class="row mb-3" id="divBusqueda" style="display: none;">
@@ -72,7 +66,7 @@
     <div class="modal-dialog modal-extend-fgp">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Registro de Mascotas</h4>
+                <h4 class="modal-title">Registrar Cita Médica</h4>
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
             </div>
             <div class="modal-body">
@@ -98,8 +92,10 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombres <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nombre" placeholder="Escriba el nombre..." class="form-control" type="text" maxlength="100" />
+                                        <label>Mascota <strong class="text-danger">(*)</strong></label>
+                                        <select id="sel_mascota" class="form-control sel_autocomplete" style="width: 100%;">
+                                            <option style="width: 100%;"></option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -610,7 +606,7 @@
 </div>
 
 <script type="text/javascript">
-    $.getScript("js/page/mantenimiento/mascota.js")
+    $.getScript("js/page/mantenimiento/citaMedica.js")
         .fail(function (jqxhr, settings, exception) {
             alert("Error: No se ha cargando un complemento del sistema (mascota.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
         });

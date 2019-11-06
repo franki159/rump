@@ -275,6 +275,7 @@
     <Content Include="js\index.js" />
     <Content Include="js\inicioSesion.js" />
     <Content Include="js\forgotPassword.js" />
+    <Content Include="js\page\mantenimiento\citaMedica.js" />
     <Content Include="js\password.js" />
     <Content Include="js\map.js" />
     <Content Include="js\page\mantenimiento\usuario.js" />
@@ -282,6 +283,7 @@
     <Content Include="js\page\proceso\imprimirDNI.js" />
     <Content Include="active.aspx" />
     <Content Include="forgotPassword.aspx" />
+    <Content Include="page\mantenimiento\citaMedica.aspx" />
     <Content Include="password.aspx" />
     <Content Include="page\mantenimiento\usuario.aspx" />
     <Content Include="page\mantenimiento\mascota.aspx" />
@@ -2457,6 +2459,13 @@
     </Compile>
     <Compile Include="forgotPassword.aspx.designer.cs">
       <DependentUpon>forgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="page\mantenimiento\citaMedica.aspx.cs">
+      <DependentUpon>citaMedica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\mantenimiento\citaMedica.aspx.designer.cs">
+      <DependentUpon>citaMedica.aspx</DependentUpon>
     </Compile>
     <Compile Include="password.aspx.cs">
       <DependentUpon>password.aspx</DependentUpon>
