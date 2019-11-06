@@ -220,6 +220,7 @@
     <Content Include="img\charpe.png" />
     <Content Include="img\checkbox\Thumbs.db" />
     <Content Include="img\dni\fondo.jpg" />
+    <Content Include="img\favicon.png" />
     <Content Include="img\icons\favicon.ico" />
     <Content Include="img\icons\Thumbs.db" />
     <Content Include="assets\font-awesome\css\font-awesome.css.map" />

@@ -12,7 +12,7 @@
   <meta name="author" content="">
 
   <title>World Pets Perú</title>
-  <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     <!-- Datetimepicker-->
     <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
     <link href="assets/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
