@@ -40,7 +40,7 @@ function fc_listar_inicio() {
     var objE = {
         CODIGO: "TIPO"
     };
-    
+    /************************ Tipo ****************************/
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/listarParametro",
@@ -57,42 +57,111 @@ function fc_listar_inicio() {
                 closeLoading();
                 return;
             }
-            ;
             $('#sel_tipo').append("<option></option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_tipo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }            
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+
+    /************************ Departamento ****************************/
+    objE = {
+        CODIGO: "DEPARTAMENTO"
+    };
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: false,
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
             }
 
-            /************************ Departamento ****************************/
-            var objE = {
-                CODIGO: "DEPARTAMENTO"
-            };
-            $.ajax({
-                type: "POST",
-                url: "page/mantenimiento/mascota.aspx/listarParametro",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ objE: objE }),
-                async: true,
-                success: function (data) {
-                    if (!data.d.Activo) {
-                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                        closeLoading();
-                        return;
-                    }
-                    
-                    $('#sel_departamento').append("<option></option>");
-                    for (var i = 0; i < data.d.Resultado.length; i++) {
-                        $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
-                    }
+            $('#sel_departamento').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+    listarClinicas();
+    listarMedicos();
+}
 
-                    closeLoading();
-                },
-                error: function (data) {
-                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                    closeLoading();
-                }
-            });
+function listarClinicas() {
+    objE = {
+        CODIGO: "CLINICA"
+    };
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: false,
+        beforeSend: function () {
+            $('#sel_clinica').empty();
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+            $('#sel_clinica').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_clinica').append("<option dir-cli='" + data.d.Resultado[i].DESCRIPCION.split("|")[1] + "' value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION.split("|")[0] + "</option>");
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+}
+
+function listarMedicos() {
+    objE = {
+        CODIGO: "MEDICO"
+    };
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: false,
+        beforeSend: function () {
+            $('#sel_veterinario').empty();
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+            $('#sel_veterinario').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_veterinario').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            closeLoading();
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -115,7 +184,7 @@ function fc_listar_mascota() {
             USUARIO_ID: sessionStorage.getItem('ID')
         };
     }
-
+    
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/ListaMascotaWM",
@@ -141,64 +210,39 @@ function fc_listar_mascota() {
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 var htmlBotones = '';
-                htmlBotones += '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="row_' + i*100 +'">';
+
+                htmlBotones += '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="row_' + i * 100 + '">';
                 htmlBotones += '    <h6 class="dropdown-header">';
                 htmlBotones += '        Opciones de mascota';
                 htmlBotones += '    </h6>';
-                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="edit-mascota">';
-                htmlBotones += '        <div class="mr-3">';
-                htmlBotones += '            <div class="icon-circle bg-primary">';
-                htmlBotones += '                <i class="fas fa-pencil-alt text-white"></i>';
-                htmlBotones += '            </div>';
-                htmlBotones += '        </div>';
-                htmlBotones += '        <div>';
-                htmlBotones += '            <span class="font-weight-bold">Editar</span>';
-                htmlBotones += '        </div>';
-                htmlBotones += '    </a>';
 
-                if (data.d.Resultado[i].ESTADO === 2) {
-                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="soli-dni">';
+                if (data.d.Resultado[i].ESTADO !== 2) {
+                    $('#sel_mascota').append("<option dni-msct='" + data.d.Resultado[i].DNI + "' value='" + data.d.Resultado[i].ID_ENCRIP + "'>" + data.d.Resultado[i].NOMBRE + "</option>");
+
+                    
+                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="ver-hist-med">';
                     htmlBotones += '        <div class="mr-3">';
-                    htmlBotones += '            <div class="icon-circle bg-success">';
-                    htmlBotones += '                <i class="fas fa-address-card text-white"></i>';
+                    htmlBotones += '            <div class="icon-circle bg-primary">';
+                    htmlBotones += '                <i class="fas fa-pencil-alt text-white"></i>';
                     htmlBotones += '            </div>';
                     htmlBotones += '        </div>';
                     htmlBotones += '        <div>';
-                    htmlBotones += '            <span class="font-weight-bold">Solicitar DNI</span>';
+                    htmlBotones += '            <span class="font-weight-bold">Ver historial médico</span>';
                     htmlBotones += '        </div>';
                     htmlBotones += '    </a>';
                 }
-
-                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" style="" name="delete-mascota">';
-                htmlBotones += '        <div class="mr-3">';
-                htmlBotones += '            <div class="icon-circle bg-danger">';
-                htmlBotones += '                <i class="fas fa-trash-alt text-white"></i>';
-                htmlBotones += '            </div>';
-                htmlBotones += '        </div>';
-                htmlBotones += '        <div>';
-                htmlBotones += '            <span class="font-weight-bold">Eliminar</span>';
-                htmlBotones += '        </div>';
-                htmlBotones += '    </a>';
 
                 htmlBotones += '</div>';
                    
                 html += '<tr><td style="display:none">' + data.d.Resultado[i].ID_ENCRIP + '</td>';
                 html += '<td>';
                 html += '   <ul class="navbar-nav ml-auto">';
-                //html += '   <div class="dropdown">';
                 html += '       <li class="nav-item dropdown no-arrow mx-1">';
                 html += '           <a class="nav-link dropdown-toggle" href="#" id="row_' + i * 100 + '" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                //html += '           <a class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="row_' + + i * 100 + '">';
                 html += '               <i class="fas fa-bars" style="font-size: 30px;"></i>';
                 html += '           </a>';
                 html += '       ' + htmlBotones;
-                //html += '           <div class="dropdown-menu" aria-labelledby="row_' + + i * 100 + '">';
-                //html += '               <button class="dropdown-item" type = "button" > Action</button >';
-                //html += '               <button class="dropdown-item" type="button">Another action</button>';
-                //html += '               <button class="dropdown-item" type="button">Something else here</button>';
-                //html += '           </div>';
                 html += '       </li>';
-                //html += '   </div>';
                 html += '   </ul>';
                 html += '</td> ';
                 
@@ -489,7 +533,7 @@ function limpiarMascota() {
     $("#pnl_mascota input").val('');
     $("#pnl_mascota textarea").val('');
     $("#pnl_mascota select").attr("disabled", false);
-    $("#pnl_mascota input").attr("disabled", false);
+    //$("#pnl_mascota input").attr("disabled", false);
     
     //$('#sel_tipo').val(null).trigger('change');
     $('#sel_tipo').val(null).change();
@@ -527,49 +571,23 @@ $(document).keydown(function (evt) {
             break;
     }
 });
-$("#sel_tipo").on('change', function () {
-    /************************ Listado de Raza ****************************/
-    var objE = {
-        CODIGO: "RAZA",
-        vPARAM1: $("#sel_tipo").val()
-    };
-
-    if ($("#sel_tipo").val() === '') {
-        return false;
-    }
-
-    $.ajax({
-        type: "POST",
-        url: "page/mantenimiento/mascota.aspx/listarParametro",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify({ objE: objE}),
-        async: true,
-        beforeSend: function () {
-            $('#sel_raza').empty();
-        },
-        success: function (data) {
-            if (!data.d.Activo) {
-                $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
-                closeLoading();
-                return;
-            }
-
-            $('#sel_raza').append("<option></option>");
-            for (var i = 0; i < data.d.Resultado.length; i++) {
-                $('#sel_raza').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
-            }
-
-            if (raza_id !== 0) {
-                $("#sel_raza").val(raza_id);
-            }
-        },
-        error: function (data) {
-            $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
-            closeLoading();
-        }
-    });
+$("#sel_mascota").on('change', function () {
+    $("#lbl_dni").val($('option:selected', this).attr('dni-msct'));
 });
+$("#sel_clinica").on('change', function () {
+    $("#lbl_direccion_cli").val($('option:selected', this).attr('dir-cli'));
+});
+$(".add-cli").click(function () {
+    $("#pnl_clinica").modal('show');
+    $("#sel_departamento").focus();
+});
+
+$(".add-med").click(function () {
+    $("#pnl_medico").modal('show');
+    $("#txt_nombre_med").focus();
+});
+
+
 $("#sel_departamento").on('change', function () {
     /************************ Listado de Provincia ****************************/
     var objE = {
@@ -594,7 +612,7 @@ $("#sel_departamento").on('change', function () {
         },
         success: function (data) {
             if (!data.d.Activo) {
-                $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
+                $("#errorClinica").html(GenerarAlertaError(data.d.Mensaje));
                 closeLoading();
                 return;
             }
@@ -610,7 +628,7 @@ $("#sel_departamento").on('change', function () {
             }
         },
         error: function (data) {
-            $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#errorClinica").html(GenerarAlertaError("Inconveniente en la operación"));
             closeLoading();
         }
     });
@@ -639,7 +657,7 @@ $("#sel_provincia").on('change', function () {
         },
         success: function (data) {
             if (!data.d.Activo) {
-                $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
+                $("#errorClinica").html(GenerarAlertaError(data.d.Mensaje));
                 closeLoading();
                 return;
             }
@@ -654,58 +672,10 @@ $("#sel_provincia").on('change', function () {
             }
         },
         error: function (data) {
-            $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#errorClinica").html(GenerarAlertaError("Inconveniente en la operación"));
             closeLoading();
         }
     });
-});
-$("#sel_vac_sextuple").on('change', function () {
-    if ($(this).val() === "0") {
-        //$("#txt_fec_vac_sext").val('');
-        $("#divSextuple").hide();
-    } else if ($(this).val() === "1") {
-        $("#divSextuple").show();
-    }
-});
-$("#sel_vac_triple").on('change', function () {
-    if ($(this).val() === "0") {
-        //$("#txt_fec_vac_triple").val('');
-        $("#divTriple").hide();
-    } else if ($(this).val() === "1") {
-        $("#divTriple").show();
-    }
-});
-$("#sel_vac_leucemia").on('change', function () {
-    if ($(this).val() === "0") {
-        //$("#txt_fec_vac_leucemia").val('');
-        $("#divLeucemia").hide();
-    } else if ($(this).val() === "1") {
-        $("#divLeucemia").show();
-    }
-});
-$("#sel_vac_antirrabica").on('change', function () {
-    if ($(this).val() === "0") {
-        //$("#txt_fec_vac_antirrabica").val('');
-        $("#divAntirrabica").hide();
-    } else if ($(this).val() === "1") {
-        $("#divAntirrabica").show();
-    }
-});
-$("#sel_alergia").on('change', function () {
-    if ($(this).val() === "0") {
-        //$("#txt_alergia").val('');
-        $("#divAlergia").hide();
-    } else if ($(this).val() === "1") {
-        $("#divAlergia").show();
-    }
-});
-$("#sel_enfermedad").on('change', function () {
-    if ($(this).val() === "0") {
-        //$("#txt_enfermedad").val('');
-        $("#divEnfermedad").hide();
-    } else if ($(this).val() === "1") {
-        $("#divEnfermedad").show();
-    }
 });
 $("#imgMascota").change(function () {
     readURLImage(this, "img_Foto");
@@ -731,7 +701,7 @@ $("#btn_nuevo").click(function () {
     } else if (sessionStorage.getItem('PERFIL_ID') === "4") {//Propietario
         limpiarMascota();
         activaTab('dato');
-        $('#pnl_mascota .modal-title').html('Registrar Mascota');
+        $('#pnl_mascota .modal-title').html('Registrar Cita médica');
         $("#pnl_mascota").modal('show');
 
         if (sessionStorage.getItem('SEXO') === "Masculino") {
@@ -1014,54 +984,113 @@ $("#btn_guardar").click(function (evt) {
     });
     event.preventDefault();
 });
-$("#btn_select_prop").click(function (evt) {
-    $("#btn_select_prop").button('loading');
-    $("#errorPropietario").html('');
+$("#btn_save_cli").click(function (evt) {
+    $("#errorClinica").html('');
     
-    if (validIdInput($("#txt_correo").val())) {
-        $("#errorPropietario").html(GenerarAlertaWarning("Correo: Ingrese un correo válido"));
-        $("#btn_select_prop").button('reset');
-        $("#txt_correo").focus();
+    if (validIdInput($("#sel_distrito").val())) {
+        $("#errorClinica").html(GenerarAlertaWarning("Ubigeo: Seleccione correctamente Departamento, Provincia y Distrito"));
+        return;
+    } else if (validIdInput($("#txt_direccion_cli").val())) {
+        $("#errorClinica").html(GenerarAlertaWarning("Dirección: Ingrese una dirección"));
+        $("#txt_direccion_cli").focus();
+        return;
+    } else if (validIdInput($("#txt_nom_clinica").val())) {
+        $("#errorClinica").html(GenerarAlertaWarning("Nombre: Ingrese el nombre de la clínica"));
+        $("#txt_nom_clinica").focus();
         return;
     }
 
-    var eUsuario = {
-        EMAIL: $("#txt_correo").val()
+    var eClinica = {
+        NOMBRE: $("#txt_nom_clinica").val(),
+        TELEFONO: $("#txt_tel_clinica").val(),
+        DIRECCION: $("#txt_direccion_cli").val(),
+        GEOGRAFIA_ID: $("#sel_distrito").val()
     };
 
     $.ajax({
         type: "POST",
-        url: "page/mantenimiento/mascota.aspx/ObtenerPropitarioMascotaWM",
+        url: "page/mantenimiento/citaMedica.aspx/ActualizarClinicaCitaWM",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: JSON.stringify({ objE: eUsuario }),
+        data: JSON.stringify({ objE: eClinica }),
         async: true,
+        beforeSend: function () {
+            openLoading();
+            $("#pnl_clinica button").attr("disabled", true);
+        },
         success: function (data) {
             if (!data.d.Activo) {
-                $("#errorPropietario").html(GenerarAlertaError(data.d.Mensaje));
-                $("#btn_select_prop").button('reset');
+                $("#errorClinica").html(GenerarAlertaError(data.d.Mensaje));
+                $("#pnl_clinica button").attr("disabled", false);
+                closeLoading();
                 return;
             }
+            $("#pnl_clinica button").attr("disabled", false);
+            closeLoading();
+            listarClinicas();
+            $('#sel_departamento').val(null).change();
+            $("#sel_provincia").empty();
+            $("#sel_distrito").empty();
+            $("#pnl_clinica input").val("");
+            $("#pnl_clinica").modal("hide");
 
-            $("#pnl_mascota_prop").modal('hide');
-            $("#btn_select_prop").button('reset');
-            _user_email = data.d.Resultado.ID;
-            limpiarMascota();
-            activaTab('dato');
-            $('#pnl_mascota .modal-title').html('Registrar Mascota');
-            $("#pnl_mascota").modal('show');
-
-            if (sessionStorage.getItem('SEXO') === "Masculino") {
-                $("#txt_nom_padre").val(sessionStorage.getItem('NOMBRE') + " " + sessionStorage.getItem('APELLIDO'));
-            } else if (sessionStorage.getItem('SEXO') === "Femenino") {
-                $("#txt_nom_madre").val(sessionStorage.getItem('NOMBRE') + " " + sessionStorage.getItem('APELLIDO'));
-            }
-            $("#txt_apellido").val(sessionStorage.getItem('APELLIDO'));
-            $("#txt_nombre").focus();
         },
         error: function (data) {
-            $("#errorPropietario").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#btn_select_prop").button('reset');
+            $("#errorClinica").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#pnl_clinica button").attr("disabled", false);
+            closeLoading();
+        }
+    });
+    event.preventDefault();
+});
+$("#btn_save_med").click(function (evt) {
+    $("#errorMedico").html('');
+
+    if (validIdInput($("#txt_nombre_med").val())) {
+        $("#errorMedico").html(GenerarAlertaWarning("Nombre: Ingrese un nombre del medico"));
+        $("#txt_nombre_med").focus();
+        return;
+    } else if (validIdInput($("#txt_apellido_med").val())) {
+        $("#errorMedico").html(GenerarAlertaWarning("Apellido: Ingrese el apellido del doctor"));
+        $("#txt_apellido_med").focus();
+        return;
+    }
+
+    var eMedico = {
+        NOMBRE: $("#txt_nombre_med").val(),
+        APELLIDO: $("#txt_apellido_med").val(),
+        TELEFONO: $("#txt_telefono_med").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/citaMedica.aspx/ActualizarMedicoCitaWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: eMedico }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $("#pnl_medico button").attr("disabled", true);
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorMedico").html(GenerarAlertaError(data.d.Mensaje));
+                $("#pnl_medico button").attr("disabled", false);
+                closeLoading();
+                return;
+            }
+            $("#pnl_medico button").attr("disabled", false);
+            closeLoading();
+            listarMedicos();
+            $("#pnl_medico input").val("");
+            $("#pnl_medico").modal("hide");
+
+        },
+        error: function (data) {
+            $("#errorMedico").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#pnl_medico button").attr("disabled", false);
+            closeLoading();
         }
     });
     event.preventDefault();

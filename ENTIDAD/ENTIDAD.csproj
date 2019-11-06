@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EMedico.cs" />
+    <Compile Include="EClinica.cs" />
     <Compile Include="ECorreo.cs" />
     <Compile Include="EGeneral.cs" />
     <Compile Include="EMapa.cs" />
