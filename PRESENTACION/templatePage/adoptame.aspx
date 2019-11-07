@@ -21,16 +21,8 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
-
     <!-- Header Area Start -->
-    <header class="header-area">
-        <!--#include file="headerPage.aspx"-->
-    </header>
+    <!--#include file="headerPage.aspx"-->
     <!-- Header Area End -->
 
     <!-- Breadcrumb Area Start -->
