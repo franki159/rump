@@ -6,7 +6,6 @@
 <script src="../../assets/upGalleryFCP/upGalleryFCP.js"></script>
 
 <div id="errorDiv"></div>
-<input id="txh_idConfirm" type="hidden" />
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow mb-4">
@@ -50,7 +49,8 @@
                         <tr>
                             <th style="display: none"></th>
                             <th></th>
-                            <th>MASCOTA</th>
+                            <th>FOTO</th>
+                            <th>ESTADO</th>
                             <th>Nombre</th>
                             <th>Sexo</th>
                             <th>Tamaño</th>

@@ -1,6 +1,7 @@
 ﻿var raza_id, prov_id, dis_id, foto_dsc;
 var id_mascota, foto_id;
 var _user_email;
+var txh_idConfirm = "";
 var valRND = Math.floor(Math.random() * 100);
 /*Inicializar Script*/
 $(function () {
@@ -156,7 +157,7 @@ function fc_listar_mascota() {
                 htmlBotones += '        </div>';
                 htmlBotones += '    </a>';
 
-                if (data.d.Resultado[i].ESTADO === 2) {
+                if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
                     htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="soli-dni">';
                     htmlBotones += '        <div class="mr-3">';
                     htmlBotones += '            <div class="icon-circle bg-success">';
@@ -167,9 +168,32 @@ function fc_listar_mascota() {
                     htmlBotones += '            <span class="font-weight-bold">Solicitar DNI</span>';
                     htmlBotones += '        </div>';
                     htmlBotones += '    </a>';
+                } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
+                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" name="quit-adop">';
+                    htmlBotones += '        <div class="mr-3">';
+                    htmlBotones += '            <div class="icon-circle bg-success">';
+                    htmlBotones += '                <i class="fas fa-tags text-white"></i>';
+                    htmlBotones += '            </div>';
+                    htmlBotones += '        </div>';
+                    htmlBotones += '        <div>';
+                    htmlBotones += '            <span class="font-weight-bold">Quitar de adopción</span>';
+                    htmlBotones += '        </div>';
+                    htmlBotones += '    </a>';
+                } else if (data.d.Resultado[i].ESTADO === 1) {//Con DNI (no adopcion)
+                    //Poner en adopcion a mascotas con DNI
+                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" name="pon-adop">';
+                    htmlBotones += '        <div class="mr-3">';
+                    htmlBotones += '            <div class="icon-circle bg-success">';
+                    htmlBotones += '                <i class="fas fa-tags text-white"></i>';
+                    htmlBotones += '            </div>';
+                    htmlBotones += '        </div>';
+                    htmlBotones += '        <div>';
+                    htmlBotones += '            <span class="font-weight-bold">Poner en adopción</span>';
+                    htmlBotones += '        </div>';
+                    htmlBotones += '    </a>';
                 }
 
-                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" style="" name="delete-mascota">';
+                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" name="delete-mascota">';
                 htmlBotones += '        <div class="mr-3">';
                 htmlBotones += '            <div class="icon-circle bg-danger">';
                 htmlBotones += '                <i class="fas fa-trash-alt text-white"></i>';
@@ -208,7 +232,14 @@ function fc_listar_mascota() {
                     '<img class="img-row-mascota" src="img/mascota/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND +'" onerror="this.src=\'img/noPets.png\';">' +
                                 '</a>' +
                             '</div>'+
-                        '</td>';
+                        '</td>';                
+                if (data.d.Resultado[i].ESTADO === 1) {//Con DNI
+                    html += '<td><span class="btn btn-success btn-sm"><i class="far fa-credit-card"></i>&nbsp;CON DNI</span></td>';
+                } else if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
+                    html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;SIN DNI</span></td>';
+                } else if (data.d.Resultado[i].ESTADO === 3) {//En ADOPCION
+                    html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';
+                }
                 html += '<td>' + data.d.Resultado[i].NOMBRE + '</td>';
                 html += '<td>' + data.d.Resultado[i].SEXO + '</td>';
                 html += '<td>' + data.d.Resultado[i].TAMANO + '</td>';
@@ -341,8 +372,18 @@ function fc_listar_mascota() {
                 } else if ($(this).attr("name") === "delete-mascota") {
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
-                    $("#txh_idConfirm").val('ANULAR');
+                    txh_idConfirm = 'ANULAR';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la mascota?");
+                } else if ($(this).attr("name") === "pon-adop") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'ADOPCION';
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>PONER EN ADOPCION</strong> la mascota?");
+                } else if ($(this).attr("name") === "quit-adop") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'NOADOPCION';
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>SACAR DE ADOPCION</strong> la mascota?");
                 }
             });
 
@@ -399,7 +440,7 @@ function fc_listar_mascota() {
     });
 }
 function aceptarConfirm() {
-    switch ($("#txh_idConfirm").val()) {
+    switch (txh_idConfirm) {
         case "ANULAR":
             var objE = {
                 ID_ENCRIP : id_mascota
@@ -408,6 +449,80 @@ function aceptarConfirm() {
             $.ajax({
                 type: "POST",
                 url: "page/mantenimiento/mascota.aspx/AnularMascotaWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_mascota button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    closeLoading();
+                    fc_listar_mascota();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "ADOPCION":
+            objE = {
+                ID_ENCRIP: id_mascota
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/AdopcionMascotaWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_mascota button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    closeLoading();
+                    fc_listar_mascota();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "NOADOPCION":
+            objE = {
+                ID_ENCRIP: id_mascota
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/NoAdopcionMascotaWM",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify({ objE: objE }),
@@ -484,6 +599,7 @@ function limpiarMascota() {
     raza_id = 0;
     prov_id = 0;
     dis_id = 0;
+    txh_idConfirm = '';
     $("#pnl_mascota").css("pointer-events", "visible");
     $("#pnl_mascota select").val('0');
     $("#pnl_mascota input").val('');

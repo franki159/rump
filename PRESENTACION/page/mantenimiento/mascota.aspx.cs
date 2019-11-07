@@ -90,7 +90,8 @@ namespace PRESENTACION.page.mantenimiento
                 }
 
                 int objResultado = 0;
-                //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO_ID = eSession.ID;
 
                 objResultado = NMascota.AnularMascotaWM(objE);
 
@@ -101,6 +102,72 @@ namespace PRESENTACION.page.mantenimiento
                 else
                 {
                     objRespuesta.Success("Se eliminó la mascota correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object AdopcionMascotaWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                int objResultado = 0;
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO_ID = eSession.ID;
+
+                objResultado = NMascota.AdopcionMascotaWM(objE);
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("No se pudo poner en adopción la mascota.");
+                }
+                else
+                {
+                    objRespuesta.Success("Se puso en adopción la mascota correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object NoAdopcionMascotaWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                int objResultado = 0;
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO_ID = eSession.ID;
+
+                objResultado = NMascota.NoAdopcionMascotaWM(objE);
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("No se pudo sacar de adopción la mascota.");
+                }
+                else
+                {
+                    objRespuesta.Success("Se saco a la mascota de adopción correctamente");
                 }
             }
             catch (Exception ex)

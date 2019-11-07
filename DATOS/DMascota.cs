@@ -220,7 +220,34 @@ namespace DATOS
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
                 cmd.Parameters.AddWithValue("@opcion", 3);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public static int AdopcionMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 10);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public static int NoAdopcionMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 11);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 return cmd.ExecuteNonQuery();
