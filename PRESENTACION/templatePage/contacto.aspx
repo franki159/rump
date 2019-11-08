@@ -21,18 +21,7 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
-
-    <!-- Header Area Start -->
-    <header class="header-area">
-        <!--#include file="headerPage.aspx"-->
-    </header>
-    <!-- Header Area End -->
-
+    <!--#include file="headerPage.aspx"-->
 
     <!-- Breadcrumb Area Start -->
     <div class="breadcrumb-area contact-breadcrumb bg-img jarallax" style="background-image: url(img/bg-img/contact.jpg);">

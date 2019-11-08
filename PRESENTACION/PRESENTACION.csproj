@@ -220,6 +220,7 @@
     <Content Include="img\charpe.png" />
     <Content Include="img\checkbox\Thumbs.db" />
     <Content Include="img\dni\fondo.jpg" />
+    <Content Include="img\favicon.png" />
     <Content Include="img\icons\favicon.ico" />
     <Content Include="img\icons\Thumbs.db" />
     <Content Include="assets\font-awesome\css\font-awesome.css.map" />
@@ -260,6 +261,7 @@
     <Content Include="assets\font-awesome\scss\_spinning.scss" />
     <Content Include="assets\font-awesome\scss\_stacked.scss" />
     <Content Include="assets\font-awesome\scss\_variables.scss" />
+    <Content Include="img\loader-pet.gif" />
     <Content Include="img\logoComprobante_small.jpg" />
     <Content Include="img\logoRUMP.png" />
     <Content Include="img\map_dog.png" />
@@ -274,6 +276,7 @@
     <Content Include="js\index.js" />
     <Content Include="js\inicioSesion.js" />
     <Content Include="js\forgotPassword.js" />
+    <Content Include="js\page\mantenimiento\citaMedica.js" />
     <Content Include="js\password.js" />
     <Content Include="js\map.js" />
     <Content Include="js\page\mantenimiento\usuario.js" />
@@ -281,6 +284,7 @@
     <Content Include="js\page\proceso\imprimirDNI.js" />
     <Content Include="active.aspx" />
     <Content Include="forgotPassword.aspx" />
+    <Content Include="page\mantenimiento\citaMedica.aspx" />
     <Content Include="password.aspx" />
     <Content Include="page\mantenimiento\usuario.aspx" />
     <Content Include="page\mantenimiento\mascota.aspx" />
@@ -322,7 +326,85 @@
     <Content Include="templatePage\contacto.aspx" />
     <Content Include="templatePage\footerPage.aspx" />
     <Content Include="templatePage\headerPage.aspx" />
+    <Content Include="templatePage\img\adop-img\cd-icon-arrow.svg" />
+    <Content Include="templatePage\img\adop-img\cd-icon-check.svg" />
+    <Content Include="templatePage\img\adop-img\cd-icon-filter.svg" />
+    <Content Include="templatePage\img\adop-img\img-1.jpg" />
+    <Content Include="templatePage\img\adop-img\img-10.jpg" />
+    <Content Include="templatePage\img\adop-img\img-11.jpg" />
+    <Content Include="templatePage\img\adop-img\img-12.jpg" />
+    <Content Include="templatePage\img\adop-img\img-2.jpg" />
+    <Content Include="templatePage\img\adop-img\img-3.jpg" />
+    <Content Include="templatePage\img\adop-img\img-4.jpg" />
+    <Content Include="templatePage\img\adop-img\img-5.jpg" />
+    <Content Include="templatePage\img\adop-img\img-6.jpg" />
+    <Content Include="templatePage\img\adop-img\img-7.jpg" />
+    <Content Include="templatePage\img\adop-img\img-8.jpg" />
+    <Content Include="templatePage\img\adop-img\img-9.jpg" />
+    <Content Include="templatePage\img\bg-img\add.jpg" />
+    <Content Include="templatePage\img\bg-img\banner4-desktop.jpg" />
+    <Content Include="templatePage\img\bg-img\conejos.jpg" />
+    <Content Include="templatePage\img\bg-img\dni+chapita.jpg" />
+    <Content Include="templatePage\img\bg-img\educacion.jpg" />
+    <Content Include="templatePage\img\bg-img\esterilizacion.jpg" />
+    <Content Include="templatePage\img\bg-img\gatos.jpg" />
+    <Content Include="templatePage\img\bg-img\general.jpg" />
+    <Content Include="templatePage\img\bg-img\hamsters.jpg" />
+    <Content Include="templatePage\img\bg-img\ig1.jpg" />
+    <Content Include="templatePage\img\bg-img\ig2.jpg" />
+    <Content Include="templatePage\img\bg-img\ig3.jpg" />
+    <Content Include="templatePage\img\bg-img\ig4.jpg" />
+    <Content Include="templatePage\img\bg-img\ig5.jpg" />
+    <Content Include="templatePage\img\bg-img\ig6.jpg" />
+    <Content Include="templatePage\img\bg-img\lcat-qs3.png" />
+    <Content Include="templatePage\img\bg-img\love-cat.jpg" />
+    <Content Include="templatePage\img\bg-img\mascotasextraviadas-fondo.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiapri1.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiapri2.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiapri3.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiapri4.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiapri5.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiasec1.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiasec2.jpg" />
+    <Content Include="templatePage\img\bg-img\noticiasec3.jpg" />
+    <Content Include="templatePage\img\bg-img\pattern-mascotaextraviada.jpg" />
+    <Content Include="templatePage\img\bg-img\perros.jpg" />
+    <Content Include="templatePage\img\bg-img\previewnew1.jpg" />
+    <Content Include="templatePage\img\bg-img\previewnew2.jpg" />
+    <Content Include="templatePage\img\bg-img\previewnew3.jpg" />
+    <Content Include="templatePage\img\bg-img\previewnew4.jpg" />
+    <Content Include="templatePage\img\bg-img\qs-sec3.jpg" />
+    <Content Include="templatePage\img\bg-img\qs-sec4.jpg" />
+    <Content Include="templatePage\img\bg-img\quienessomos-fondo.jpg" />
+    <Content Include="templatePage\img\bg-img\quienessomos-sec2.jpg" />
+    <Content Include="templatePage\img\bg-img\rec-qs2.png" />
+    <Content Include="templatePage\img\bg-img\reconocimiento-facial.jpg" />
+    <Content Include="templatePage\img\bg-img\tec-qs1.png" />
+    <Content Include="templatePage\img\bg-img\tec.jpg" />
+    <Content Include="templatePage\img\bg-img\vacuna.jpg" />
+    <Content Include="templatePage\img\core-img\adopcion.png" />
+    <Content Include="templatePage\img\core-img\chapitaydni.png" />
+    <Content Include="templatePage\img\core-img\dueñosdemascota.png" />
+    <Content Include="templatePage\img\core-img\encontrastemascota.png" />
+    <Content Include="templatePage\img\core-img\fb.png" />
+    <Content Include="templatePage\img\core-img\fomentemoslaadop.png" />
+    <Content Include="templatePage\img\core-img\ist.png" />
+    <Content Include="templatePage\img\core-img\logo-orange&amp;white.png" />
+    <Content Include="templatePage\img\core-img\mascotasextraviadas.png" />
+    <Content Include="templatePage\img\core-img\nuestro-programa.png" />
+    <Content Include="templatePage\img\core-img\phone.png" />
+    <Content Include="templatePage\img\core-img\phonS.png" />
+    <Content Include="templatePage\img\core-img\quienessomos.png" />
+    <Content Include="templatePage\img\core-img\reconocimientofacial-gato-2.png" />
+    <Content Include="templatePage\img\core-img\reconocimientofacial-gato-3.png" />
+    <Content Include="templatePage\img\core-img\resgistraatumascota.png" />
+    <Content Include="templatePage\img\core-img\servicios.png" />
+    <Content Include="templatePage\img\core-img\small-logo.png" />
+    <Content Include="templatePage\img\core-img\tw.png" />
+    <Content Include="templatePage\img\core-img\whatsapp.png" />
+    <Content Include="templatePage\img\core-img\yt.png" />
     <Content Include="templatePage\js\gmap3.min.js" />
+    <Content Include="templatePage\quienessomos.aspx" />
     <Content Include="templatePage\servicios.aspx" />
     <Content Include="templatePage\changelog.txt" />
     <Content Include="templatePage\css\animate.css" />
@@ -2457,6 +2539,13 @@
     <Compile Include="forgotPassword.aspx.designer.cs">
       <DependentUpon>forgotPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="page\mantenimiento\citaMedica.aspx.cs">
+      <DependentUpon>citaMedica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\mantenimiento\citaMedica.aspx.designer.cs">
+      <DependentUpon>citaMedica.aspx</DependentUpon>
+    </Compile>
     <Compile Include="password.aspx.cs">
       <DependentUpon>password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2546,6 +2635,13 @@
     </Compile>
     <Compile Include="templatePage\headerPage.aspx.designer.cs">
       <DependentUpon>headerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="templatePage\quienessomos.aspx.cs">
+      <DependentUpon>quienessomos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="templatePage\quienessomos.aspx.designer.cs">
+      <DependentUpon>quienessomos.aspx</DependentUpon>
     </Compile>
     <Compile Include="templatePage\servicios.aspx.cs">
       <DependentUpon>servicios.aspx</DependentUpon>

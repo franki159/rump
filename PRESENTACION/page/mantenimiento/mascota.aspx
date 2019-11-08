@@ -6,8 +6,6 @@
 <script src="../../assets/upGalleryFCP/upGalleryFCP.js"></script>
 
 <div id="errorDiv"></div>
-<input id="txh_idConfirm" type="hidden" />
-<input id="txh_idmovimiento" type="hidden" />
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow mb-4">
@@ -51,7 +49,8 @@
                         <tr>
                             <th style="display: none"></th>
                             <th></th>
-                            <th>MASCOTA</th>
+                            <th>FOTO</th>
+                            <th>ESTADO</th>
                             <th>Nombre</th>
                             <th>Sexo</th>
                             <th>Tamaño</th>
@@ -228,7 +227,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary btn-sm continue">Siguiente</button>
+                                    <button class="btn btn-primary btn-sm continue"><i class="fas fa-angle-double-right"></i>&nbsp;Siguiente</button>
                                 </div>
                             </div>
                         </div>
@@ -280,8 +279,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary btn-sm back">Atras</button>
-                                    <button class="btn btn-primary btn-sm continue">Siguiente</button>
+                                    <button class="btn btn-primary btn-sm back"><i class="fas fa-angle-double-left"></i>&nbsp;Atras</button>
+                                    <button class="btn btn-primary btn-sm continue"><i class="fas fa-angle-double-right"></i>&nbsp;Siguiente</button>
                                 </div>
                             </div>
                         </div>
@@ -463,8 +462,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary btn-sm back">Atras</button>
-                                    <button class="btn btn-primary btn-sm continue">Siguiente</button>
+                                    <button class="btn btn-primary btn-sm back"><i class="fas fa-angle-double-left"></i>&nbsp;Atras</button>
+                                    <button class="btn btn-primary btn-sm continue"><i class="fas fa-angle-double-right"></i>&nbsp;Siguiente</button>
                                 </div>
                             </div>
 
@@ -497,7 +496,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary btn-sm back">Atras</button>
+                                    <button class="btn btn-primary btn-sm back"><i class="fas fa-angle-double-left"></i>&nbsp;Atras</button>
                                 </div>
                             </div>
                         </div>

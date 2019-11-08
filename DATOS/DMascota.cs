@@ -39,6 +39,7 @@ namespace DATOS
                         mItem.TIPO_DSC = dr.IsDBNull(dr.GetOrdinal("TIPO_DSC")) ? string.Empty : dr.GetString(dr.GetOrdinal("TIPO_DSC"));
                         mItem.RAZA_DSC = dr.IsDBNull(dr.GetOrdinal("RAZA_DSC")) ? string.Empty : dr.GetString(dr.GetOrdinal("RAZA_DSC"));
                         mItem.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
+                        mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
                         lista.Add(mItem);
                     }
                 }
@@ -219,7 +220,34 @@ namespace DATOS
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
                 cmd.Parameters.AddWithValue("@opcion", 3);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public static int AdopcionMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 10);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public static int NoAdopcionMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 11);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 return cmd.ExecuteNonQuery();
@@ -311,7 +339,23 @@ namespace DATOS
                 return foto;
             }
         }
-
+        
+        public static int ReportarMascotaWM(EMascota objE) {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_reportar_mascota", cn);
+                cmd.Parameters.AddWithValue("@dni", objE.DNI);
+                cmd.Parameters.AddWithValue("@fecha", objE.FEC_CREA);
+                cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
+                cmd.Parameters.AddWithValue("@correo", objE.CORREO);
+                cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
+                cmd.Parameters.AddWithValue("@observacion", objE.OBSERVACION);
+                cmd.Parameters.AddWithValue("@opcion", 1);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
         public static string RegistrarMascotaWM(EMascota objE)
         {
             decimal ID_MASCOTA = 0;

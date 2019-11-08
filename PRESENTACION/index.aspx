@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>RUMP &amp; World Pets Perú</title>
+    <title>RUMP Perú</title>
 
     <!-- Favicon -->
     <link rel="icon" href="templatePage/img/core-img/favicon.png">
@@ -22,23 +22,77 @@
 
 <body>
     <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
+    <div id="page-loader"><img style="-webkit-user-select: none;margin: auto;" src="img/loader-pet.gif"></div> 
     <!-- /Preloader -->
+    <!-- REPORTAR MASCOTA EXTRAVIADA -->
 
-    <!-- Header Area Start -->
-    <header class="header-area">        
-        <!-- Search Form -->
-        <div class="search-form d-flex align-items-center">
-            <div class="container">
-                <form action="index.html" method="get">
-                    <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
-                    <button type="submit"><i class="icon_search"></i></button>
-                </form>
+    <div class='modal modal-scroll fade' id='pnl_report_mascota' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Reportar Mascota Extraviada</h4>
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="errorReporte"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Código de Chapa: <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control" id="txt_dni_mascota" name="txt_dni_mascota" placeholder="Código chapa de la mascota encontrada" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Fecha que Encontró la Mascota:</strong></h6>
+                                <input type="date" class="form-control" id="txt_fecha" name="txt_fecha" required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h6><strong>Nombre Completo:</strong></h6>
+                                <input class="form-control" id="txt_nombre" name="txt_nombre" placeholder="Ingrese su Nombre completo" required="">
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Correo Electrónico: <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control" type="email" id="txt_correo" name="txt_correo" placeholder="Ingrese su correo electrónico" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <h6><strong>Número Telefónico: <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control integerFCP" id="txt_telefono" name="txt_telefono" placeholder="Ingrese su número teléfonico" required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h6><strong>Observación:</strong></h6>
+                                <textarea class="form-control" id="txt_observacion" name="txt_observacion" placeholder="Observación" required=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_reportar_mascota" type="button" class="btn btn-warning"><i class="fa fa-paw" aria-hidden="true"></i> Reportar</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal"> Cerrar</button>
+                </div>
             </div>
         </div>
+    </div>
 
+    <!-- /REPORTAR MASCOTA EXTRAVIADA -->
+
+    <!-- Header Area Start -->
+    <header class="header-area">
+ 
         <!-- Top Header Area Start -->
         <div class="top-header-area">
             <div class="container">
@@ -46,21 +100,16 @@
 
                     <div class="col-6">
                         <div class="top-header-content">
-                            <a href="#"><i class="icon_phone"></i> <span>(01) 7316407</span></a>
-                            <a href="#"><i class="icon_mail"></i> <span>worldpetsperú.2210@gmail.com</span></a>
+                            <a class="itel2"><img src="templatePage/img/core-img/whatsapp.png"></a>
+							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992975292</a>
+							<a class="itel2"><img src="templatePage/img/core-img/phone.png"></a>
+							<a class="baraitem" aria-current="page"  href="tel:01 7316407">(01)7316407</a>
                         </div>
                     </div>
 
                     <div class="col-6">
-                        <div class="top-header-content">
-                            <!-- Top Social Area -->
-                            <div class="top-social-area ml-auto">
-                                <a href="https://www.facebook.com/worldpetsperurump/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="https://twitter.com/PeruRump?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><i class="fa fa-play-circle" aria-hidden="true"></i></a>
-                                <a href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <div class="top-header-content float-right" id="divLoginUser">
 							
-                            </div>
                         </div>
                     </div>
 
@@ -78,6 +127,15 @@
 
                         <!-- Logo -->
                         <a class="nav-brand" href="home.html"><img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
+						
+						     
+						<div class="top-social-area ">
+                                <a class="itel" href="https://www.facebook.com/worldpetsperurump/"><img src="templatePage/img/core-img/fb.png"></a>
+                                <a class="itel" href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><img src="templatePage/img/core-img/ist.png"></a>
+								<a class="itel" href="https://twitter.com/PeruRump?lang=es"><img src="templatePage/img/core-img/tw.png"></a>
+								<a class="itel" href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><img src="templatePage/img/core-img/yt.png"></a>
+                            </div>
+						
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -90,31 +148,22 @@
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
-                            <!-- Nav Start -->
+                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
                                     <li class="active"><a href="./">Inicio</a></li>
                                     <li><a href="templatePage/servicios.aspx">Servicios</a></li>
-									<li><a href="#">Mascotas extraviadas</a></li>
+									<li><a href="mextraviadas.html">Mascotas extraviadas</a></li>
                                     <li><a href="templatePage/adoptame.aspx">Adóptame</a>
 									    <ul class="dropdown">
                                             <li><a href="#">Enciclopedia de Razas</a></li><br>
 									    </ul>
 									</li>	
-									<li><a href="#">¿Quiénes somos?</a></li>
+									<li><a href="templatePage/quienessomos.aspx">¿Quiénes somos?</a></li>
 							       
                                     <li><a href="templatePage/contacto.aspx">Contacto</a></li>
                                 </ul>
 
-                                <!-- Search -->
-                                <div class="search-btn ml-4">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
-
-                                <!-- Book Now -->
-                                <div class="book-now-btn ml-3 ml-lg-5" id="divLoginUser">
-                                    <a href="#">Iniciar Sesión <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                                </div>
                             </div>
                             <!-- Nav End -->
                         </div>
@@ -140,7 +189,7 @@
 									<h6 data-animation="fadeInUp" data-delay="200ms">Bienvenido a RUMP</h6>
 									<h2 data-animation="fadeInUp" data-delay="500ms">1er Servicio profesional de registro de mascotas en el Perú</h2>
                                  
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="900ms">Conocenos más</a>
+                                    <a href="templatePage/quienessomos.aspx" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="900ms">Conócenos más</a>
                                 </div>
 						
                         </div>
@@ -178,7 +227,7 @@
                                 <div class="welcome-text text-center">
                                     <h6 data-animation="fadeInDown" data-delay="200ms">Solicita ahora tu sistema de identificación </h6>
                                     <h2 data-animation="fadeInDown" data-delay="500ms">Chapita identificadora + DNI<br/>Accederás a muchos servicios más</h2>
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
+                                    <a href="contacto.aspx" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
                                 </div>
                             </div>
                         </div>
@@ -211,18 +260,18 @@
                 <!-- Project Text -->
                 <div class="project-content">
                     <div class="text">
-                        <h6>General</h6>
-                        <h5>No compres, adopta</h5>
+                        <h6>Gatos</h6>
+                        <h5>¿Cascabel para el gato? ¡No!</h5>
                     </div>
                 </div>
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <div class="text">
-                        <h6>Perros</h6>
-                        <h5>No compres, adopta</h5>
-                        <p>Si quieres vivir con un perro o un gato, adóptalo, no lo compres.</p>
+                        <h6>Gatos</h6>
+                        <h5>¿Cascabel para el gato? ¡No!</h5>
+                        <p>¿Sabían que los gatos perciben el sonido 3 veces más que los humanos?</p>
                     </div>
-                    <a href="#" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href="New1.html" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -232,17 +281,17 @@
                 <div class="project-content">
                     <div class="text">
                         <h6>General</h6>
-                        <h5>Esterilización es prevención</h5>
+                        <h5>¿Preparado para adoptar?</h5>
                     </div>
                 </div>
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <div class="text">
                         <h6>General</h6>
-                        <h5>Esterilización es prevención</h5>
-                        <p>La esterilización ayuda a prevenir las infecciones uterinas y el cáncer de mama, el cual es fatal en alrededor del 50 por ciento de los perros y 90 por ciento de los gatos.</p>
+                        <h5>¿Preparado para adoptar?</h5>
+                        <p>Responde a estas 5 preguntas antes de adoptar</p>
                     </div>
-                    <a href="#" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href="New2.html" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -252,17 +301,17 @@
                 <div class="project-content">
                     <div class="text">
                         <h6>General</h6>
-                        <h5>Vacaciones con mascotas</h5>
+                        <h5>Sobrepoblación de perros y gatos</h5>
                     </div>
                 </div>
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <div class="text">
                         <h6>General</h6>
-                        <h5>Vacaciones con mascotas</h5>
-                        <p>El alquiler de un apartamento de vacaciones es la solución ideal para disfrutar de tus vacaciones con mascotas, además no te supondrá un coste adicional.</p>
+                        <h5>Sobrepoblación de perros y gatos</h5>
+                        <p>Nuestro problema y responsabilidad, la sobrepoblación de perros y gatos</p>
                     </div>
-                    <a href="#" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href="New3.html" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -271,18 +320,18 @@
                 <!-- Project Text -->
                 <div class="project-content">
                     <div class="text">
-                        <h6>General</h6>
-                        <h5>Disfrazes de halloween</h5>
+                        <h6>Perros</h6>
+                        <h5>El mejor perro para ti según tu personalidad</h5>
                     </div>
                 </div>
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <div class="text">
-                        <h6>General</h6>
-                        <h5>Disfrazes de halloween</h5>
-                        <p>No podemos resistirnos a Halloween, y es que ya no sólo caemos en la tentación de disfrazarnos, sino que arrastramos con nosotras a nuestras queridas mascotas</p>
+                        <h6>Perros</h6>
+                        <h5>El mejor perro para ti según tu personalidad</h5>
+                        <p>En muchas ocasiones, al buscar un perro para adoptar, nos dejamos llevar por la ternura y el cariño. También ocurre que las personas desean por estética o moda un perro u otro. Pero no debemos dejarnos llevar por esos instintos, debemos ser racionales...</p>
                     </div>
-                    <a href="#" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href="New4.html" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -291,18 +340,19 @@
                 <!-- Project Text -->
                 <div class="project-content">
                     <div class="text">
-                        <h6>Hamsters</h6>
-                        <h5>Crea accesorios para ellos</h5>
+                        <h6>Gatos</h6>
+                        <h5>Los tipos de gato más cariñosos</h5>
                     </div>
                 </div>
                 <!-- Hover Effects -->
                 <div class="hover-effects">
                     <div class="text">
-                        <h6>Hamsters</h6>
-                        <h5>Crea accesorios para ellos</h5>
-                        <p>Tú mismo puedes hacer juguetes a un bajo costo (o hasta sin costo) si utilizas artículos que tienes en casa. Al finalizar, no solo te habrás divertido haciendo los juguetes, sino que tu hámster también se divertirá jugando con ellos.</p>
+                        <h6>Gatos</h6>
+                        <h5>Los tipos de gato más cariñosos</h5>
+                        <p>Quienes tenemos un amigo felino en casa sabemos que son animales que dan cariño
+más cuando ellos quieren que cuando nosotros lo buscamos.</p>
                     </div>
-                    <a href="#" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                    <a href="New5.html" class="btn project-btn">Ingresar<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -332,13 +382,13 @@
                         <a href="#" class="post-thumbnail"><img src="templatePage/img/bg-img/news1.jpg" alt=""></a>
                         <!-- Post Meta -->
                         <div class="post-meta">
-                            <a href="#" class="post-date">Oct 02, 2019</a>
+                            <a href="#" class="post-date">Nov 05, 2019</a>
                             <a href="#" class="post-catagory">Gatos</a>
                         </div>
                         <!-- Post Title -->
-                        <a href="#" class="post-title">Una vacuna para acabar con la alergia de tu gato</a>
-                        <p>La inyección, en lugar de administrarse en la persona, se le pone al felino</p>
-                        <a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="#" class="post-title">Estudios revelan nueva vacuna para acabar con la alergia a tu gato</a>
+                        <p>La inyección, en lugar de administrarse en la persona, se le pone al felino.</p>
+                        <a href="Newsec1.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -348,13 +398,13 @@
                         <a href="#" class="post-thumbnail"><img src="templatePage/img/bg-img/news2.jpg" alt=""></a>
                         <!-- Post Meta -->
                         <div class="post-meta">
-                            <a href="#" class="post-date">Oct 06, 2019</a>
-                            <a href="#" class="post-catagory">AVES</a>
+                            <a href="#" class="post-date">Nov 10, 2019</a>
+                            <a href="#" class="post-catagory">HASMTERS</a>
                         </div>
                         <!-- Post Title -->
-                        <a href="#" class="post-title">Los mejores lugares del país para el avistamiento de aves</a>
-                        <p>El Perú es uno de los pocos países donde se puede apreciar gran cantidad de aves en su hábitat natural, una actividad que atrae a diversos turistas del mundo y genera divisas.</p>
-                        <a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="#" class="post-title">¿Cómo cuidar y alimentar a estos animalitos?</a>
+                        <p>Tener un hámster como mascota se está volviendo más habitual entre las familias, sin embargo, la información sobre su cuidado sigue siendo muy escasa.</p>
+                        <a href="Newsec2.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -364,13 +414,13 @@
                         <a href="#" class="post-thumbnail"><img src="templatePage/img/bg-img/news3.jpg" alt=""></a>
                         <!-- Post Meta -->
                         <div class="post-meta">
-                            <a href="#" class="post-date">Oct 12, 2019</a>
+                            <a href="#" class="post-date">Nov 12, 2019</a>
                             <a href="#" class="post-catagory">CONEJOS</a>
                         </div>
                         <!-- Post Title -->
                         <a href="#" class="post-title">Conoce todo sobre los conejos enanos</a>
                         <p>¿Te gustan los conejos? esta vez hablaremos de los conejos enanos, lindos animalitos ideales para personas que viven en departamentos.</p>
-                        <a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="Newsec3.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -390,7 +440,8 @@
                              <br/>
 							   
                               <li class="regismasco" aria-current="page">En RUMP buscamos disminuir la población animal en las calles. Una forma para lograrlo es el registro nacional de mascotas, así nos aseguramos de que tu mascota siempre podrá volver a casa. Organizamos campañas de salud y concienciación para educar a la sociedad en la importancia del respeto hacia los animales. Con nuestros diversos convenios en todo el Perú, ofrecemos descuentos y servicios exclusivos que tu mascota podrá disfrutar. <br/></li>
-							<li class="regismasco" aria-current="page"><br/> Saber más</li>
+							<br/>
+							<a href="templatePage/quienessomos.aspx" class="btn roberto-btn btn-2" >Saber más</a>	
 							<li class="regismasco" aria-current="page"><br/> Entonces, ¿qué esperas? Registra aquí a tu engreído, pide tu DNI y su chapita. </li>
                         </nav>
 						<br/>
@@ -428,7 +479,7 @@
 	
 	
 	<!-- Breadcrumb ADD Area Start -->
-<div class="breadcrumb-area2 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/add-dog.jpg);">
+<div class="breadcrumb-area2 bg-img" style="background-image: url(templatePage/img/bg-img/add.jpg);">
 		
     <div class="container h-100 align-content-center">
             <div class="row h-50 align-items-center">
@@ -439,14 +490,19 @@
                         <!-- Post Title -->
 					    <div class="breadcrumb-content text-center">
                       <h2 class="mascotas-extraviadas">Mascotas Extraviadas</h2>
-                      <h6 class="textoadd"> Ellos te siguen buscando ayúdanos a encontrarlos</h6>
+                      <h6 class="textoadd"> Ellos te
+						  
+						  
+						  
+						  
+						  siguen buscando ayúdanos a encontrarlos</h6>
                      </div>
                   </div>
 
                 <!-- Single Post Area -->
                   <div class="col-12 col-md-6 align-content-center">
 					  <div class="breadcrumb-content text-center">
-                   <a href="#" class="btn roberto-btnR align-content-center" >Buscala aquí</a>
+                   <a href="mextraviadas.html" class="btn roberto-btnR align-content-center" >Búscala aquí</a>
 					</div>
                   </div>
                
@@ -481,7 +537,6 @@
                              </div>
                        </div>		
 						
-						
 						 <div class="row align-items-center">
                              <div class="col-12 col-lg-6 align-items-center">
                 	         <img src="templatePage/img/core-img/reconocimientofacial.png" alt="">
@@ -496,9 +551,11 @@
                                  </div>
 					              <br>
 					             <button type="send" href="#" class="btn roberto-btnO align-content-center" aria-hidden="true">Buscar</button>
+								 
                              </div>
                        </div>	
-						
+						<br>
+						<h5 class="textoadd text-center"><strong>Recomendación:</strong> Para la foto de reconocimiento facial, fotografíar el rostro de la mascota aproximadamente a 50cm de distancia. </h5> 
                     </div>
                 </div>
             </div>
@@ -546,11 +603,15 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="single-footer-widget mb-80">
                             <!-- Footer Logo -->
-                            <a href="./" class="footer-logo"><img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
+                            <a href="./" class="footer-logo"><img src="templatePage/img/core-img/logo-orange&white.png" alt=""></a>
+                            
+							<a class="itel2"><img src="templatePage/img/core-img/whatsapp.png"></a>
 
-                            <h4>(01) 7316407</h4>
-                            <span>contacto.worldpetsperu@gmail.com</span>
-                            <span>Av. Brasil 3345 - Magdalena del Mar Perú</span>
+							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992 975 292</a>
+							<span></span>
+                            <span>Dirección: </span>
+							<span>Av. Brasil #3345  </span>
+                            <span>Magdalena del Mar -  PERÚ</span>
                         </div>
                     </div>
 
@@ -562,16 +623,21 @@
 
                             <!-- Single Blog Area -->
                             <div class="latest-blog-area">
-                                <a class="post-title">Contacto Comercial:
-									contacto.worldpetsperu@gmail.com</a>
-                                <span class="post-date"><i class="fa fa-phone" aria-hidden="true"></i> 992 975 292</span>
+                                <span class="post-date"><i class="fa fa-envelope" aria-hidden="true"></i>contacto.worldpetsperu@gmail.com</span>
                             </div>
 
                             <!-- Single Blog Area -->
                             <div class="latest-blog-area">
-                                <a class="post-title">Horario</a>
+                                <a class="post-title">Horario de oficina</a>
                                 <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i>9:00-18:00hrs</span>
                             </div>
+							
+							<!-- Single Blog Area -->
+                            <div class="latest-blog-area">
+                                <a class="post-title">Horario de entrega de Chapitas/DNI</a>
+                                <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i>10:00-17:00hrs</span>
+                            </div>
+							
                         </div>
                     </div>
 
@@ -585,9 +651,9 @@
                             <ul class="footer-nav">
                                 <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Noticias</a></li>
 								<li><a href="templatePage/servicios.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
+                                <li><a href="./mextraviadas.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
 								<li><a href="templatePage/adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
+                                <li><a href="templatePage/quienessomos.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
                                 <li><a href="templatePage/contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
                             </ul>
                         </div>
@@ -626,10 +692,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     <div class="col-12 col-md-4">
                         <!-- Social Info -->
                         <div class="social-info">
-                            <a href="https://www.facebook.com/worldpetsperurump/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="https://twitter.com/PeruRump?lang=es"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            <a class="itel" href="https://www.facebook.com/worldpetsperurump/"><img src="templatePage/img/core-img/fb.png"></a>
+                            <a class="itel" href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><img src="templatePage/img/core-img/ist.png"></a>
+							<a class="itel" href="https://twitter.com/PeruRump?lang=es"><img src="templatePage/img/core-img/tw.png"></a>
+							<a class="itel" href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><img src="templatePage/img/core-img/yt.png"></a>
                         </div>
                     </div>
                 </div>
@@ -649,12 +715,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="templatePage/js/roberto.bundle.js"></script>
     <!-- Active -->
     <script src="templatePage/js/default-assets/active.js"></script>
+
+    <script src="assets/select2/js/select2.full.js"></script>
+    <script src="js/all/date.js"></script>
     <script type="text/javascript">
-    $.getScript("js/index.js")
-        .fail(function (jqxhr, settings, exception) {
-            alert("Error: No se ha cargando un complemento del sistema (index.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
-        });
-</script>
+        $.getScript("js/general.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema (general.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+
+        $.getScript("js/index.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema (index.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+    </script>
 </body>
 
 </html>

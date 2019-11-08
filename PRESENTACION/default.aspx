@@ -12,7 +12,7 @@
   <meta name="author" content="">
 
   <title>World Pets Perú</title>
-  <link rel="shortcut icon" type="image/png" href="img/worldpetsperu_logo.png" />
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     <!-- Datetimepicker-->
     <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
     <link href="assets/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
 <body id="page-top">
 
     <!-- Div carga -->        
-    <div id="page-loader"><span class="preloader-interior"></span></div> 
+    <div id="page-loader"><img style="-webkit-user-select: none;margin: auto;" src="img/loader-pet.gif"></div> 
     <%--<div id="preloader">
         <div class="loader"></div>
     </div>--%>

@@ -8,6 +8,10 @@ namespace ENTIDAD
 {
     public class EMascota
     {
+        //REPORTAR MASCOTA
+        public string CORREO { get; set; }
+        public string OBSERVACION { get; set; }
+        public string TELEFONO { get; set; }
         public decimal ID { get; set; }
         public string ID_ENCRIP { get; set; }
         public string DNI { get; set; }
