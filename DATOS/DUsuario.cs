@@ -94,7 +94,7 @@ namespace DATOS
         }
         public static EUsuario ObtenerUsuario(EUsuario objE)
         {
-            EUsuario mItem = new EUsuario();
+            EUsuario mItem = null;
 
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
