@@ -56,6 +56,7 @@
                                 $("#frmLogin :input").removeAttr("disabled");
                                 $("#txtPassword").focus();
                             } else {
+                                msg_OpenDay("c", data.d.Mensaje);
                                 $("#frmLogin a").hide();
                             }
                         },
