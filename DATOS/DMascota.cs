@@ -240,6 +240,20 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static int EncontradaMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 13);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        
         public static int NoAdopcionMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
@@ -251,6 +265,58 @@ namespace DATOS
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 return cmd.ExecuteNonQuery();
+            }
+        }
+        public static string PerdidaMascotaWM(EMascota objE)
+        {
+            string email = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@referencia", objE.OBSERVACION);
+                cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 12);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            email = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
+                        }
+                    }
+                }
+
+                return email;
+            }
+        }
+        public static string SolicitarServicioWM(EMascota objE)
+        {
+            string email = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_solicitar_servicio", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", objE.OPCION);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            email = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
+                        }
+                    }
+                }
+
+                return email;
             }
         }
         public static int ActualizarMascotaWM(EMascota objE)

@@ -140,69 +140,39 @@ function fc_listar_mascota() {
             }
             
             var html = '';
+
+            var formatButton = '<a class="dropdown-item d-flex align-items-center" style="cursor: pointer; color: #3a3b45;" {0}>';
+            formatButton += '        <div class="mr-3">';
+            formatButton += '            <div class="icon-circle {1}">';
+            formatButton += '                <i class="{2} text-white"></i>';
+            formatButton += '            </div>';
+            formatButton += '        </div>';
+            formatButton += '        <div>';
+            formatButton += '            <span class="font-weight-bold">{3}</span>';
+            formatButton += '        </div>';
+            formatButton += '    </a>';
+
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 var htmlBotones = '';
                 htmlBotones += '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="row_' + i*100 +'">';
                 htmlBotones += '    <h6 class="dropdown-header">';
                 htmlBotones += '        Opciones de mascota';
                 htmlBotones += '    </h6>';
-                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="edit-mascota">';
-                htmlBotones += '        <div class="mr-3">';
-                htmlBotones += '            <div class="icon-circle bg-primary">';
-                htmlBotones += '                <i class="fas fa-pencil-alt text-white"></i>';
-                htmlBotones += '            </div>';
-                htmlBotones += '        </div>';
-                htmlBotones += '        <div>';
-                htmlBotones += '            <span class="font-weight-bold">Editar</span>';
-                htmlBotones += '        </div>';
-                htmlBotones += '    </a>';
+                htmlBotones += formatButton.format('href="#" name="edit-mascota"', 'bg-primary', 'fas fa-pencil-alt', 'Editar');
 
                 if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
-                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" href="#" name="soli-dni">';
-                    htmlBotones += '        <div class="mr-3">';
-                    htmlBotones += '            <div class="icon-circle bg-success">';
-                    htmlBotones += '                <i class="fas fa-address-card text-white"></i>';
-                    htmlBotones += '            </div>';
-                    htmlBotones += '        </div>';
-                    htmlBotones += '        <div>';
-                    htmlBotones += '            <span class="font-weight-bold">Solicitar DNI</span>';
-                    htmlBotones += '        </div>';
-                    htmlBotones += '    </a>';
+                    htmlBotones += formatButton.format('name="soli-dni"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
-                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" name="quit-adop">';
-                    htmlBotones += '        <div class="mr-3">';
-                    htmlBotones += '            <div class="icon-circle bg-success">';
-                    htmlBotones += '                <i class="fas fa-tags text-white"></i>';
-                    htmlBotones += '            </div>';
-                    htmlBotones += '        </div>';
-                    htmlBotones += '        <div>';
-                    htmlBotones += '            <span class="font-weight-bold">Quitar de adopción</span>';
-                    htmlBotones += '        </div>';
-                    htmlBotones += '    </a>';
+                    htmlBotones += formatButton.format('name="quit-adop"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
                 } else if (data.d.Resultado[i].ESTADO === 1) {//Con DNI (no adopcion)
-                    //Poner en adopcion a mascotas con DNI
-                    htmlBotones += '    <a class="dropdown-item d-flex align-items-center" name="pon-adop">';
-                    htmlBotones += '        <div class="mr-3">';
-                    htmlBotones += '            <div class="icon-circle bg-success">';
-                    htmlBotones += '                <i class="fas fa-tags text-white"></i>';
-                    htmlBotones += '            </div>';
-                    htmlBotones += '        </div>';
-                    htmlBotones += '        <div>';
-                    htmlBotones += '            <span class="font-weight-bold">Poner en adopción</span>';
-                    htmlBotones += '        </div>';
-                    htmlBotones += '    </a>';
+                    htmlBotones += formatButton.format('name="rep-per"', 'bg-warning', 'far fa-sad-cry', 'Reportar perdida');
+                    htmlBotones += formatButton.format('name="pon-adop"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
+                    htmlBotones += formatButton.format('name="sol-dup"', 'bg-success', 'fas fa-copy', 'Solicitar duplicado');
+                } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
+                    htmlBotones += formatButton.format('name="rep-enc"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
                 }
 
-                htmlBotones += '    <a class="dropdown-item d-flex align-items-center" name="delete-mascota">';
-                htmlBotones += '        <div class="mr-3">';
-                htmlBotones += '            <div class="icon-circle bg-danger">';
-                htmlBotones += '                <i class="fas fa-trash-alt text-white"></i>';
-                htmlBotones += '            </div>';
-                htmlBotones += '        </div>';
-                htmlBotones += '        <div>';
-                htmlBotones += '            <span class="font-weight-bold">Eliminar</span>';
-                htmlBotones += '        </div>';
-                htmlBotones += '    </a>';
+                htmlBotones += formatButton.format('name="delete-mascota"', 'bg-danger', 'fas fa-trash-alt', 'Eliminar');
 
                 htmlBotones += '</div>';
                    
@@ -239,6 +209,8 @@ function fc_listar_mascota() {
                     html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;SIN DNI</span></td>';
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En ADOPCION
                     html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';
+                } else if (data.d.Resultado[i].ESTADO === 4) {//EXTRAVIADA
+                    html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-sad-cry"></i>&nbsp;EXTRAVIADA</span></td>';
                 }
                 html += '<td>' + data.d.Resultado[i].NOMBRE + '</td>';
                 html += '<td>' + data.d.Resultado[i].SEXO + '</td>';
@@ -374,6 +346,11 @@ function fc_listar_mascota() {
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     txh_idConfirm = 'ANULAR';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la mascota?");
+                } else if ($(this).attr("name") === "soli-dni") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'SOLICITAR';
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>SOLICITAR EL DNI</strong> para su mascota?");
                 } else if ($(this).attr("name") === "pon-adop") {
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
@@ -384,7 +361,43 @@ function fc_listar_mascota() {
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     txh_idConfirm = 'NOADOPCION';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>SACAR DE ADOPCION</strong> la mascota?");
-                }
+                } else if ($(this).attr("name") === "rep-per") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'PERDIDA';
+                    var contenido_html = "<div id='errorPerdida'></div><h4>¡Saludos desde RUMP!</h4>";
+                    contenido_html += "Lamentamos oír que su mascota se ha extraviado."+
+                        "<p>Nos gustaría saber específicamente las circunstancias en la que su mascota se " +
+                        "perdió, de este modo podremos aconsejarle para que esta situación no se vuelva a dar.</p>" +
+                        '   <div class="form-group">'+
+                        '       <label> Fecha de Nacimiento <strong class="text-danger"> (*)</strong ></label>'+
+                        '       <div data-date-format="dd/mm/yyyy" class="input-group date dtOp" id="div_fecha_perdida"> '+
+                        '           <input id="txt_fecha_perdida" type = "text" class="form-control" data-mask="99/99/9999" size="16">'+
+                        '           <span class="input-group-addon btn-danger"> <i class="icon-calendar"></i></span> '+
+                        '       </div>' +
+                        '   </div>' +
+                        '        <div class="form-group">' +
+                        '            <label>Referencia</label>' +
+                        '            <textarea id="txt_obs_perdida" placeholder="Escriba las circunstancias de la perdida" maxlength="500" class="form-control" rows="3"></textarea>' +
+                        '        </div>';
+
+                    window.parent.fc_mostrar_confirmacion(contenido_html);
+
+                    $('#div_fecha_perdida').datepicker({
+                        format: 'dd/mm/yyyy',
+                        autoclose: true,
+                        orientation: "top left"
+                    });
+                } else if ($(this).attr("name") === "rep-enc") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'ENCONTRADA';
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>REPORTAR MASCOSTA COMO ENCONTRADA?</strong>");
+                } else if ($(this).attr("name") === "sol-dup") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    $("#copiaModal").modal();
+                } 
             });
 
             $("#tbl_mascota a").click(function () {
@@ -439,6 +452,48 @@ function fc_listar_mascota() {
         }
     });
 }
+function fc_sol_servicio(opcion) {
+    debugger;
+    var objE = {
+        ID_ENCRIP: id_mascota,
+        OPCION: opcion
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/SolicitarServicioWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            $("#errorDiv").html('');
+            $("#tbl_mascota button").attr("disabled", true);
+            openLoading();
+        },
+        success: function (data) {
+            $("#tbl_mascota button").removeAttr("disabled");
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                $("#copiaModal").modal('hide');
+                return;
+            }
+
+            $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+            closeLoading();
+            $("#copiaModal").modal('hide');
+            fc_listar_mascota();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#tbl_mascota button").removeAttr("disabled");
+            closeLoading();
+            $("#copiaModal").modal('hide');
+        }
+    });
+    event.preventDefault();
+}
 function aceptarConfirm() {
     switch (txh_idConfirm) {
         case "ANULAR":
@@ -477,6 +532,10 @@ function aceptarConfirm() {
                 }
             });
             event.preventDefault();
+            break;
+        case "SOLICITAR":
+            fc_sol_servicio(1);
+
             break;
         case "ADOPCION":
             objE = {
@@ -523,6 +582,92 @@ function aceptarConfirm() {
             $.ajax({
                 type: "POST",
                 url: "page/mantenimiento/mascota.aspx/NoAdopcionMascotaWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_mascota button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    closeLoading();
+                    fc_listar_mascota();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "PERDIDA":
+            if (validIdInput($("#txt_fecha_perdida").val())) {
+                $("#errorPerdida").html(GenerarAlertaWarning("Ingrese la fecha en la que se perdio su mascota"));                
+                $("#txt_fecha_perdida").focus();
+                return false;
+            } else if (validIdInput($("#txt_obs_perdida").val())) {
+                $("#errorPerdida").html(GenerarAlertaWarning("Ingrese una descripción"));                
+                $("#txt_obs_perdida").focus();
+                return false;
+            }
+
+            objE = {
+                ID_ENCRIP: id_mascota,
+                FEC_NAC: $("#txt_fecha_perdida").val() === "" ? null : getDateFromFormat($("#txt_fecha_perdida").val(), 'dd/MM/yyyy'),
+                OBSERVACION: $("#txt_obs_perdida").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/PerdidaMascotaWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_mascota button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    closeLoading();
+                    fc_listar_mascota();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "ENCONTRADA":
+            objE = {
+                ID_ENCRIP: id_mascota
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/EncontradaMascotaWM",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify({ objE: objE }),

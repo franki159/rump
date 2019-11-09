@@ -346,6 +346,13 @@ function MaysPrimera(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
+String.prototype.format = function () {
+    var a = this;
+    for (var k in arguments) {
+        a = a.replace(new RegExp("\\{" + k + "\\}", 'g'), arguments[k]);
+    }
+    return a
+};
 //**********************************FUNCIONES DE VALIDACION************************************/
 function isEmail(email) {
     var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
