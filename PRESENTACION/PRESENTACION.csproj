@@ -341,10 +341,51 @@
     <Content Include="templatePage\img\adop-img\img-7.jpg" />
     <Content Include="templatePage\img\adop-img\img-8.jpg" />
     <Content Include="templatePage\img\adop-img\img-9.jpg" />
+    <Content Include="templatePage\img\bg-img\._adoptame-fondo.jpg" />
+    <Content Include="templatePage\img\bg-img\._buscadordem.jpg" />
+    <Content Include="templatePage\img\bg-img\._conejos.jpg" />
+    <Content Include="templatePage\img\bg-img\._contact.jpg" />
+    <Content Include="templatePage\img\bg-img\._descuentos.jpg" />
+    <Content Include="templatePage\img\bg-img\._dni+chapita.jpg" />
+    <Content Include="templatePage\img\bg-img\._dniychapita.png" />
+    <Content Include="templatePage\img\bg-img\._fondoapp.jpg" />
+    <Content Include="templatePage\img\bg-img\._gatos.jpg" />
+    <Content Include="templatePage\img\bg-img\._general.jpg" />
+    <Content Include="templatePage\img\bg-img\._hamsters.jpg" />
+    <Content Include="templatePage\img\bg-img\._imgadopcion.jpg" />
+    <Content Include="templatePage\img\bg-img\._imgapp.jpg" />
+    <Content Include="templatePage\img\bg-img\._lostdog.jpg" />
+    <Content Include="templatePage\img\bg-img\._mascotasextraviadas-fondo.jpg" />
+    <Content Include="templatePage\img\bg-img\._mascotasextraviadas.jpg" />
+    <Content Include="templatePage\img\bg-img\._news1.jpg" />
+    <Content Include="templatePage\img\bg-img\._news2.jpg" />
+    <Content Include="templatePage\img\bg-img\._news3.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticia1.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticia2.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticia3.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticia4.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticia5.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiapri1.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiapri2.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiapri3.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiapri4.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiapri5.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiasec1.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiasec2.jpg" />
+    <Content Include="templatePage\img\bg-img\._noticiasec3.jpg" />
+    <Content Include="templatePage\img\bg-img\._pattern-mascotaextraviada.jpg" />
+    <Content Include="templatePage\img\bg-img\._perros.jpg" />
+    <Content Include="templatePage\img\bg-img\._qs-sec3.jpg" />
+    <Content Include="templatePage\img\bg-img\._qs-sec4.jpg" />
+    <Content Include="templatePage\img\bg-img\._quienessomos-fondo.jpg" />
+    <Content Include="templatePage\img\bg-img\._quienessomos-sec2.jpg" />
+    <Content Include="templatePage\img\bg-img\._registrarmascotas.jpg" />
+    <Content Include="templatePage\img\bg-img\._servicios-fondo.jpg" />
     <Content Include="templatePage\img\bg-img\add.jpg" />
     <Content Include="templatePage\img\bg-img\banner4-desktop.jpg" />
     <Content Include="templatePage\img\bg-img\conejos.jpg" />
     <Content Include="templatePage\img\bg-img\dni+chapita.jpg" />
+    <Content Include="templatePage\img\bg-img\dniychapita.png" />
     <Content Include="templatePage\img\bg-img\educacion.jpg" />
     <Content Include="templatePage\img\bg-img\esterilizacion.jpg" />
     <Content Include="templatePage\img\bg-img\gatos.jpg" />
@@ -382,6 +423,7 @@
     <Content Include="templatePage\img\bg-img\tec-qs1.png" />
     <Content Include="templatePage\img\bg-img\tec.jpg" />
     <Content Include="templatePage\img\bg-img\vacuna.jpg" />
+    <Content Include="templatePage\img\core-img\._imgapp.png" />
     <Content Include="templatePage\img\core-img\adopcion.png" />
     <Content Include="templatePage\img\core-img\chapitaydni.png" />
     <Content Include="templatePage\img\core-img\dueñosdemascota.png" />
@@ -390,6 +432,7 @@
     <Content Include="templatePage\img\core-img\fomentemoslaadop.png" />
     <Content Include="templatePage\img\core-img\ist.png" />
     <Content Include="templatePage\img\core-img\logo-orange&amp;white.png" />
+    <Content Include="templatePage\img\core-img\logo-orange_white.png" />
     <Content Include="templatePage\img\core-img\mascotasextraviadas.png" />
     <Content Include="templatePage\img\core-img\nuestro-programa.png" />
     <Content Include="templatePage\img\core-img\phone.png" />
@@ -403,7 +446,9 @@
     <Content Include="templatePage\img\core-img\tw.png" />
     <Content Include="templatePage\img\core-img\whatsapp.png" />
     <Content Include="templatePage\img\core-img\yt.png" />
+    <Content Include="templatePage\img\core-img\__imgapp.png" />
     <Content Include="templatePage\js\gmap3.min.js" />
+    <Content Include="templatePage\mextraviadas.aspx" />
     <Content Include="templatePage\quienessomos.aspx" />
     <Content Include="templatePage\servicios.aspx" />
     <Content Include="templatePage\changelog.txt" />
@@ -2635,6 +2680,13 @@
     </Compile>
     <Compile Include="templatePage\headerPage.aspx.designer.cs">
       <DependentUpon>headerPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="templatePage\mextraviadas.aspx.cs">
+      <DependentUpon>mextraviadas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="templatePage\mextraviadas.aspx.designer.cs">
+      <DependentUpon>mextraviadas.aspx</DependentUpon>
     </Compile>
     <Compile Include="templatePage\quienessomos.aspx.cs">
       <DependentUpon>quienessomos.aspx</DependentUpon>

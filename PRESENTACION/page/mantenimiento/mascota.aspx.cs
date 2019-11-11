@@ -235,6 +235,64 @@ namespace PRESENTACION.page.mantenimiento
             return objRespuesta;
         }
         [WebMethod()]
+        public static object MuerteMascotaWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                string objResultado = "";
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO_ID = eSession.ID;
+
+                objResultado = NMascota.MuerteMascotaWM(objE);
+
+                if (objResultado == "")
+                {
+                    objRespuesta.Error("Error al querer modificar.");
+                }
+                else
+                {
+//                    ECorreo correo = new ECorreo();
+//                    //Correo al cliente
+//                    correo.Para = objResultado;
+//                    correo.Asunto = "Reportar mascota extraviada";
+//                    correo.Mensaje = "<h4>¡Saludos desde RUMP!</h4>" +
+//"<p>Lamentamos oír que su mascota se ha extraviado.</p>" +
+//"<p>Con su chapita identificadora quien la encuentre podrá acceder a la información de contacto " +
+//"para poder retornarla. Introduciendo el número RUMP en la web y reportándola como " +
+//"extraviada. En cuanto suceda se le enviará una alerta indicando que la mascota ha sido " +
+//"encontrada. Del mismo modo, quien la encuentre podrá ver si el animal necesita algún " +
+//"medicamento o sufre de alguna condición o alergia.</p>" +
+//"<p>Esperamos recibir buenas noticias pronto. Por el momento haremos difusión en las redes para " +
+//"que el mayor número de gente posible esté atenta por la zona en que fue extraviada.</p>" +
+//"<p>Nos gustaría saber específicamente las circunstancias en la que su mascota se " +
+//"perdió, de este modo podremos aconsejarle para que esta situación no se vuelva a dar.</p>" +
+//"<p>Estaremos en contacto.</p>" +
+//"<p>Saludos cordiales,</p>" +
+//"<h4>Equipo RUMP</h4>";
+//                    correo.Enviar();
+                    //Correo a RUMP
+                    //correo.Para = "worldpetsperu.2210@gmail.com";
+                    //correo.Asunto = "Mascota extraviada";
+                    //correo.Mensaje = "<h4>Se perdió la mascota </h4>";
+                    //correo.Enviar();
+
+                    objRespuesta.Success("Se actualizó correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
         public static object EncontradaMascotaWM(EMascota objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();

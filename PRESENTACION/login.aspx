@@ -56,8 +56,8 @@
                                         </div>
                                         <a href="#" id="btnAcceder" class="btn btn-primary btn-user btn-block">Ingresar
                                         </a>
-                                        <hr>
-                                        <%--<a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <%--<hr>
+                                        <a href="index.html" class="btn btn-google btn-user btn-block">
                                           <i class="fab fa-google fa-fw"></i> Ingresar con Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
@@ -68,9 +68,9 @@
                                     <div class="text-center">
                                         <a class="small" href="forgotPassword.aspx">Olvidó Password?</a>
                                     </div>
-                                    <%--<div class="text-center">
+                                    <div class="text-center">
                                         <a class="small" href="register.html">Crear una Cuenta!</a>
-                                      </div>--%>
+                                      </div>
                                 </div>
                             </div>
                         </div>

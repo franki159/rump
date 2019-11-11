@@ -30,7 +30,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Reportar Mascota Extraviada</h4>
+                    <h4 class="modal-title">Reportar Mascota Encontrada</h4>
                     <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -153,12 +153,8 @@
                                 <ul id="nav">
                                     <li class="active"><a href="./">Inicio</a></li>
                                     <li><a href="templatePage/servicios.aspx">Servicios</a></li>
-									<li><a href="mextraviadas.html">Mascotas extraviadas</a></li>
-                                    <li><a href="templatePage/adoptame.aspx">Adóptame</a>
-									    <ul class="dropdown">
-                                            <li><a href="#">Enciclopedia de Razas</a></li><br>
-									    </ul>
-									</li>	
+									<li><a href="templatePage/mextraviadas.aspx">Mascotas extraviadas</a></li>
+                                    <li><a href="templatePage/adoptame.aspx">Adóptame</a></li>	
 									<li><a href="templatePage/quienessomos.aspx">¿Quiénes somos?</a></li>
 							       
                                     <li><a href="templatePage/contacto.aspx">Contacto</a></li>
@@ -227,7 +223,7 @@
                                 <div class="welcome-text text-center">
                                     <h6 data-animation="fadeInDown" data-delay="200ms">Solicita ahora tu sistema de identificación </h6>
                                     <h2 data-animation="fadeInDown" data-delay="500ms">Chapita identificadora + DNI<br/>Accederás a muchos servicios más</h2>
-                                    <a href="contacto.aspx" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
+                                    <a href="templatePage/contacto.aspx" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
                                 </div>
                             </div>
                         </div>
@@ -468,7 +464,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
 							  </ol>
 							<br/>
 							<br/>
-							 <a href="registrar.html" class="btn roberto-btnR " >REPORTAR</a>
+							 <a href="#" class="btn roberto-btnR reportar-msct-etv" >REPORTAR</a>
                         </nav>
                     </div>
                 </div>
@@ -490,19 +486,14 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
                         <!-- Post Title -->
 					    <div class="breadcrumb-content text-center">
                       <h2 class="mascotas-extraviadas">Mascotas Extraviadas</h2>
-                      <h6 class="textoadd"> Ellos te
-						  
-						  
-						  
-						  
-						  siguen buscando ayúdanos a encontrarlos</h6>
+                      <h6 class="textoadd"> Ellos te siguen buscando ayúdanos a encontrarlos</h6>
                      </div>
                   </div>
 
                 <!-- Single Post Area -->
                   <div class="col-12 col-md-6 align-content-center">
 					  <div class="breadcrumb-content text-center">
-                   <a href="mextraviadas.html" class="btn roberto-btnR align-content-center" >Búscala aquí</a>
+                   <a href="templatePage/mextraviadas.aspx" class="btn roberto-btnR align-content-center" >Búscala aquí</a>
 					</div>
                   </div>
                
@@ -623,7 +614,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
 
                             <!-- Single Blog Area -->
                             <div class="latest-blog-area">
-                                <span class="post-date"><i class="fa fa-envelope" aria-hidden="true"></i>contacto.worldpetsperu@gmail.com</span>
+                                <span class="post-date"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;worldpetsperu.2210@gmail.com</span>
                             </div>
 
                             <!-- Single Blog Area -->
@@ -651,7 +642,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
                             <ul class="footer-nav">
                                 <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Noticias</a></li>
 								<li><a href="templatePage/servicios.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
-                                <li><a href="./mextraviadas.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
+                                <li><a href="templatePage/mextraviadas.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
 								<li><a href="templatePage/adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
                                 <li><a href="templatePage/quienessomos.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
                                 <li><a href="templatePage/contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
@@ -667,10 +658,10 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
                             <span>Comunicate con nosotros escribiendonos un email</span>
 
                             <!-- Newsletter Form -->
-                            <form action="index.html" class="nl-form">
+                            <div onclick="window.location= 'templatePage/contacto.aspx'" class="nl-form">
                                 <input type="email" class="form-control" placeholder="Escribe tu email...">
                                 <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -685,7 +676,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
                         <!-- Copywrite Text -->
                         <div class="copywrite-text">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | WorldPetsPeru <i class="fa" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">RUMP</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>

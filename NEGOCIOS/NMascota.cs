@@ -50,6 +50,10 @@ namespace NEGOCIOS
         {
             return DMascota.PerdidaMascotaWM(ent);
         }
+        public static string MuerteMascotaWM(EMascota ent)
+        {
+            return DMascota.MuerteMascotaWM(ent);
+        }
         public static string SolicitarServicioWM(EMascota ent)
         {
             return DMascota.SolicitarServicioWM(ent);

@@ -38,7 +38,7 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="home.html"><img src="./img/core-img/logo-orange.png" alt=""></a>
+                        <a class="nav-brand" href=".././"><img src="./img/core-img/logo-orange.png" alt=""></a>
 						
 						     
 						<div class="top-social-area ">
@@ -63,14 +63,10 @@
                              <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li class="active"><a href="./home.html">Inicio</a></li>
-                                    <li><a href="./servicios.html">Servicios</a></li>
-									<li><a href="./mextraviadas.html">Mascotas extraviadas</a></li>
-                                    <li><a href="./adoptame.aspx">Adóptame</a>
-									    <ul class="dropdown">
-                                            <li><a href="#">Enciclopedia de Razas</a></li><br>
-									    </ul>
-									</li>	
+                                    <li class="active"><a href=".././">Inicio</a></li>
+                                    <li><a href="./servicios.aspx">Servicios</a></li>
+									<li><a href="./mextraviadas.aspx">Mascotas extraviadas</a></li>
+                                    <li><a href="./adoptame.aspx">Adóptame</a></li>	
 									<li><a href="./quienessomos.aspx">¿Quiénes somos?</a></li>
 							       
                                     <li><a href="./contacto.aspx">Contacto</a></li>

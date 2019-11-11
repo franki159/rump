@@ -296,6 +296,33 @@ namespace DATOS
                 return email;
             }
         }
+        public static string MuerteMascotaWM(EMascota objE)
+        {
+            string email = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@referencia", objE.OBSERVACION);
+                cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 14);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            email = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
+                        }
+                    }
+                }
+
+                return email;
+            }
+        }
         public static string SolicitarServicioWM(EMascota objE)
         {
             string email = "";

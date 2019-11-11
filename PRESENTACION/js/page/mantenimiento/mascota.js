@@ -168,6 +168,7 @@ function fc_listar_mascota() {
                     htmlBotones += formatButton.format('name="rep-per"', 'bg-warning', 'far fa-sad-cry', 'Reportar perdida');
                     htmlBotones += formatButton.format('name="pon-adop"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
                     htmlBotones += formatButton.format('name="sol-dup"', 'bg-success', 'fas fa-copy', 'Solicitar duplicado');
+                    htmlBotones += formatButton.format('name="mst-dead"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
                     htmlBotones += formatButton.format('name="rep-enc"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
                 }
@@ -202,16 +203,28 @@ function fc_listar_mascota() {
                     '<img class="img-row-mascota" src="img/mascota/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND +'" onerror="this.src=\'img/noPets.png\';">' +
                                 '</a>' +
                             '</div>'+
-                        '</td>';                
-                if (data.d.Resultado[i].ESTADO === 1) {//Con DNI
-                    html += '<td><span class="btn btn-success btn-sm"><i class="far fa-credit-card"></i>&nbsp;CON DNI</span></td>';
-                } else if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
-                    html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;SIN DNI</span></td>';
-                } else if (data.d.Resultado[i].ESTADO === 3) {//En ADOPCION
-                    html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';
-                } else if (data.d.Resultado[i].ESTADO === 4) {//EXTRAVIADA
-                    html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-sad-cry"></i>&nbsp;EXTRAVIADA</span></td>';
+                    '</td>';      
+                switch (data.d.Resultado[i].ESTADO) {
+                    case 1:
+                        html += '<td><span class="btn btn-success btn-sm"><i class="far fa-credit-card"></i>&nbsp;CON DNI</span></td>';
+                        break;
+                    case 2:
+                        html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;SIN DNI</span></td>';
+                        break;
+                    case 3:
+                        html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';
+                        break;
+                    case 4:
+                        html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-sad-cry"></i>&nbsp;EXTRAVIADA</span></td>';
+                        break;
+                    case 5:
+                        html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;FALLECIDO</span></td>';
+                        break;
+                    default:
+                        html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;--</span></td>';
+                        break;                    
                 }
+
                 html += '<td>' + data.d.Resultado[i].NOMBRE + '</td>';
                 html += '<td>' + data.d.Resultado[i].SEXO + '</td>';
                 html += '<td>' + data.d.Resultado[i].TAMANO + '</td>';
@@ -267,7 +280,7 @@ function fc_listar_mascota() {
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $('#pnl_mascota .modal-title').html('Editar Mascota');
-                    var objE = {
+                    objE = {
                         ID_ENCRIP: id_mascota
                     };
                     
@@ -297,6 +310,7 @@ function fc_listar_mascota() {
                             $("#txt_nombre").val(data.d.Resultado.NOMBRE);
                             $("#txt_apellido").val(data.d.Resultado.APELLIDO);
                             $("#sel_sexo").val(data.d.Resultado.SEXO).change();
+                            $("#txt_cod_microchip").val(data.d.Resultado.COD_MICROCHIP);                            
                             $("#sel_tamano").val(data.d.Resultado.TAMANO).change();
                             $("#sel_tipo").val(data.d.Resultado.MASCOTA_TIPO_ID).change();
                             raza_id = data.d.Resultado.MASCOTA_RAZA_ID;//$("#sel_raza").val(data.d.Resultado.MASCOTA_RAZA_ID).change();
@@ -437,7 +451,33 @@ function fc_listar_mascota() {
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $("#copiaModal").modal();
-                } 
+                } else if ($(this).attr("name") === "mst-dead") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'FALLECIMIENTO';
+                    contenido_html = "<div id='errorMuerte'></div><h4>¡Saludos desde RUMP!</h4>";
+                    contenido_html += "Lamentamos oír que su mascota ha fallecido." +
+                        "<p>Sabemos que es un momento díficil y compartimos su dolor. Nos gustaría saber las circunstancias en la que su mascota falleció.</p>" +
+                        '   <div class="form-group">' +
+                        '       <label>Fecha que falleció <strong class="text-danger"> (*)</strong ></label>' +
+                        '       <div data-date-format="dd/mm/yyyy" class="input-group date dtOp" id="div_fecha_muerte"> ' +
+                        '           <input id="txt_fecha_muerte" type = "text" class="form-control" data-mask="99/99/9999" size="16">' +
+                        '           <span class="input-group-addon btn-danger"> <i class="icon-calendar"></i></span> ' +
+                        '       </div>' +
+                        '   </div>' +
+                        '        <div class="form-group">' +
+                        '            <label>Referencia</label>' +
+                        '            <textarea id="txt_obs_muerte" placeholder="Escriba las circunstancias en que falleció" maxlength="500" class="form-control" rows="3"></textarea>' +
+                        '        </div>';
+
+                    window.parent.fc_mostrar_confirmacion(contenido_html);
+
+                    $('#div_fecha_muerte').datepicker({
+                        format: 'dd/mm/yyyy',
+                        autoclose: true,
+                        orientation: "top left"
+                    });
+                }
             });
             
             closeLoading();
@@ -450,7 +490,6 @@ function fc_listar_mascota() {
     });
 }
 function fc_sol_servicio(opcion) {
-    debugger;
     var objE = {
         ID_ENCRIP: id_mascota,
         OPCION: opcion
@@ -620,7 +659,7 @@ function aceptarConfirm() {
                 FEC_NAC: $("#txt_fecha_perdida").val() === "" ? null : getDateFromFormat($("#txt_fecha_perdida").val(), 'dd/MM/yyyy'),
                 OBSERVACION: $("#txt_obs_perdida").val()
             };
-            debugger;
+            
             $.ajax({
                 type: "POST",
                 url: "page/mantenimiento/mascota.aspx/PerdidaMascotaWM",
@@ -660,6 +699,54 @@ function aceptarConfirm() {
             $.ajax({
                 type: "POST",
                 url: "page/mantenimiento/mascota.aspx/EncontradaMascotaWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_mascota button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    fc_listar_mascota();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_mascota button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "FALLECIMIENTO":
+            if (validIdInput($("#txt_fecha_muerte").val())) {
+                $("#errorMuerte").html(GenerarAlertaWarning("Ingrese la fecha en la que falleció su mascota"));
+                $("#txt_fecha_muerte").focus();
+                return false;
+            } else if (validIdInput($("#txt_obs_muerte").val())) {
+                $("#errorMuerte").html(GenerarAlertaWarning("Ingrese una descripción"));
+                $("#txt_obs_muerte").focus();
+                return false;
+            }
+
+            objE = {
+                ID_ENCRIP: id_mascota,
+                FEC_NAC: $("#txt_fecha_muerte").val() === "" ? null : getDateFromFormat($("#txt_fecha_muerte").val(), 'dd/MM/yyyy'),
+                OBSERVACION: $("#txt_obs_muerte").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/MuerteMascotaWM",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify({ objE: objE }),

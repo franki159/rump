@@ -76,7 +76,7 @@
                         <div class="single-contact-info">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             <h4>Email</h4>
-                            <p>worldpetsperú.2210@gmail.com</p>
+                            <p>worldpetsperu.2210@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -89,6 +89,15 @@
         </div>
     </section>
     <!-- Google Maps & Contact Info Area End -->
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
 
     <!-- Contact Form Area Start -->
     <div class="roberto-contact-form-area section-padding-100">
@@ -108,18 +117,19 @@
                     <!-- Form -->
                     <div class="roberto-contact-form">
                         <form action="#" method="post">
+                            <div id="errorMail"></div>
                             <div class="row">
                                 <div class="col-12 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
-                                    <input type="text" name="message-name" class="form-control mb-30" placeholder="Tu nombre">
+                                    <input type="text" id="txt_nombre" name="message-name" class="form-control mb-30" placeholder="Tu nombre">
                                 </div>
                                 <div class="col-12 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
-                                    <input type="email" name="message-email" class="form-control mb-30" placeholder="Email">
+                                    <input type="email" id="txt_email" name="message-email" class="form-control mb-30" placeholder="Email">
                                 </div>
                                 <div class="col-12 wow fadeInUp" data-wow-delay="100ms">
-                                    <textarea name="message" class="form-control mb-30" placeholder="Tu mensaje"></textarea>
+                                    <textarea name="message" id="txt_mensaje" class="form-control mb-30" placeholder="Tu mensaje"></textarea>
                                 </div>
                                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="100ms">
-                                    <button type="submit" class="btn roberto-btn mt-15">Enviar mensaje</button>
+                                    <button type="submit" class="btn roberto-btn mt-15 send-email-contact">Enviar mensaje</button>
                                 </div>
                             </div>
                         </form>

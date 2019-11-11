@@ -89,5 +89,28 @@ namespace PRESENTACION
             }
             return objRespuesta;
         }
+
+        [WebMethod()]
+        public static object EnviarMensajeWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                ECorreo correo = new ECorreo();
+                //Para el usuario
+                correo.Para = "worldpetsperu.2210@gmail.com";
+                correo.Copia = objE.CORREO;
+                correo.Asunto = "Mensaje de " + objE.NOMBRE + " Correo: "+ objE.CORREO;
+                correo.Mensaje = objE.OBSERVACION;
+                correo.Enviar();
+
+                objRespuesta.Success("Se envió correctamente");
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }

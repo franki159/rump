@@ -28,19 +28,19 @@
 
                             <!-- Single Blog Area -->
                             <div class="latest-blog-area">
-                                <span class="post-date"><i class="fa fa-envelope" aria-hidden="true"></i>contacto.worldpetsperu@gmail.com</span>
+                                <span class="post-date"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;worldpetsperu.2210@gmail.com</span>
                             </div>
 
                             <!-- Single Blog Area -->
                             <div class="latest-blog-area">
                                 <a class="post-title">Horario de oficina</a>
-                                <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i>9:00-18:00hrs</span>
+                                <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;9:00-18:00hrs</span>
                             </div>
 							
 							<!-- Single Blog Area -->
                             <div class="latest-blog-area">
                                 <a class="post-title">Horario de entrega de Chapitas/DNI</a>
-                                <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i>10:00-17:00hrs</span>
+                                <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;10:00-17:00hrs</span>
                             </div>
 							
                         </div>
@@ -56,7 +56,7 @@
                             <ul class="footer-nav">
                                 <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Noticias</a></li>
 								<li><a href="./servicios.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
-                                <li><a href="./mextraviadas.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
+                                <li><a href="./mextraviadas.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
 								<li><a href="./adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
                                 <li><a href="./quienessomos.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
                                 <li><a href="./contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
@@ -72,10 +72,10 @@
                             <span>Comunicate con nosotros escribiendonos un email</span>
 
                             <!-- Newsletter Form -->
-                            <form action="index.html" class="nl-form">
+                            <div onclick="window.location= 'contacto.aspx'" class="nl-form">
                                 <input type="email" class="form-control" placeholder="Escribe tu email...">
                                 <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <!-- Copywrite Text -->
                         <div class="copywrite-text">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | WorldPetsPeru <i class="fa" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">RUMP</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>
@@ -122,4 +122,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- GMap -->
 <script src="js/gmap3.min.js"></script>
 
-<script src="../js/inicioSesion.js"></script>
+<script src="../assets/select2/js/select2.full.js"></script>
+<script src="../js/all/date.js"></script>
+<script type="text/javascript">
+        $.getScript("../js/general.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema (general.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+
+        $.getScript("../js/inicioSesion.js")
+            .fail(function (jqxhr, settings, exception) {
+                alert("Error: No se ha cargando un complemento del sistema (index.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
+            });
+    </script>
