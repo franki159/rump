@@ -1059,7 +1059,8 @@ $("#btn_save_med").click(function (evt) {
     var eMedico = {
         NOMBRE: $("#txt_nombre_med").val(),
         APELLIDO: $("#txt_apellido_med").val(),
-        TELEFONO: $("#txt_telefono_med").val()
+        TELEFONO: $("#txt_telefono_med").val(),
+        COD_MEDICO: $("#txt_cod_med").val()
     };
 
     $.ajax({

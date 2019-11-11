@@ -18,6 +18,7 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
                 cmd.Parameters.AddWithValue("@apellido", objE.APELLIDO);
                 cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
+                cmd.Parameters.AddWithValue("@cod_medico", objE.COD_MEDICO);
                 cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
                 cmd.Parameters.AddWithValue("@opcion", 1);
                 cmd.CommandType = CommandType.StoredProcedure;

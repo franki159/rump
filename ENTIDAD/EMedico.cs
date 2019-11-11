@@ -12,5 +12,6 @@ namespace ENTIDAD
         public string APELLIDO { get; set; }
         public string TELEFONO { get; set; }
         public decimal USUARIO_ID { get; set; }
+        public string COD_MEDICO { get; set; }
     }
 }
