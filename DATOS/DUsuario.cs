@@ -252,6 +252,51 @@ namespace DATOS
 
             return EUtil.getEncriptar(ID_USUARIO.ToString());
         }
+        public static string CrearUsuario(EUsuario objE)
+        {
+            decimal ID_USUARIO = 0;
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlTransaction transaccRegistro;
+                cn.Open();
+                transaccRegistro = cn.BeginTransaction();
+
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn, transaccRegistro))
+                    {
+                        cmd.Parameters.AddWithValue("@email", objE.EMAIL);
+                        cmd.Parameters.AddWithValue("@password", objE.PASSWORD);
+                        cmd.Parameters.AddWithValue("@opcion", 11);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    ID_USUARIO = dr.IsDBNull(dr.GetOrdinal("ID_usuario")) ? 0 : dr.GetDecimal(dr.GetOrdinal("ID_usuario"));
+                                }
+                            }
+                        }
+                    }
+
+                    transaccRegistro.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaccRegistro.Rollback();
+                    ID_USUARIO = 0;
+                    throw (ex);
+                }
+                cn.Close();
+            }
+
+            return EUtil.getEncriptar(ID_USUARIO.ToString());
+        }
         public static int TokenActivoUsuario(EUsuario objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
