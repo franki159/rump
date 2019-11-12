@@ -107,6 +107,7 @@ namespace DATOS
                         mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
                         mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
                         mItem.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
+                        mItem.COD_MICROCHIP = dr.IsDBNull(dr.GetOrdinal("cod_microchip")) ? string.Empty : dr.GetString(dr.GetOrdinal("cod_microchip"));
                         mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
                         mItem.TAMANO = dr.IsDBNull(dr.GetOrdinal("tamano")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano"));
                         mItem.MASCOTA_TIPO_ID = dr.IsDBNull(dr.GetOrdinal("mascota_tipo_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("mascota_tipo_id"));
@@ -189,6 +190,7 @@ namespace DATOS
                         mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
                         mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
                         mItem.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
+                        mItem.COD_MICROCHIP = dr.IsDBNull(dr.GetOrdinal("cod_microchip")) ? string.Empty : dr.GetString(dr.GetOrdinal("cod_microchip"));
                         mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
                         mItem.TAMANO = dr.IsDBNull(dr.GetOrdinal("tamano")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano"));
                         mItem.MASCOTA_TIPO_ID = dr.IsDBNull(dr.GetOrdinal("mascota_tipo_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("mascota_tipo_id"));
@@ -313,6 +315,20 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static int EncontradaMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 13);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        
         public static int NoAdopcionMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
@@ -326,6 +342,85 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static string PerdidaMascotaWM(EMascota objE)
+        {
+            string email = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@referencia", objE.OBSERVACION);
+                cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 12);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            email = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
+                        }
+                    }
+                }
+
+                return email;
+            }
+        }
+        public static string MuerteMascotaWM(EMascota objE)
+        {
+            string email = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@referencia", objE.OBSERVACION);
+                cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", 14);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            email = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
+                        }
+                    }
+                }
+
+                return email;
+            }
+        }
+        public static string SolicitarServicioWM(EMascota objE)
+        {
+            string email = "";
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_solicitar_servicio", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@opcion", objE.OPCION);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            email = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
+                        }
+                    }
+                }
+
+                return email;
+            }
+        }
         public static int ActualizarMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
@@ -334,6 +429,8 @@ namespace DATOS
                 
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@tamano", objE.TAMANO);
+
+                cmd.Parameters.AddWithValue("@cod_microchip", objE.COD_MICROCHIP);
                 cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);
                 cmd.Parameters.AddWithValue("@calificacion", objE.CALIFICACION);
                 cmd.Parameters.AddWithValue("@color", objE.COLOR);
@@ -447,6 +544,7 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
                         cmd.Parameters.AddWithValue("@apellido", objE.APELLIDO);
                         cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
+                        cmd.Parameters.AddWithValue("@cod_microchip", objE.COD_MICROCHIP);
                         cmd.Parameters.AddWithValue("@tamano", objE.TAMANO);
                         cmd.Parameters.AddWithValue("@color", objE.COLOR);
                         cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);

@@ -108,7 +108,7 @@
                                         <input id="txt_apellido" placeholder="Escriba el apellido..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Sexo <strong class="text-danger">(*)</strong></label>
                                         <select id="sel_sexo" class="form-control">
@@ -116,6 +116,12 @@
                                             <option value="Macho">Macho</option>
                                             <option value="Hembra">Hembra</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Código microchip</label>
+                                        <input id="txt_cod_microchip" placeholder="Código de microchip" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>
@@ -530,8 +536,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="btn_select_prop" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-user-plus" aria-hidden="true"></i>GUARDAR</button>
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cerrar</button>
+                <button id="btn_select_prop" type="button" class="btn btn-info btn-sm"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Seleccionar</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -604,6 +610,71 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--***********************  TIPOS DE COPIA  **************************-->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="copiaModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Seleccione una opción</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(2)">
+                            <div class="card-header card-header-fcp">
+                                <i class="far fa-images"></i>
+                            </div>
+                            <div class="card-body">
+                                <span class="card-title"><strong>Copia DNI</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white btn-3-warning mb-3" onclick="javascript:fc_sol_servicio(3)">
+                            <div class="card-header card-header-fcp">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <div class="card-body">
+                                <span class="card-title"><strong>Copia Chapita</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white btn-3-danger mb-3" onclick="javascript:fc_sol_servicio(4)">
+                            <div class="card-header card-header-fcp">
+                                <i class="fas fa-user-tag"></i>
+                            </div>
+                            <div class="card-body">
+                                <span class="card-title"><strong>DNI y Chapita</strong></span>
+                            </div>
+                        </div>
+                    </div>                    
+                     <div class="col-md-3">
+                        <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(5)">
+                            <div class="card-header card-header-fcp">
+                                <i class="fas fa-user-tag"></i>
+                            </div>
+                            <div class="card-body">
+                                <span class="card-title"><strong>Renovación DNI</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white btn-3-success mb-3" onclick="javascript:fc_sol_servicio(6)">
+                            <div class="card-header card-header-fcp">
+                                <i class="far fa-images"></i>
+                            </div>
+                            <div class="card-body">
+                                <span class="card-title"><strong>Cerfiticado<br>dueño<br>responsable</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

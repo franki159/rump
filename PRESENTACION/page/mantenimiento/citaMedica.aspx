@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>DNI</label>
+                                        <label>DNI de Mascota</label>
                                         <input id="lbl_dni" class="form-control" type="text" maxlength="90" disabled="disabled" />
                                     </div>
                                 </div>
@@ -311,24 +311,30 @@
             <div class="modal-body">
                 <div id="errorMedico"></div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Nombre <strong class="text-danger">(*)</strong></label>
                             <input id="txt_nombre_med" class="form-control" type="text" maxlength="250" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Apellido <strong class="text-danger">(*)</strong></label>
                             <input id="txt_apellido_med" class="form-control" type="text" maxlength="250" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Telefono</label>
                             <input id="txt_telefono_med" class="form-control" type="text" maxlength="250" />
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Código C.M.V.P.</label>
+                            <input id="txt_cod_med" class="form-control" type="text" maxlength="100" />
+                        </div>
+                    </div>                    
                 </div>
             </div>
             <div class="modal-footer">

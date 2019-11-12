@@ -48,9 +48,25 @@ namespace NEGOCIOS
         {
             return DMascota.AdopcionMascotaWM(ent);
         }
+        public static int EncontradaMascotaWM(EMascota ent)
+        {
+            return DMascota.EncontradaMascotaWM(ent);
+        }        
         public static int NoAdopcionMascotaWM(EMascota ent)
         {
             return DMascota.NoAdopcionMascotaWM(ent);
+        }
+        public static string PerdidaMascotaWM(EMascota ent)
+        {
+            return DMascota.PerdidaMascotaWM(ent);
+        }
+        public static string MuerteMascotaWM(EMascota ent)
+        {
+            return DMascota.MuerteMascotaWM(ent);
+        }
+        public static string SolicitarServicioWM(EMascota ent)
+        {
+            return DMascota.SolicitarServicioWM(ent);
         }
         public static int ActualizarMascotaWM(EMascota ent)
         {

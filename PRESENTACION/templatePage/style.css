@@ -4338,6 +4338,10 @@ iframe {
     left: 5px;
 }
 
+.form-control:focus {
+    width: 100%!important;
+}
+
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .iframe {

@@ -19,6 +19,7 @@ namespace ENTIDAD
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string SEXO { get; set; }
+        public string COD_MICROCHIP { get; set; }
         public string TAMANO { get; set; }
         public string TIPO { get; set; }
         public string RAZA { get; set; }

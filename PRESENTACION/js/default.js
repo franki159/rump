@@ -225,8 +225,9 @@ function fc_mostrar_confirmacion(contenido) {
 }
 
 function fc_aceptar_confirmacion() {
-    aceptarConfirm();
-    $("#modalConfirm").modal('hide');
+    if (aceptarConfirm() !== false) {
+        $("#modalConfirm").modal('hide');
+    }    
 }
 
 function openNav() {
