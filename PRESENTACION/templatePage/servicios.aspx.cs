@@ -40,5 +40,11 @@ namespace PRESENTACION.templatePage
             }
             return objRespuesta;
         }
+
+        [WebMethod()]
+        public static object ActualizaMapa()
+        {
+            return "";
+        }
     }
 }

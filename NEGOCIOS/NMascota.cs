@@ -20,6 +20,11 @@ namespace NEGOCIOS
             return DMascota.listarMascota(ent);
         }
 
+        public static List<EMascota> listarMascotaAdopcion(EMascota ent)
+        {
+            return DMascota.listarMascotaAdopcion(ent);
+        }
+
         public static EMascota ObtenerMascota(EMascota ent)
         {
             return DMascota.ObtenerMascota(ent);
@@ -29,7 +34,12 @@ namespace NEGOCIOS
         {
             return DMascota.ObtenerMascotaxDNI(ent);
         }
-        
+
+        public static EMascota ObtenerMascotaAdopcion(EMascota ent)
+        {
+            return DMascota.ObtenerMascotaAdopcion(ent);
+        }
+
         public static int AnularMascotaWM(EMascota ent)
         {
             return DMascota.AnularMascotaWM(ent);

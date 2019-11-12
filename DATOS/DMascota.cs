@@ -46,6 +46,46 @@ namespace DATOS
             }
             return lista;
         }
+
+        public static List<EMascota> listarMascotaAdopcion(EMascota objE)
+        {
+            List<EMascota> lista = new List<EMascota>();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_lst_adopcion", cn);
+                cmd.Parameters.AddWithValue("@tamano", objE.TAMANO);
+                cmd.Parameters.AddWithValue("@tipo_id", objE.TIPO);
+                cmd.Parameters.AddWithValue("@raza_id", objE.RAZA);
+                cmd.Parameters.AddWithValue("@calificacion", objE.CALIFICACION);
+                cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        EMascota mItem = new EMascota();
+                        mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
+                        mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
+                        mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                        mItem.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
+                        mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
+                        mItem.TAMANO = dr.IsDBNull(dr.GetOrdinal("tamano")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano"));
+                        mItem.COLOR = dr.IsDBNull(dr.GetOrdinal("color")) ? string.Empty : dr.GetString(dr.GetOrdinal("color"));
+                        mItem.FEC_NAC = dr.IsDBNull(dr.GetOrdinal("fecha_nacimiento")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento"));
+                        mItem.TIPO_DSC = dr.IsDBNull(dr.GetOrdinal("TIPO_DSC")) ? string.Empty : dr.GetString(dr.GetOrdinal("TIPO_DSC"));
+                        mItem.RAZA_DSC = dr.IsDBNull(dr.GetOrdinal("RAZA_DSC")) ? string.Empty : dr.GetString(dr.GetOrdinal("RAZA_DSC"));
+                        mItem.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
+                        lista.Add(mItem);
+                    }
+                }
+            }
+            return lista;
+        }
+
         public static EMascota ObtenerMascota(EMascota objE)
         {
             EMascota mItem = new EMascota();
@@ -213,7 +253,40 @@ namespace DATOS
             return mItem;
 
         }
-        
+
+        public static EMascota ObtenerMascotaAdopcion(EMascota objE)
+        {
+            EMascota mItem = new EMascota();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_lst_adopcion", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
+                        mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
+                        mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                        mItem.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
+                        mItem.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
+                        mItem.TAMANO = dr.IsDBNull(dr.GetOrdinal("tamano")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano"));
+                        mItem.COLOR = dr.IsDBNull(dr.GetOrdinal("color")) ? string.Empty : dr.GetString(dr.GetOrdinal("color"));
+                        mItem.FEC_NAC = dr.IsDBNull(dr.GetOrdinal("fecha_nacimiento")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento"));
+                        mItem.TIPO_DSC = dr.IsDBNull(dr.GetOrdinal("TIPO_DSC")) ? string.Empty : dr.GetString(dr.GetOrdinal("TIPO_DSC"));
+                        mItem.RAZA_DSC = dr.IsDBNull(dr.GetOrdinal("RAZA_DSC")) ? string.Empty : dr.GetString(dr.GetOrdinal("RAZA_DSC"));
+                        mItem.FOTO = dr.IsDBNull(dr.GetOrdinal("foto")) ? string.Empty : dr.GetString(dr.GetOrdinal("foto"));
+                    }
+                }
+            }
+            return mItem;
+        }
+
         public static int AnularMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))

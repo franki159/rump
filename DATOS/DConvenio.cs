@@ -42,6 +42,8 @@ namespace DATOS
                             mConvenio.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
                             mConvenio.TIPO_ID = dr.IsDBNull(dr.GetOrdinal("convenio_tipo_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("convenio_tipo_id"));
                             mConvenio.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                            mConvenio.BENEFICIO = dr.IsDBNull(dr.GetOrdinal("beneficio")) ? string.Empty : dr.GetString(dr.GetOrdinal("beneficio"));
+                            mConvenio.PUNTO_AUTORIZADO = dr.IsDBNull(dr.GetOrdinal("punto_autorizado")) ? Convert.ToInt16(0) : dr.GetInt16(dr.GetOrdinal("punto_autorizado"));
                             mConvenio.DIRECCION = dr.IsDBNull(dr.GetOrdinal("direccion")) ? string.Empty : dr.GetString(dr.GetOrdinal("direccion"));
                             mConvenio.TELEFONO = dr.IsDBNull(dr.GetOrdinal("telefono")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefono"));
                             mConvenio.LATITUD = dr.IsDBNull(dr.GetOrdinal("latitud")) ? string.Empty : dr.GetString(dr.GetOrdinal("latitud"));

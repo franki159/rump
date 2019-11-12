@@ -266,7 +266,7 @@
     // :: 17.0 Nice Select Active Code
     // *******************************
     if ($.fn.countdown) {
-        $('select').niceSelect();
+        //$('select').niceSelect();
     }
 
     // ******************************

@@ -276,6 +276,7 @@
     <Content Include="js\index.js" />
     <Content Include="js\inicioSesion.js" />
     <Content Include="js\forgotPassword.js" />
+    <Content Include="js\adoptame.js" />
     <Content Include="js\page\mantenimiento\citaMedica.js" />
     <Content Include="js\password.js" />
     <Content Include="js\map.js" />

@@ -19,6 +19,8 @@ namespace ENTIDAD
             public decimal ID { get; set; }
             public decimal TIPO_ID { get; set; }
             public string NOMBRE { get; set; }
+            public string BENEFICIO { get; set; }
+            public Int16 PUNTO_AUTORIZADO { get; set; }
             public string TELEFONO { get; set; }
             public string DIRECCION { get; set; }
             public string LATITUD { get; set; }

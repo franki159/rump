@@ -17,6 +17,9 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Api Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMpJ4QtIrcgHEjhiyDhzAh4q5G7yIyzgg" type="text/javascript"></script>
 </head>
 
 <body>
@@ -223,7 +226,6 @@
 
     <!-- Footer Area Start -->
     <!--#include file="footerPage.aspx"-->
-
-</body>
     <script src="../js/map.js"></script>
+</body>
 </html>
