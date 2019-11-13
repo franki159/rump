@@ -63,43 +63,47 @@ function fc_listar_inicio() {
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_tipo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }
-
-            /************************ Departamento ****************************/
-            var objE = {
-                CODIGO: "DEPARTAMENTO"
-            };
-            $.ajax({
-                type: "POST",
-                url: "page/mantenimiento/mascota.aspx/listarParametro",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ objE: objE }),
-                async: true,
-                success: function (data) {
-                    if (!data.d.Activo) {
-                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                        closeLoading();
-                        return;
-                    }
-                    
-                    $('#sel_departamento').append("<option></option>");
-                    for (var i = 0; i < data.d.Resultado.length; i++) {
-                        $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
-                    }
-
-                    closeLoading();
-                },
-                error: function (data) {
-                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                    closeLoading();
-                }
-            });
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
             closeLoading();
         }
     });
+
+    /************************ Departamento ****************************/
+    objE = {
+        CODIGO: "DEPARTAMENTO"
+    };
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: false,
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_departamento').append("<option></option>");
+            $('#sel_departamento_cita').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+                $('#sel_departamento_cita').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }            
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+
+    listarClinicas();
+    listarMedicos();
+    listarTipoCita();
 }
 /*Funciones*/
 function fc_listar_mascota() {
@@ -165,9 +169,12 @@ function fc_listar_mascota() {
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
                     htmlBotones += formatButton.format('name="quit-adop"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
                 } else if (data.d.Resultado[i].ESTADO === 1) {//Con DNI (no adopcion)
+                    $('#sel_mascota').append("<option dni-msct='" + data.d.Resultado[i].DNI + "' value='" + data.d.Resultado[i].ID_ENCRIP + "'>" + data.d.Resultado[i].NOMBRE + "</option>");
+
                     htmlBotones += formatButton.format('name="rep-per"', 'bg-warning', 'far fa-sad-cry', 'Reportar perdida');
                     htmlBotones += formatButton.format('name="pon-adop"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
-                    htmlBotones += formatButton.format('name="sol-dup"', 'bg-success', 'fas fa-copy', 'Solicitar duplicado');
+                    htmlBotones += formatButton.format('name="sol-dup"', 'bg-success', 'fas fa-copy', 'Solicitudes y trámites');
+                    htmlBotones += formatButton.format('name="cit-med"', 'bg-success', 'fas fa-clinic-medical', 'Nueva Cita Médica');
                     htmlBotones += formatButton.format('name="mst-dead"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
                     htmlBotones += formatButton.format('name="rep-enc"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
@@ -466,7 +473,7 @@ function fc_listar_mascota() {
                         '       </div>' +
                         '   </div>' +
                         '        <div class="form-group">' +
-                        '            <label>Referencia</label>' +
+                        '            <label>Observación</label>' +
                         '            <textarea id="txt_obs_muerte" placeholder="Escriba las circunstancias en que falleció" maxlength="500" class="form-control" rows="3"></textarea>' +
                         '        </div>';
 
@@ -477,6 +484,14 @@ function fc_listar_mascota() {
                         autoclose: true,
                         orientation: "top left"
                     });
+                } else if ($(this).attr("name") === "cit-med") {
+                    limpiarCita();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    $("#imgMascotaCita").attr("src", $(this).parent().parent().parent().parent().parent().find("td").eq(2).children().children().children(0)[0].src + '?v=' + valRND);
+                    $("#lbl_nom_mascota").val($(this).parent().parent().parent().parent().parent().find("td").eq(4).html());
+                    activaTab('datoCita');
+                    $('#pnl_cita_medica .modal-title').html('Registrar Cita médica');
+                    $("#pnl_cita_medica").modal('show');
                 }
             });
             
@@ -1057,7 +1072,6 @@ $("#sel_enfermedad").on('change', function () {
 $("#imgMascota").change(function () {
     readURLImage(this, "img_Foto");
 });
-
 $("#btn_buscar").click(function () {
     $("#btn_buscar").button('loading');
     $("#errorDiv").html('');
@@ -1413,3 +1427,420 @@ $("#btn_select_prop").click(function (evt) {
     });
     event.preventDefault();
 });
+/******************** CITA MEDICA *****************/
+function limpiarCita() {
+    $("#errorDiv").html('');
+    $("#errorCita").html('');
+
+    $("#pnl_cita_medica").css("pointer-events", "visible");
+    $("#pnl_cita_medica select").val('0');
+    $("#pnl_cita_medica input").val('');
+    $("#pnl_cita_medica textarea").val('');
+    $("#pnl_cita_medica select").attr("disabled", false);
+
+    $('#sel_tipo_cita').val(null).change();
+    $('#sel_departamento_cita').val(null).change();
+    $("#sel_provincia_cita").empty();
+    $("#sel_distrito_cita").empty();
+}
+function listarTipoCita() {
+    var objE = {
+        GRUPO: 'tipo_cita'
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "default.aspx/listarParametroGrupo",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $('#sel_tipo_cita').empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_tipo_cita').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_tipo_cita').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+}
+function listarClinicas() {
+    objE = {
+        CODIGO: "CLINICA"
+    };
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: false,
+        beforeSend: function () {
+            $('#sel_clinica').empty();
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+            $('#sel_clinica').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_clinica').append("<option dir-cli='" + data.d.Resultado[i].DESCRIPCION.split("|")[1] + "' value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION.split("|")[0] + "</option>");
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+}
+function listarMedicos() {
+    objE = {
+        CODIGO: "MEDICO"
+    };
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: false,
+        beforeSend: function () {
+            $('#sel_veterinario').empty();
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+            $('#sel_veterinario').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_veterinario').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+}
+
+$("#sel_mascota").on('change', function () {
+    $("#lbl_dni").val($('option:selected', this).attr('dni-msct'));
+});
+$("#sel_clinica").on('change', function () {
+    $("#lbl_direccion_cli").val($('option:selected', this).attr('dir-cli'));
+});
+$(".add-cli").click(function () {
+    $("#pnl_clinica").modal('show');
+    $("#sel_departamento_cita").focus();
+});
+$(".add-med").click(function () {
+    $("#pnl_medico").modal('show');
+    $("#txt_nombre_med").focus();
+});
+
+$("#sel_departamento_cita").on('change', function () {
+    /************************ Listado de Provincia ****************************/
+    var objE = {
+        CODIGO: "PROVINCIA",
+        vPARAM1: $("#sel_departamento_cita").val()
+    };
+
+    if ($("#sel_departamento_cita").val() === '') {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            $('#sel_provincia_cita').empty();
+            $("#sel_distrito_cita").empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorClinica").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_provincia_cita').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_provincia_cita').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            if (prov_id !== 0) {
+                $("#sel_provincia_cita").val(prov_id).change();
+                prov_id = 0;
+            }
+        },
+        error: function (data) {
+            $("#errorClinica_cita").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+});
+$("#sel_provincia_cita").on('change', function () {
+    /************************ Listado de Distrito ****************************/
+    var objE = {
+        CODIGO: "DISTRITO",
+        vPARAM1: $("#sel_departamento_cita").val(),
+        vPARAM2: $("#sel_provincia_cita").val()
+    };
+
+    if ($("#sel_provincia_cita").val() === '') {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            $('#sel_distrito').empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorClinica").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_distrito_cita').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_distrito_cita').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            if (dis_id !== 0) {
+                $("#sel_distrito_cita").val(dis_id).change();
+            }
+        },
+        error: function (data) {
+            $("#errorClinica_cita").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+});
+
+$("#btn_save_cli").click(function (evt) {
+    $("#errorClinica").html('');
+
+    if (validIdInput($("#sel_distrito_cita").val())) {
+        $("#errorClinica").html(GenerarAlertaWarning("Ubigeo: Seleccione correctamente Departamento, Provincia y Distrito"));
+        return;
+    } else if (validIdInput($("#txt_direccion_cli").val())) {
+        $("#errorClinica").html(GenerarAlertaWarning("Dirección: Ingrese una dirección"));
+        $("#txt_direccion_cli").focus();
+        return;
+    } else if (validIdInput($("#txt_nom_clinica").val())) {
+        $("#errorClinica").html(GenerarAlertaWarning("Nombre: Ingrese el nombre de la clínica"));
+        $("#txt_nom_clinica").focus();
+        return;
+    }
+
+    var eClinica = {
+        NOMBRE: $("#txt_nom_clinica").val(),
+        TELEFONO: $("#txt_tel_clinica").val(),
+        DIRECCION: $("#txt_direccion_cli").val(),
+        GEOGRAFIA_ID: $("#sel_distrito_cita").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/citaMedica.aspx/ActualizarClinicaCitaWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: eClinica }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $("#pnl_clinica button").attr("disabled", true);
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorClinica").html(GenerarAlertaError(data.d.Mensaje));
+                $("#pnl_clinica button").attr("disabled", false);
+                closeLoading();
+                return;
+            }
+            listarClinicas();
+            closeLoading();
+            $("#pnl_clinica button").attr("disabled", false);
+            $('#sel_departamento_cita').val(null).change();
+            $("#sel_provincia_cita").empty();
+            $("#sel_distrito_cita").empty();
+            $("#pnl_clinica input").val("");
+            $("#pnl_clinica").modal("hide");
+            $('#sel_clinica').val(data.d.Resultado).change();
+        },
+        error: function (data) {
+            $("#errorClinica").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#pnl_clinica button").attr("disabled", false);
+            closeLoading();
+        }
+    });
+    event.preventDefault();
+});
+$("#btn_save_med").click(function (evt) {
+    $("#errorMedico").html('');
+
+    if (validIdInput($("#txt_nombre_med").val())) {
+        $("#errorMedico").html(GenerarAlertaWarning("Nombre: Ingrese un nombre del medico"));
+        $("#txt_nombre_med").focus();
+        return;
+    } else if (validIdInput($("#txt_apellido_med").val())) {
+        $("#errorMedico").html(GenerarAlertaWarning("Apellido: Ingrese el apellido del doctor"));
+        $("#txt_apellido_med").focus();
+        return;
+    }
+
+    var eMedico = {
+        NOMBRE: $("#txt_nombre_med").val(),
+        APELLIDO: $("#txt_apellido_med").val(),
+        TELEFONO: $("#txt_telefono_med").val(),
+        COD_MEDICO: $("#txt_cod_med").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/citaMedica.aspx/ActualizarMedicoCitaWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: eMedico }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $("#pnl_medico button").attr("disabled", true);
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorMedico").html(GenerarAlertaError(data.d.Mensaje));
+                $("#pnl_medico button").attr("disabled", false);
+                closeLoading();
+                return;
+            }
+            listarMedicos();
+            closeLoading();
+            $("#pnl_medico button").attr("disabled", false);
+            $("#pnl_medico input").val("");
+            $("#pnl_medico").modal("hide");
+            $('#sel_veterinario').val(data.d.Resultado).change();
+        },
+        error: function (data) {
+            $("#errorMedico").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#pnl_medico button").attr("disabled", false);
+            closeLoading();
+        }
+    });
+    event.preventDefault();
+});
+$("#btn_guardar_cita").click(function (event) {
+    $("#errorCita").html('');
+
+    if (validIdInput($("#sel_clinica").val())) {
+        $("#errorCita").html(GenerarAlertaWarning("Clinica: Seleccione una clinica"));
+        activaTab('datoCita');
+        $("#sel_clinica").focus();
+        return;
+    } else if (validIdInput($("#sel_veterinario").val())) {
+        $("#errorCita").html(GenerarAlertaWarning("Veterinario: Seleccione un Doctor Veterinario"));
+        activaTab('datoCita');
+        $("#sel_veterinario").focus();
+        return;
+    } else if (validIdInput($("#sel_tipo_cita").val())) {
+        $("#errorCita").html(GenerarAlertaWarning("Tipo: Seleccione un tipo de cita"));
+        activaTab('datoCita');
+        $("#sel_tipo_cita").focus();
+        return;
+    } else if (validIdInput($("#txt_motivo").val())) {
+        $("#errorCita").html(GenerarAlertaWarning("Motivo: ingresar el motivo de la cita"));
+        activaTab('datoCita');
+        $("#errorCita").focus();
+        return;
+    } else if (validIdInput($("#txt_fecha_cita").val())) {
+        $("#errorCita").html(GenerarAlertaWarning("Fecha: Ingrese la fecha de la cita"));
+        activaTab('detalle');
+        $("#txt_fecha_cita").focus();
+        return;
+    } 
+
+    var eCita = {
+        FECHA_ATENCION_MEDICA: getDateFromFormat($("#txt_fecha_cita").val(), 'dd/MM/yyyy'),
+        ID_ENCRIP: id_mascota,
+        CLINICA_ID: $("#sel_clinica").val(),
+        MEDICO_ID: $("#sel_veterinario").val(),
+        TIPO: $("#sel_tipo_cita").val(),
+        MOTIVO: $("#txt_motivo").val(),
+        PESO: $("#txt_peso").val(),
+        TEMPERATURA: $("#txt_temperatura").val(),
+        SINTOMAS: $("#txt_sintomas").val(),
+        DIAGNOSTICO: $("#txt_diagnostico").val(),
+        TRATAMIENTO: $("#txt_tratamiento").val(),
+        OBSERVACIONES: $("#txt_observacion").val(),
+        ANTECEDENTES: $("#txt_antecedentes").val(),
+        FORMULA: $("#txt_formula").val()
+    };
+    
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/citaMedica.aspx/ActualizarCitaWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: eCita }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $("#pnl_cita_medica button").attr("disabled", true);
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                msg_OpenDay("e", data.d.Mensaje);
+                $("#pnl_cita_medica button").attr("disabled", false);
+                closeLoading();
+                return;
+            }
+            $("#pnl_cita_medica button").attr("disabled", false);
+            closeLoading();
+            $("#pnl_cita_medica").modal("hide");
+            msg_OpenDay("c", data.d.Mensaje);
+        },
+        error: function (data) {
+            $("#errorCita").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#pnl_cita_medica button").attr("disabled", false);
+            closeLoading();
+        }
+    });
+    event.preventDefault();
+});
+/******************** /CITA MEDICA *****************/

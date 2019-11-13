@@ -119,8 +119,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <script src="js/roberto.bundle.js"></script>
     <!-- Active -->
     <script src="js/default-assets/active.js"></script>
-<!-- GMap -->
-<script src="js/gmap3.min.js"></script>
+    <!-- GMap -->
+    <script src="js/gmap3.min.js"></script>
+    <!-- Select 2 filtro-->
+    <script src="../assets/select2/js/select2.full.js"></script>
 
 <script src="../assets/select2/js/select2.full.js"></script>
 <script src="../js/all/date.js"></script>

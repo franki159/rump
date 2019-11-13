@@ -14,5 +14,10 @@ namespace NEGOCIOS
         {
             return DParametro.listarParametro(objE);
         }
+
+        public static List<EParametro> listarParametroGrupo(EParametro objE)
+        {
+            return DParametro.listarParametroGrupo(objE);
+        }
     }
 }

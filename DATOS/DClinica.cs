@@ -11,9 +11,10 @@ namespace DATOS
 {
     public class DClinica
     {
-        public static int ActualizarClinicaCitaWM(EClinica objE) {
+        public static decimal ActualizarClinicaCitaWM(EClinica objE) {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
+                decimal id = 0;
                 SqlCommand cmd = new SqlCommand("usp_mnt_clinica", cn);
                 cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
                 cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
@@ -23,7 +24,18 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@opcion", 1);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
-                return cmd.ExecuteNonQuery();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            id = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        }
+                    }
+                }
+
+                return id;
             }
         }
     }

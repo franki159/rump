@@ -8,11 +8,11 @@ using DATOS;
 
 namespace NEGOCIOS
 {
-    public class NClinica
+    public class NCita
     {
-        public static decimal ActualizarClinicaCitaWM(EClinica ent)
+        public static int ActualizarCitaWM(ECita ent)
         {
-            return DClinica.ActualizarClinicaCitaWM(ent);
+            return DCita.ActualizarCitaWM(ent);
         }
     }
 }
