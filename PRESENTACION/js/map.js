@@ -1,4 +1,4 @@
-﻿var _ListaTipoConvenio, _ListaConvenio, _LatitudActual, _LongitudActual;
+﻿var _ListaTipoConvenio, _ListaConvenio, _LatitudActual, _LongitudActual, _activoDireccion = false;
 
 if ($('#mapa')) {
     function showConvenio() {
@@ -30,28 +30,38 @@ if ($('#mapa')) {
                     ubicaciones.push({ position: [_LatitudActual, _LongitudActual], icon: '../img/map_marker.png', data: etiqueta });
                 }
 
-                if ($('#pnlTipoConvenio input').length == $('#pnlTipoConvenio input:checked').length) {
-                    for (var i = 0; i < _ListaConvenio.length; i++) {
-                        etiqueta = '<div class="etiquetaMapa"><h3>Nombre: ' + _ListaConvenio[i].NOMBRE + ' </h3>' +
-                            '<p>Descripcion: ' + _ListaConvenio[i].BENEFICIO + ' </p>' +
-                            '<p>Telefono: ' + _ListaConvenio[i].TELEFONO + ' </p>' +
-                            '<p>Punto Autorizado: ' + (_ListaConvenio[i].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
+                if (_activoDireccion) {
+                    var posConvenio = parseInt($("#txtMapaDireccion").val());
+                    etiqueta = '<div class="etiquetaMapa"><h3>Nombre: ' + _ListaConvenio[posConvenio].NOMBRE + ' </h3>' +
+                        '<p>Descripcion: ' + _ListaConvenio[posConvenio].BENEFICIO + ' </p>' +
+                        '<p>Telefono: ' + _ListaConvenio[posConvenio].TELEFONO + ' </p>' +
+                        '<p>Punto Autorizado: ' + (_ListaConvenio[posConvenio].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
 
-                        ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
-                    }
+                    ubicaciones.push({ position: [_ListaConvenio[posConvenio].LATITUD, _ListaConvenio[posConvenio].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
                 } else {
-                    $('#pnlTipoConvenio input:checked').each(function (a, b) {
+                    if ($('#pnlTipoConvenio input').length == $('#pnlTipoConvenio input:checked').length) {
                         for (var i = 0; i < _ListaConvenio.length; i++) {
-                            if ($(b).val() == _ListaConvenio[i].TIPO_ID) {
-                                etiqueta = '<div class="etiquetaMapa"><h3>Nombre: ' + _ListaConvenio[i].NOMBRE + ' </h3>' +
-                                    '<p>Descripcion: ' + _ListaConvenio[i].BENEFICIO + ' </p>' +
-                                    '<p>Telefono: ' + _ListaConvenio[i].TELEFONO + ' </p>' +
-                                    '<p>Punto Autorizado: ' + (_ListaConvenio[i].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
+                            etiqueta = '<div class="etiquetaMapa"><h3>Nombre: ' + _ListaConvenio[i].NOMBRE + ' </h3>' +
+                                '<p>Descripcion: ' + _ListaConvenio[i].BENEFICIO + ' </p>' +
+                                '<p>Telefono: ' + _ListaConvenio[i].TELEFONO + ' </p>' +
+                                '<p>Punto Autorizado: ' + (_ListaConvenio[i].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
 
-                                ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
-                            }
+                            ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
                         }
-                    });
+                    } else {
+                        $('#pnlTipoConvenio input:checked').each(function (a, b) {
+                            for (var i = 0; i < _ListaConvenio.length; i++) {
+                                if ($(b).val() == _ListaConvenio[i].TIPO_ID) {
+                                    etiqueta = '<div class="etiquetaMapa"><h3>Nombre: ' + _ListaConvenio[i].NOMBRE + ' </h3>' +
+                                        '<p>Descripcion: ' + _ListaConvenio[i].BENEFICIO + ' </p>' +
+                                        '<p>Telefono: ' + _ListaConvenio[i].TELEFONO + ' </p>' +
+                                        '<p>Punto Autorizado: ' + (_ListaConvenio[i].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
+
+                                    ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
+                                }
+                            }
+                        });
+                    }
                 }
 
                 $('#mapa').gmap3({
@@ -74,18 +84,7 @@ if ($('#mapa')) {
                                 infowindow.open(map, this);
                             });
                         });
-
-                        //marker.addListener('click', function () {
-                        //    infowindow.open(map, marker);
-                        //});
                     });
-
-                //$('#mapa').gmap3().marker([
-                //    { position: [_latitudActual, _longitudActual], icon: 'img/map_marker.png' },
-                //    { position: [-12.0326500, -76.87728], icon: 'img/map_dog.png' },
-                //    { position: [-11.79616, -76.97686], icon: 'img/map_dog.png' },
-                //    { position: [-11.889027, -77.038159], icon: 'img/map_dog.png' }
-                //]);
             },
             error: function (data) { }
         });
@@ -107,27 +106,25 @@ if ($('#mapa')) {
             async: false,
             beforeSend: function () {
                 $("#pnlTipoConvenio").empty();
+                $("#txtMapaDireccion").empty();
             },
             success: function (data) {
                 _ListaTipoConvenio = data.d.Resultado.TIPOS;
                 _ListaConvenio = data.d.Resultado.CONVENIOS;
+                _activoDireccion = false;
 
                 var html = '';
                 for (var i = 0; i < _ListaTipoConvenio.length; i++) {
                     html += '<label><input type="checkbox" checked="checked" value="' + _ListaTipoConvenio[i].ID + '" /> ' +
                         _ListaTipoConvenio[i].TIPO + '</label><br />';
                 }
-
                 $("#pnlTipoConvenio").append(html);
 
-                //$('#mapa').gmap3({
-                //    center: [
-                //        (_LatitudActual != null || _LatitudActual != undefined ? _LatitudActual : -11.9637802),
-                //        (_LongitudActual != null || _LongitudActual != undefined ? _LongitudActual : -77.072734)
-                //    ],
-                //    zoom: 10,
-                //    mapTypeId: google.maps.MapTypeId.ROADMAP
-                //});
+                html = '<option value="0">Ingrese dirección</option>';
+                for (var i = 0; i < _ListaConvenio.length; i++) {
+                    html += '<option value="' + i + '">' + _ListaConvenio[i].DIRECCION + '</option>';
+                }
+                $("#txtMapaDireccion").append(html);
 
                 showConvenio();
             },
@@ -136,6 +133,18 @@ if ($('#mapa')) {
 
 
         $('#pnlTipoConvenio input').click(function () {
+            _activoDireccion = false;
+            $("#txtMapaDireccion").val('0').change();
+            //showConvenio();
+        });
+
+        $("#txtMapaDireccion").on('change', function () {
+            if ($("#txtMapaDireccion").val() == '0') {
+                _activoDireccion = false;
+            } else {
+                _activoDireccion = true;
+            }
+            
             showConvenio();
         });
     }
