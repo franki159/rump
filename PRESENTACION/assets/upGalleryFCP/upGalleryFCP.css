@@ -5,7 +5,7 @@
     max-height: 180px;
     min-height: 180px;
     background-position: center center;
-    background: url(img/noPets.png);
+    /*background: url(img/noPets.png);*/
     background-color: #fff;
     background-position: center;
     background-size: contain;

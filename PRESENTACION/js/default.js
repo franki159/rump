@@ -68,6 +68,7 @@ function InfoSesion() {
                 return;
             }
             $(".name_user").text(data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0]);
+            $(".img-user-rump").attr("src", "img/usuario/" + data.d.Resultado.FOTO);
             $(".name_perfil").html('<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 name_perfil"></i>' + MaysPrimera(data.d.Resultado.USUARIO_PERFIL.PERFIL));
             /************************MENU****************************/
             var htmlMenu = '';
