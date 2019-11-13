@@ -297,6 +297,26 @@ namespace DATOS
 
             return EUtil.getEncriptar(ID_USUARIO.ToString());
         }
+        public static int ActualizarBasicoUsuario(EUsuario objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
+
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
+                cmd.Parameters.AddWithValue("@apellido", objE.APELLIDO);
+                cmd.Parameters.AddWithValue("@fecha_nac", objE.FECHA_NAC);
+                cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
+                cmd.Parameters.AddWithValue("@celular", objE.CELULAR);
+                cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
+                cmd.Parameters.AddWithValue("@opcion", 12);
+                cmd.CommandType = CommandType.StoredProcedure;
+                /////////
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
         public static int TokenActivoUsuario(EUsuario objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
