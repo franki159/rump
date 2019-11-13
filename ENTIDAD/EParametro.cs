@@ -10,6 +10,6 @@ namespace ENTIDAD
     {
         public string CODIGO { get; set; }
         public string DESCRIPCION { get; set; }
-
+        public string GRUPO { get; set; }
     }
 }

@@ -39,5 +39,31 @@ namespace DATOS
             return lista;
 
         }
+
+        public static List<EParametro> listarParametroGrupo(EParametro objE)
+        {
+            List<EParametro> lista = new List<EParametro>();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_lst_parametros", cn);
+                cmd.Parameters.AddWithValue("@grupo", objE.GRUPO);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        EParametro mItem = new EParametro();
+                        mItem.CODIGO = dr.IsDBNull(dr.GetOrdinal("CODIGO")) ? string.Empty : dr.GetString(dr.GetOrdinal("CODIGO"));
+                        mItem.DESCRIPCION = dr.IsDBNull(dr.GetOrdinal("DESCRIPCION")) ? string.Empty : dr.GetString(dr.GetOrdinal("DESCRIPCION"));
+                        lista.Add(mItem);
+                    }
+                }
+            }
+            return lista;
+
+        }
     }
 }

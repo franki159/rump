@@ -121,7 +121,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Doctor Veterinario <strong class="text-danger">(*)</strong>
-                                            <button class="btn btn-success btn-sm add-med"><i class="fas fa-user-md"></i>&nbsp;Agregar</button></label>
+                                        <button class="btn btn-success btn-sm add-med"><i class="fas fa-user-md"></i>&nbsp;Agregar</button></label>
                                         <select id="sel_veterinario" class="form-control sel_autocomplete" style="width: 100%;">
                                             <option style="width: 100%;"></option>
                                         </select>
@@ -130,11 +130,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Tipo de Cita</label>
-                                        <select id="sel_tamano" class="form-control">
+                                        <select id="sel_tipo_cita" class="form-control sel_autocomplete"  style="width: 100%;">
                                             <option value="0">Seleccionar</option>
-                                            <option value="1">Baño</option>
-                                            <option value="2">Consulta</option>
-                                            <option value="3">Vacuna</option>
                                         </select>
                                     </div>
                                 </div>

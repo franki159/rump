@@ -98,8 +98,44 @@ function fc_listar_inicio() {
     });
     listarClinicas();
     listarMedicos();
+    listarTipoCita();
 }
+function listarTipoCita() {
+    var objE = {
+        GRUPO: 'tipo_cita'
+    };
+    
+    $.ajax({
+        type: "POST",
+        url: "default.aspx/listarParametroGrupo",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $('#sel_tipo_cita').empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
 
+            $('#sel_tipo_cita').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_tipo_cita').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+}
 function listarClinicas() {
     objE = {
         CODIGO: "CLINICA"
@@ -134,7 +170,6 @@ function listarClinicas() {
         }
     });
 }
-
 function listarMedicos() {
     objE = {
         CODIGO: "MEDICO"
@@ -169,7 +204,6 @@ function listarMedicos() {
         }
     });
 }
-/*Funciones*/
 function fc_listar_mascota() {
     openLoading();
 
@@ -442,74 +476,6 @@ function fc_listar_mascota() {
         }
     });
 }
-function aceptarConfirm() {
-    switch ($("#txh_idConfirm").val()) {
-        case "ANULAR":
-            var objE = {
-                ID_ENCRIP : id_mascota
-            };
-   
-            $.ajax({
-                type: "POST",
-                url: "page/mantenimiento/mascota.aspx/AnularMascotaWM",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ objE: objE }),
-                async: true,
-                beforeSend: function () {
-                    $("#errorDiv").html('');
-                    $("#tbl_mascota button").attr("disabled", true);
-                    openLoading();
-                },
-                success: function (data) {
-                    $("#tbl_mascota button").removeAttr("disabled");
-                    if (!data.d.Activo) {
-                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                        closeLoading();
-                        return;
-                    }
-
-                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    closeLoading();
-                    fc_listar_mascota();
-                },
-                error: function (data) {
-                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                    $("#tbl_mascota button").removeAttr("disabled");
-                    closeLoading();
-                }
-            });
-            event.preventDefault();
-            break;
-        default:
-            break;
-    }
-}
-function guardarImagen(evt, nameId, file) {
-    var objResp = 0;
-    var dataImagen = new FormData();
-    dataImagen.append('file', file);
-    dataImagen.append('name', nameId);
-
-    $.ajax({
-        type: "POST",
-        url: "page/mantenimiento/hh_imagenMascota.ashx",
-        data: dataImagen,
-        async: false,
-        contentType: false,
-        processData: false,
-        success: function (result) {
-            //msg_OpenDay("c", "Mascota guardada correctamente");
-            objResp = 0;
-        },
-        error: function (err) {
-            //msg_OpenDay("e", "Error al guardar imagen");
-            objResp = 1;
-        }
-    });
-
-    return objResp;
-}
 function limpiarMascota() {
     $("#errorDiv").html('');
     $("#errorMascota").html('');
@@ -581,12 +547,10 @@ $(".add-cli").click(function () {
     $("#pnl_clinica").modal('show');
     $("#sel_departamento").focus();
 });
-
 $(".add-med").click(function () {
     $("#pnl_medico").modal('show');
     $("#txt_nombre_med").focus();
 });
-
 
 $("#sel_departamento").on('change', function () {
     /************************ Listado de Provincia ****************************/
