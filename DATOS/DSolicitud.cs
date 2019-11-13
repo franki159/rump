@@ -18,8 +18,9 @@ namespace DATOS
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_solicitud", cn);
-                cmd.Parameters.AddWithValue("@email", objE.DNI);
+                cmd.Parameters.AddWithValue("@dni", objE.DNI);
                 cmd.Parameters.AddWithValue("@email", objE.EMAIL);
+                cmd.Parameters.AddWithValue("@estado", objE.ESTADO);
                 cmd.Parameters.AddWithValue("@opcion", 1);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
@@ -37,6 +38,7 @@ namespace DATOS
                         mItem.PROPIETARIO = dr.IsDBNull(dr.GetOrdinal("propietario")) ? string.Empty : dr.GetString(dr.GetOrdinal("propietario"));
                         mItem.EMAIL = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
                         mItem.TELEFONO = dr.IsDBNull(dr.GetOrdinal("telefono")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefono"));
+                        mItem.ESTADO = dr.IsDBNull(dr.GetOrdinal("estado")) ? 0 : dr.GetInt16(dr.GetOrdinal("estado"));
                         lista.Add(mItem);
                     }
                 }

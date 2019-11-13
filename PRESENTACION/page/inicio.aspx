@@ -8,9 +8,6 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">MI CUENTA</h6>
-                <div id="fondoRUMP" style="position: absolute; right: 0px; top: 0px;">
-                    <img src="../img/logoRUMP.png" />
-                </div>
             </div>
             <div class="card-body">
                 <div id="errorUsuario"></div>

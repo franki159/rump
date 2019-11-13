@@ -12,30 +12,35 @@
             <div class="card-body" id="pnl_busqueda">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="input-group">
-                            <label class="col-form-label">E-mail: </label>
-                            <input type="text" id="txt_bus_email" class="form-control bg-light border-0 small" placeholder="Buscar usuario..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button id="btn_buscars" class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="text" id="txt_bus_email" class="form-control" placeholder="Correo de Usuario">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Dni </label>
+                            <input type="text" id="txt_bus_dni" class="form-control" placeholder="Dni de la mascota">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Estado </label>
+                            <select id="sel_estado" class="form-control">
+                                <option value="0">TODOS</option>
+                                <option value="1">PENDIENTES</option>
+                                <option value="2">ATENDIDOS</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <button id="btn_buscar" class="btn btn-secondary btn-icon-split">
+                        <button id="btn_buscar" class="btn btn-3-info btn-icon-split">
                             <span class="icon text-white-50">
-                                <i class="fas fa-file"></i>
+                                <i class="fas fa-search"></i>
                             </span>
-                            <span class="text">Nuevo</span>
-                        </button>
-                        <button id="btn_nuevo" class="btn btn-secondary btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-file"></i>
-                            </span>
-                            <span class="text">Nuevo</span>
+                            <span class="text">Buscar</span>
                         </button>
                     </div>
                 </div>

@@ -10,7 +10,9 @@ $(function () {
         autoclose: true,
         orientation: "top left"
     });
-    
+
+    $("#sel_estado").val(0);
+    closeLoading();
     $("#txt_bus_email").focus();
 });
 
@@ -20,12 +22,13 @@ function fc_listar_solicitud() {
 
     var eSolicitud = {
         DNI: $("#txt_bus_dni").val(),
-        EMAIL: $("#txt_bus_email").val()
+        EMAIL: $("#txt_bus_email").val(),
+        ESTADO: $("#sel_estado").val()
     };
 
     $.ajax({
         type: "POST",
-        url: "page/mantenimiento/solicitud.aspx/ListaUsuarioWM",
+        url: "page/mantenimiento/solicitud.aspx/ListaSolicitudWM",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify({
@@ -45,14 +48,18 @@ function fc_listar_solicitud() {
                 return;
             }
 
-            var htmlBotones = '<button name="editar" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></button> ' +
-                '<button name="anular" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button> ';
+            var htmlBotones = '<button name="atender" title="Atender solicitud" class="btn btn-primary btn-sm"><i class="far fa-thumbs-up"></i></button> ' +
+                '<button name="anular" title="Anular solicitud"  class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button> ';
 
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 html += '<tr><td style="display:none">' + data.d.Resultado[i].ID_ENCRIP + '</td>';
-                html += '<td>' + htmlBotones + '</td>';
-                html += '<td>' + data.d.Resultado[i].TIPO + '</td>';
+                if (data.d.Resultado[i].ESTADO === 1) {
+                    html += '<td>' + htmlBotones + '</td>';
+                } else {
+                    html += '<td></td>';
+                }
+                html += '<td>Solicitud ' + data.d.Resultado[i].TIPO + '</td>';
                 html += '<td>' + data.d.Resultado[i].DNI + '</td>';
                 html += '<td>' + data.d.Resultado[i].MASCOTA + '</td>';
                 html += '<td>' + data.d.Resultado[i].PROPIETARIO + '</td>';
@@ -64,9 +71,6 @@ function fc_listar_solicitud() {
             $("#lblTotalReg").html("Total Registros: " + data.d.Resultado.length);
 
             $("#tbl_solicitud button").click(function () {
-                limpiarUsuario();
-                id_usuario = $(this).parent().parent().find("td").eq(0).html();
-
                 if ($(this).attr("name") === "atender") {
                     limpiarSolicitud();
                     id_solicitud = $(this).parent().parent().find("td").eq(0).html();

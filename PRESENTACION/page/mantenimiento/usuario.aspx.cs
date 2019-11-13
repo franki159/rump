@@ -15,7 +15,10 @@ namespace PRESENTACION.page.mantenimiento
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.IsPostBack == false)
+            {
+                if (Session["userRump"] == null) Response.Redirect("~/login.aspx");
+            }
         }
 
         [WebMethod()]

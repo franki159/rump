@@ -22,5 +22,6 @@ namespace ENTIDAD
         public string TIPO { get; set; }
         public string PROPIETARIO { get; set; }
         public string TELEFONO { get; set; }
+        public int ESTADO { get; set; }
     }
 }

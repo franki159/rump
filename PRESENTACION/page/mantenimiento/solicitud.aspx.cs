@@ -15,7 +15,10 @@ namespace PRESENTACION.page.mantenimiento
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.IsPostBack == false)
+            {
+                if (Session["userRump"] == null) Response.Redirect("~/login.aspx");
+            }
         }
 
         [WebMethod()]
@@ -62,7 +65,8 @@ namespace PRESENTACION.page.mantenimiento
                 }
 
                 int objResultado = 0;
-
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO = eSession.ID;
                 objResultado = NSolicitud.AtenderSolicitud(objE);
 
                 if (objResultado == 0)
@@ -93,7 +97,8 @@ namespace PRESENTACION.page.mantenimiento
                 }
 
                 int objResultado = 0;
-
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO = eSession.ID;
                 objResultado = NSolicitud.AnularSolicitud(objE);
 
                 if (objResultado == 0)
