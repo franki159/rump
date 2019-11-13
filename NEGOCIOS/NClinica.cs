@@ -10,7 +10,7 @@ namespace NEGOCIOS
 {
     public class NClinica
     {
-        public static int ActualizarClinicaCitaWM(EClinica ent)
+        public static decimal ActualizarClinicaCitaWM(EClinica ent)
         {
             return DClinica.ActualizarClinicaCitaWM(ent);
         }

@@ -14,9 +14,9 @@ namespace DATOS
         public static int ActualizarCitaWM(ECita objE) {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
-                SqlCommand cmd = new SqlCommand("mascota_salud_historial", cn);
+                SqlCommand cmd = new SqlCommand("usp_mnt_cita_medica", cn);
                 cmd.Parameters.AddWithValue("@fecha_atencion_medica", objE.FECHA_ATENCION_MEDICA);
-                cmd.Parameters.AddWithValue("@mascota_id", objE.MASCOTA_ID);
+                cmd.Parameters.AddWithValue("@mascota_id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@clinica_id", objE.CLINICA_ID);
                 cmd.Parameters.AddWithValue("@medico_id", objE.MEDICO_ID);
                 cmd.Parameters.AddWithValue("@tipo", objE.TIPO);

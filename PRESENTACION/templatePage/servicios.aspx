@@ -16,8 +16,9 @@
     <link rel="icon" href="./img/core-img/favicon.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css?v=123456">
+    <!-- Select 2 filtro-->
+    <link href="../assets/select2/css/select2.css" rel="stylesheet" />
     <!-- Google Api Maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMpJ4QtIrcgHEjhiyDhzAh4q5G7yIyzgg" type="text/javascript"></script>
 </head>
@@ -207,7 +208,16 @@
                         <div id="menu_buscar">
                             <div style="width: 100%; padding: 10px; background: #00B3BA; color: #fff; font-weight: bold;">Buscar por dirección</div>
                             <div style="width: 100%; padding: 10px;">
-                                <input id="txtMapaDireccion" type="text" placeholder="Ingrese dirección" style="width: 100%" />
+                                <%--<input id="txtMapaDireccion" type="text" placeholder="Ingrese dirección" class="sel_autocomplete" style="width: 100%" />--%>
+                                <select id="txtMapaDireccion" class="form-control sel_autocomplete">
+                                    <option></option>
+                                    <option value='aaaa'>aaaa</option>
+                                    <option value='bbbbb'>bbbbb</option>
+                                    <option value='ccccc'>ccccc</option>
+                                    <option value='ddd'>dddddd</option>
+                                    <option value='eeeee'>eeee</option>
+                                    <option value='fffff'>fffff</option>
+                                </select>
                             </div>
                             <div style="width: 100%; padding: 10px; background: #00B3BA; color: #fff; font-weight: bold;">Buscar por afiliación</div>
                             <div id="pnlTipoConvenio" style="width: 100%; padding: 10px;"></div>

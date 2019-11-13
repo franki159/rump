@@ -780,7 +780,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Temperatura</label>
+                                        <label>Temperatura °C</label>
                                         <input id="txt_temperatura" placeholder="Escriba la temperatura de la mascota" class="form-control decimalFCP" type="text" maxlength="200" />
                                     </div>
                                 </div>

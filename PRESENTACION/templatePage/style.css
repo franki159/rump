@@ -4450,3 +4450,7 @@ iframe {
         font-size: 12px;
         line-height: 1;
     }
+/****************** color de letra select2 *****************/
+.select2-results__option {
+    color: #858796;
+}

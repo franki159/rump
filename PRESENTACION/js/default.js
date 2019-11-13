@@ -112,16 +112,9 @@ function InfoSesion() {
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
             } else if (data.d.Resultado.USUARIO_PERFIL.ID === 4) {//Panel
-                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMascot" aria-expanded="true" aria-controls="collapseMascot">';
+                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
-                htmlMenu += '<div id="collapseMascot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
-                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
-                htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
-                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
-                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/citaMedica">Cita</a>';
-                htmlMenu += '   </div>';
-                htmlMenu += '</div >';
             }
 
             sessionStorage.clear();

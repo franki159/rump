@@ -9,6 +9,7 @@ namespace ENTIDAD
     public class ECita
     {
         public decimal ID { get; set; }
+        public string ID_ENCRIP { get; set; }
         public Nullable<DateTime> FECHA_ATENCION_MEDICA { get; set; }
         public decimal MASCOTA_ID { get; set; }
         public decimal CLINICA_ID { get; set; }

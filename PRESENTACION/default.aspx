@@ -77,7 +77,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="www.worldpetsperu.com">
+        <a class="nav-link" href="./">
           <i class="fas fa-fw fa-home"></i>
           <span>Inicio</span></a>
       </li>
