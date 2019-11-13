@@ -19,7 +19,7 @@ namespace PRESENTACION.page.mantenimiento
         }
 
         [WebMethod()]
-        public static object listarParametro(EGeneral objE)
+        public static object ListaSolicitudWM(ESolicitud objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try
@@ -29,8 +29,11 @@ namespace PRESENTACION.page.mantenimiento
                     objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
                     return objRespuesta;
                 }
-                List<EGeneral> objResultado = new List<EGeneral>();
-                objResultado = NParametro.listarParametro(objE);
+
+                List<ESolicitud> objResultado = new List<ESolicitud>();
+
+                objResultado = NSolicitud.listarSolicitud(objE);
+
                 if (objResultado.Count == 0)
                 {
                     objRespuesta.Error("No se encontraron registros.");
@@ -46,65 +49,8 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
-
-
         [WebMethod()]
-        public static object ListaUsuarioWM(EUsuario objE)
-        {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
-            try
-            {
-                if (HttpContext.Current.Session["userRump"] == null)
-                {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                    return objRespuesta;
-                }
-
-                List<EUsuario> objResultado = new List<EUsuario>();
-
-                objResultado = NUsuario.listarUsuario(objE);
-
-                /*if (objResultado.Count == 0)
-                {
-                    objRespuesta.Error("No se encontraron registros.");
-                }
-                else
-                {
-                    objRespuesta.Resultado = objResultado;
-                }*/
-
-                objRespuesta.Resultado = objResultado;
-            }
-            catch (Exception ex)
-            {
-                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-            }
-            return objRespuesta;
-        }
-        [WebMethod()]
-        public static object ObtenerUsuarioWM(EUsuario objE)
-        {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
-            try
-            {
-                if (HttpContext.Current.Session["userRump"] == null)
-                {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                    return objRespuesta;
-                }
-
-                EUsuario objResultado = new EUsuario();
-                objResultado = NUsuario.ObtenerUsuario(objE);
-                objRespuesta.Resultado = objResultado;
-            }
-            catch (Exception ex)
-            {
-                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-            }
-            return objRespuesta;
-        }
-        [WebMethod()]
-        public static object AnularUsuarioWM(EUsuario objE)
+        public static object AtenderSolicitudWM(ESolicitud objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try
@@ -117,7 +63,38 @@ namespace PRESENTACION.page.mantenimiento
 
                 int objResultado = 0;
 
-                objResultado = NUsuario.AnularUsuario(objE);
+                objResultado = NSolicitud.AtenderSolicitud(objE);
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("No se pudo atender.");
+                }
+                else
+                {
+                    objRespuesta.Success("Se atendió la solicitud correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object AnularSolicitudWM(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                int objResultado = 0;
+
+                objResultado = NSolicitud.AnularSolicitud(objE);
 
                 if (objResultado == 0)
                 {
@@ -125,96 +102,7 @@ namespace PRESENTACION.page.mantenimiento
                 }
                 else
                 {
-                    objRespuesta.Success("Se eliminó el usuario correctamente");
-                }
-            }
-            catch (Exception ex)
-            {
-                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-            }
-            return objRespuesta;
-        }
-        [WebMethod()]
-        public static object ActualizarUsuarioWM(EUsuario objE)
-        {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
-            try
-            {
-                if (HttpContext.Current.Session["userRump"] == null)
-                {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                    return objRespuesta;
-                }
-
-                string objResultado = "";
-
-                if (objE.ID_ENCRIP != "")
-                {
-                    if (NUsuario.ActualizarUsuario(objE) > 0)
-                    {
-                        objResultado = objE.ID_ENCRIP;
-                    }
-                }
-                else
-                {
-                    objResultado = NUsuario.RegistrarUsuario(objE);
-
-                    if (objE.EMAIL.Contains("@"))
-                    {
-                        objE.ID_ENCRIP = objResultado;
-                        objE.TOKEN_ACTIVACION = objResultado;
-                        int objResultadoACtivacion = NUsuario.TokenActivoUsuario(objE);
-
-                        ECorreo correo = new ECorreo();
-                        correo.Para = objE.EMAIL;
-                        correo.Asunto = "Activación de Usuario";
-                        correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
-                            "<a href=\"https://rumpp.charpetechnology.com/active.aspx?user=" + objResultado + "\">ACTIVAR CUENTA</a>";
-                        correo.Enviar();
-                    }
-                }
-
-
-                if (objResultado == "")
-                {
-                    objRespuesta.Error("No se pudo actualizar.");
-                }
-                else
-                {
-                    objRespuesta.Resultado = objResultado;
-                    objRespuesta.Success("Se guardó la información correctamente");
-                }
-            }
-            catch (Exception ex)
-            {
-                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-            }
-            return objRespuesta;
-        }
-        [WebMethod()]
-        public static object InsertarFotoUsuarioWM(EUsuario objE)
-        {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
-            try
-            {
-                if (HttpContext.Current.Session["userRump"] == null)
-                {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                    return objRespuesta;
-                }
-
-                string objResultado = "";
-                objE.FOTO = objE.EXTENSION;
-                objResultado = NUsuario.ActualizarFotoUsuario(objE);
-
-                if (objResultado == "")
-                {
-                    objRespuesta.Error("No se pudo actualizar.");
-                }
-                else
-                {
-                    objRespuesta.Resultado = objResultado;
-                    objRespuesta.Success("Se guardó la información correctamente");
+                    objRespuesta.Success("Se eliminó la solicitud correctamente");
                 }
             }
             catch (Exception ex)

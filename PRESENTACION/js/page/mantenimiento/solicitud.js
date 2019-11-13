@@ -1,5 +1,5 @@
-﻿var foto_dsc;
-var id_usuario;
+﻿var txh_idConfirm;
+var id_solicitud;
 var valRND = Math.floor(Math.random() * 100);
 /*Inicializar Script*/
 $(function () {
@@ -18,22 +18,23 @@ $(function () {
 function fc_listar_solicitud() {
     openLoading();
 
-    var eUsuario = {
+    var eSolicitud = {
+        DNI: $("#txt_bus_dni").val(),
         EMAIL: $("#txt_bus_email").val()
     };
 
     $.ajax({
         type: "POST",
-        url: "page/mantenimiento/usuario.aspx/ListaUsuarioWM",
+        url: "page/mantenimiento/solicitud.aspx/ListaUsuarioWM",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify({
-            objE: eUsuario
+            objE: eSolicitud
         }),
         async: false,
-        beforeSend: function () {
-            $("#btn_buscar").attr("disabled", true);
-            $('#tbl_usuario tbody').empty();
+        beforeSend: function () {            
+            $('#tbl_solicitud tbody').empty();
+            openLoading();
         },
         success: function (data) {
             $("#btn_buscar").removeAttr("disabled");
@@ -51,85 +52,31 @@ function fc_listar_solicitud() {
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 html += '<tr><td style="display:none">' + data.d.Resultado[i].ID_ENCRIP + '</td>';
                 html += '<td>' + htmlBotones + '</td>';
-                html += '<td style="text-align:center">' +
-                    '<div>' +
-                    '<img class="img-row-usuario" src="img/usuario/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND + '" onerror="this.src=\'img/noAvatar.png\';">' +
-                    '</div>' +
-                    '</td>';
-                html += '<td style="text-align:center">' +
-                    '<div>' +
-                    '<img class="img-row-usuario" src="img/checkbox/' + (data.d.Resultado[i].ACTIVO == 1 ? 'check-on' : 'check-off') + '.png">' +
-                    '</div>' +
-                    '</td>';
-                html += '<td>' + data.d.Resultado[i].USUARIO_PERFIL.PERFIL + '</td>';
+                html += '<td>' + data.d.Resultado[i].TIPO + '</td>';
+                html += '<td>' + data.d.Resultado[i].DNI + '</td>';
+                html += '<td>' + data.d.Resultado[i].MASCOTA + '</td>';
+                html += '<td>' + data.d.Resultado[i].PROPIETARIO + '</td>';
                 html += '<td>' + data.d.Resultado[i].EMAIL + '</td>';
-                html += '<td>' + data.d.Resultado[i].NOMBRE + '</td>';
-                html += '<td>' + data.d.Resultado[i].APELLIDO + '</td></tr>';
+                html += '<td>' + data.d.Resultado[i].TELEFONO + '</td></tr>';
             }
 
-            $("#tbl_usuario tbody").append(html);
+            $("#tbl_solicitud tbody").append(html);
             $("#lblTotalReg").html("Total Registros: " + data.d.Resultado.length);
 
-            $("#tbl_usuario button").click(function () {
+            $("#tbl_solicitud button").click(function () {
                 limpiarUsuario();
                 id_usuario = $(this).parent().parent().find("td").eq(0).html();
 
-                if ($(this).attr("name") === "editar") {
-                    $('#pnl_usuario .modal-title').html('Editar Usuario');
-                    var objE = {
-                        ID_ENCRIP: id_usuario
-                    };
-
-                    $.ajax({
-                        type: "POST",
-                        url: "page/mantenimiento/usuario.aspx/ObtenerUsuarioWM",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        data: JSON.stringify({ objE: objE }),
-                        async: true,
-                        beforeSend: function () {
-                            $("#tbl_usuario button").attr("disabled", true);
-                        },
-                        success: function (data) {
-                            $("#tbl_usuario button").removeAttr("disabled");
-
-                            if (!data.d.Activo) {
-                                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                                return;
-                            }
-
-                            $("#txt_nombre").val(data.d.Resultado.NOMBRE);
-                            $("#txt_apellido").val(data.d.Resultado.APELLIDO);
-                            $("#sel_sexo").val(data.d.Resultado.SEXO).change();
-                            $("#txt_telefono").val(data.d.Resultado.TELEFONO);
-                            $("#txt_celular").val(data.d.Resultado.CELULAR);
-
-                            if (data.d.Resultado.FECHA_NAC !== null) {
-                                $("#txt_fecha_nac").val(formatDate(parseDateServer(data.d.Resultado.FECHA_NAC), "dd/MM/yyyy")).change();
-                                $("#txt_fecha_nac").parent().datepicker("update", $("#txt_fecha_nac").val());
-                            }
-
-                            $("#sel_perfil").val(data.d.Resultado.PERFIL_ID).change();
-                            $("#txt_email").val(data.d.Resultado.EMAIL);
-                            //$("#txt_clave").val(data.d.Resultado.PASSWORD);
-                            //$("#txt_clave_rep").val(data.d.Resultado.PASSWORD);
-
-                            if (data.d.Resultado.FOTO != '' && data.d.Resultado.FOTO != null) {
-                                $('.imagePreview').css("background-image", "url(../../img/usuario/" + data.d.Resultado.FOTO + "?v=" + valRND + ")");
-                            }
-
-                            activaTab('dato');
-                            $("#pnl_usuario").modal('show');
-                        },
-                        error: function (data) {
-                            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                            $("#tbl_usuario button").removeAttr("disabled");
-                        }
-                    });
-                    event.preventDefault();
+                if ($(this).attr("name") === "atender") {
+                    limpiarSolicitud();
+                    id_solicitud = $(this).parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'ATENDER';
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Atender</strong> la solicitud?");
                 } else if ($(this).attr("name") === "anular") {
-                    $("#txh_idConfirm").val('ANULAR');
-                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> el usuario?");
+                    limpiarSolicitud();
+                    id_solicitud = $(this).parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'ANULAR';
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la solicitud?");
                 }
             });
 
@@ -143,26 +90,26 @@ function fc_listar_solicitud() {
     });
 }
 function aceptarConfirm() {
-    switch ($("#txh_idConfirm").val()) {
-        case "ANULAR":
+    switch (txh_idConfirm) {
+        case "ATENDER":
             var objE = {
-                ID_ENCRIP: id_usuario
+                ID_ENCRIP: id_solicitud
             };
 
             $.ajax({
                 type: "POST",
-                url: "page/mantenimiento/usuario.aspx/AnularUsuarioWM",
+                url: "page/mantenimiento/solicitud.aspx/AtenderSolicitudWM",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify({ objE: objE }),
                 async: true,
                 beforeSend: function () {
                     $("#errorDiv").html('');
-                    $("#tbl_usuario button").attr("disabled", true);
+                    $("#tbl_solicitud button").attr("disabled", true);
                     openLoading();
                 },
                 success: function (data) {
-                    $("#tbl_usuario button").removeAttr("disabled");
+                    $("#tbl_solicitud button").removeAttr("disabled");
                     if (!data.d.Activo) {
                         $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
                         closeLoading();
@@ -170,12 +117,49 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    fc_listar_solicitud();
                     closeLoading();
-                    fc_listar_usuario();
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                    $("#tbl_usuario button").removeAttr("disabled");
+                    $("#tbl_solicitud button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "ANULAR":
+            objE = {
+                ID_ENCRIP: id_solicitud
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/solicitud.aspx/AnularSolicitudWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_solicitud button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_solicitud button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    fc_listar_solicitud();
+                    closeLoading();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_solicitud button").removeAttr("disabled");
                     closeLoading();
                 }
             });
@@ -188,7 +172,7 @@ function aceptarConfirm() {
 
 function limpiarSolicitud() {
     $("#errorDiv").html('');
-    id_usuario = "";
+    txh_idConfirm = "";
     $("#pnl_busqueda").css("pointer-events", "visible");
     $("#pnl_busqueda select").val('0');
     $("#pnl_busqueda input").val('');
@@ -222,5 +206,6 @@ $(document).keydown(function (evt) {
 });
 
 $("#btn_buscar").click(function () {
+    $("#btn_buscar").attr("disabled", true);
     fc_listar_solicitud();
 });

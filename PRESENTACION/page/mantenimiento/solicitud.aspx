@@ -48,7 +48,7 @@
     <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="panel pre-scrollable">
-                <table id="tbl_usuario" class="table table-striped table-hover table-fcp">
+                <table id="tbl_solicitud" class="table table-striped table-hover table-fcp">
                     <thead>
                         <tr>
                             <th style="display: none"></th>

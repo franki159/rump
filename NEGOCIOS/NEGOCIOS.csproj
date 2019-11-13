@@ -45,6 +45,7 @@
     <Compile Include="NConvenio.cs" />
     <Compile Include="NMascota.cs" />
     <Compile Include="NParametro.cs" />
+    <Compile Include="NSolicitud.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
