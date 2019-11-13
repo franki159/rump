@@ -37,7 +37,7 @@ if ($('#mapa')) {
                         '<p>Telefono: ' + _ListaConvenio[posConvenio].TELEFONO + ' </p>' +
                         '<p>Punto Autorizado: ' + (_ListaConvenio[posConvenio].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
 
-                    ubicaciones.push({ position: [_ListaConvenio[posConvenio].LATITUD, _ListaConvenio[posConvenio].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
+                    ubicaciones.push({ position: [_ListaConvenio[posConvenio].LATITUD, _ListaConvenio[posConvenio].LONGITUD], icon: '../img/puntero_mapa/punterodemapa-4.png', data: etiqueta });
                 } else {
                     if ($('#pnlTipoConvenio input').length == $('#pnlTipoConvenio input:checked').length) {
                         for (var i = 0; i < _ListaConvenio.length; i++) {
@@ -46,7 +46,7 @@ if ($('#mapa')) {
                                 '<p>Telefono: ' + _ListaConvenio[i].TELEFONO + ' </p>' +
                                 '<p>Punto Autorizado: ' + (_ListaConvenio[i].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
 
-                            ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
+                            ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/puntero_mapa/punterodemapa-4.png', data: etiqueta });
                         }
                     } else {
                         $('#pnlTipoConvenio input:checked').each(function (a, b) {
@@ -57,7 +57,7 @@ if ($('#mapa')) {
                                         '<p>Telefono: ' + _ListaConvenio[i].TELEFONO + ' </p>' +
                                         '<p>Punto Autorizado: ' + (_ListaConvenio[i].PUNTO_AUTORIZADO == 0 ? 'SI' : 'NO') + ' </p></div>';
 
-                                    ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/map_dog.png', data: etiqueta });
+                                    ubicaciones.push({ position: [_ListaConvenio[i].LATITUD, _ListaConvenio[i].LONGITUD], icon: '../img/puntero_mapa/punterodemapa-4.png', data: etiqueta });
                                 }
                             }
                         });

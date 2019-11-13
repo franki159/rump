@@ -263,9 +263,12 @@
     <Content Include="assets\font-awesome\scss\_variables.scss" />
     <Content Include="img\loader-pet.gif" />
     <Content Include="img\logoRUMP.png" />
-    <Content Include="img\map_dog.png" />
+    <Content Include="img\puntero_mapa\map_dog.png" />
     <Content Include="img\map_marker.png" />
     <Content Include="img\noPets.png" />
+    <Content Include="img\puntero_mapa\punterodemapa-1.png" />
+    <Content Include="img\puntero_mapa\punterodemapa-3.png" />
+    <Content Include="img\puntero_mapa\punterodemapa-4.png" />
     <Content Include="img\worldpetsperu_logo.png" />
     <Content Include="index.aspx" />
     <Content Include="indexPage.aspx" />
