@@ -335,6 +335,7 @@ $("#btn_registrar").click(function (evt) {
     openLoading();
     if (validIdInput($("#txt_nombre_pre").val()) || validIdInput($("#txt_apellido_pre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Nombre: Debe Ingresar el nombre y el apellido"));
+        closeLoading();
         activaTab('propietario');
         $("#txt_nombre_pre").focus();
         return;
@@ -429,7 +430,7 @@ $("#btn_registrar").click(function (evt) {
         $("#customFile").focus();
         return;
     }
-    debugger;
+  
     var eMascota = {
         //Propietario*******
         NOMBRE_PRE: $("#txt_nombre_pre").val(),
