@@ -317,7 +317,15 @@ function fc_listar_mascota() {
                             $("#txt_nombre").val(data.d.Resultado.NOMBRE);
                             $("#txt_apellido").val(data.d.Resultado.APELLIDO);
                             $("#sel_sexo").val(data.d.Resultado.SEXO).change();
-                            $("#txt_cod_microchip").val(data.d.Resultado.COD_MICROCHIP);                            
+                            debugger;
+                            if (data.d.Resultado.COD_MICROCHIP !== "") {
+                                $("#txt_cod_microchip").val(data.d.Resultado.COD_MICROCHIP);
+                                $("#chkMicrochip").prop('checked', true);
+                                $("#txt_cod_microchip").css('display', 'block');
+                            } else {
+                                $("#chkMicrochip").attr('checked', false);
+                                $("#txt_cod_microchip").css('display', 'none');
+                            }
                             $("#sel_tamano").val(data.d.Resultado.TAMANO).change();
                             $("#sel_tipo").val(data.d.Resultado.MASCOTA_TIPO_ID).change();
                             raza_id = data.d.Resultado.MASCOTA_RAZA_ID;//$("#sel_raza").val(data.d.Resultado.MASCOTA_RAZA_ID).change();
@@ -851,6 +859,8 @@ function limpiarMascota() {
     $('#sel_departamento').val(null).change();
     $("#sel_provincia").empty();
     $("#sel_distrito").empty();
+    $("#chkMicrochip").prop('checked', false);
+    $("#txt_cod_microchip").css('display', 'none');
 
     $(".container-file").find($(".imgSecond")).each(function () {
         $(this).remove();
@@ -879,6 +889,21 @@ $(document).keydown(function (evt) {
                 }
             }
             break;
+    }
+});
+
+$("#sel_sexo").on('change', function () {
+    if ($(this).val() == 'Macho') {
+        $("#lbl_masc_castrada").html('¿La mascota está castrada?');
+    } else {
+        $("#lbl_masc_castrada").html('¿La mascota está esterilizada?');
+    }
+});
+$("#chkMicrochip").change(function () {
+    if (this.checked) {
+        $("#txt_cod_microchip").css("display", "block");
+    } else {
+        $("#txt_cod_microchip").css("display", "none");
     }
 });
 $("#sel_tipo").on('change', function () {

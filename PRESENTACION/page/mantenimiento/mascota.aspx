@@ -98,8 +98,8 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombres <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nombre" placeholder="Escriba el nombre..." class="form-control" type="text" maxlength="100" />
+                                        <label>Nombre de la mascota<strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_nombre" placeholder="Escriba el nombre de la mascota..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -120,8 +120,9 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label>Código microchip</label>
-                                        <input id="txt_cod_microchip" placeholder="Código de microchip" class="form-control" type="text" maxlength="100" />
+                                        <input type="checkbox" id="chkMicrochip">
+                                        <label>¿Cuenta con microchip?</label>
+                                        <input id="txt_cod_microchip" placeholder="Código de microchip" class="form-control" style="display:none;" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +140,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Tipo <strong class="text-danger">(*)</strong></label>
+                                        <label>Especie <strong class="text-danger">(*)</strong></label>
                                         <select id="sel_tipo" class="form-control sel_autocomplete" style="width: 100%;">
                                             <option style="width: 100%;"></option>
                                         </select>
@@ -155,7 +156,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Calificación <strong class="text-danger">(*)</strong></label>
+                                        <label>Calificación de la mascota <strong class="text-danger">(*)</strong></label>
                                         <select id="sel_calificacion" class="form-control">
                                             <option value="0">Seleccionar</option>
                                             <option value="Rojo">Agresivo</option>
@@ -175,7 +176,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Fecha de Nacimiento <strong class="text-danger">(*)</strong></label>
+                                        <label>Fecha de Nacimiento de la mascota <strong class="text-danger">(*)</strong></label>
                                         <div data-date-format="dd/mm/yyyy" class="input-group date dtOp">
                                             <input id="txt_fecha_nac" type="text" class="form-control" placeholder="" data-mask="99/99/9999" size="16">
                                             <span class="input-group-addon btn-danger"><i class="icon-calendar"></i></span>
@@ -186,34 +187,34 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombre del Padre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nom_padre" placeholder="Escriba el nombre del padre..." class="form-control" type="text" maxlength="100" />
+                                        <label>Nombre del Padre humano <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_nom_padre" placeholder="Escriba el nombre del padre humano" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>DNI del padre <strong class="text-danger">(*)</strong></label>
+                                        <label>DNI del padre humano <strong class="text-danger">(*)</strong></label>
                                         <input id="txt_dni_padre" placeholder="Escriba el DNI del padre..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Teléfono del padre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_tel_padre" placeholder="Escriba el teléfono del padre..." class="form-control" type="text" maxlength="100" />
+                                        <input id="txt_tel_padre" placeholder="Escriba el teléfono del padre humano" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombre de la madre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nom_madre" placeholder="Escriba el nombre de la madre..." class="form-control" type="text" maxlength="100" />
+                                        <label>Nombre de la madre humana <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_nom_madre" placeholder="Escriba el nombre de la madre humana" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>DNI de la madre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_dni_madre" placeholder="Escriba el DNI de la madre..." class="form-control" type="text" maxlength="100" />
+                                        <label>DNI de la madre humana <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_dni_madre" placeholder="Escriba el DNI de la madre humana" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -265,7 +266,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Dirección <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_direccion" placeholder="Escriba la dirección..." class="form-control" type="text" maxlength="200" />
+                                        <input id="txt_direccion" placeholder="Dirección/Departamento/Interior" class="form-control" type="text" maxlength="200" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -278,8 +279,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Referencia</label>
-                                        <textarea id="txt_referencia" placeholder="Escriba una referencia de la dirección..." maxlength="500" class="form-control" rows="3"></textarea>
+                                        <label>Referencia (avenidas o calles principales)</label>
+                                        <textarea id="txt_referencia" placeholder="Avenidas o calles principales..." maxlength="500" class="form-control" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -295,7 +296,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>¿La mascota está castrada?</label>
+                                        <label id="lbl_masc_castrada">¿La mascota está castrada?</label>
                                         <select id="sel_castrada" class="form-control">
                                             <option value="0">No</option>
                                             <option value="1">Si</option>
