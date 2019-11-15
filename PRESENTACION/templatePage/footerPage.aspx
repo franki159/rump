@@ -124,8 +124,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <!-- Select 2 filtro-->
     <script src="../assets/select2/js/select2.full.js"></script>
 
-<script src="../assets/select2/js/select2.full.js"></script>
-<script src="../js/all/date.js"></script>
+    <script src="../js/all/date.js"></script>
 <script type="text/javascript">
         $.getScript("../js/general.js")
             .fail(function (jqxhr, settings, exception) {

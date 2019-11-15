@@ -75,5 +75,9 @@ namespace ENTIDAD
         public int ESTADO { get; set; }
 
         public List<EMascota> lMASCOTA { get; set; }
+        //PRE REGISTRO
+        public string NOMBRE_PRE { get; set; }
+        public string APELLIDO_PRE { get; set; }
+        
     }
 }

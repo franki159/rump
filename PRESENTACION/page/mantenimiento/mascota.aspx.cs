@@ -474,12 +474,6 @@ namespace PRESENTACION.page.mantenimiento
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try
             {
-                if (HttpContext.Current.Session["userRump"] == null)
-                {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                    return objRespuesta;
-                }
-
                 string objResultado = "";
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
                 objE.FOTO = objE.EXTENSION;
@@ -508,11 +502,6 @@ namespace PRESENTACION.page.mantenimiento
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try
             {
-                if (HttpContext.Current.Session["userRump"] == null)
-                {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
-                    return objRespuesta;
-                }
                 List<EGeneral> objResultado = new List<EGeneral>();
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
                 objResultado = NParametro.listarParametro(objE);

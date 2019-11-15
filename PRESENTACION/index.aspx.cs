@@ -112,5 +112,32 @@ namespace PRESENTACION
             }
             return objRespuesta;
         }
+        [WebMethod()]
+        public static object preRegistrarMascotaWM(EMascota objE) {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                EMascota objResultado = new EMascota();
+
+                objResultado = NMascota.preRegistrarMascotaWM(objE);
+
+                objRespuesta.Resultado = EUtil.getEncriptar(objResultado.ID.ToString());
+
+                //ECorreo correo = new ECorreo();
+                //correo.Para = objE.CORREO;
+                //correo.Asunto = "Activación de Usuario";
+                //correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
+                //    "<a href=\"https://rumpp.charpetechnology.com/active.aspx?user=" + objResultado.USUARIO_ID + "\">ACTIVAR CUENTA</a>";
+                //correo.Enviar();
+
+                objRespuesta.Success("Se registró correctamente");
+
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }

@@ -4454,3 +4454,9 @@ iframe {
 .select2-results__option {
     color: #858796;
 }
+.nav-tabs {
+    margin-bottom: 1rem !important;
+}
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Buscar";
+}

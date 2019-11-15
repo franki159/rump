@@ -17,7 +17,9 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="templatePage/style.css">
-
+    <link href="templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Select 2 filtro-->
+    <link href="assets/select2/css/select2.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -25,7 +27,6 @@
     <div id="page-loader"><img style="-webkit-user-select: none;margin: auto;" src="img/loader-pet.gif"></div> 
     <!-- /Preloader -->
     <!-- REPORTAR MASCOTA EXTRAVIADA -->
-
     <div class='modal modal-scroll fade' id='pnl_report_mascota' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -87,9 +88,176 @@
             </div>
         </div>
     </div>
-
     <!-- /REPORTAR MASCOTA EXTRAVIADA -->
-
+    <!-- PRE-REGISTRO -->
+    <div class='modal modal-scroll fade' id='pnl_pre_registro'  data-backdrop="static" data-keyboard="false" role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Registrar Mascota</h4>
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="errorRegistro"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="nav-item">
+                            <a class="nav-link active" id="propietario-tab" data-toggle="tab" href="#propietario" role="tab" aria-controls="propietario" aria-selected="true">Datos de propietario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mascota-tab" data-toggle="tab" href="#mascota" role="tab" aria-controls="mascota" aria-selected="false">Datos de la mascota</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="propietario" aria-labelledby="propietario-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h6><strong>Nombres <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_pre" placeholder="Nombres del propietario" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h6><strong>Apellidos <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_apellido_pre" placeholder="Apellidos del propietario" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Correo Electrónico <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" type="email" id="txt_correo_pre" placeholder="Correo electrónico" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Número Telefónico <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control integerFCP" id="txt_telefono_pre" placeholder="Número teléfonico" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Número de documento <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control integerFCP" id="txt_documento_pre" placeholder="Número de documento de identidad" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-sm continue">>>&nbsp;Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade panel-body" id="mascota" aria-labelledby="mascota-tab">
+                            <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Nombres <strong class="text-danger">(*)</strong></strong></h6>
+                                <input class="form-control" id="txt_nombre_masc" placeholder="Nombre de la mascota" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Fecha de nacimiento</strong></h6>
+                                <input type="date" class="form-control" id="txt_fecha_nac" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Sexo <strong class="text-danger">(*)</strong></strong></h6>
+                                <select id="sel_sexo" class="form-control">
+                                    <option value="0">Seleccionar</option>
+                                    <option value="Macho">Macho</option>
+                                    <option value="Hembra">Hembra</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Especie <strong class="text-danger">(*)</strong></strong></h6>
+                                <select id="sel_tipo" class="form-control sel_autocomplete" style="width: 100%;">
+                                    <option style="width: 100%;"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Raza <strong class="text-danger">(*)</strong></strong></h6>
+                                <select id="sel_raza" class="form-control sel_autocomplete" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Calificación <strong class="text-danger">(*)</strong></strong></h6>
+                                <select id="sel_calificacion" class="form-control">
+                                    <option value="0">Seleccionar</option>
+                                    <option value="Rojo">Agresivo</option>
+                                    <option value="Verde">Amistoso</option>
+                                    <option value="Blanco">Discapacitado</option>
+                                    <option value="Azul">Entrenado</option>
+                                    <option value="Amarillo">Miedoso</option>
+                                    <option value="Naranja">Peleador</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6><strong>Color de pelaje <strong class="text-danger">(*)</strong></strong></h6>
+                                <input id="txt_color" placeholder="Color del pelaje" class="form-control" type="text" maxlength="100" />
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <h6><strong>Dirección <strong class="text-danger">(*)</strong></strong></h6>
+                                <input id="txt_direccion" placeholder="Escriba la dirección..." class="form-control" type="text" maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Departamento <strong class="text-danger">(*)</strong></strong></h6>
+                                        <select id="sel_departamento" class="form-control sel_autocomplete" style="width: 100%;">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                         </div>
+                         <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Provincia <strong class="text-danger">(*)</strong></strong></h6>
+                                        <select id="sel_provincia" class="form-control sel_autocomplete" style="width: 100%;"></select>
+                                    </div>
+                         </div>
+                         <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Distrito <strong class="text-danger">(*)</strong></strong></h6>
+                                        <select id="sel_distrito" class="form-control sel_autocomplete" style="width: 100%;"></select>
+                                    </div>
+                         </div>
+                        <div class="col-md-12">
+                            <h6><strong>Foto de su mascota <strong class="text-danger">(*)</strong></strong></h6>
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="customFile">
+                              <label class="custom-file-label" for="customFile">Seleccione una foto de su mascota</label>
+                            </div>
+                        </div>
+                    </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-sm back"><<&nbsp;Atras</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_registrar" type="button" class="btn btn-warning"><i class="fa fa-paw" aria-hidden="true"></i> Registrar</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal"> Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /PRE-REGISTRO -->
     <!-- Header Area Start -->
     <header class="header-area">
  
@@ -205,7 +373,7 @@
                                     <h6 data-animation="fadeInUp" data-delay="200ms">Desde el registro único de mascotas fomentamos la tenencia responsable.</h6>
                                     <h2 data-animation="fadeInUp" data-delay="500ms">Registramos a todos los animales domesticos
 										<br/>¡No esperes más y regístralo ahora!</h2>
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInUp" data-delay="1200ms">Registrar</a>
+                                    <a href="#" class="btn roberto-btn btn-2 btn-pre-registrar" data-animation="fadeInUp" data-delay="1200ms">Registrar</a>
                                 </div>	
                         </div>
                     </div>
@@ -441,7 +609,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
 							<li class="regismasco" aria-current="page"><br/> Entonces, ¿qué esperas? Registra aquí a tu engreído, pide tu DNI y su chapita. </li>
                         </nav>
 						<br/>
-						 <a href="registrar.html" class="btn roberto-btnM " >REGISTRAR</a>
+						 <a href="#" class="btn roberto-btnM btn-pre-registrar">REGISTRAR</a>
                     </div>
                 </div>
             </div>
@@ -706,8 +874,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <script src="templatePage/js/roberto.bundle.js"></script>
     <!-- Active -->
     <script src="templatePage/js/default-assets/active.js"></script>
-
+    <!-- Select 2 filtro-->
     <script src="assets/select2/js/select2.full.js"></script>
+
     <script src="js/all/date.js"></script>
     <script type="text/javascript">
         $.getScript("js/general.js")

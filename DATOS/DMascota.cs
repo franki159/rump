@@ -622,5 +622,60 @@ namespace DATOS
 
             return EUtil.getEncriptar(ID_MASCOTA.ToString());
         }
+        public static EMascota preRegistrarMascotaWM(EMascota objE)
+        {
+            EMascota objResult = new EMascota();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlTransaction transaccRegistro;
+                cn.Open();
+                transaccRegistro = cn.BeginTransaction();
+
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_pre_registrar", cn, transaccRegistro))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre_pre", objE.NOMBRE_PRE);
+                        cmd.Parameters.AddWithValue("@apellido_pre", objE.APELLIDO_PRE);
+                        cmd.Parameters.AddWithValue("@email", objE.CORREO);
+                        cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
+                        cmd.Parameters.AddWithValue("@dni", objE.DNI);
+                        cmd.Parameters.AddWithValue("@nombre_masc", objE.NOMBRE);
+                        cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
+                        cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
+                        cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);
+                        cmd.Parameters.AddWithValue("@calificacion", objE.CALIFICACION);
+                        cmd.Parameters.AddWithValue("@color", objE.COLOR);
+                        cmd.Parameters.AddWithValue("@direccion", objE.DIRECCION);
+                        cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                            {
+                                while (dr.Read())
+                                {
+                                    objResult.ID = dr.IsDBNull(dr.GetOrdinal("ID_MASCOTA")) ? 0 : dr.GetDecimal(dr.GetOrdinal("ID_MASCOTA"));
+                                    objResult.USUARIO_ID = dr.IsDBNull(dr.GetOrdinal("ID_USUARIO")) ? 0 : dr.GetDecimal(dr.GetOrdinal("ID_USUARIO"));
+                                }
+                            }
+                        }
+                    }
+                    transaccRegistro.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaccRegistro.Rollback();
+                    objResult = null;
+                    throw (ex);
+                }
+                cn.Close();
+            }
+
+            return objResult;
+        }
     }
 }

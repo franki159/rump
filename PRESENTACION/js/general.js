@@ -475,6 +475,15 @@ function readURLImage(input, image) {
     }
 }
 
+function validateSize(file) {
+    var FileSize = file.files[0].size / 1024 / 1024; // in MB
+    if (FileSize > 2) {
+        $(file).val(''); //for clearing with Jquery
+        return false;
+    } else {
+        return true;
+    }
+}
 //*********************************** Efectos BS 4 *****************************************************
 //Button spinner
 function loadingControl(id, msg) {
