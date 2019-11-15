@@ -237,7 +237,7 @@
                             <h6><strong>Foto de su mascota <strong class="text-danger">(*)</strong></strong></h6>
                             <div class="custom-file">
                               <input type="file" class="custom-file-input" id="customFile">
-                              <label class="custom-file-label" for="customFile">Seleccione una foto de su mascota</label>
+                              <label class="custom-file-label" for="customFile">Foto de su mascota</label>
                             </div>
                         </div>
                     </div>

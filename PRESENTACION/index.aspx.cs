@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
+using System.Configuration;
 using ENTIDAD;
 using NEGOCIOS;
 
@@ -123,12 +124,12 @@ namespace PRESENTACION
 
                 objRespuesta.Resultado = EUtil.getEncriptar(objResultado.ID.ToString());
 
-                //ECorreo correo = new ECorreo();
-                //correo.Para = objE.CORREO;
-                //correo.Asunto = "Activación de Usuario";
-                //correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
-                //    "<a href=\"https://rumpp.charpetechnology.com/active.aspx?user=" + objResultado.USUARIO_ID + "\">ACTIVAR CUENTA</a>";
-                //correo.Enviar();
+                ECorreo correo = new ECorreo();
+                correo.Para = objE.CORREO;
+                correo.Asunto = "Activación de Usuario";
+                correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
+                    "<a href=\"" + ConfigurationManager.AppSettings["dominioRump"].ToString() + "/active.aspx?user=" + EUtil.getEncriptar(objResultado.USUARIO_ID.ToString()) + "\">ACTIVAR CUENTA</a>";
+                correo.Enviar();
 
                 objRespuesta.Success("Se registró correctamente");
 

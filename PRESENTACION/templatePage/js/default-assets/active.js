@@ -9,7 +9,7 @@
 
     roberto_window.on('load', function () {
         $('#page-loader').fadeOut('1000', function () {
-            $("#page-loader").hide();
+            //$("#page-loader").hide();
         });
     });
 
