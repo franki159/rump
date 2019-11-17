@@ -65,6 +65,8 @@ namespace ENTIDAD
         public string ENFERMEDAD_DSC { get; set; }
         public Nullable<DateTime> FEC_DESPARACITACION { get; set; }
         public int SEXTUPLE { get; set; }
+        public Nullable<DateTime> FEC_QUINTUPLE { get; set; }
+        public int QUINTUPLE { get; set; }
         public Nullable<DateTime> FEC_SEXTUPLE { get; set; }
         public int TRIPLEFEL { get; set; }
         public Nullable<DateTime> FEC_TRIPLEFEL { get; set; }

@@ -294,7 +294,7 @@
 
                         <div role="tabpanel" class="tab-pane fade panel-body" id="salud" aria-labelledby="salud-tab">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label id="lbl_masc_castrada">¿La mascota está castrada?</label>
                                         <select id="sel_castrada" class="form-control">
@@ -303,7 +303,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>¿Visita periodicamente al veterinario? </label>
                                         <select id="sel_visita" class="form-control">
@@ -312,9 +312,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>¿La mascota tiene alergia a medicamentos?</label>
                                         <select id="sel_alergia_med" class="form-control">
@@ -323,6 +321,8 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>¿Posee calendario de vacunación? </label>
@@ -330,6 +330,24 @@
                                             <option value="0">No</option>
                                             <option value="1">Si</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>¿Cuenta con vacunación quintuple?</label>
+                                        <select id="sel_vac_quintuple" class="form-control">
+                                            <option value="0">No</option>
+                                            <option value="1">Si</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" id="divQuintuple">
+                                    <div class="form-group">
+                                        <label>Fecha de vacuna quintuple </label>
+                                        <div data-date-format="dd/mm/yyyy" class="input-group date dtOp">
+                                            <input id="txt_fec_vac_quint" type="text" class="form-control" placeholder="" data-mask="99/99/9999" size="16">
+                                            <span class="input-group-addon btn-danger"><i class="icon-calendar"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -139,6 +139,8 @@ namespace DATOS
                         mItem.FEC_DESPARACITACION = dr.IsDBNull(dr.GetOrdinal("fecha_desparacitacion")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_desparacitacion"));
                         mItem.ENFERMEDAD_DSC = dr.IsDBNull(dr.GetOrdinal("enfermedad_descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("enfermedad_descripcion"));
                         //----------- Nuevo
+                        mItem.QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("quintuple")) ? 0 : dr.GetInt16(dr.GetOrdinal("quintuple"));
+                        mItem.FEC_QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_quintuple")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_quintuple"));
                         mItem.SEXTUPLE = dr.IsDBNull(dr.GetOrdinal("sextuple")) ? 0 : dr.GetInt16(dr.GetOrdinal("sextuple"));
                         mItem.FEC_SEXTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_sextuple")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_sextuple"));
                         mItem.TRIPLEFEL = dr.IsDBNull(dr.GetOrdinal("triplefel")) ? 0 : dr.GetInt16(dr.GetOrdinal("triplefel"));
@@ -226,6 +228,8 @@ namespace DATOS
                         mItem.FEC_DESPARACITACION = dr.IsDBNull(dr.GetOrdinal("fecha_desparacitacion")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_desparacitacion"));
                         mItem.ENFERMEDAD_DSC = dr.IsDBNull(dr.GetOrdinal("enfermedad_descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("enfermedad_descripcion"));
                         //----------- Nuevo
+                        mItem.QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("quintuple")) ? 0 : dr.GetInt16(dr.GetOrdinal("quintuple"));
+                        mItem.FEC_QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_quintuple")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_quintuple"));
                         mItem.SEXTUPLE = dr.IsDBNull(dr.GetOrdinal("sextuple")) ? 0 : dr.GetInt16(dr.GetOrdinal("sextuple"));
                         mItem.FEC_SEXTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_sextuple")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_sextuple"));
                         mItem.TRIPLEFEL = dr.IsDBNull(dr.GetOrdinal("triplefel")) ? 0 : dr.GetInt16(dr.GetOrdinal("triplefel"));
@@ -455,6 +459,8 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@enfermedad", objE.ENFERMEDAD);
                 cmd.Parameters.AddWithValue("@enfermedad_descripcion", objE.ENFERMEDAD_DSC);
                 /////////
+                cmd.Parameters.AddWithValue("@quintuple", objE.QUINTUPLE);
+                cmd.Parameters.AddWithValue("@fecha_quintuple", objE.FEC_QUINTUPLE);
                 cmd.Parameters.AddWithValue("@sextuple", objE.SEXTUPLE);
                 cmd.Parameters.AddWithValue("@fecha_sextuple", objE.FEC_SEXTUPLE);
                 cmd.Parameters.AddWithValue("@triplefel", objE.TRIPLEFEL);
@@ -594,6 +600,8 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@fecha_desparacitacion", objE.FEC_DESPARACITACION);
                         cmd.Parameters.AddWithValue("@enfermedad_descripcion", objE.ENFERMEDAD_DSC);
                         /////////
+                        cmd.Parameters.AddWithValue("@quintuple", objE.QUINTUPLE);
+                        cmd.Parameters.AddWithValue("@fecha_quintuple", objE.FEC_QUINTUPLE);
                         cmd.Parameters.AddWithValue("@sextuple", objE.SEXTUPLE);
                         cmd.Parameters.AddWithValue("@fecha_sextuple", objE.FEC_SEXTUPLE);
                         cmd.Parameters.AddWithValue("@triplefel", objE.TRIPLEFEL);

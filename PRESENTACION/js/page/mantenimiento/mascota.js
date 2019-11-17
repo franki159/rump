@@ -283,7 +283,8 @@ function fc_listar_mascota() {
                         }
                     });
                     event.preventDefault();
-                }else if ($(this).attr("name") === "edit-mascota") {
+                } else if ($(this).attr("name") === "edit-mascota") {
+                    debugger;
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $('#pnl_mascota .modal-title').html('Editar Mascota');
@@ -307,9 +308,10 @@ function fc_listar_mascota() {
 
                             if (!data.d.Activo) {
                                 $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                                closeLoading();
                                 return;
                             }
-
+                            debugger;
                             $("#txt_nombre").attr("disabled", true);
                             $("#txt_apellido").attr("disabled", true);
                             $("#sel_sexo").attr("disabled", true);
@@ -355,6 +357,11 @@ function fc_listar_mascota() {
                             $("#sel_visita").val(data.d.Resultado.VISITA).change();
                             $("#sel_alergia_med").val(data.d.Resultado.ALERGIA_MEDICAMENTO).change();
                             $("#sel_calendario").val(data.d.Resultado.VACUNACION).change();
+                            $("#sel_vac_quintuple").val(data.d.Resultado.QUINTUPLE).change();
+                            if (data.d.Resultado.FEC_QUINTUPLE !== null) {
+                                $("#txt_fec_vac_quint").val(formatDate(parseDateServer(data.d.Resultado.FEC_QUINTUPLE), "dd/MM/yyyy")).change();
+                                $("#txt_fec_vac_quint").parent().datepicker("update", $("#txt_fec_vac_quint").val());
+                            }  
                             $("#sel_vac_sextuple").val(data.d.Resultado.SEXTUPLE).change();
                             if (data.d.Resultado.FEC_SEXTUPLE !== null) {
                                 $("#txt_fec_vac_sext").val(formatDate(parseDateServer(data.d.Resultado.FEC_SEXTUPLE), "dd/MM/yyyy")).change();
@@ -831,6 +838,7 @@ function limpiarMascota() {
     $("#errorDiv").html('');
     $("#errorMascota").html('');
 
+    $("#divQuintuple").hide();
     $("#divSextuple").hide();
     $("#divTriple").hide();
     $("#divLeucemia").hide();
@@ -1046,6 +1054,14 @@ $("#sel_provincia").on('change', function () {
         }
     });
 });
+$("#sel_vac_quintuple").on('change', function () {
+    if ($(this).val() === "0") {
+        //$("#txt_fec_vac_sext").val('');
+        $("#divQuintuple").hide();
+    } else if ($(this).val() === "1") {
+        $("#divQuintuple").show();
+    }
+});
 $("#sel_vac_sextuple").on('change', function () {
     if ($(this).val() === "0") {
         //$("#txt_fec_vac_sext").val('');
@@ -1245,6 +1261,8 @@ $("#btn_guardar").click(function (evt) {
         VISITA: $("#sel_visita").val(),
         ALERGIA_MEDICAMENTO: $("#sel_alergia_med").val(),
         VACUNACION: $("#sel_calendario").val(),
+        QUINTUPLE: $("#sel_vac_quintuple").val(),
+        FEC_QUINTUPLE: $("#txt_fec_vac_quint").val() === "" ? null : getDateFromFormat($("#txt_fec_vac_quint").val(), 'dd/MM/yyyy'),
         SEXTUPLE: $("#sel_vac_sextuple").val(),
         FEC_SEXTUPLE: $("#txt_fec_vac_sext").val() === "" ? null : getDateFromFormat($("#txt_fec_vac_sext").val(), 'dd/MM/yyyy'),
         TRIPLEFEL: $("#sel_vac_triple").val(),
@@ -1260,7 +1278,7 @@ $("#btn_guardar").click(function (evt) {
         ENFERMEDAD: $("#sel_enfermedad").val(),
         ENFERMEDAD_DSC: $("#txt_enfermedad").val()
     };
-
+    debugger;
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/ActualizarMascotaWM",
