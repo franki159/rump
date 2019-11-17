@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.IO;
 using ENTIDAD;
 using NEGOCIOS;
+using System.Configuration;
 
 namespace PRESENTACION.page.mantenimiento
 {
@@ -172,7 +173,7 @@ namespace PRESENTACION.page.mantenimiento
                         correo.Para = objE.EMAIL;
                         correo.Asunto = "Activación de Usuario";
                         correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
-                            "<a href=\"https://rumpp.charpetechnology.com/active.aspx?user=" + objResultado + "\">ACTIVAR CUENTA</a>";
+                            "<a href=\"" + ConfigurationManager.AppSettings["dominioRump"].ToString() + "/active.aspx?user=" + objResultado + "\">ACTIVAR CUENTA</a>";
                         correo.Enviar();
                     }
                 }
