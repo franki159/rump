@@ -10,10 +10,14 @@
                             <!-- Footer Logo -->
                             <a href="home.html" class="footer-logo"><img src="img/core-img/logo-orange&white.png" alt=""></a>
                             
-							<a class="itel2"><img src="img/core-img/whatsapp.png"></a>
+							<a class="itel"><img src="img/core-img/whatsapp.png"></a>
 
 							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992 975 292</a>
 							<span></span>
+                            <a class="itel"><img src="img/core-img/phone.png"></a>
+							
+							<a class="baraitem" href="tel:+517316407">(01)7316407</a>
+                            <span></span>
                             <span>Dirección: </span>
 							<span>Av. Brasil #3345  </span>
                             <span>Magdalena del Mar -  PERÚ</span>

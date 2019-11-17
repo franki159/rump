@@ -12,10 +12,10 @@
 
                     <div class="col-6">
                         <div class="top-header-content">
-                            <a class="itel2"><img src="img/core-img/whatsapp.png"></a>
+                            <a class="itel"><img src="img/core-img/whatsapp.png"></a>
 							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992975292</a>
 							<a class="itel2"><img src="img/core-img/phone.png"></a>
-							<a class="baraitem" aria-current="page" href="tel:01 7316407">(01)7316407</a>
+							<a class="baraitem" aria-current="page" href="tel:+517316407">(01)7316407</a>
                         </div>
                     </div>
 

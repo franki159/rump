@@ -268,10 +268,10 @@
 
                     <div class="col-6">
                         <div class="top-header-content">
-                            <a class="itel2"><img src="templatePage/img/core-img/whatsapp.png"></a>
+                            <a class="itel"><img src="templatePage/img/core-img/whatsapp.png"></a>
 							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992975292</a>
 							<a class="itel2"><img src="templatePage/img/core-img/phone.png"></a>
-							<a class="baraitem" aria-current="page"  href="tel:01 7316407">(01)7316407</a>
+							<a class="baraitem" aria-current="page"  href="tel:+517316407">(01)7316407</a>
                         </div>
                     </div>
 
@@ -764,10 +764,14 @@ más cuando ellos quieren que cuando nosotros lo buscamos.</p>
                             <!-- Footer Logo -->
                             <a href="./" class="footer-logo"><img src="templatePage/img/core-img/logo-orange&white.png" alt=""></a>
                             
-							<a class="itel2"><img src="templatePage/img/core-img/whatsapp.png"></a>
+							<a class="itel"><img src="templatePage/img/core-img/whatsapp.png"></a>
 
 							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992 975 292</a>
 							<span></span>
+                            <a class="itel"><img src="templatePage/img/core-img/phone.png"></a>
+							
+							<a class="baraitem" href="tel:+517316407">(01)7316407</a>
+                            <span></span>
                             <span>Dirección: </span>
 							<span>Av. Brasil #3345  </span>
                             <span>Magdalena del Mar -  PERÚ</span>
