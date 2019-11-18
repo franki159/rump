@@ -123,7 +123,10 @@ namespace PRESENTACION
                 objResultado = NMascota.preRegistrarMascotaWM(objE);
 
                 objRespuesta.Resultado = EUtil.getEncriptar(objResultado.ID.ToString());
-
+                EUsuario eUsuario = new EUsuario();
+                eUsuario.ID_ENCRIP = EUtil.getEncriptar(objResultado.USUARIO_ID.ToString());
+                eUsuario.TOKEN_ACTIVACION = EUtil.getEncriptar(objResultado.USUARIO_ID.ToString());
+                int objResultadoActivacion = NUsuario.TokenActivoUsuario(eUsuario);
                 ECorreo correo = new ECorreo();
                 correo.Para = objE.CORREO;
                 correo.Asunto = "Activación de Usuario";
