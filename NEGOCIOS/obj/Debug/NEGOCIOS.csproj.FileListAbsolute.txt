@@ -88,7 +88,6 @@ C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\NEGOCIOS.dll
 C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\NEGOCIOS.pdb
 C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\DATOS.dll
 C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.dll
-C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\MySql.Data.dll
 C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\DATOS.pdb
 C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\DATOS.dll.config
 C:\Users\FCHARA\source\repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.pdb

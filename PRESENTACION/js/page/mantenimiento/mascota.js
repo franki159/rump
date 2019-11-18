@@ -107,6 +107,10 @@ function fc_listar_inicio() {
 }
 /*Funciones*/
 function fc_listar_mascota() {
+    if (sessionStorage.getItem('PERFIL_ID') !== "4" && $("#txt_bus_dni").val() === "") {
+        closeLoading();
+        return;
+    }
     openLoading();
 
     var eMascota = {
@@ -284,7 +288,6 @@ function fc_listar_mascota() {
                     });
                     event.preventDefault();
                 } else if ($(this).attr("name") === "edit-mascota") {
-                    debugger;
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $('#pnl_mascota .modal-title').html('Editar Mascota');
@@ -311,7 +314,7 @@ function fc_listar_mascota() {
                                 closeLoading();
                                 return;
                             }
-                            debugger;
+                         
                             $("#txt_nombre").attr("disabled", true);
                             $("#txt_apellido").attr("disabled", true);
                             $("#sel_sexo").attr("disabled", true);
@@ -319,7 +322,7 @@ function fc_listar_mascota() {
                             $("#txt_nombre").val(data.d.Resultado.NOMBRE);
                             $("#txt_apellido").val(data.d.Resultado.APELLIDO);
                             $("#sel_sexo").val(data.d.Resultado.SEXO).change();
-                            debugger;
+                    
                             if (data.d.Resultado.COD_MICROCHIP !== "") {
                                 $("#txt_cod_microchip").val(data.d.Resultado.COD_MICROCHIP);
                                 $("#chkMicrochip").prop('checked', true);
@@ -1126,6 +1129,7 @@ $("#btn_buscar").click(function () {
 });
 $("#btn_nuevo").click(function () {
     //Si es un asesor o un administrador
+    $("#txt_bus_dni").val("");
     if (sessionStorage.getItem('PERFIL_ID') === "1" || sessionStorage.getItem('PERFIL_ID') === "3") {
         $("#errorPropietario").html('');
         $("#txt_correo").val('');
@@ -1226,7 +1230,7 @@ $("#btn_guardar").click(function (evt) {
         $("#txt_direccion").focus();
         return;
     }
-
+    
     var eMascota = {
         ID_ENCRIP: id_mascota,
         //Nuevo*******
@@ -1278,7 +1282,7 @@ $("#btn_guardar").click(function (evt) {
         ENFERMEDAD: $("#sel_enfermedad").val(),
         ENFERMEDAD_DSC: $("#txt_enfermedad").val()
     };
-    debugger;
+
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/ActualizarMascotaWM",
@@ -1447,8 +1451,8 @@ $("#btn_select_prop").click(function (evt) {
             }
 
             $("#pnl_mascota_prop").modal('hide');
-            _user_email = data.d.Resultado.ID;
             limpiarMascota();
+            _user_email = data.d.Resultado.ID;
             activaTab('dato');
 
             if (sessionStorage.getItem('SEXO') === "Masculino") {

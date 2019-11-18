@@ -428,23 +428,25 @@ namespace DATOS
         {
             EUsuario lista = new EUsuario();
 
-            using (MySqlConnection cn = new MySqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRump)))
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
 
-                MySqlCommand cmd = new MySqlCommand("SELECT id, email, nombre, apellido, sexo, usuario_perfil_id FROM usuario WHERE email = @email", cn);
+                SqlCommand cmd = new SqlCommand("dbo.usp_mnt_usuario", cn);
                 cmd.Parameters.AddWithValue("@email", objE.EMAIL);
+                cmd.Parameters.AddWithValue("@opcion", 13);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
+                SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
                     while (dr.Read())
                     {
-                        lista.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetInt32(dr.GetOrdinal("id"));
+                        lista.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
                         lista.EMAIL = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
                         lista.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
                         lista.APELLIDO = dr.IsDBNull(dr.GetOrdinal("apellido")) ? string.Empty : dr.GetString(dr.GetOrdinal("apellido"));
                         lista.SEXO = dr.IsDBNull(dr.GetOrdinal("sexo")) ? string.Empty : dr.GetString(dr.GetOrdinal("sexo"));
-                        lista.PERFIL_ID = dr.IsDBNull(dr.GetOrdinal("usuario_perfil_id")) ? 0 : dr.GetInt32(dr.GetOrdinal("usuario_perfil_id"));
+                        lista.PERFIL_ID = dr.IsDBNull(dr.GetOrdinal("usuario_perfil_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("usuario_perfil_id"));
                     }
                 }
             }
