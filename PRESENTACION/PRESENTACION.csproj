@@ -45,6 +45,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\integracionConJson\Codigos Fuentes Varios Lenguajes\NET_CON_JASON\Json\bin\Debug\Newtonsoft.Json.dll</HintPath>
@@ -52,6 +55,7 @@
     <Reference Include="RestSharp">
       <HintPath>..\..\integracionConJson\Codigos Fuentes Varios Lenguajes\NET_CON_JASON\Json\bin\Debug\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -61,6 +65,24 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -70,6 +92,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\WebRecognition\Content\bootstrap.css" />
+    <Content Include="Areas\WebRecognition\Content\bootstrap.min.css" />
+    <Content Include="Areas\WebRecognition\Content\Site.css" />
+    <Content Include="Areas\WebRecognition\dist\bootstrap.css" />
+    <Content Include="Areas\WebRecognition\dist\bootstrap.min.css" />
+    <Content Include="Areas\WebRecognition\dist\jquery-ui.min.js" />
+    <Content Include="Areas\WebRecognition\dist\jquery.min.js" />
+    <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\WebRecognition\Scripts\2A0UG1u5t9zxhjX.js" />
+    <Content Include="Areas\WebRecognition\Scripts\2A1UG1u5t9zxhjX.js" />
+    <Content Include="Areas\WebRecognition\Scripts\2ARUG1u5t9zxhjX.js" />
+    <Content Include="Areas\WebRecognition\Scripts\Alert.js" />
+    <Content Include="Areas\WebRecognition\Scripts\bootstrap.js" />
+    <Content Include="Areas\WebRecognition\Scripts\bootstrap.min.js" />
+    <None Include="Areas\WebRecognition\Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.js" />
+    <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Areas\WebRecognition\Scripts\modernizr-2.6.2.js" />
+    <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.all.js" />
+    <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.all.min.js" />
+    <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.css" />
+    <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.js" />
+    <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.min.css" />
+    <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.min.js" />
     <Content Include="assets\advanced-datatable\examples\examples_support\vssver2.scc" />
     <Content Include="assets\advanced-datatable\media\css\vssver2.scc" />
     <Content Include="assets\advanced-datatable\media\images\vssver2.scc" />
@@ -211,10 +257,14 @@
     <Content Include="assets\select2\js\select2.full.js" />
     <Content Include="assets\upGalleryFCP\upGalleryFCP.css" />
     <Content Include="assets\upGalleryFCP\upGalleryFCP.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\components.css" />
     <Content Include="css\stylePropio.css" />
     <Content Include="css\vendor-72d47c3353.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="img\av-hombre.png" />
     <Content Include="img\avatarUser.png" />
     <Content Include="img\charpe.png" />
@@ -321,6 +371,17 @@
     <Content Include="assets\dropzone\dropzone-master\test\test.coffee" />
     <Content Include="page\mantenimiento\hh_imagenMascota.ashx" />
     <Content Include="page\mantenimiento\hh_imagenUsuario.ashx" />
+    <Content Include="Areas\WebRecognition\Views\web.config" />
+    <Content Include="Areas\WebRecognition\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WebRecognition\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WebRecognition\Views\Recognition\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.min.map" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Carpeta para FTP.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -329,6 +390,12 @@
     <None Include="Properties\PublishProfiles\SomeePublic.pubxml" />
     <Content Include="page\proceso\imprimirDNI.aspx" />
     <Content Include="page\proceso\visorWeb.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="templatePage\adoptame.aspx" />
     <Content Include="templatePage\contacto.aspx" />
     <Content Include="templatePage\footerPage.aspx" />
@@ -836,6 +903,7 @@
     <Content Include="templatePage\scss\_testimonial.scss" />
     <Content Include="templatePage\scss\_widget.scss" />
     <Content Include="templatePage\style.css.map" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2555,6 +2623,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\WebRecognition\Controllers\RecognitionController.cs" />
+    <Compile Include="Areas\WebRecognition\Logic\Logic.cs" />
+    <Compile Include="Areas\WebRecognition\Models\Model.cs" />
+    <Compile Include="Areas\WebRecognition\WebRecognitionAreaRegistration.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

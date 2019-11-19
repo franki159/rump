@@ -30,7 +30,7 @@ namespace PRESENTACION.page.proceso
 
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    var doc = new Document(PageSize.LETTER, 25, 20, 20, 20);
+                    var doc = new Document(PageSize.LETTER, 25, 20, 25, 20);
                     //using (var doc = new Document(PageSize.LETTER, 25, 20, 20, 20))
                     //{
                     iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
@@ -85,7 +85,7 @@ namespace PRESENTACION.page.proceso
                     float[] widths2 = new float[] { 17f, 65f, 75f, 80f };
                     tbody.SetWidths(widths2);
                     tbody.HorizontalAlignment = 0;
-                    tbody.SpacingBefore = 5f;
+                    tbody.SpacingBefore = 1f;
 
                     var dniSeparado = "";
 
