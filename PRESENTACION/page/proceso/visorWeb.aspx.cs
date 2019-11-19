@@ -30,7 +30,7 @@ namespace PRESENTACION.page.proceso
 
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    var doc = new Document(PageSize.LETTER, 25, 20, 20, 20);
+                    var doc = new Document(PageSize.LETTER, 25, 20, 25, 20);
                     //using (var doc = new Document(PageSize.LETTER, 25, 20, 20, 20))
                     //{
                     iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
@@ -173,7 +173,7 @@ namespace PRESENTACION.page.proceso
 
                     cell = new PdfPCell(new Phrase("Fecha de Emisión", titleSmall5));
                     cell.Border = 0;
-                    cell.PaddingTop = 6;
+                    cell.PaddingTop = 5;
                     cell.HorizontalAlignment = 1;
                     tFechas.AddCell(cell);
 
@@ -185,7 +185,7 @@ namespace PRESENTACION.page.proceso
 
                     cell = new PdfPCell(new Phrase("Fecha de Caducidad", titleSmall5));
                     cell.Border = 0;
-                    cell.PaddingTop = 6;
+                    cell.PaddingTop = 5;
                     cell.HorizontalAlignment = 1;
                     tFechas.AddCell(cell);
 
