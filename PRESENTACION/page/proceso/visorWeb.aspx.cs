@@ -85,7 +85,7 @@ namespace PRESENTACION.page.proceso
                     float[] widths2 = new float[] { 17f, 65f, 75f, 80f };
                     tbody.SetWidths(widths2);
                     tbody.HorizontalAlignment = 0;
-                    tbody.SpacingBefore = 1f;
+                    tbody.SpacingBefore = 5f;
 
                     var dniSeparado = "";
 
@@ -173,7 +173,7 @@ namespace PRESENTACION.page.proceso
 
                     cell = new PdfPCell(new Phrase("Fecha de Emisión", titleSmall5));
                     cell.Border = 0;
-                    cell.PaddingTop = 6;
+                    cell.PaddingTop = 5;
                     cell.HorizontalAlignment = 1;
                     tFechas.AddCell(cell);
 
@@ -185,7 +185,7 @@ namespace PRESENTACION.page.proceso
 
                     cell = new PdfPCell(new Phrase("Fecha de Caducidad", titleSmall5));
                     cell.Border = 0;
-                    cell.PaddingTop = 6;
+                    cell.PaddingTop = 5;
                     cell.HorizontalAlignment = 1;
                     tFechas.AddCell(cell);
 
