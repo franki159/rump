@@ -189,7 +189,7 @@ function fc_listar_usuario() {
                 if ($(this).attr("name") === "activar") {
                     activo_usuario = $(this).attr("data-a");
                     $("#txh_idConfirm").val('ACTIVAR');
-                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>" + (activo_usuario == "1" ? "Desactivar" : "Activar") + "</strong> el usuario " + id_usuario + "?");
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>" + (activo_usuario == "1" ? "Desactivar" : "Activar") + "</strong> el usuario?");
                 }
             });
 

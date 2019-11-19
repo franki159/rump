@@ -1161,33 +1161,33 @@ $("#btn_guardar").click(function (evt) {
              }
         });
 
-        if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
-            $("#errorMascota").html(GenerarAlertaWarning("Nombre: Debe ingresar el nombre y el apellido"));
-            closeLoading();
-            activaTab('dato');
-            $("#txt_nombre").focus();
-            return;
-        } else if (validIdInput($("#txt_fecha_nac").val())) {
-            $("#errorMascota").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
-            closeLoading();
-            activaTab('dato');
-            $("#txt_fecha_nac").focus();
-            return;
-        } else if (validIdInput($("#sel_sexo").val())) {
-            $("#errorMascota").html(GenerarAlertaWarning("Sexo: ingresar el sexo de su mascota"));
-            closeLoading();
-            activaTab('dato');
-            $("#sel_sexo").focus();
-            return;
-        } else if (error_img > 0) {
+        if (error_img > 0) {
             $("#errorMascota").html(GenerarAlertaWarning("Imagen: seleccione una foto de su mascota"));
             closeLoading();
             activaTab('foto');
             return;
         }
     }
-    
-    if (validIdInput($("#sel_tipo").val())) {
+
+    if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
+        $("#errorMascota").html(GenerarAlertaWarning("Nombre: Debe ingresar el nombre y el apellido"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_nombre").focus();
+        return;
+    } else if (validIdInput($("#txt_fecha_nac").val())) {
+        $("#errorMascota").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_fecha_nac").focus();
+        return;
+    } else if (validIdInput($("#sel_sexo").val())) {
+        $("#errorMascota").html(GenerarAlertaWarning("Sexo: ingresar el sexo de su mascota"));
+        closeLoading();
+        activaTab('dato');
+        $("#sel_sexo").focus();
+        return;
+    } else if (validIdInput($("#sel_tipo").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Tipo: seleccione un Tipo de mascota"));
         closeLoading();
         activaTab('dato');
@@ -1282,7 +1282,7 @@ $("#btn_guardar").click(function (evt) {
         ENFERMEDAD: $("#sel_enfermedad").val(),
         ENFERMEDAD_DSC: $("#txt_enfermedad").val()
     };
-
+    
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/ActualizarMascotaWM",
@@ -1449,7 +1449,12 @@ $("#btn_select_prop").click(function (evt) {
                 closeLoading();
                 return;
             }
-
+            if (data.d.Resultado.ID === 0) {
+                $("#errorPropietario").html(GenerarAlertaError("El correo ingresado no está registrado."));
+                closeLoading();
+                return;
+            }
+            
             $("#pnl_mascota_prop").modal('hide');
             limpiarMascota();
             _user_email = data.d.Resultado.ID;
