@@ -396,6 +396,18 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static int ActualizarActivoUsuario(EUsuario objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_usuario", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@opcion", 14);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
 
         /*
         public static EUsuario ListarUsuarios(EUsuario objE)

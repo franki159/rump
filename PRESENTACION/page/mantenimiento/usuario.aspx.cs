@@ -227,5 +227,36 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
+        [WebMethod()]
+        public static object ActivarUsuarioWM(EUsuario objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                int objResultado = 0;
+
+                objResultado = NUsuario.ActualizarActivoUsuario(objE);
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("No se pudo " + (objE.ACTIVO == 1 ? "desactivar" : "activar") + " la cuenta de usuario.");
+                }
+                else
+                {
+                    objRespuesta.Success("Se " + (objE.ACTIVO == 1 ? "desactivo" : "activo") + " la cuenta del usuario correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿var foto_dsc;
 var id_usuario;
+var activo_usuario;
 var valRND = Math.floor(Math.random() * 100);
 /*Inicializar Script*/
 $(function () {
@@ -107,7 +108,7 @@ function fc_listar_usuario() {
                     '</td>';
                 html += '<td style="text-align:center">' +
                     '<div>' +
-                    '<img class="img-row-usuario" src="img/checkbox/' + (data.d.Resultado[i].ACTIVO == 1 ? 'check-on' : 'check-off') + '.png">' +
+                    '<img name="activar" class="img-row-usuario" data-a="' + data.d.Resultado[i].ACTIVO + '" src="img/checkbox/' + (data.d.Resultado[i].ACTIVO == 1 ? 'check-on' : 'check-off') + '.png">' +
                     '</div>' +
                     '</td>';
                 html += '<td>' + data.d.Resultado[i].USUARIO_PERFIL.PERFIL + '</td>';
@@ -182,6 +183,16 @@ function fc_listar_usuario() {
                 }
             });
 
+            $("#tbl_usuario img").click(function () {
+                id_usuario = $(this).parent().parent().parent().find("td").eq(0).html();
+
+                if ($(this).attr("name") === "activar") {
+                    activo_usuario = $(this).attr("data-a");
+                    $("#txh_idConfirm").val('ACTIVAR');
+                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>" + (activo_usuario == "1" ? "Desactivar" : "Activar") + "</strong> el usuario " + id_usuario + "?");
+                }
+            });
+
             closeLoading();
         },
         error: function (data) {
@@ -201,6 +212,44 @@ function aceptarConfirm() {
             $.ajax({
                 type: "POST",
                 url: "page/mantenimiento/usuario.aspx/AnularUsuarioWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_usuario button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_usuario button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    closeLoading();
+                    fc_listar_usuario();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_usuario button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "ACTIVAR":
+            var objE = {
+                ID_ENCRIP: id_usuario,
+                ACTIVO: activo_usuario
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/usuario.aspx/ActivarUsuarioWM",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify({ objE: objE }),

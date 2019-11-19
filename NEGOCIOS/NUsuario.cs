@@ -75,5 +75,9 @@ namespace NEGOCIOS
         {
             return DUsuario.CambiarClaveUsuario(ent);
         }
+        public static int ActualizarActivoUsuario(EUsuario ent)
+        {
+            return DUsuario.ActualizarActivoUsuario(ent);
+        }
     }
 }
