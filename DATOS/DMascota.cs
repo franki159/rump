@@ -217,6 +217,8 @@ namespace DATOS
                         mItem.TIPO = dr.IsDBNull(dr.GetOrdinal("tipo")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo"));
                         mItem.RAZA = dr.IsDBNull(dr.GetOrdinal("raza")) ? string.Empty : dr.GetString(dr.GetOrdinal("raza"));
                         mItem.FEC_CREA = dr.IsDBNull(dr.GetOrdinal("created_at")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("created_at"));
+                        mItem.FEC_EMI = dr.IsDBNull(dr.GetOrdinal("fecha_inscripcion")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_inscripcion"));
+                        mItem.FEC_CAD = dr.IsDBNull(dr.GetOrdinal("fecha_caducidad")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_caducidad"));
                         //Salud
                         mItem.CASTRADO = dr.IsDBNull(dr.GetOrdinal("castrado")) ? 0 : dr.GetInt16(dr.GetOrdinal("castrado"));
                         mItem.VISITA = dr.IsDBNull(dr.GetOrdinal("visita")) ? 0 : dr.GetInt16(dr.GetOrdinal("visita"));
@@ -433,6 +435,11 @@ namespace DATOS
                 
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@tamano", objE.TAMANO);
+
+                cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
+                cmd.Parameters.AddWithValue("@apellido", objE.APELLIDO);
+                cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
+                cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
 
                 cmd.Parameters.AddWithValue("@cod_microchip", objE.COD_MICROCHIP);
                 cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);

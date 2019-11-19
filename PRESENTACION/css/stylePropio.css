@@ -551,6 +551,10 @@ legend.scheduler-border {
     width: 100%!important;
 }
 
+.modal {
+    overflow-y: auto!important;
+}
+
 .modal-confirm {
     padding: 15px;
     color: #fff;

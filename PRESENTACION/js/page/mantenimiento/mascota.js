@@ -315,10 +315,10 @@ function fc_listar_mascota() {
                                 return;
                             }
                          
-                            $("#txt_nombre").attr("disabled", true);
-                            $("#txt_apellido").attr("disabled", true);
-                            $("#sel_sexo").attr("disabled", true);
-                            $("#txt_fecha_nac").attr("disabled", true);
+                            //$("#txt_nombre").attr("disabled", true);
+                            //$("#txt_apellido").attr("disabled", true);
+                            //$("#sel_sexo").attr("disabled", true);
+                            //$("#txt_fecha_nac").attr("disabled", true);
                             $("#txt_nombre").val(data.d.Resultado.NOMBRE);
                             $("#txt_apellido").val(data.d.Resultado.APELLIDO);
                             $("#sel_sexo").val(data.d.Resultado.SEXO).change();

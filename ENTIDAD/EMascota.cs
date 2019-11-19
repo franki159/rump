@@ -32,6 +32,8 @@ namespace ENTIDAD
         public string BIOGRAFIA { get; set; }
         public Nullable<DateTime> FEC_NAC { get; set; }
         public Nullable<DateTime> FEC_CREA { get; set; }
+        public Nullable<DateTime> FEC_EMI { get; set; }
+        public Nullable<DateTime> FEC_CAD { get; set; }
         //FAMILIA PADRE
         public string FAMILIARP { get; set; }
         public string DNIP { get; set; }

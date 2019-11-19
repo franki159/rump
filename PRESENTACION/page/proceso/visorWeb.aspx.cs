@@ -177,7 +177,7 @@ namespace PRESENTACION.page.proceso
                     cell.HorizontalAlignment = 1;
                     tFechas.AddCell(cell);
 
-                    cell = new PdfPCell(new Phrase(objE.FEC_NAC.Value.ToString("dd MM yyyy"), titleSmall5B));
+                    cell = new PdfPCell(new Phrase(objE.FEC_EMI.Value.ToString("dd MM yyyy"), titleSmall5B));
                     cell.Border = 0;
                     cell.HorizontalAlignment = 1;
                     cell.PaddingTop = -2;
@@ -189,7 +189,7 @@ namespace PRESENTACION.page.proceso
                     cell.HorizontalAlignment = 1;
                     tFechas.AddCell(cell);
 
-                    cell = new PdfPCell(new Phrase(objE.FEC_NAC.Value.AddYears(1).ToString("dd MM yyyy"), fechaCaducidad));
+                    cell = new PdfPCell(new Phrase(objE.FEC_CAD.Value.ToString("dd MM yyyy"), fechaCaducidad));
                     cell.Border = 0;
                     cell.HorizontalAlignment = 1;
                     cell.PaddingTop = -2;
