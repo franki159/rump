@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ENTIDAD
 {
-    public class ESolicitud
+    public class ESolicitud:EGeneral
     {
         public decimal ID { get; set; }
         public string ID_ENCRIP { get; set; }
@@ -16,10 +16,8 @@ namespace ENTIDAD
         public decimal USUARIO { get; set; }
         public decimal MASCOTA_ID { get; set; }
         public string MASCOTA { get; set; }
-        public int OPCION { get; set; }
         public string DNI { get; set; }
         public string EMAIL { get; set; }
-        public string TIPO { get; set; }
         public string PROPIETARIO { get; set; }
         public string TELEFONO { get; set; }
         public int ESTADO { get; set; }

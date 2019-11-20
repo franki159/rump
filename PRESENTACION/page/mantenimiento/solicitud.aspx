@@ -59,6 +59,7 @@
                             <th style="display: none"></th>
                             <th></th>
                             <th>Tipo</th>
+                            <th>Fecha</th>
                             <th>DNI</th>
                             <th>Mascota</th>
                             <th>Propietario</th>

@@ -39,6 +39,8 @@ namespace DATOS
                         mItem.EMAIL = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
                         mItem.TELEFONO = dr.IsDBNull(dr.GetOrdinal("telefono")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefono"));
                         mItem.ESTADO = dr.IsDBNull(dr.GetOrdinal("estado")) ? 0 : dr.GetInt16(dr.GetOrdinal("estado"));
+                        mItem.vPARAM1 = dr.IsDBNull(dr.GetOrdinal("fecha_solicitud")) ? string.Empty : dr.GetString(dr.GetOrdinal("fecha_solicitud"));
+                        mItem.vPARAM2 = dr.IsDBNull(dr.GetOrdinal("responsable")) ? string.Empty : dr.GetString(dr.GetOrdinal("responsable"));
                         lista.Add(mItem);
                     }
                 }

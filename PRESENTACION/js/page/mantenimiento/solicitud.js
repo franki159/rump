@@ -57,9 +57,10 @@ function fc_listar_solicitud() {
                 if (data.d.Resultado[i].ESTADO === 1) {
                     html += '<td>' + htmlBotones + '</td>';
                 } else {
-                    html += '<td></td>';
+                    html += '<td>' + data.d.Resultado[i].vPARAM2+'</td>';
                 }
                 html += '<td>Solicitud ' + data.d.Resultado[i].TIPO + '</td>';
+                html += '<td>' + data.d.Resultado[i].vPARAM1 + '</td>';
                 html += '<td>' + data.d.Resultado[i].DNI + '</td>';
                 html += '<td>' + data.d.Resultado[i].MASCOTA + '</td>';
                 html += '<td>' + data.d.Resultado[i].PROPIETARIO + '</td>';
