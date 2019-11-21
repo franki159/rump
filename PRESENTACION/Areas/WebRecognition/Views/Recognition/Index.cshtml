@@ -42,7 +42,7 @@
 
 
 
-<div class="container">
+<div class="container" style="width:100%;">
 
     <div class="row">
         <div class="col-sm-12">
@@ -57,25 +57,50 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="width:100%">
 
-        <div class="col-sm-7">
-            <div style="text-align:center;margin:0 auto; width:100%;">
-                <input type="file" id="filesimgBuscar" name="files[]" accept="image/png, image/jpeg" /><br />
-                <img src="~/img/huella2.png" id="imgTomada" style="width:350px; height:350px;" crossorigin="anonymous" />
+
+        <div class="col-sm-6">
+            <div class="col-sm-4">
+                <div class="form-group ">
+                    <label>Tipo</label>
+                    <select id="cmbTIPO" class="form-control" onchange="mTipoSelect(this)"></select>
+                </div>
+                <div class="form-group ">
+                    <label>RAZA</label>
+                    <select id="cmbRAZA" class="form-control" onchange="mRazaSelect(this)"></select>
+                </div>
+                <div class="form-group " style="display:none">
+                    <label>Departamento</label>
+                    <select id="cmbDEPARTAMENTO" class="form-control" onchange="mDepartamentoSelect(this)"></select>
+                </div>
+                <div class="form-group " style="display:none">
+                    <label>Provincia</label>
+                    <select id="cmbPROVINCIA" class="form-control"></select>
+                </div>
+                <div class="form-group " style="display:none">
+                    <label>distrito</label>
+                    <select id="cmbDISTRITO" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div style="text-align:center;margin:0 auto; width:100%;">
+                    <input type="file" id="filesimgBuscar" name="files[]" accept="image/png, image/jpeg" /><br />
+                    <img src="http://recognitionface.worldpetsperu.com/img/huella2.png" id="imgTomada" style="width:250px; height:250px;" crossorigin="anonymous" />
+                </div>
             </div>
         </div>
-        <div class="col-sm-4">
-            <div style="text-align:center;margin:0 auto; width:95%;">
-                <button id="btnProcessRecognition" class="btn-lg btn-info"><span class="glyphicon-cloud"></span> Process Recognition</button>
-                <br />
-                <div id="ResultRecognition"></div>
-                <div id="ListImgRecognition"></div>
 
-                <br />
-                <div class="form-group ">
-                    <div class="table-responsive">
-                        <table id="tbResult" class="table table-bordered table-hover">
+
+
+        <div class="col-sm-4">
+            <div style="text-align:center;margin:0 auto; width:99%;">
+                <button id="btnProcessRecognition" class="btn-lg btn-info"><span class="glyphicon-cloud"></span> Process Recognition</button>
+
+                <div class="form-group " style="width:100%;">
+                    <div class="table-responsive" style="width:100%;">
+                        <table id="tbResult" class="table table-bordered table-hover" style="width:100%;">
                             <thead>
                                 <tr class="bg-warning">
                                     <th>...</th>
@@ -90,6 +115,11 @@
                 </div>
 
             </div>
+            <br />
+            <div id="ResultRecognition"></div>
+            <div id="ListImgRecognition"></div>
+
+            <br />
         </div>
     </div>
 </div>
@@ -117,7 +147,7 @@
                     </td>*@
             </tr>
 
-            <tr style="">
+            <tr style="display:none">
                 <td colspan="2">
                     <div id="container"></div>
                     <div id="imglst"></div>
@@ -125,7 +155,8 @@
             </tr>
 
             <tr style="">
-                <td><img src="" id="img1" width="300" height="300" crossorigin="anonymous" /></td>
+
+                <td> </td>
             </tr>
 
             <tr style="">
@@ -148,6 +179,8 @@
 </p>
 
 
+<img src="http://recognitionface.worldpetsperu.com/img_proc/2_.jpg" width="100" height="100" id="img1" style="display:none" />
+
 <div class="modal"><strong style="margin-top:50%;margin-left:50%;  position:absolute">Cargando...</strong></div>
 
 
@@ -166,21 +199,15 @@
     var xUrl_Imagenes = "";
     var xConfiabilidad = "";
 
-
-    $(document).ready(function () {
-        debugger;
-        xUrl_WebAdmin = "@sUrl_WebAdmin";
-        xUrl_WebApi = "@sUrl_WebApi";
-        xUrl_Imagenes = "@sUrl_Imagenes";
-
-        xConfiabilidad = "@sConfiabilidad";
-
-    });
+    xUrl_WebAdmin = "@sUrl_WebAdmin";
+    xUrl_WebApi = "@sUrl_WebApi";
+    xUrl_Imagenes = "@sUrl_Imagenes";
+    xConfiabilidad = "@sConfiabilidad";
 
 </script>
 
 
-<script src="../Scripts/2A0UG1u5t9zxhjX.js?v=33"></script>
-<script src="../Scripts/2A1UG1u5t9zxhjX.js?v=33"></script>
-<script src="../Scripts/2ARUG1u5t9zxhjX.js?v=33"></script>
+<script src="../Scripts/2A0UG1u5t9zxhjX.js?v=336"></script>
+<script src="../Scripts/2A1UG1u5t9zxhjX.js?v=347"></script>
+<script src="../Scripts/2ARUG1u5t9zxhjX.js?v=341"></script>
 

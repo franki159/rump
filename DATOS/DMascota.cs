@@ -434,6 +434,7 @@ namespace DATOS
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
                 
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
                 cmd.Parameters.AddWithValue("@tamano", objE.TAMANO);
 
                 cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
@@ -566,6 +567,7 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@castrado", objE.CASTRADO);
                         cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);
                         cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                        cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
                         cmd.Parameters.AddWithValue("@opcion", 6);
                         cmd.CommandType = CommandType.StoredProcedure;
 

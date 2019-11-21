@@ -406,7 +406,8 @@ namespace PRESENTACION.page.mantenimiento
                 }
 
                 string objResultado = "";
-                //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO = eSession.ID;
                 if (objE.ID_ENCRIP != "")
                 {
                     objResultado = NMascota.ActualizarMascotaWM(objE).ToString();

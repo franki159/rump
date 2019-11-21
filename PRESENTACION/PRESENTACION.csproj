@@ -92,6 +92,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\prueba\Global.asax" />
     <Content Include="Areas\WebRecognition\Content\bootstrap.css" />
     <Content Include="Areas\WebRecognition\Content\bootstrap.min.css" />
     <Content Include="Areas\WebRecognition\Content\Site.css" />
@@ -100,12 +101,30 @@
     <Content Include="Areas\WebRecognition\dist\jquery-ui.min.js" />
     <Content Include="Areas\WebRecognition\dist\jquery.min.js" />
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\WebRecognition\Global.asax" />
+    <Content Include="Areas\WebRecognition\img\huella.png" />
+    <Content Include="Areas\WebRecognition\img\huella2.png" />
+    <Content Include="Areas\WebRecognition\img\loader-dog.gif" />
+    <Content Include="Areas\WebRecognition\img_proc\00001726-IMG-20170902-WA0016.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\1_.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\1_1.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\1_2.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\2_.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\2_1.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\2_2.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\3_.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\3_1.jpg" />
+    <Content Include="Areas\WebRecognition\img_proc\3_2.jpg" />
     <Content Include="Areas\WebRecognition\Scripts\2A0UG1u5t9zxhjX.js" />
     <Content Include="Areas\WebRecognition\Scripts\2A1UG1u5t9zxhjX.js" />
     <Content Include="Areas\WebRecognition\Scripts\2ARUG1u5t9zxhjX.js" />
     <Content Include="Areas\WebRecognition\Scripts\Alert.js" />
     <Content Include="Areas\WebRecognition\Scripts\bootstrap.js" />
     <Content Include="Areas\WebRecognition\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\prueba\Views\web.config" />
+    <Content Include="Areas\prueba\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\prueba\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\prueba\Views\Default\Index.cshtml" />
     <None Include="Areas\WebRecognition\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.js" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.min.js" />
@@ -382,6 +401,7 @@
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Areas\WebRecognition\Views\Default\Index5.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Carpeta para FTP.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -2623,7 +2643,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\prueba\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\prueba\Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\prueba\pruebaAreaRegistration.cs" />
+    <Compile Include="Areas\WebRecognition\Controllers\DefaultController.cs" />
     <Compile Include="Areas\WebRecognition\Controllers\RecognitionController.cs" />
+    <Compile Include="Areas\WebRecognition\Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Areas\WebRecognition\Logic\Logic.cs" />
     <Compile Include="Areas\WebRecognition\Models\Model.cs" />
     <Compile Include="Areas\WebRecognition\WebRecognitionAreaRegistration.cs" />
@@ -2807,6 +2836,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\prueba\Models\" />
     <Folder Include="img\mascota\" />
     <Folder Include="img\usuario\" />
   </ItemGroup>

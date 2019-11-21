@@ -16,6 +16,7 @@ namespace ENTIDAD
         public string ID_ENCRIP { get; set; }
         public string DNI { get; set; }
         public decimal USUARIO_ID { get; set; }
+        public decimal USUARIO { get; set; }
         public string NOMBRE { get; set; }
         public string APELLIDO { get; set; }
         public string SEXO { get; set; }
