@@ -541,11 +541,13 @@ $(".btn-dat-msc").click(function (evt) {
             if (!data.d.Activo) {
                 msg_OpenDay("e", "Error al consultar el DNI");
                 closeLoading();
+                return;
             }
 
             if (data.d.Resultado.ID === 0) {
                 msg_OpenDay("e", "El dni es incorrecto");
                 closeLoading();
+                return;
             }
 
             $(".dni-nom-msc").html(data.d.Resultado.NOMBRE);
