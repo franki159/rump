@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿var valRND = Math.floor(Math.random() * 100);
+$(document).ready(function () {
     $('.continue').click(function () {
         $('.nav-tabs .active').parent().next('li').find('a').trigger('click');
     });
@@ -7,6 +8,7 @@
     });
     InfoSesion();
     fc_listar_inicio();
+    closeLoading();
 });
 function activaTab(tab) {
     $('.nav-tabs a[href="#' + tab + '"]').tab('show');
@@ -516,3 +518,82 @@ $("#btn_registrar").click(function (evt) {
     });
 });
 /******************** /PRE-REGISTRO *****************/
+/******************** VAR DATOS POR DNI **********************/
+$(".btn-dat-msc").click(function (evt) {
+    if (validIdInput($("#bus_txt_dni").val())) {
+        msg_OpenDay("a", "Debe ingresar el número de DNI de la mascota");
+        return;
+    }
+    openLoading();
+
+    var eMascota = {
+        DNI: $("#bus_txt_dni").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "index.aspx/ObtenerMascotaxDNIWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: eMascota }),
+        async: true,
+        success: function (data) {
+            if (!data.d.Activo) {
+                msg_OpenDay("e", "Error al consultar el DNI");
+                closeLoading();
+            }
+
+            if (data.d.Resultado.ID === 0) {
+                msg_OpenDay("e", "El dni es incorrecto");
+                closeLoading();
+            }
+
+            $(".dni-nom-msc").html(data.d.Resultado.NOMBRE);
+            $(".dni-ape-msc").html(data.d.Resultado.APELLIDO);
+            $(".dni-sex-msc").html(data.d.Resultado.SEXO);
+
+            var calificacion = data.d.Resultado.SEXO;
+            switch (calificacion) {
+                case "Rojo":
+                    calificacion = "AGRESIVO"; break;
+                case "Verde":
+                    calificacion = "AMISTOSO"; break;
+                case "Blanco":
+                    calificacion = "DISCAPACITADO"; break;
+                case "Azul":
+                    calificacion = "ENTRENADO"; break;
+                case "Amarillo":
+                    calificacion = "MIEDOSO"; break;
+                case "Naranja":
+                    calificacion = "PELEADOR"; break;
+            }
+            
+            if (data.d.Resultado.lMASCOTA.length > 0) 
+                $("#imgMascotaCita").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + '?v=' + valRND);
+                        
+            $(".dni-cal-msc").html(calificacion);
+            $(".dni-esp-msc").html(data.d.Resultado.TIPO);
+            $(".dni-raz-msc").html(data.d.Resultado.RAZA);
+            $(".dni-bio-msc").html(data.d.Resultado.BIOGRAFIA);
+            //Padres
+            $(".dni-nom-padre").html(data.d.Resultado.FAMILIARP);
+            $(".dni-tel-padre").html(data.d.Resultado.TELEFONOP);
+            $(".dni-nom-madre").html(data.d.Resultado.FAMILIARM);
+            $(".dni-tel-madre").html(data.d.Resultado.TELEFONOM);
+            //Direccion
+            $(".dni-dep-msc").html(data.d.Resultado.DEPARTAMENTO);
+            $(".dni-prov-msc").html(data.d.Resultado.PROVINCIA);
+            $(".dni-dist-msc").html(data.d.Resultado.DISTRITO);
+            $(".dni-dir-msc").html(data.d.Resultado.DIRECCION);
+            $(".dni-ref-msc").html(data.d.Resultado.REFERENCIA);
+            
+            closeLoading();
+            $("#pnl_mascota_codigo").modal();
+        },
+        error: function (data) {
+            msg_OpenDay("e", "Error al consultar el DNI");
+            closeLoading();
+        }
+    });
+});
+

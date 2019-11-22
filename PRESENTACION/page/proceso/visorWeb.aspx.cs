@@ -226,7 +226,9 @@ namespace PRESENTACION.page.proceso
 
                     int cant_str_nom = 0;
                     cant_str_nom += (objE.TIPO.Substring(0, 1) + "<PER" + objE.NOMBRE.ToUpper() + "<<").Length;
-                    cell = new PdfPCell(new Phrase(objE.TIPO.Substring(0, 1) + "<PER" + objE.APELLIDO.Replace(" ", "").PadRight(33 - cant_str_nom, Convert.ToChar("<")) + objE.NOMBRE.ToUpper() + "<<", titleSmall7B));
+                    if (33 - cant_str_nom < 0)
+                        cant_str_nom = 0;
+                    cell = new PdfPCell(new Phrase(objE.TIPO.Substring(0, 1) + "<PER" + objE.APELLIDO.Replace(" ", "").PadRight(cant_str_nom, Convert.ToChar("<")) + objE.NOMBRE.ToUpper() + "<<", titleSmall7B));
                     cell.Border = 0;
                     cell.PaddingTop = -6;
                     cell.PaddingLeft = 18;

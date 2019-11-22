@@ -270,14 +270,10 @@
     <Content Include="assets\select2\js\select2.full.js" />
     <Content Include="assets\upGalleryFCP\upGalleryFCP.css" />
     <Content Include="assets\upGalleryFCP\upGalleryFCP.js" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\components.css" />
     <Content Include="css\stylePropio.css" />
     <Content Include="css\vendor-72d47c3353.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\av-hombre.png" />
     <Content Include="img\avatarUser.png" />
@@ -389,9 +385,6 @@
     <Content Include="Areas\WebRecognition\Views\_ViewStart.cshtml" />
     <Content Include="Areas\WebRecognition\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\WebRecognition\Views\Recognition\Index.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.woff" />
@@ -405,12 +398,6 @@
     <None Include="Properties\PublishProfiles\SomeePublic.pubxml" />
     <Content Include="page\proceso\imprimirDNI.aspx" />
     <Content Include="page\proceso\visorWeb.aspx" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="templatePage\adoptame.aspx" />
     <Content Include="templatePage\contacto.aspx" />
     <Content Include="templatePage\footerPage.aspx" />
@@ -918,7 +905,6 @@
     <Content Include="templatePage\scss\_testimonial.scss" />
     <Content Include="templatePage\scss\_widget.scss" />
     <Content Include="templatePage\style.css.map" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
