@@ -7,7 +7,7 @@ using System.Web.SessionState;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace PRESENTACION.Areas.WebRecognition
+namespace PRESENTACION
 {
     public class Global : System.Web.HttpApplication
     {
@@ -15,7 +15,6 @@ namespace PRESENTACION.Areas.WebRecognition
         protected void Application_Start(object sender, EventArgs e)
         {
             AreaRegistration.RegisterAllAreas();
-            //RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         protected void Session_Start(object sender, EventArgs e)
