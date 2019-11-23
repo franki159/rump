@@ -117,6 +117,9 @@ function InfoSesion() {
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
+                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
+                htmlMenu += '</a>';
             }
 
             sessionStorage.clear();

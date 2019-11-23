@@ -51,6 +51,7 @@
     <Compile Include="DClinica.cs" />
     <Compile Include="DMascota.cs" />
     <Compile Include="DParametro.cs" />
+    <Compile Include="DEvento.cs" />
     <Compile Include="DUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

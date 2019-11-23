@@ -50,6 +50,7 @@
     <Compile Include="EMascotaSalud.cs" />
     <Compile Include="EParametro.cs" />
     <Compile Include="ERespuestaJson.cs" />
+    <Compile Include="EEvento.cs" />
     <Compile Include="EUsuario.cs" />
     <Compile Include="EUsuarioPerfil.cs" />
     <Compile Include="EUtil.cs" />
