@@ -272,7 +272,8 @@ function fc_listar_mascota() {
                                 return;
                             }
 
-                            $("#img_Foto_v").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + "?v=" + valRND);
+                            if (data.d.Resultado.lMASCOTA.length > 0)
+                                $("#img_Foto_v").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + "?v=" + valRND);
                             $("#txt_nombre_v").val(data.d.Resultado.NOMBRE + ' ' + data.d.Resultado.APELLIDO);
                             $("#txt_dni_v").val(data.d.Resultado.DNI);
                             $("#txt_tel_v").val(data.d.Resultado.TELEFONOP);

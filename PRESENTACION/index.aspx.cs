@@ -143,5 +143,21 @@ namespace PRESENTACION
             }
             return objRespuesta;
         }
+        [WebMethod()]
+        public static object ObtenerMascotaxDNIWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                EMascota objResultado = new EMascota();
+                objResultado = NMascota.ObtenerMascotaxDNI(objE);
+                objRespuesta.Resultado = objResultado;
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }
