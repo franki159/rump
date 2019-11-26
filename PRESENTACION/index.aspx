@@ -126,19 +126,25 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Correo Electrónico <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" type="email" id="txt_correo_pre" placeholder="Correo electrónico" required="">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <h6><strong>Password <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" type="email" id="txt_password_pre" placeholder="Contraseña" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Número Telefónico <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control integerFCP" id="txt_telefono_pre" placeholder="Número teléfonico" required="">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Número de documento <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control integerFCP" id="txt_documento_pre" placeholder="Número de documento de identidad" required="">
@@ -161,13 +167,31 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <h6><strong>Apellidos <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_apellido_masc" placeholder="Apellidos de la mascota" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <h6><strong>Fecha de nacimiento</strong></h6>
                                         <input type="date" class="form-control" id="txt_fecha_nac" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Sexo <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>Nombres del padre humano<strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo del padre" required="">
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Nombres de la madre humano<strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo de la madre" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Sexo de la mascota<strong class="text-danger">(*)</strong></strong></h6>
                                         <select id="sel_sexo" class="form-control">
                                             <option value="0">Seleccionar</option>
                                             <option value="Macho">Macho</option>
@@ -253,7 +277,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn_registrar" type="button" class="btn btn-warning"><i class="fa fa-paw" aria-hidden="true"></i>Registrar</button>
+                    <button id="btn_registrar" type="button" class="btn btn-warning"><i class="fa fa-paw" aria-hidden="true"></i>&nbsp;Registrar</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -327,19 +351,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group text-secondary">
-                                Telefono
+                                Telefono del Padre
                                 <h6><strong><span class="dni-tel-padre"></span></strong></h6>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group text-secondary">
-                                Nombres del Padre
+                                Nombres de la Madre
                                 <h6><strong><span class="dni-nom-madre"></span></strong></h6>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group text-secondary">
-                                Telefono
+                                Telefono de la Madre
                                 <h6><strong><span class="dni-tel-madre"></span></strong></h6>
                             </div>
                         </div>

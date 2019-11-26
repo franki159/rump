@@ -24,7 +24,8 @@ function InfoSesion() {
             if (!data.d.Activo) {
                 $("#divLoginUser").html('<a href="login.aspx"><strong>Iniciar Sesión</br></strong> </br></a><i class="fa fa-user-circle" aria-hidden="true"/>');
             } else {
-                $("#divLoginUser").html('<a href="default.aspx">' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] +' <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>');
+                $("#divLoginUser").html('<a href="default.aspx"><strong>' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i class="fa fa-user - circle" aria-hidden="true"></i>');
+
             }
         },
         error: function (data) {
@@ -340,12 +341,18 @@ $("#btn_registrar").click(function (evt) {
         closeLoading();
         activaTab('propietario');
         $("#txt_nombre_pre").focus();
-        return;
-    } else if (isEmail($("#txt_correo_pre").val() === false)) {
+        return; 
+    } else if (isEmail($("#txt_correo_pre").val()) === false) {
         $("#errorRegistro").html(GenerarAlertaWarning("Email: Ingrese un email válido"));
         closeLoading();
         activaTab('propietario');
         $("#txt_correo_pre").focus();
+        return;
+    } else if (validIdInput($("#txt_password_pre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Password: Ingrese una contraseña"));
+        closeLoading();
+        activaTab('propietario');
+        $("#txt_password_pre").focus();
         return;
     } else if (validIdInput($("#txt_telefono_pre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Telefono: ingresar un número teléfono"));
@@ -364,6 +371,24 @@ $("#btn_registrar").click(function (evt) {
         closeLoading();
         activaTab('mascota');
         $("#txt_nombre_masc").focus();
+        return;
+    } else if (validIdInput($("#txt_apellido_masc").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Apellido: Ingresar el apellido de la mascota"));
+        closeLoading();
+        activaTab('mascota');
+        $("#txt_apellido_masc").focus();
+        return;
+    } else if (validIdInput($("#txt_nombre_padre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Padre: Ingresar el nombre del padre"));
+        closeLoading();
+        activaTab('mascota');
+        $("#txt_nombre_padre").focus();
+        return;
+    } else if (validIdInput($("#txt_nombre_madre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Madre: Ingresar el nombre de la madre"));
+        closeLoading();
+        activaTab('mascota');
+        $("#txt_nombre_madre").focus();
         return;
     } else if (validIdInput($("#txt_fecha_nac").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
@@ -440,8 +465,12 @@ $("#btn_registrar").click(function (evt) {
         CORREO: $("#txt_correo_pre").val(),
         TELEFONO: $("#txt_telefono_pre").val(),
         DNI: $("#txt_documento_pre").val(),
+        PASSWORD: $("#txt_password_pre").val(),
         //Mascota***********
         NOMBRE: $("#txt_nombre_masc").val(),
+        APELLIDO: $("#txt_apellido_masc").val(),
+        FAMILIARP: $("#txt_nombre_padre").val(),
+        FAMILIARM: $("#txt_nombre_madre").val(),
         FEC_NAC: $("#txt_fecha_nac").val() === "" ? null : getDateFromFormat($("#txt_fecha_nac").val(), 'yyyy-MM-dd'),
         SEXO: $("#sel_sexo").val(),
         MASCOTA_RAZA_ID: $("#sel_raza").val(),
@@ -489,19 +518,13 @@ $("#btn_registrar").click(function (evt) {
                         if (!dataImg.d.Activo) {
                             closeLoading();
                             $("#pnl_pre_registro").modal('hide');
-                            msg_OpenDay("e", "Error al registrar imagen");                          
+                            msg_OpenDay("e", "No se pudo registrar imagen");                          
                             return;
                         }
 
-                        if (guardarImagen(evt, dataImg.d.Resultado, imgTemp) === 0) {
-                            closeLoading();
-                            $("#pnl_pre_registro").modal('hide');
-                            msg_OpenDay("c", "Registro satisfactorio");
-                        } else {
-                            closeLoading();
-                            $("#pnl_pre_registro").modal('hide');
-                            msg_OpenDay("c", "Registro satisfactorio, no se pudo copiar la imagen");
-                        }
+                        guardarImagen(evt, dataImg.d.Resultado, imgTemp);
+
+                        window.location = "default.aspx";
                     },
                     error: function (data) {
                         $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -554,7 +577,7 @@ $(".btn-dat-msc").click(function (evt) {
             $(".dni-ape-msc").html(data.d.Resultado.APELLIDO);
             $(".dni-sex-msc").html(data.d.Resultado.SEXO);
 
-            var calificacion = data.d.Resultado.SEXO;
+            var calificacion = data.d.Resultado.CALIFICACION;
             switch (calificacion) {
                 case "Rojo":
                     calificacion = "AGRESIVO"; break;

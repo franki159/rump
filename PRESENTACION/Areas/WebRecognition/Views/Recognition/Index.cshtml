@@ -10,37 +10,23 @@
     string sConfiabilidad = ViewBag.sConfiabilidad;
 }
 
-
-
 <style>
-     .modal {
-         display: none;
-         position: fixed;
-         z-index: 1000;
-         top: 0;
-         left: 0;
-         height: 100%;
-         width: 100%;
-         background: rgba( 255, 255, 255, .8 ) url('../img/loader-dog.gif') 50% 50% no-repeat;
-     }
+.modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 255, 255, 255, .8 ) url('/Areas/WebRecognition/img/loader-dog.gif') 50% 50% no-repeat; }
 
-     /* When the body has the loading class, we turn     url('http://i.stack.imgur.com/FhHRx.gif')
+    /* When the body has the loading class, we turn     url('http://i.stack.imgur.com/FhHRx.gif')
     the scrollbar off with overflow:hidden */
-     body.loading .modal {
-         overflow: hidden;
-     }
+    body.loading .modal {
+        overflow: hidden;
+    }
 
-     /* Anytime the body has the loading class, our
+    /* Anytime the body has the loading class, our
     modal element will be visible */
-     body.loading .modal {
-         display: block;
-     }
+    body.loading .modal {
+        display: block;
+    }
 </style>
 
-<link href="../Areas/WebRecognition/sweetalert/sweetalert2.min.css" rel="stylesheet" />
-
-
-
+<link href="/Areas/WebRecognition/sweetalert/sweetalert2.min.css" rel="stylesheet" />
 
 <div class="container" style="width:100%;">
 
@@ -87,7 +73,7 @@
             <div class="col-sm-8">
                 <div style="text-align:center;margin:0 auto; width:100%;">
                     <input type="file" id="filesimgBuscar" name="files[]" accept="image/png, image/jpeg" /><br />
-                    <img src="http://recognitionface.worldpetsperu.com/img/huella2.png" id="imgTomada" style="width:250px; height:250px;" crossorigin="anonymous" />
+                    <img src="~/Areas/WebRecognition/img/huella2.png" id="imgTomada" style="width:250px; height:250px;" crossorigin="anonymous" />
                 </div>
             </div>
         </div>
@@ -134,7 +120,7 @@
             <tr style="text-align:center;width:95%">
                 <td>
                     @*<input type="file" id="filesimgBuscar" name="files[]" accept="image/png, image/jpeg" /><br />
-                        <img src="~/img_proc/1_.jpg" id="imgTomada" width="300" height="300" crossorigin="anonymous" />*@
+                        <img src="/img_proc/1_.jpg" id="imgTomada" width="300" height="300" crossorigin="anonymous" />*@
                 </td>
             </tr>
 
@@ -179,17 +165,17 @@
 </p>
 
 
-<img src="http://recognitionface.worldpetsperu.com/img_proc/2_.jpg" width="100" height="100" id="img1" style="display:none" />
+<img src="/Areas/WebRecognition/img_proc/2_.jpg" width="100" height="100" id="img1" style="display:none" />
 
 <div class="modal"><strong style="margin-top:50%;margin-left:50%;  position:absolute">Cargando...</strong></div>
 
 
 
 
-<script src="../Areas/WebRecognition/sweetalert/sweetalert2.min.js"></script>
+<script src="/Areas/WebRecognition/sweetalert/sweetalert2.min.js"></script>
 
 
-<script src="../Areas/WebRecognition/Scripts/Alert.js?v=32"></script>
+<script src="/Areas/WebRecognition/Scripts/Alert.js?v=32"></script>
 
 
 <script>
@@ -207,7 +193,7 @@
 </script>
 
 
-<script src="../Areas/WebRecognition/Scripts/2A0UG1u5t9zxhjX.js?v=335"></script>
-<script src="../Areas/WebRecognition/Scripts/2A1UG1u5t9zxhjX.js?v=335"></script>
-<script src="../Areas/WebRecognition/Scripts/2ARUG1u5t9zxhjX.js?v=335"></script>
+<script src="/Areas/WebRecognition/Scripts/2A0UG1u5t9zxhjX.js?v=335"></script>
+<script src="/Areas/WebRecognition/Scripts/2A1UG1u5t9zxhjX.js?v=335"></script>
+<script src="/Areas/WebRecognition/Scripts/2ARUG1u5t9zxhjX.js?v=335"></script>
 
