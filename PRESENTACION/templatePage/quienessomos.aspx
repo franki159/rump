@@ -46,7 +46,7 @@
 					 <div class="about-us-thumbnail mb-40" data-wow-delay="700ms">
                         <div class="row no-gutters">
                             <div class="contenedor">
-                             <iframe src="http://www.youtube.com/embed/b7WD-SpNX_I"></iframe>
+                             <iframe src="https://www.youtube.com/embed/Rz2wWv05fw0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscrea,="" oallowfullscreen="" msallowfullscreen=""></iframe>
                             </div>
                         </div>
                     </div>

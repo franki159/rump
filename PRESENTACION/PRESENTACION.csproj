@@ -500,6 +500,7 @@
     <Content Include="templatePage\img\bg-img\quienessomos-sec2.jpg" />
     <Content Include="templatePage\img\bg-img\rec-qs2.png" />
     <Content Include="templatePage\img\bg-img\reconocimiento-facial.jpg" />
+    <Content Include="templatePage\img\bg-img\registrarF.jpg" />
     <Content Include="templatePage\img\bg-img\tec-qs1.png" />
     <Content Include="templatePage\img\bg-img\tec.jpg" />
     <Content Include="templatePage\img\bg-img\vacuna.jpg" />

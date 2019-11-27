@@ -506,6 +506,26 @@
     <section class="welcome-area">
         <div class="welcome-slides owl-carousel">
             <!-- Single Welcome Slide -->
+            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(templatePage/img/bg-img/slider2.jpg);" data-img-url="templatePage/img/bg-img/17.jpg">
+                <!-- Welcome Content -->
+                <div class="welcome-content h-100">
+                    <div class="container h-100">
+
+                        <div class="row h-100 align-items-center">
+                            <!-- Welcome Text -->
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInUp" data-delay="200ms">Desde el registro único de mascotas fomentamos la tenencia responsable.</h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms">Registramos a todos los animales domesticos
+										<br />
+                                    ¡No esperes más y regístralo ahora!</h2>
+                                <a href="#" class="btn roberto-btn btn-M btn-pre-registrar" data-animation="fadeInUp" data-delay="1200ms">Registrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Welcome Slide -->
             <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(templatePage/img/bg-img/slider1.jpg);" data-img-url="templatePage/img/bg-img/16.jpg">
                 <!-- Welcome Content -->
                 <div class="welcome-content h-100">
@@ -525,25 +545,6 @@
                 </div>
             </div>
 
-            <!-- Single Welcome Slide -->
-            <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(templatePage/img/bg-img/slider2.jpg);" data-img-url="templatePage/img/bg-img/17.jpg">
-                <!-- Welcome Content -->
-                <div class="welcome-content h-100">
-                    <div class="container h-100">
-
-                        <div class="row h-100 align-items-center">
-                            <!-- Welcome Text -->
-                            <div class="welcome-text text-center">
-                                <h6 data-animation="fadeInUp" data-delay="200ms">Desde el registro único de mascotas fomentamos la tenencia responsable.</h6>
-                                <h2 data-animation="fadeInUp" data-delay="500ms">Registramos a todos los animales domesticos
-										<br />
-                                    ¡No esperes más y regístralo ahora!</h2>
-                                <a href="#" class="btn roberto-btn btn-2 btn-pre-registrar" data-animation="fadeInUp" data-delay="1200ms">Registrar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Single Welcome Slide -->
             <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(templatePage/img/bg-img/slider3.jpg);" data-img-url="templatePage/img/bg-img/18.jpg">
@@ -568,7 +569,35 @@
     </section>
     <!-- Welcome Area End -->
 
+    <!-- REGISTRO Sección Area Start -->
+    <div class="breadcrumb-area2 bg-img " style="background-image: url(templatePage/img/bg-img/registrarF.jpg)">
+		
+        <div class="container h-100 align-content-center">
+                <div class="row h-50 align-items-center">
+                
+		      
+                    <!-- Single Post Area -->
+                      <div class="col-12 col-md-6 align-content-center">
+                            <!-- Post Title -->
+					        <div class="breadcrumb-content text-center">
+                          <h2 class="mascotas-extraviadas">Registro de mascotas</h2>
+                          <h6 class="textoadd"> Ingresa aquí tus datos, los de tu engreído y podrás gozar de más beneficios</h6>
+					      </div>
+                      </div>
 
+                    <!-- Single Post Area -->
+                      <div class="col-12 col-md-6 align-content-center">
+					    <div class="breadcrumb-content text-center">
+                            <a href="#" class="btn roberto-btnR align-content-center  btn-pre-registrar" >REGISTRAR</a>
+					    </div>
+                      </div>
+               
+	
+	            </div>
+          </div>
+    </div>
+
+	<!-- REGISTRO Sección Area End -->
 
     <!-- Projects Area Start -->
     <section class="roberto-project-area section-padding-100-0">
@@ -690,9 +719,6 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
     </section>
     <!-- Projects Area End -->
 
-
-
-
     <!-- Blog Area Start -->
     <section class="roberto-blog-area section-padding-100-0">
         <div class="container">
@@ -778,12 +804,8 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
                             </li>
                             <br />
                             <a href="templatePage/quienessomos.aspx" class="btn roberto-btn btn-2">Saber más</a>
-                            <li class="regismasco" aria-current="page">
-                                <br />
-                                Entonces, ¿qué esperas? Registra aquí a tu engreído, pide tu DNI y su chapita. </li>
+                            <li class="regismasco" aria-current="page">                               
                         </nav>
-                        <br />
-                        <a href="#" class="btn roberto-btnM btn-pre-registrar">REGISTRAR</a>
                     </div>
                 </div>
             </div>
