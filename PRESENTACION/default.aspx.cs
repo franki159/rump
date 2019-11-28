@@ -34,7 +34,12 @@ namespace PRESENTACION
                 }
                 else
                 {
-                    objRespuesta.Resultado = HttpContext.Current.Session["userRump"];
+                    EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+
+                    EEvento objEvento = new EEvento() { USUARIO_ID = eSession.ID };
+                    eSession.EVENTOS = NEvento.listarEventoNotificacion(objEvento);
+
+                    objRespuesta.Resultado = eSession;
                 }
             }
             catch (Exception ex)
@@ -52,6 +57,38 @@ namespace PRESENTACION
 
             ERespuestaJson objRespuesta = new ERespuestaJson();
             objRespuesta.Resultado = "login.aspx";
+            return objRespuesta;
+        }
+
+        [WebMethod()]
+        public static object EventoNotificaWM(EEvento objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                }
+                else
+                {
+
+                    if (NEvento.ActualizarEventoNotificacion(objE) <= 0)
+                    {
+                        objRespuesta.Error("No se pudo actualizar.");
+                    }
+                    else
+                    {
+                        objRespuesta.Success("Se actualizo la información correctamente");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(string.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+
             return objRespuesta;
         }
 

@@ -1,5 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="evento.aspx.cs" Inherits="PRESENTACION.page.mantenimiento.evento" %>
 
+<link href="../../assets/fullcalendar/core/main.css" rel="stylesheet" />
+<link href="../../assets/fullcalendar/daygrid/main.css" rel="stylesheet" />
+<link href="../../assets/fullcalendar/timegrid/main.css" rel="stylesheet" />
+<link href="../../assets/fullcalendar/list/main.css" rel="stylesheet" />
+<script src="../../assets/fullcalendar/core/main.js"></script>
+<script src="../../assets/fullcalendar/interaction/main.js"></script>
+<script src="../../assets/fullcalendar/daygrid/main.js"></script>
+<script src="../../assets/fullcalendar/timegrid/main.js"></script>
+<script src="../../assets/fullcalendar/list/main.js"></script>
+<script src="../../assets/fullcalendar/core/locales/es.js"></script>
+
 <div id="errorDiv"></div>
 <input id="txh_idConfirm" type="hidden" />
 <input id="txh_idmovimiento" type="hidden" />
@@ -43,30 +54,8 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card shadow mb-4">
-            <div class="panel pre-scrollable">
-                <table id="tbl_evento" class="table table-striped table-hover table-fcp">
-                    <thead>
-                        <tr>
-                            <th style="display: none"></th>
-                            <th></th>
-                            <th>TIPO</th>
-                            <th>MASCOTA</th>
-                            <th>TITULO</th>
-                            <th>INICIO</th>
-                            <th>FIN</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div id="lblTotalReg" class="footer-table-fcp"></div>
-        </div>
-    </div>
-</div>
+<div id="calendar" style="max-width:900px;"></div>
+
 <!--***********************  EVENTO  **************************-->
 <div class='modal modal-scroll fade' id='pnl_evento' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
     <div class="modal-dialog modal-extend-fgp">
@@ -131,6 +120,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Periodo <strong class="text-danger">(*)</strong></label>
+                                <select id="sel_periodo" class="form-control">
+                                    <option value="0">Seleccionar</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -138,6 +135,7 @@
             </div>
             <div class="modal-footer">
                 <button id="btn_guardar" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-floppy-o" aria-hidden="true"></i>GUARDAR</button>
+                <button id="btn_anular" type="button" class="btn btn-danger btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Eliminando"><i class="fa fa-floppy-o" aria-hidden="true"></i>ELIMINAR</button>
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
