@@ -138,9 +138,9 @@ function InfoSesion() {
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
-                //htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
-                //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
-                //htmlMenu += '</a>';
+                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
+                htmlMenu += '</a>';
             }
 
             sessionStorage.clear();
@@ -158,7 +158,7 @@ function InfoSesion() {
                     fec_inicio = formatDate(parseDateServer(data.d.Resultado.EVENTOS[e].FECHA_INICIO), "dd/MM/yyyy HH:mm:ss");
 
                     htmlEvento +=   '<div class="alert alert-info">'+
-                                        '<strong> ' + data.d.Resultado.EVENTOS[e].MASCOTA + ' / ' + data.d.Resultado.EVENTOS[e].TIPO + ' / ' + fec_inicio+ '</strong><br />'
+                                        '<strong> [' + data.d.Resultado.EVENTOS[e].MASCOTA + '] [' + data.d.Resultado.EVENTOS[e].TIPO + '] [' + fec_inicio+ ']</strong><br />'
                                             + data.d.Resultado.EVENTOS[e].TITULO + ' <br />' +
                                         '<div class="btn-group">' +
                                             '<button name="actualiza" class="btn btn-danger btn-xs" data-est="3" data-cod="' + data.d.Resultado.EVENTOS[e].ID_ENCRIP + '" ' +
