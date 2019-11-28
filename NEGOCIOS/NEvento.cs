@@ -14,6 +14,10 @@ namespace NEGOCIOS
         {
             return DEvento.listarEvento(ent);
         }
+        public static List<EEvento> listarEventoNotificacion(EEvento ent)
+        {
+            return DEvento.listarEventoNotificacion(ent);
+        }
         public static EEvento ObtenerEvento(EEvento ent)
         {
             return DEvento.ObtenerEvento(ent);
@@ -29,6 +33,10 @@ namespace NEGOCIOS
         public static string RegistrarEvento(EEvento ent)
         {
             return DEvento.RegistrarEvento(ent);
+        }
+        public static int ActualizarEventoNotificacion(EEvento ent)
+        {
+            return DEvento.ActualizarEventoNotificacion(ent);
         }
     }
 }

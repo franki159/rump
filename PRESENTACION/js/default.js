@@ -138,9 +138,9 @@ function InfoSesion() {
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
-                //htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
-                //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
-                //htmlMenu += '</a>';
+                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
+                htmlMenu += '</a>';
             }
 
             sessionStorage.clear();
@@ -151,6 +151,32 @@ function InfoSesion() {
             sessionStorage.setItem("PERFIL_ID", data.d.Resultado.USUARIO_PERFIL.ID);
 
             $(".menu-dinamic").html(htmlMenu);
+
+            if (data.d.Resultado.EVENTOS.length > 0) {
+                var htmlEvento = '', fec_inicio = '';
+                for (var e = 0; e < data.d.Resultado.EVENTOS.length; e++) {
+                    fec_inicio = formatDate(parseDateServer(data.d.Resultado.EVENTOS[e].FECHA_INICIO), "dd/MM/yyyy HH:mm:ss");
+
+                    htmlEvento +=   '<div class="alert alert-info">'+
+                                        '<strong> [' + data.d.Resultado.EVENTOS[e].MASCOTA + '] [' + data.d.Resultado.EVENTOS[e].TIPO + '] [' + fec_inicio+ ']</strong><br />'
+                                            + data.d.Resultado.EVENTOS[e].TITULO + ' <br />' +
+                                        '<div class="btn-group">' +
+                                            '<button name="actualiza" class="btn btn-danger btn-xs" data-est="3" data-cod="' + data.d.Resultado.EVENTOS[e].ID_ENCRIP + '" ' +
+                                                'data-fec="' + fec_inicio + '"' + '>Cancelado</button>' +
+                                            '<button name="actualiza" class="btn btn-success btn-xs" data-est="2" data-cod="' + data.d.Resultado.EVENTOS[e].ID_ENCRIP + '" ' +
+                                                'data-fec="' + fec_inicio + '"' + '>Culminado</button>' +
+                                        '</div>' +
+                                    '</div >';
+                }
+                $('#modalEventoNotifica .modal-body').html(htmlEvento);
+
+                $('#modalEventoNotifica button').click(function () {
+                    EnviarNotificacion($(this))
+                });
+
+                $('#modalEventoNotifica').modal('show');
+            }
+            
             //closeLoading();
         },
         error: function (data) {
@@ -159,22 +185,34 @@ function InfoSesion() {
     });
 }
 
-function EnviarNotificacion(comprobante, idDoc) {
+function EnviarNotificacion(btn) {
+    var objE = {
+        ID_ENCRIP: $(btn).attr('data-cod'),
+        FECHA_INICIO: getDateFromFormat($(btn).attr('data-fec'), 'dd/MM/yyyy HH:mm:ss'),
+        ESTADO: $(btn).attr('data-est')
+    };
+
     $.ajax({
         type: "POST",
-        url: "default.aspx/RegistrarNotificacion",
+        url: "default.aspx/EventoNotificaWM",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        data: JSON.stringify({
-            comprobante: comprobante, idDoc: idDoc
-        }),
+        data: JSON.stringify({ objE: objE }),
         async: true,
-        success: function (data) {
-            if (data.d.error) {
-                alert(data.d.error);
-            }
+        beforeSend: function () {
+            openLoading();
         },
-        error: function (data) { }
+        success: function (data) {
+            if (!data.d.Activo) {
+                alert(data.d.Mensaje);
+                return;
+            }
+            closeLoading();
+            $(btn).parent().parent().remove();
+        },
+        error: function (data) {
+            closeLoading();
+        }
     });
 }
 

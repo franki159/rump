@@ -15,6 +15,7 @@ namespace ENTIDAD
         public decimal MASCOTA_ID { get; set; }
         public string MASCOTA_ID_ENCRIP { get; set; }
         public string MASCOTA { get; set; }
+        public decimal EVENTO_PERIODO_ID { get; set; }
         public string TITULO { get; set; }
         public string DETALLE { get; set; }
         public Nullable<DateTime> FECHA_INICIO { get; set; }
