@@ -124,15 +124,32 @@ namespace PRESENTACION
 
                 objRespuesta.Resultado = EUtil.getEncriptar(objResultado.ID.ToString());
                 EUsuario eUsuario = new EUsuario();
-                eUsuario.ID_ENCRIP = EUtil.getEncriptar(objResultado.USUARIO_ID.ToString());
-                eUsuario.TOKEN_ACTIVACION = EUtil.getEncriptar(objResultado.USUARIO_ID.ToString());
-                int objResultadoActivacion = NUsuario.TokenActivoUsuario(eUsuario);
+                eUsuario.EMAIL = objE.CORREO.Trim();
+                eUsuario.PASSWORD = objE.PASSWORD.Trim();
+                eUsuario = NUsuario.Login(eUsuario);
+
+                if (eUsuario == null)
+                {
+                    objRespuesta.Error("El usuario no existe o Contraseña incorrecta");
+                    return objRespuesta;
+                } else {
+                    HttpContext.Current.Session["UserRump"] = eUsuario;
+                }
                 ECorreo correo = new ECorreo();
                 correo.Para = objE.CORREO;
-                correo.Asunto = "Activación de Usuario";
-                correo.Mensaje = "Active su cuenta ingresando al siguiente enlace:<br/>" +
-                    "<a href=\"" + ConfigurationManager.AppSettings["dominioRump"].ToString() + "/active.aspx?user=" + EUtil.getEncriptar(objResultado.USUARIO_ID.ToString()) + "\">ACTIVAR CUENTA</a>";
-                correo.Enviar();
+                correo.Asunto = "¡Bienvenido a RUMP!";
+                correo.Mensaje = "<h4>¡Saludos desde RUMP!</h4>" +
+"<p>RUMP le da la bienvenida a la comunidad de tenencia responsable y le damos las gracias por unirse a nuestra familia. Cada vez somos más en el movimiento que lucha por el bienestar de las mascotas.</p>" +
+"<p>Ingresando a nuestra web con su correo y contraseña podrá acceder a múltiples opciones y pronto habrá muchas novedades para el engreído de la casa.</p>" +
+"<h4>Equipo RUMP</h4>";
+                try
+                {
+                    correo.Enviar();
+                }
+                catch (Exception)
+                {
+
+                }
 
                 objRespuesta.Success("Se registró correctamente");
 

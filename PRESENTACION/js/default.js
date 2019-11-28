@@ -94,7 +94,7 @@ function InfoSesion() {
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/usuario">Usuarios</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
-            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 3) {//Asesor
+            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 2) {//Cliente (Clinicas) - Call Center
                 htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMascot" aria-expanded="true" aria-controls="collapseMascot">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
@@ -113,13 +113,34 @@ function InfoSesion() {
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/usuario">Usuarios</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
-            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 4) {//Panel
+            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 3) {//Asesor - Call Center
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMascot" aria-expanded="true" aria-controls="collapseMascot">';
+                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseMascot" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/solicitud">Solicitudes y Servicios</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+                htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';
+                htmlMenu += '   <i class="fas fa-fw fa-user"></i><span>Usuarios</span>';
+                htmlMenu += '</a>';
+                htmlMenu += '<div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">';
+                htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
+                htmlMenu += '       <h6 class="collapse-header">Opciones Usuarios:</h6>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/usuario">Usuarios</a>';
+                htmlMenu += '   </div>';
+                htmlMenu += '</div >';
+            } else if (data.d.Resultado.USUARIO_PERFIL.ID === 4) {//Propietario
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
-                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
-                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
-                htmlMenu += '</a>';
+                //htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
+                //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
+                //htmlMenu += '</a>';
             }
 
             sessionStorage.clear();

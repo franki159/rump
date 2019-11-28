@@ -660,6 +660,9 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@telefono", objE.TELEFONO);
                         cmd.Parameters.AddWithValue("@dni", objE.DNI);
                         cmd.Parameters.AddWithValue("@nombre_masc", objE.NOMBRE);
+                        cmd.Parameters.AddWithValue("@apellido_masc", objE.APELLIDO);
+                        cmd.Parameters.AddWithValue("@nombre_padre", objE.FAMILIARP);
+                        cmd.Parameters.AddWithValue("@nombre_madre", objE.FAMILIARM);
                         cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
                         cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
                         cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);
@@ -667,6 +670,7 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@color", objE.COLOR);
                         cmd.Parameters.AddWithValue("@direccion", objE.DIRECCION);
                         cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
+                        cmd.Parameters.AddWithValue("@password", objE.PASSWORD);
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         using (SqlDataReader dr = cmd.ExecuteReader())

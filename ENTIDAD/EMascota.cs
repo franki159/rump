@@ -83,6 +83,7 @@ namespace ENTIDAD
         //PRE REGISTRO
         public string NOMBRE_PRE { get; set; }
         public string APELLIDO_PRE { get; set; }
-        
+        public string PASSWORD { get; set; }
+
     }
 }
