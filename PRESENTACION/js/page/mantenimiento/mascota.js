@@ -179,6 +179,7 @@ function fc_listar_mascota() {
                     htmlBotones += formatButton.format('name="pon-adop"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
                     htmlBotones += formatButton.format('name="sol-dup"', 'bg-success', 'fas fa-copy', 'Solicitudes y trámites');
                     htmlBotones += formatButton.format('name="cit-med"', 'bg-success', 'fas fa-clinic-medical', 'Nueva Cita Médica');
+                    htmlBotones += formatButton.format('name="his-med"', 'bg-success', 'fas fa-notes-medical', 'Ver historial Médico');
                     htmlBotones += formatButton.format('name="mst-dead"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
                     htmlBotones += formatButton.format('name="rep-enc"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
@@ -511,6 +512,10 @@ function fc_listar_mascota() {
                     activaTab('datoCita');
                     $('#pnl_cita_medica .modal-title').html('Registrar Cita médica');
                     $("#pnl_cita_medica").modal('show');
+                } else if ($(this).attr("name") === "his-med") {
+                    limpiarCita();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    msg_OpenDay("a", "Debe registrar almenos una cita méedica");
                 }
             });
             

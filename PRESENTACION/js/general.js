@@ -245,11 +245,11 @@ function msg_OpenDay(tipo, contenido) {
             cssClas = 'success'; break;
         case 'a':
             heading = 'Alerta';
-            icono = 'far fa-exclamation-circle';
+            icono = 'fas fa-exclamation-circle';
             cssClas = 'warning'; break;
         case 'e':
             heading = 'Error';
-            icono = 'fas fa-times';
+            icono = 'fas fa-times-circle';
             cssClas = 'danger'; break;
         default:
     }

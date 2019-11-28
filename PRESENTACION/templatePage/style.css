@@ -4369,13 +4369,13 @@ iframe {
 }
 
     #page-loader img {
-        width: 489px;
+        width: 300px;
         margin: auto !important;
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: -145px !important;
-        margin-left: -245px !important;
+        margin-top: -89px !important;
+        margin-left: -150px !important;
     }
 
 

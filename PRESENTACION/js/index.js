@@ -8,7 +8,8 @@ $(document).ready(function () {
     });
     InfoSesion();
     fc_listar_inicio();
-    closeLoading();
+    debugger;
+    //closeLoading();
 });
 function activaTab(tab) {
     $('.nav-tabs a[href="#' + tab + '"]').tab('show');
