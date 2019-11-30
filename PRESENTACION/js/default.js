@@ -83,6 +83,7 @@ function InfoSesion() {
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/solicitud">Solicitudes y Servicios</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/evento">Evento</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
                 htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';
@@ -138,9 +139,9 @@ function InfoSesion() {
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
-                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
-                htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
-                htmlMenu += '</a>';
+                //htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
+                //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
+                //htmlMenu += '</a>';
             }
 
             sessionStorage.clear();
