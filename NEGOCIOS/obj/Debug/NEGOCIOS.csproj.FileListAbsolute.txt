@@ -100,7 +100,6 @@ C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\NEGOCIOS.dll
 C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\NEGOCIOS.pdb
 C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\DATOS.dll
 C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\ENTIDAD.dll
-C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\MySql.Data.dll
 C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\DATOS.pdb
 C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\DATOS.dll.config
 C:\Users\chara\Source\Repos\franki159\rump\NEGOCIOS\bin\Debug\ENTIDAD.pdb

@@ -124,7 +124,10 @@
     <None Include="Areas\WebRecognition\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.js" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Areas\WebRecognition\Scripts\ml5.min.js" />
     <Content Include="Areas\WebRecognition\Scripts\modernizr-2.6.2.js" />
+    <Content Include="Areas\WebRecognition\Scripts\p5.dom.min.js" />
+    <Content Include="Areas\WebRecognition\Scripts\p5.min.js" />
     <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.all.js" />
     <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.all.min.js" />
     <Content Include="Areas\WebRecognition\sweetalert\sweetalert2.css" />
