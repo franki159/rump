@@ -150,13 +150,9 @@ function fc_listar_mascota() {
             var html = '';
 
             var formatButton = '<a class="dropdown-item d-flex align-items-center" style="cursor: pointer; color: #3a3b45;" {0}>';
-            formatButton += '        <div class="mr-3">';
-            formatButton += '            <div class="icon-circle {1}">';
-            formatButton += '                <i class="{2} text-white"></i>';
-            formatButton += '            </div>';
-            formatButton += '        </div>';
+            formatButton += '        <i class="{2}"></i>';
             formatButton += '        <div>';
-            formatButton += '            <span class="font-weight-bold">{3}</span>';
+            formatButton += '            <span class="font-weight-bold">&nbsp;&nbsp;{3}</span>';
             formatButton += '        </div>';
             formatButton += '    </a>';
 
@@ -215,13 +211,15 @@ function fc_listar_mascota() {
                     '<img class="img-row-mascota" src="img/mascota/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND +'" onerror="this.src=\'img/noPets.png\';">' +
                                 '</a>' +
                             '</div>'+
-                    '</td>';      
+                    '</td>'; 
+
+                html += '<td>' + data.d.Resultado[i].DNI + '</td>';
                 switch (data.d.Resultado[i].ESTADO) {
                     case 1:
-                        html += '<td><span class="btn btn-success btn-sm"><i class="far fa-credit-card"></i>&nbsp;CON DNI</span></td>';
+                        html += '<td><i class="fas fa-check-circle text-success" style="font-size: 25px;"></i></td>';
                         break;
                     case 2:
-                        html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;SIN DNI</span></td>';
+                        html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;NO PAGO</span></td>';
                         break;
                     case 3:
                         html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';

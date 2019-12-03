@@ -169,7 +169,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="wrapper container-fluid">
+                <div class="wrapper container-fluid" style="overflow-x: auto;">
                     Page content goes here
                 </div>
                 <!-- /.container-fluid -->

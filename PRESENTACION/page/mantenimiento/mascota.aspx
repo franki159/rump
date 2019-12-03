@@ -50,6 +50,7 @@
                             <th style="display: none"></th>
                             <th></th>
                             <th>FOTO</th>
+                            <th>DNI</th>
                             <th>ESTADO</th>
                             <th>Nombre</th>
                             <th>Sexo</th>
