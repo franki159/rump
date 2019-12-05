@@ -36,10 +36,6 @@
                 <div id="videoContainer"></div>
                 <p id="status"><span class=""></span> Loading Model...</p>
             </div>
-
-            <div class="pull-left">
-                <h2>Registro unico de mascotas</h2>
-            </div>
         </div>
     </div>
 
@@ -73,7 +69,7 @@
             <div class="col-sm-8">
                 <div style="text-align:center;margin:0 auto; width:100%;">
                     <input type="file" id="filesimgBuscar" name="files[]" accept="image/png, image/jpeg" /><br />
-                    <img src="~/Areas/WebRecognition/img/huella2.png" id="imgTomada" style="width:250px; height:250px;" crossorigin="anonymous" />
+                    <img src="~/Areas/WebRecognition/img/huella2.png" id="imgTomada" style="width:150px; height:150px;" crossorigin="anonymous" />
                 </div>
             </div>
         </div>
@@ -82,17 +78,18 @@
 
         <div class="col-sm-4">
             <div style="text-align:center;margin:0 auto; width:99%;">
-                <button id="btnProcessRecognition" class="btn-lg btn-info"><span class="glyphicon-cloud"></span> Process Recognition</button>
-
+                <br>
+                <button id="btnProcessRecognition" class="btn-lg btn-info"><span class="glyphicon-cloud"></span>&nbsp;Buscar Mascota</button>
+                <br><br>
                 <div class="form-group " style="width:100%;">
                     <div class="table-responsive" style="width:100%;">
                         <table id="tbResult" class="table table-bordered table-hover" style="width:100%;">
                             <thead>
                                 <tr class="bg-warning">
                                     <th>...</th>
-                                    <th>ID</th>
+                                    <th>DNI</th>
                                     <th>MASCOTA</th>
-                                    <th>COnfiabilidad</th>
+                                    <th>Confiabilidad</th>
                                 </tr>
                             </thead>
                             <tbody id="tbResult_Det"></tbody>
@@ -193,7 +190,7 @@
 </script>
 
 
-<script src="/Areas/WebRecognition/Scripts/2A0UG1u5t9zxhjX.js?v=339"></script>
-<script src="/Areas/WebRecognition/Scripts/2A1UG1u5t9zxhjX.js?v=339"></script>
-<script src="/Areas/WebRecognition/Scripts/2ARUG1u5t9zxhjX.js?v=339"></script>
+<script src="/Areas/WebRecognition/Scripts/2A0UG1u5t9zxhjX.js?v=341"></script>
+<script src="/Areas/WebRecognition/Scripts/2A1UG1u5t9zxhjX.js?v=341"></script>
+<script src="/Areas/WebRecognition/Scripts/2ARUG1u5t9zxhjX.js?v=344"></script>
 

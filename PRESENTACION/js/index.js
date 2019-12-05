@@ -8,7 +8,6 @@ $(document).ready(function () {
     });
     InfoSesion();
     fc_listar_inicio();
-    debugger;
     //closeLoading();
 });
 function activaTab(tab) {
@@ -451,12 +450,6 @@ $("#btn_registrar").click(function (evt) {
         activaTab('mascota');
         $("#sel_distrito").focus();
         return;
-    } else if ($('#customFile').val() === "") {
-        $("#errorRegistro").html(GenerarAlertaWarning("Imagen: seleccione una imagen"));
-        closeLoading();
-        activaTab('mascota');
-        $("#customFile").focus();
-        return;
     }
   
     var eMascota = {
@@ -519,7 +512,7 @@ $("#btn_registrar").click(function (evt) {
                         if (!dataImg.d.Activo) {
                             closeLoading();
                             $("#pnl_pre_registro").modal('hide');
-                            msg_OpenDay("e", "No se pudo registrar imagen");                          
+                            msg_OpenDay("e", "No se pudo registrar imagen");
                             return;
                         }
 
@@ -532,7 +525,9 @@ $("#btn_registrar").click(function (evt) {
                         closeLoading();
                     }
                 });
-            };
+            } else {
+                window.location = "default.aspx";
+            }
         },
         error: function (data) {
             $("#errorRegistro").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -543,15 +538,10 @@ $("#btn_registrar").click(function (evt) {
 });
 /******************** /PRE-REGISTRO *****************/
 /******************** VAR DATOS POR DNI **********************/
-$(".btn-dat-msc").click(function (evt) {
-    if (validIdInput($("#bus_txt_dni").val())) {
-        msg_OpenDay("a", "Debe ingresar el número de DNI de la mascota");
-        return;
-    }
+function showDatosMascota(p_dni) {
     openLoading();
-
     var eMascota = {
-        DNI: $("#bus_txt_dni").val()
+        DNI: p_dni
     };
 
     $.ajax({
@@ -593,10 +583,10 @@ $(".btn-dat-msc").click(function (evt) {
                 case "Naranja":
                     calificacion = "PELEADOR"; break;
             }
-            
-            if (data.d.Resultado.lMASCOTA.length > 0) 
+
+            if (data.d.Resultado.lMASCOTA.length > 0)
                 $("#imgMascotaCita").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + '?v=' + valRND);
-                        
+
             $(".dni-cal-msc").html(calificacion);
             $(".dni-esp-msc").html(data.d.Resultado.TIPO);
             $(".dni-raz-msc").html(data.d.Resultado.RAZA);
@@ -612,7 +602,7 @@ $(".btn-dat-msc").click(function (evt) {
             $(".dni-dist-msc").html(data.d.Resultado.DISTRITO);
             $(".dni-dir-msc").html(data.d.Resultado.DIRECCION);
             $(".dni-ref-msc").html(data.d.Resultado.REFERENCIA);
-            
+
             closeLoading();
             $("#pnl_mascota_codigo").modal();
         },
@@ -621,5 +611,19 @@ $(".btn-dat-msc").click(function (evt) {
             closeLoading();
         }
     });
+}
+function getMascotaRF(p_dni) {
+    $("#pnl_reconoc_facial").modal('hide');
+    showDatosMascota(p_dni);
+}
+$(".btn-dat-msc").click(function (evt) {
+    if (validIdInput($("#bus_txt_dni").val())) {
+        msg_OpenDay("a", "Debe ingresar el número de DNI de la mascota");
+        return;
+    }    
+    showDatosMascota($("#bus_txt_dni").val());
+});
+$(".btn-recog-face").click(function (evt) {
+    $("#pnl_reconoc_facial").modal();
 });
 

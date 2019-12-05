@@ -1165,12 +1165,12 @@ $("#btn_guardar").click(function (evt) {
              }
         });
 
-        if (error_img > 0) {
+        /*if (error_img > 0) {
             $("#errorMascota").html(GenerarAlertaWarning("Imagen: seleccione una foto de su mascota"));
             closeLoading();
             activaTab('foto');
             return;
-        }
+        }*/
     }
 
     if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
@@ -1184,6 +1184,18 @@ $("#btn_guardar").click(function (evt) {
         closeLoading();
         activaTab('dato');
         $("#txt_fecha_nac").focus();
+        return;
+    } else if (validIdInput($("#txt_nom_padre").val().trim()) && validIdInput($("#txt_nom_madre").val().trim())) {
+        $("#errorMascota").html(GenerarAlertaWarning("Nombre: ingrese el nombre del padre o la madre"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_nom_padre").focus();
+        return;
+    } else if (validIdInput($("#txt_tel_padre").val().trim()) && validIdInput($("#txt_tel_madre").val().trim())) {
+        $("#errorMascota").html(GenerarAlertaWarning("Telefono: ingresar un telefono de contacto"));
+        closeLoading();
+        activaTab('dato');
+        $("#txt_tel_padre").focus();
         return;
     } else if (validIdInput($("#sel_sexo").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Sexo: ingresar el sexo de su mascota"));
@@ -1310,7 +1322,6 @@ $("#btn_guardar").click(function (evt) {
             if (id_mascota === "") {//Solo para nuevos
                 //Guardando todas las imagenes BD
                 var error_img = 0;
-
                 $(".container-file").find($("input")).each(function () {
                     if ($(this).get(0).files.length !== 0) {
                         var imgTemp = $(this)[0].files[0];
@@ -1334,7 +1345,7 @@ $("#btn_guardar").click(function (evt) {
                                     closeLoading();
                                     return;
                                 }
-                                
+
                                 error_img += guardarImagen(evt, dataImg.d.Resultado, imgTemp);
                             },
                             error: function (data) {

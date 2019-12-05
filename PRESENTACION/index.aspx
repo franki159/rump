@@ -416,6 +416,26 @@
         </div>
     </div>
     <!-- /REPORTAR MASCOTA ENCONTRADA -->
+    <!-- MODAL IFRAME RECONOCIMIENTO FACIAL -->
+    <div class='modal modal-scroll fade' id='pnl_reconoc_facial' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Reconocimiento Facial de su mascota</h4>
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="contenedor" style="height:600px;">
+                        <iframe style="width:98%" src="WebRecognition/Recognition/Index" allowfullscreen="" webkitallowfullscreen="" mozallowfullscrea,="" oallowfullscreen="" msallowfullscreen=""></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /MODAL IFRAME RECONOCIMIENTO FACIAL -->
     <!-- Header Area Start -->
     <header class="header-area">
 
@@ -902,13 +922,8 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
 
                             <div class="col-12 col-lg-6 align-items-center">
                                 <h5 class="textoadd">Buscador de reconocimieto facial</h5>
-                                <div class="single-footer-widget">
-                                    <form action="home.html" class="nl-form">
-                                        <input type="photo" class="form-control" placeholder="Sube una foto aquí">
-                                    </form>
-                                </div>
                                 <br>
-                                <button type="send" href="#" class="btn roberto-btnO align-content-center" aria-hidden="true">Buscar</button>
+                                <button type="button" class="btn roberto-btnO align-content-center btn-recog-face" aria-hidden="true">Buscar</button>
 
                             </div>
                         </div>
