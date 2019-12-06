@@ -1298,7 +1298,6 @@ $("#btn_guardar").click(function (evt) {
         ENFERMEDAD: $("#sel_enfermedad").val(),
         ENFERMEDAD_DSC: $("#txt_enfermedad").val()
     };
-    
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/ActualizarMascotaWM",
