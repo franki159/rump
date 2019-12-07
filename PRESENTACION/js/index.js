@@ -360,12 +360,6 @@ $("#btn_registrar").click(function (evt) {
         activaTab('propietario');
         $("#txt_telefono_pre").focus();
         return;
-    } else if (validIdInput($("#txt_documento_pre").val())) {
-        $("#errorRegistro").html(GenerarAlertaWarning("Documento: ingresar un número de documento"));
-        closeLoading();
-        activaTab('propietario');
-        $("#txt_documento_pre").focus();
-        return;
     } else if (validIdInput($("#txt_nombre_masc").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Nombre: Ingresar el nombre de la mascota"));
         closeLoading();
@@ -378,17 +372,11 @@ $("#btn_registrar").click(function (evt) {
         activaTab('mascota');
         $("#txt_apellido_masc").focus();
         return;
-    } else if (validIdInput($("#txt_nombre_padre").val())) {
-        $("#errorRegistro").html(GenerarAlertaWarning("Padre: Ingresar el nombre del padre"));
+    } else if (validIdInput($("#txt_nombre_padre").val()) && validIdInput($("#txt_nombre_madre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Familia: Ingresar el nombre del padre o de la madre"));
         closeLoading();
         activaTab('mascota');
         $("#txt_nombre_padre").focus();
-        return;
-    } else if (validIdInput($("#txt_nombre_madre").val())) {
-        $("#errorRegistro").html(GenerarAlertaWarning("Madre: Ingresar el nombre de la madre"));
-        closeLoading();
-        activaTab('mascota');
-        $("#txt_nombre_madre").focus();
         return;
     } else if (validIdInput($("#txt_fecha_nac").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));

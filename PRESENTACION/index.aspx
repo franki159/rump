@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <h6><strong>Password <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>Crear una contraseña <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" type="email" id="txt_password_pre" placeholder="Contraseña" required="">
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <h6><strong>Número de documento <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>Número de documento</strong></h6>
                                         <input class="form-control integerFCP" id="txt_documento_pre" placeholder="Número de documento de identidad" required="">
                                     </div>
                                 </div>
