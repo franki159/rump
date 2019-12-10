@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NRaza.cs" />
     <Compile Include="NCita.cs" />
     <Compile Include="NMedico.cs" />
     <Compile Include="NClinica.cs" />

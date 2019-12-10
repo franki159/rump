@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DRaza.cs" />
     <Compile Include="DSolicitud.cs" />
     <Compile Include="DCita.cs" />
     <Compile Include="DMedico.cs" />

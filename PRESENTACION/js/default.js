@@ -81,9 +81,11 @@ function InfoSesion() {
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/raza">Raza</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/solicitud">Solicitudes y Servicios</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/evento">Evento</a>';
+                htmlMenu += '       <a class="collapse-item" href="./documentos/convenios.pdf" target="_blank" rel="noreferrer">Beneficios</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
                 htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';
@@ -122,8 +124,10 @@ function InfoSesion() {
                 htmlMenu += '   <div class="bg-white py-2 collapse-inner rounded">';
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
+                //htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/raza">Raza</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/solicitud">Solicitudes y Servicios</a>';
+                htmlMenu += '       <a class="collapse-item" href="./documentos/convenios.pdf" target="_blank" rel="noreferrer">Beneficios</a>';
                 htmlMenu += '   </div>';
                 htmlMenu += '</div >';
                 htmlMenu += '<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">';
@@ -139,8 +143,11 @@ function InfoSesion() {
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
+                htmlMenu += "<a  class='nav-link collapsed' href='./documentos/convenios.pdf' target='_blank' rel='noreferrer'>";              
+                htmlMenu += '   <i class="far fa-star"></i><span>Beneficios</span>';
+                htmlMenu += '</a>';
                 //htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
-                //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Evento</span>';
+                //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span> Evento</span>';
                 //htmlMenu += '</a>';
             }
 

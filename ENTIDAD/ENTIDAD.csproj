@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ERaza.cs" />
     <Compile Include="ECita.cs" />
     <Compile Include="ESolicitud.cs" />
     <Compile Include="EMedico.cs" />

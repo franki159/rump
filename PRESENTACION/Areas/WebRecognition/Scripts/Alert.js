@@ -1,7 +1,6 @@
 ﻿
 
 function mAlertMsg(msj, tipo) {
-    debugger;
     if (tipo == 0) { //OK
         swal(
 			'Good!',
