@@ -14,5 +14,10 @@ namespace NEGOCIOS
         {
             return DCita.ActualizarCitaWM(ent);
         }
+
+        public static List<ECita> listarCita(ECita ent)
+        {
+            return DCita.listarCita(ent);
+        }
     }
 }

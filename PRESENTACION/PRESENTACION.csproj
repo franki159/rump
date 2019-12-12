@@ -438,6 +438,7 @@
     <Content Include="js\inicioSesion.js" />
     <Content Include="js\forgotPassword.js" />
     <Content Include="js\adoptame.js" />
+    <Content Include="js\page\mantenimiento\clinica.js" />
     <Content Include="js\page\mantenimiento\raza.js" />
     <Content Include="js\page\mantenimiento\solicitud.js" />
     <Content Include="js\page\mantenimiento\evento.js" />
@@ -450,6 +451,7 @@
     <Content Include="js\page\proceso\imprimirDNI.js" />
     <Content Include="active.aspx" />
     <Content Include="forgotPassword.aspx" />
+    <Content Include="page\mantenimiento\clinica.aspx" />
     <Content Include="page\mantenimiento\raza.aspx" />
     <Content Include="page\mantenimiento\solicitud.aspx" />
     <Content Include="page\mantenimiento\evento.aspx" />
@@ -2782,6 +2784,13 @@
     </Compile>
     <Compile Include="forgotPassword.aspx.designer.cs">
       <DependentUpon>forgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="page\mantenimiento\clinica.aspx.cs">
+      <DependentUpon>clinica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\mantenimiento\clinica.aspx.designer.cs">
+      <DependentUpon>clinica.aspx</DependentUpon>
     </Compile>
     <Compile Include="page\mantenimiento\raza.aspx.cs">
       <DependentUpon>raza.aspx</DependentUpon>

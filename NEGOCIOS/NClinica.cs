@@ -14,5 +14,20 @@ namespace NEGOCIOS
         {
             return DClinica.ActualizarClinicaCitaWM(ent);
         }
+
+        public static int actualizarConvenio(EClinica ent)
+        {
+            return DClinica.actualizarConvenio(ent);
+        }
+
+        public static List<EClinica> listarClinica(EClinica ent)
+        {
+            return DClinica.listarClinica(ent);
+        }
+
+        public static EClinica ObtenerClinica(EClinica ent)
+        {
+            return DClinica.ObtenerClinica(ent);
+        }
     }
 }

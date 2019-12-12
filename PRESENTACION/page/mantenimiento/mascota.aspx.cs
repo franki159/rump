@@ -22,7 +22,6 @@ namespace PRESENTACION.page.mantenimiento
                 if (Session["userRump"] == null) Response.Redirect("~/login.aspx");
             }
         }
-
         [WebMethod()]
         public static object ListaMascotaWM(EMascota objE)
         {
@@ -76,7 +75,6 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
-
         [WebMethod()]
         public static object AnularMascotaWM(EMascota objE)
         {
@@ -434,7 +432,6 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
-                
         [WebMethod()]
         public static object ActualizarFotoMascotaWM(EMascota objE)
         {
@@ -468,7 +465,6 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
-
         [WebMethod()]
         public static object InsertarFotoMascotaWM(EMascota objE)
         {

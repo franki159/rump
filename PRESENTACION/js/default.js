@@ -82,6 +82,7 @@ function InfoSesion() {
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/raza">Raza</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/clinica">Convenios</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/solicitud">Solicitudes y Servicios</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/evento">Evento</a>';
@@ -125,6 +126,7 @@ function InfoSesion() {
                 htmlMenu += '       <h6 class="collapse-header">Opciones Mascotas:</h6>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/mascota">Mascotas</a>';
                 //htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/raza">Raza</a>';
+                htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/clinica">Convenios</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/proceso/imprimirDNI">DNI</a>';
                 htmlMenu += '       <a class="collapse-item" href="#!/page/mantenimiento/solicitud">Solicitudes y Servicios</a>';
                 htmlMenu += '       <a class="collapse-item" href="./documentos/convenios.pdf" target="_blank" rel="noreferrer">Beneficios</a>';
