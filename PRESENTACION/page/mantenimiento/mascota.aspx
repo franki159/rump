@@ -179,7 +179,7 @@
                                     <div class="form-group">
                                         <label>Fecha de Nacimiento de la mascota <strong class="text-danger">(*)</strong></label>
                                         <div data-date-format="dd/mm/yyyy" class="input-group date dtOp">
-                                            <input id="txt_fecha_nac" type="text" class="form-control" placeholder="" data-mask="99/99/9999" size="16">
+                                            <input id="txt_fecha_nac" autocomplete="new-password" type="text" class="form-control" placeholder="" data-mask="99/99/9999" size="16">
                                             <span class="input-group-addon btn-danger"><i class="icon-calendar"></i></span>
                                         </div>
                                     </div>
