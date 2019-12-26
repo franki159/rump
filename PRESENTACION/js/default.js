@@ -148,6 +148,9 @@ function InfoSesion() {
                 htmlMenu += "<a  class='nav-link collapsed' href='./documentos/convenios.pdf' target='_blank' rel='noreferrer'>";              
                 htmlMenu += '   <i class="far fa-star"></i><span>Beneficios</span>';
                 htmlMenu += '</a>';
+                htmlMenu += "<a  class='nav-link collapsed' href='./documentos/manual.pdf' target='_blank' rel='noreferrer'>";
+                htmlMenu += '   <i class="far fa-file"></i><span>Manual</span>';
+                htmlMenu += '</a>';
                 //htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
                 //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span> Evento</span>';
                 //htmlMenu += '</a>';
