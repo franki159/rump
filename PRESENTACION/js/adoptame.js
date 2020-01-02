@@ -3,7 +3,7 @@
         var objE = {
             CODIGO: "TIPO"
         };
-
+        
         $.ajax({
             type: "POST",
             url: "adoptame.aspx/listarParametro",

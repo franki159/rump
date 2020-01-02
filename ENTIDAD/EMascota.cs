@@ -12,6 +12,7 @@ namespace ENTIDAD
         public string CORREO { get; set; }
         public string OBSERVACION { get; set; }
         public string TELEFONO { get; set; }
+        public string CELULAR { get; set; }
         public decimal ID { get; set; }
         public string ID_ENCRIP { get; set; }
         public string DNI { get; set; }

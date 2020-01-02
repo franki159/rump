@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adoptame.aspx.cs" Inherits="PRESENTACION.templatePage.adoptame" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adoptame.aspx.cs" Inherits="PRESENTACION.adoptame" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +13,10 @@
     <title>RUMP &amp; World Pets Perú</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.png">
+    <link rel="icon" href="templatePage/img/core-img/favicon.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="templatePage/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>">
 </head>
 
 <body>
@@ -24,67 +24,105 @@
     <!--#include file="headerPage.aspx"-->
     <!-- Header Area End -->
 
-    <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area3 bg-img jarallax" style="background-image: url(img/bg-img/adoptame-fondo.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <br />
-                    <br />
-                    <br />
-                    <h2 class="mascotas-extraviadas text-center">ADOPCIÓN</h2>
-
+    <!-- Title Breadcrumb Area Start -->
+    <div class="breadcrumb-area2 bg-img" style="background-image: url(templatePage/img/bg-img/adoptame-fondo.jpg);">
+		
+	<div class="row">
+                <!-- Section Heading -->
+                <div class="col-12 section-padding-100-0">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                         <img src="templatePage/img/core-img/adopcion.png" alt="">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb Area End -->
+            </div>		
+   </div>
 
+    <!--  Title Breadcrumb Area End -->
+	
+    
     <!-- About Us Area Start -->
-    <section class="roberto-about-area section-padding-100-0">
+    <section class="roberto-about-area" style="background-image: url(templatePage/img/bg-img/adopcion-fondo.jpg);">
+																																	
         <!-- Hotel Search Form Area -->
-        <div class="hotel-search-form-area">
-            <div class="container-fluid"></div>
-        </div>
-
-        <div class="container mt-100">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-6">
-                    <!-- Section Heading -->
-                    <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
-                        <h6>únete a la comunidad </h6>
-                        <h2>¡Fomentemos la adopción!</h2>
-                    </div>
-                    <div class="about-us-content mb-100">
-                        <h5 class="wow fadeInUp" data-wow-delay="300ms">Si estás en busca de tu nuevo mejor amigo, aquí lo encontrarás. Gracias a distintas organizaciones, refugios, asociaciones y buenas personas, miles de animales han sido rescatados de las calles. Aun así, todos necesitan una familia que les dé el amor y cuidado que necesitan.Únete a nosotros en esta causa. 
-                        Gatos, perros, conejos y otras mascotas en busca de un hogar esperan a personas como tú. Encuentra a tu amigo fiel, tu mascota ideal, totalmente identificada sin pagar nada. 
-                        </h5>
-
-                        <img src="img/core-img/nocompresadopta.png" alt="" class="wow fadeInUp" data-wow-delay="500ms">
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-6">
-                    <div class="about-us-thumbnail mb-100 wow fadeInUp" data-wow-delay="700ms">
-                        <div class="row no-gutters">
-                            <div class="col-6">
-                                <div class="single-thumb">
-                                    <img src="img/bg-img/adoptamefotogato.jpg" alt="">
-                                </div>
-                                <div class="single-thumb">
-                                    <img src="img/bg-img/adoptamefotoconejo.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="single-thumb">
-                                    <img src="img/bg-img/adoptamefotoperro.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
+         
+        <div class="container ">			
+			  <div class="row ">
+                <!-- Section Heading -->
+                <div class="col-12 mt-100">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                         <img src="templatePage/img/core-img/TITULO-ADOPCIÓN.png" alt="">
                     </div>
                 </div>
             </div>
-        </div>
+			
+
+			 <div class="col-12 align-content-center">
+                    <!-- Post Thumbnail -->
+                   
+                    <!-- Blog Details Text -->
+                    <div class="blog-details-text text-center">
+ 
+                        <div class="about-us-content">
+                            <h6 class="wow fadeInUp" data-wow-delay="300ms"><strong>Si estás en busca de tu nuevo mejor amigo, aquí lo encontrarás. Gracias a distintas organizaciones, refugios, asociaciones y buenas personas, miles de animales han sido rescatados de las calles. Aun así, todos necesitan una familia que les dé el amor y cuidado que necesitan.Únete a nosotros en esta causa. 
+                            Gatos, perros, conejos y otras mascotas en busca de un hogar esperan a personas como tú. Encuentra a tu amigo fiel, tu mascota ideal, totalmente identificada sin pagar nada. </strong></h6>
+                            <br></br>
+                            <img src="templatePage/img/core-img/subtitulo-adop.png" alt="" class="wow fadeInUp" data-wow-delay="500ms">
+                  
+                        </div> 
+                    </div>
+             </div>
+      </div> 
+    </section>
+    <!-- About Us Area End -->
+    <!-- About Us Area Start -->
+    <section class="roberto-about-area" style="background-image: url(templatePage/img/bg-img/adopcion-fondo.jpg);">
+																																	
+        <!-- Hotel Search Form Area -->
+         
+        <div class="container ">
+			
+
+			
+			 <div class="row">
+                <!-- Section Heading -->
+                <div class="col-12 mt-100">
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                        <h2 class="regismasco">Dales una nueva oportunidad</h2>
+						<br>
+						<p class="regismasco">Ingresa a los siguientes refugios, asociaciones , organizaciones y podrás encontras a tu nuevo mejor amigo </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Post Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        <a href="https://www.facebook.com/alberguesanfrancisco/" class="post-thumbnail"><img src="templatePage/img/bg-img/albergue1.png" alt=""></a>
+                        <p class="regismasco text-center">Albergue San Francisco</p>
+                    </div>
+                </div>
+
+                <!-- Single Post Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="500ms">
+                        <a href="https://www.facebook.com/ayudaentrepatas/" class="post-thumbnail"><img src="templatePage/img/bg-img/albergue2.png" alt=""></a>
+                        <p class="regismasco text-center">Asociación Ayuda entre patas</p>
+                    </div>
+                </div>
+
+                <!-- Single Post Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-post-area mb-100 wow fadeInUp" data-wow-delay="700ms">
+                        <a href="https://www.facebook.com/asociacionmisichaperu/" class="post-thumbnail"><img src="templatePage/img/bg-img/albergue3.png" alt=""></a>
+                        <p class="regismasco text-center">Asociación Misicha Perú</p>
+                    </div>
+                </div>
+
+            </div>
+
+      </div>
+ 
     </section>
     <!-- About Us Area End -->
 
@@ -164,7 +202,7 @@
         </div>
 
         <!--***********************  MASCOTA VISTA  **************************-->
-<div class='modal modal-scroll fade' id='pnl_adopcion_v' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal modal-scroll fade' id='pnl_adopcion_v' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -238,31 +276,10 @@
     </section>
     <!-- Consulta Mascota End -->
 
-    <!-- Service Area Start -->
-    <section class="roberto-service-area section-padding-100-0">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-
-                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                        <h6>Tambien puedes gozar de </h6>
-                        <h2>Más servicios</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </section>
-
-    <!-- Service Area End -->
-
-
-
     <!-- Footer Area Start -->
     <!--#include file="footerPage.aspx"-->
-
+    
+    <script src="js/adoptame.js?v=123456"></script>
 </body>
-<script src="../js/adoptame.js"></script>
+
 </html>

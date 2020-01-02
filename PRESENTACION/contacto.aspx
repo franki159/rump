@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="contacto.aspx.cs" Inherits="PRESENTACION.templatePage.contacto" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="contacto.aspx.cs" Inherits="PRESENTACION.contacto" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +13,10 @@
     <title>RUMP &amp; World Pets Perú</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.png">
+    <link rel="icon" href="templatePage/img/core-img/favicon.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="templatePage/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>">
 
 </head>
 
@@ -24,7 +24,7 @@
     <!--#include file="headerPage.aspx"-->
 
     <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area contact-breadcrumb bg-img jarallax" style="background-image: url(img/bg-img/contact.jpg);">
+    <div class="breadcrumb-area contact-breadcrumb bg-img jarallax" style="background-image: url(templatePage/img/bg-img/contact.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -34,6 +34,7 @@
                             <ol class="breadcrumb justify-content-center">
                                
                             </ol> 
+                            </ol>
                         </nav>
                     </div>
                 </div>
@@ -51,32 +52,37 @@
                     <div class="col-6 col-lg-3">
                         <div class="single-contact-info">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            <h4>Teléfono</h4>
-                            <p>(01) 7316407</p>
+                            <h5>Teléfonos</h5>
+							<a href="tel:+517316407">(01)7316407</a>
+							<br>
+							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" >+51 992975292</a>
                         </div>
                     </div>
                     <!-- Single Contact Info -->
                     <div class="col-6 col-lg-3">
                         <div class="single-contact-info">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <h4>Dirección</h4>
-                            <p>Av. Brasil 3345 - Magdalena del Mar Perú</p>
+                            <h5>Dirección</h5>
+                            <p>Av. Brasil 3345</p>
+							<p>Magdalena del Mar Perú</p>
                         </div>
                     </div>
                     <!-- Single Contact Info -->
                     <div class="col-6 col-lg-3">
                         <div class="single-contact-info">
                             <i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <h4>Horario de atención</h4>
+                            <h5>Horario de atención</h5>
                             <p>09:00 to 18:00 hrs</p>
+							<h5>Horario de entregas</h5>
+							<p>10:00 to 17:00 hrs</p>
                         </div>
                     </div>
                     <!-- Single Contact Info -->
                     <div class="col-6 col-lg-3">
                         <div class="single-contact-info">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            <h4>Email</h4>
-                            <p>worldpetsperu.2210@gmail.com</p>
+                            <h5>Email</h5>
+							<a href="mailto:worldpetsperu.2210@gmail.com">worldpetsperu .2210@gmail. com</a>
                         </div>
                     </div>
                 </div>
@@ -125,22 +131,27 @@
                                 <div class="col-12 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
                                     <input type="email" id="txt_email" name="message-email" class="form-control mb-30" placeholder="Email">
                                 </div>
+                                <div class="col-12 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
+                                    <input type="numbers" id="txt_celular" name="message-email" class="form-control mb-30" placeholder="Celular">
+                                </div>
+								
+								<div class="col-12 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
+                                    <input type="numbers" id="txt_telefono" name="message-email" class="form-control mb-30" placeholder="Teléfono opcional">
+                                </div>
                                 <div class="col-12 wow fadeInUp" data-wow-delay="100ms">
                                     <textarea name="message" id="txt_mensaje" class="form-control mb-30" placeholder="Tu mensaje"></textarea>
                                 </div>
                                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="100ms">
-                                    <button type="submit" class="btn roberto-btn mt-15 send-email-contact">Enviar mensaje</button>
+                                    <button type="button" class="btn roberto-btn mt-15 send-email-contact">Enviar mensaje</button>
                                 </div>
                             </div>
-                        </form>
+                        </form><
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Contact Form Area End -->
-
-   
 
     <!-- Footer Area Start -->
     <!--#include file="footerPage.aspx"-->

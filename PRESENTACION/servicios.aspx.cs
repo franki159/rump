@@ -8,7 +8,7 @@ using System.Web.Services;
 using ENTIDAD;
 using NEGOCIOS;
 
-namespace PRESENTACION.templatePage
+namespace PRESENTACION
 {
     public partial class servicios : System.Web.UI.Page
     {

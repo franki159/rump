@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace PRESENTACION.templatePage
+namespace PRESENTACION
 {
     public partial class contacto : System.Web.UI.Page
     {

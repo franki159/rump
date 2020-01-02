@@ -121,6 +121,59 @@ $(".reportar-msct-etv").click(function () {
     $("#pnl_report_mascota").modal();
 });
 
+$(".send-email-contact").click(function () {
+    if ($("#txt_nombre").val().trim() === "") {
+        $("#errorMail").html(GenerarAlertaWarning("Nombre: Ingrese su nombre"));
+        $("#txt_nombre").focus();
+        return;
+    } else if (isEmail($("#txt_email").val().trim()) === false) {
+        $("#errorMail").html(GenerarAlertaWarning("Correo: Ingrese un correo válido"));
+        $("#txt_email").focus();
+        return;
+    } else if (isEmail($("#txt_celular").val().trim()) === false) {
+        $("#errorMail").html(GenerarAlertaWarning("CElular: Ingrese un celular válido"));
+        $("#txt_celular").focus();
+        return;
+    } else if ($("#txt_mensaje").val().trim() === "") {
+        $("#errorMail").html(GenerarAlertaWarning("Mensaje: Ingrese un mensaje válido"));
+        $("#txt_mensaje").focus();
+        return;
+    }
+
+    var objE = {
+        NOMBRE: $("#txt_nombre").val(),
+        CORREO: $("#txt_correo").val(),
+        CELULAR: $("#txt_celular").val(),
+        TELEFONO: $("#txt_telefono").val(),
+        OBSERVACION: $("#txt_mensaje").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "index.aspx/EnviarMensajeWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            $("#page-loader").show();
+        },
+        success: function (data, status) {
+            $("#page-loader").hide();
+            if (!data.d.Activo) {
+                $("#errorMail").html(GenerarAlertaError(data.d.Mensaje));
+            } else {
+                $("#pnl_report_mascota").modal('hide');
+                msg_OpenDay("c", data.d.Mensaje);
+            }
+        },
+        error: function (data) {
+            $("#page-loader").hide();
+            $("#errorMail").html(GenerarAlertaError("Inconveniente en la operación"));
+        }
+    });
+});
+
 $("#btn_reportar_mascota").click(function () {
     if ($("#txt_dni_mascota").val().trim() === "") {
         $("#errorReporte").html(GenerarAlertaWarning("Codigo: Ingrese el codigo de la chapita"));

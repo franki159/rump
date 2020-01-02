@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mextraviadas.aspx.cs" Inherits="PRESENTACION.templatePage.mextraviadas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mextraviadas.aspx.cs" Inherits="PRESENTACION.mextraviadas" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +13,10 @@
     <title>RUMP &amp; World Pets Perú</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.png">
+    <link rel="icon" href="templatePage/img/core-img/favicon.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="templatePage/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>">
 
 </head>
 
@@ -88,42 +88,33 @@
 
     <!-- /REPORTAR MASCOTA EXTRAVIADA -->
 
-    <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area6 bg-img jarallax" style="background-image: url(img/bg-img/mascotasextraviadas-fondo.jpg);">
-          
-		<div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-						<img src="img/core-img/mascotasextraviadas.png" alt="">
-   
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center"></ol>
-							<br/>
-							<br/>
-						</nav>	
-                    </div>
+    <!-- Title Breadcrumb Area Start -->
+    <div class="breadcrumb-area2 bg-img" style="background-image: url(templatePage/img/bg-img/mascotasextraviadas-fondo.jpg);">
+		
+	    <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12 section-padding-100-0">
+                <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
+                    <img src="templatePage/img/core-img/mascotasextraviadas.png" alt="">
                 </div>
             </div>
-        </div>
-		
-	</div>
-    <!-- Breadcrumb Area End -->
+        </div>		
+    </div>
+    <!--  Title Breadcrumb Area End -->
 
-	   <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area bg-img jarallax background-repeat:repeat-x" style="background-image: url(img/bg-img/pattern-mascotaextraviada.jpg); background-repeat: repeat">
+	<!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area bg-img jarallax background-repeat:repeat-x" style="background-image: url(templatePage/img/bg-img/pattern-mascotaextraviada.jpg); background-repeat: repeat">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
 						<br/>
 						
-						 <img src="img/core-img/encontrastemascota.png" alt="">
+						 <img src="templatePage/img/core-img/encontrasteunamascota.png" alt="">
                         <nav aria-label="breadcrumb">
                              <br/>
-                              <li class="textoextraviada active" aria-current="page">Si has encontrado una mascota, con nuestra chapita identificadora puedes reportarla aquí   <br/>como perdida, ayudando a que encuentre a su familia. Ahora puedes ayudar al cambio</li>
-							  <li class="textoextraviada active" aria-current="page">poniendo de tu parte para disminuir la tasa de animales en las calles. Si eres dueño de una mascota,</li>
-							  <li class="textoextraviada active" aria-current="page"> es importante que la identifiques. Con RUMP te aseguras de que tu engreído siempre volverá a casa.</li>
+                              <h6 class="textoadd" aria-current="page">Si has encontrado una mascota, con nuestra chapita identificadora puedes reportarla aquí como perdida, ayudando a que encuentre a su familia. Ahora puedes ayudar al cambio poniendo de tu parte para disminuir la tasa de animales en las calles. Si eres dueño de una mascota,
+							  es importante que la identifiques. Con RUMP te aseguras de que tu engreído siempre volverá a casa.</h6>
                         </nav>
 						<br/>
 						<br/>
@@ -137,21 +128,20 @@
     <!-- Breadcrumb Area End -->
 
     <!-- Service Area Start -->
-    <section class="roberto-service-area section-padding-100-0">
-		
+    <section class="roberto-service-area section-padding-100-0">		
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     
                     <div class="section-heading text-center wow fadeInUp" data-wow-delay="100ms">
-                        <h6>Tambien puedes gozar de </h6>
-                        <h2>Más servicios</h2>
+                        
+                        <h2>Ellos te siguen buscando</h2>
+						<br></br>
+						<h6>Encuentralas aquí</h6>
                     </div>
                 </div>
             </div>
         </div>
-		
-		
     </section>
     <!-- Service Area End -->
 	

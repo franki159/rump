@@ -41,7 +41,7 @@ namespace PRESENTACION.page.proceso
                     //Estilos
                     var titleHeader = FontFactory.GetFont("Arial", 7, Font.BOLD, new BaseColor(76, 76, 76));
                     var titleRUMP = FontFactory.GetFont("Arial", 7, Font.BOLD, new BaseColor(0, 0, 0));
-                    var titleSmall7B = FontFactory.GetFont("Arial", 7, Font.BOLD, new BaseColor(0, 0, 0));
+                    var titleSmall7B = FontFactory.GetFont("Courier", 7, Font.BOLD, new BaseColor(0, 0, 0));
                     var titleSmall6 = FontFactory.GetFont("Arial", 6, Font.NORMAL, new BaseColor(0, 0, 0));
                     var titleSmall6B = FontFactory.GetFont("Arial", 6, Font.BOLD, new BaseColor(0, 0, 0));
                     var titleSmall5 = FontFactory.GetFont("Arial", 5, Font.NORMAL, new BaseColor(0, 0, 0));
@@ -86,7 +86,7 @@ namespace PRESENTACION.page.proceso
                     tbody.SetWidths(widths2);
                     tbody.HorizontalAlignment = 0;
                     tbody.SpacingBefore = 5f;
-
+                    //DNI VERTICAL SEPARADO
                     var dniSeparado = "";
 
                     for (int i = 0; i < objE.DNI.Length; i++)
@@ -97,7 +97,7 @@ namespace PRESENTACION.page.proceso
                     cell.Rotation = -90;
                     cell.HorizontalAlignment = 1;
                     tbody.AddCell(cell);
-
+                    //Foto Mascota
                     string url_img_mascota = Server.MapPath("~/img/mascota/" + objE.lMASCOTA[0].FOTO);
                     iTextSharp.text.Image imgMascota;
                     if (File.Exists(url_img_mascota))
@@ -194,7 +194,7 @@ namespace PRESENTACION.page.proceso
                     cell.HorizontalAlignment = 1;
                     cell.PaddingTop = -2;
                     tFechas.AddCell(cell);
-
+                    //Imagen Pequeña
                     iTextSharp.text.Image imgMascotaSmall;
                     if (File.Exists(url_img_mascota))
                     {
@@ -205,8 +205,8 @@ namespace PRESENTACION.page.proceso
                         imgMascotaSmall = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/noPets.png"));
                     }
 
-                    imgMascotaSmall.ScaleAbsolute(33, 41);
-                    imgMascotaSmall.SpacingBefore = 10f;
+                    imgMascotaSmall.ScaleAbsolute(30, 38);
+                    imgMascotaSmall.SpacingBefore = 7f;
                     cell = new PdfPCell(imgMascotaSmall);
                     cell.Border = 0;
                     cell.HorizontalAlignment = 1;
@@ -226,15 +226,17 @@ namespace PRESENTACION.page.proceso
 
                     int cant_str_nom = 0;
                     cant_str_nom += (objE.TIPO.Substring(0, 1) + "<PER" + objE.NOMBRE.ToUpper() + "<<").Length;
-                    if (33 - cant_str_nom < 0)
+                    if (46 - cant_str_nom < 0)
                         cant_str_nom = 0;
+                    else
+                        cant_str_nom = 46 - cant_str_nom;
                     cell = new PdfPCell(new Phrase(objE.TIPO.Substring(0, 1) + "<PER" + objE.APELLIDO.Replace(" ", "").PadRight(cant_str_nom, Convert.ToChar("<")) + objE.NOMBRE.ToUpper() + "<<", titleSmall7B));
                     cell.Border = 0;
-                    cell.PaddingTop = -6;
+                    cell.PaddingTop = 0;
                     cell.PaddingLeft = 18;
                     tmayor.AddCell(cell);
 
-                    cell = new PdfPCell(new Phrase(objE.DNI + "<1<<<<<<<<<<<<<<<<<<<<<<<<", titleSmall7B));
+                    cell = new PdfPCell(new Phrase(objE.DNI + "<1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", titleSmall7B));
                     cell.Border = 0;
                     cell.PaddingLeft = 18;
                     cell.PaddingTop = -2;

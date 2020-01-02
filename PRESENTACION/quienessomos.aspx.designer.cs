@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace PRESENTACION.templatePage {
+namespace PRESENTACION {
     
     
-    public partial class contacto {
+    public partial class quienessomos {
     }
 }

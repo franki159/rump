@@ -1,10 +1,12 @@
 ﻿    <!-- Preloader -->
-    <div id="page-loader"><img style="-webkit-user-select: none;margin: auto;" src="../img/loader-pet.gif"></div> 
+    <div id="page-loader">
+        <img style="-webkit-user-select: none; margin: auto;" src="img/loader-pet.gif">
+    </div>
     <!-- /Preloader -->
 
     <!-- Header Area Start -->
     <header class="header-area">
- 
+
         <!-- Top Header Area Start -->
         <div class="top-header-area">
             <div class="container">
@@ -12,16 +14,16 @@
 
                     <div class="col-6">
                         <div class="top-header-content">
-                            <a class="itel"><img src="img/core-img/whatsapp.png"></a>
-							<a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992975292</a>
-							<a class="itel2"><img src="img/core-img/phone.png"></a>
-							<a class="baraitem" aria-current="page" href="tel:+517316407">(01)7316407</a>
+                            <a class="itel">
+                                <img src="templatePage/img/core-img/whatsapp.png"></a>
+                            <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992975292</a>
+                            <a class="itel2"><img src="templatePage/img/core-img/phone.png"></a>
+                            <a class="baraitem" href="tel:+517316407">(01)7316407</a>
                         </div>
                     </div>
 
                     <div class="col-6">
                         <div class="top-header-content float-right" id="divLoginUser">
-							
                         </div>
                     </div>
 
@@ -38,16 +40,16 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href=".././"><img src="./img/core-img/logo-orange.png" alt=""></a>
-						
-						     
-						<div class="top-social-area ">
-                                <a class="itel" href="https://www.facebook.com/worldpetsperurump/"><img src="img/core-img/fb.png"></a>
-                                <a class="itel" href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><img src="img/core-img/ist.png"></a>
-								<a class="itel" href="https://twitter.com/PeruRump?lang=es"><img src="img/core-img/tw.png"></a>
-								<a class="itel" href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><img src="img/core-img/yt.png"></a>
-                            </div>
-						
+                        <a class="nav-brand" href="./"><img src="templatePage/img/core-img/logo-orange.png" alt=""></a>
+
+
+                        <div class="top-social-area ">
+                            <a class="itel" href="https://www.facebook.com/worldpetsperurump/"><img src="templatePage/img/core-img/fb.png"></a>
+                            <a class="itel" href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><img src="templatePage/img/core-img/ist.png"></a>
+                            <a class="itel" href="https://twitter.com/PeruRump?lang=es"><img src="templatePage/img/core-img/tw.png"></a>
+                            <a class="itel" href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><img src="templatePage/img/core-img/yt.png"></a>
+                        </div>
+
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -60,15 +62,15 @@
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                             </div>
-                             <!-- Nav Start -->
+                            <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li class="active"><a href=".././">Inicio</a></li>
+                                    <li class="active"><a href="./">Inicio</a></li>
                                     <li><a href="./servicios.aspx">Servicios</a></li>
-									<li><a href="./mextraviadas.aspx">Mascotas extraviadas</a></li>
-                                    <li><a href="./adoptame.aspx">Adóptame</a></li>	
-									<li><a href="./quienessomos.aspx">¿Quiénes somos?</a></li>
-							       
+                                    <li><a href="./mextraviadas.aspx">Mascotas extraviadas</a></li>
+                                    <li><a href="./adoptame.aspx">Adóptame</a></li>
+                                    <li><a href="./quienessomos.aspx">¿Quiénes somos?</a></li>
+
                                     <li><a href="./contacto.aspx">Contacto</a></li>
                                 </ul>
 

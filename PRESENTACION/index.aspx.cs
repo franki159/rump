@@ -102,7 +102,7 @@ namespace PRESENTACION
                 correo.Para = "worldpetsperu.2210@gmail.com";
                 correo.Copia = objE.CORREO;
                 correo.Asunto = "Mensaje de " + objE.NOMBRE + " Correo: "+ objE.CORREO;
-                correo.Mensaje = objE.OBSERVACION;
+                correo.Mensaje = "Celular: "+ objE.CELULAR + (objE.TELEFONO != "" ? " Telefono: " + objE.TELEFONO: "") + " " + objE.OBSERVACION;
                 correo.Enviar();
 
                 objRespuesta.Success("Se envió correctamente");
