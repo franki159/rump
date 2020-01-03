@@ -119,7 +119,7 @@
 						<br/>
 						<br/>
 				
-						 <a href="#" class="btn roberto-btnM reportar-msct-etv">REPORTAR</a>
+						 <a href="#" class="btn roberto-btnR reportar-msct-etv">REPORTAR</a>
                     </div>
                 </div>
             </div>

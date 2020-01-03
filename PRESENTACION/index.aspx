@@ -801,7 +801,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
     </div>
 
     <!-- Breadcrumb3 Area Start -->
-    <div class="breadcrumb-area4 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/buscadordem.jpg);">
+    <div class="breadcrumb-area4 bg-img" style="background-image: url(templatePage/img/bg-img/buscadordem.jpg);">
         <div class="container h-50">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
