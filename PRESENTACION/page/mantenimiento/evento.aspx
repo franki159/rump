@@ -102,6 +102,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label>Periodo <strong class="text-danger">(*)</strong></label>
+                                <select id="sel_periodo" class="form-control">
+                                    <option value="0">Seleccionar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label>Fecha Inicio <strong class="text-danger">(*)</strong></label>
                                 <div data-date-format="dd/mm/yyyy" class="input-group">
                                     <input id="txt_fecha_inicio" type="text" class="form-control date dtOp" placeholder="dd/MM/yyyy" data-mask="99/99/9999" size="16">
@@ -118,14 +126,6 @@
                                     <span class="input-group-addon btn-danger"><i class="icon-calendar"></i></span>
                                     <input id="txt_hora_fin" type="text" class="form-control" placeholder="HH:mm" data-mask="99/99/9999" size="16">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Periodo <strong class="text-danger">(*)</strong></label>
-                                <select id="sel_periodo" class="form-control">
-                                    <option value="0">Seleccionar</option>
-                                </select>
                             </div>
                         </div>
                     </div>

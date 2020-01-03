@@ -455,6 +455,7 @@
     <Content Include="page\mantenimiento\raza.aspx" />
     <Content Include="page\mantenimiento\solicitud.aspx" />
     <Content Include="page\mantenimiento\evento.aspx" />
+    <Content Include="enciclopedia.aspx" />
     <Content Include="register.aspx" />
     <Content Include="page\mantenimiento\citaMedica.aspx" />
     <Content Include="password.aspx" />
@@ -2843,6 +2844,13 @@
     </Compile>
     <Compile Include="page\mantenimiento\evento.aspx.designer.cs">
       <DependentUpon>evento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="enciclopedia.aspx.cs">
+      <DependentUpon>enciclopedia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="enciclopedia.aspx.designer.cs">
+      <DependentUpon>enciclopedia.aspx</DependentUpon>
     </Compile>
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>

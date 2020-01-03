@@ -37,7 +37,7 @@ function fc_listar_tipo() {
                 closeLoading();
                 return;
             }
-            
+
             $('#sel_bus_tipo').append("<option value='0'>TODOS</option>");
             $('#sel_tipo').append("<option value='0'>SELECCIONE</option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
@@ -77,7 +77,7 @@ function fc_listar_periodo() {
                 closeLoading();
                 return;
             }
-            
+
             $('#sel_periodo').append("<option value='0'>SELECCIONE</option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_periodo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
@@ -431,6 +431,13 @@ $("#sel_bus_mascota").change(function () {
 
     fc_listar_evento();
 });
+$("#sel_periodo").change(function () {
+    if ($("#sel_periodo").val() != '1') {
+        $("#txt_fecha_fin").parent().parent().parent().show();
+    } else {
+        $("#txt_fecha_fin").parent().parent().parent().hide();
+    }
+});
 $("#btn_buscar").click(function () {
     $("#btn_buscar").button('loading');
     $("#errorDiv").html('');
@@ -442,6 +449,7 @@ $("#btn_nuevo").click(function () {
     $('#pnl_evento .modal-title').html('Registrar Evento');
     $("#pnl_evento").modal('show');
 
+    $("#txt_fecha_fin").parent().parent().parent().hide();
     $("#btn_anular").hide();
     $("#sel_tipo").focus();
 });
@@ -465,22 +473,22 @@ $("#btn_guardar").click(function (evt) {
         closeLoading();
         $("#txt_titulo").focus();
         return;
-    } else if (!isDate($("#txt_fecha_inicio").val() + ' ' + $("#txt_hora_inicio").val(), 'dd/MM/yyyy HH:mm')) {
-        $("#errorEvento").html(GenerarAlertaWarning("Fecha Inicio: ingresar una fecha de inicio válida"));
-        closeLoading();
-        $("#txt_fecha_inicio").focus();
-        return;
-    } else if (!isDate($("#txt_fecha_fin").val() + ' ' + $("#txt_hora_fin").val(), 'dd/MM/yyyy HH:mm')) {
-        $("#errorEvento").html(GenerarAlertaWarning("Fecha Inicio: ingresar una fecha fin válida"));
-        closeLoading();
-        $("#txt_fecha_fin").focus();
-        return;
     } else if (validIdInput($("#sel_periodo").val())) {
         $("#errorEvento").html(GenerarAlertaWarning("Periodo: seleccionar un periodo"));
         closeLoading();
         $("#sel_periodo").focus();
         return;
-    } 
+    } else if (!isDate($("#txt_fecha_inicio").val() + ' ' + $("#txt_hora_inicio").val(), 'dd/MM/yyyy HH:mm')) {
+        $("#errorEvento").html(GenerarAlertaWarning("Fecha Inicio: ingresar una fecha de inicio válida"));
+        closeLoading();
+        $("#txt_fecha_inicio").focus();
+        return;
+    } else if ($("#sel_mascota").val() != '1' && !isDate($("#txt_fecha_fin").val() + ' ' + $("#txt_hora_fin").val(), 'dd/MM/yyyy HH:mm')) {
+        $("#errorEvento").html(GenerarAlertaWarning("Fecha Fin: ingresar una fecha fin válida"));
+        closeLoading();
+        $("#txt_fecha_fin").focus();
+        return;
+    }
 
     var EEvento = {
         ID_ENCRIP: id_evento,
@@ -491,7 +499,9 @@ $("#btn_guardar").click(function (evt) {
         TITULO: $("#txt_titulo").val(),
         DETALLE: $("#txt_detalle").val(),
         FECHA_INICIO: getDateFromFormat($("#txt_fecha_inicio").val() + ' ' + $("#txt_hora_inicio").val(), 'dd/MM/yyyy HH:mm'),
-        FECHA_FIN: getDateFromFormat($("#txt_fecha_fin").val() + ' ' + $("#txt_hora_fin").val(), 'dd/MM/yyyy HH:mm')
+        FECHA_FIN: ($("#sel_mascota").val() == '1' ?
+            getDateFromFormat($("#txt_fecha_inicio").val() + ' ' + $("#txt_hora_inicio").val(), 'dd/MM/yyyy HH:mm') :
+            getDateFromFormat($("#txt_fecha_fin").val() + ' ' + $("#txt_hora_fin").val(), 'dd/MM/yyyy HH:mm'))
     };
 
     $.ajax({
