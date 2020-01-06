@@ -11,6 +11,41 @@ namespace DATOS
 {
     public class DRaza
     {
+        public static List<EEnciclopedia> listarEnciclopedia()
+        {
+            List<EEnciclopedia> lista = new List<EEnciclopedia>();
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_lst_enciclopedia", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        EEnciclopedia mItem = new EEnciclopedia();
+                        mItem.ID = (dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetInt32(dr.GetOrdinal("id")));
+                        mItem.TIPO_MASCOTA = dr.IsDBNull(dr.GetOrdinal("tipo_mascota")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo_mascota"));
+                        mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                        mItem.TIPO_RAZA = dr.IsDBNull(dr.GetOrdinal("tipo_raza")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo_raza"));
+                        mItem.TAMANO_MACHO = dr.IsDBNull(dr.GetOrdinal("tamano_macho")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano_macho"));
+                        mItem.TAMANO_HEMBRA = dr.IsDBNull(dr.GetOrdinal("tamano_hembra")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano_hembra"));
+                        mItem.GRADO_CUIDADO = dr.IsDBNull(dr.GetOrdinal("grado_cuidado")) ? string.Empty : dr.GetString(dr.GetOrdinal("grado_cuidado"));
+                        mItem.PAIS_ORIGEN = dr.IsDBNull(dr.GetOrdinal("pais_origen")) ? string.Empty : dr.GetString(dr.GetOrdinal("pais_origen"));
+                        mItem.GENERAL = dr.IsDBNull(dr.GetOrdinal("general")) ? string.Empty : dr.GetString(dr.GetOrdinal("general"));
+                        mItem.CABEZA = dr.IsDBNull(dr.GetOrdinal("cabeza")) ? string.Empty : dr.GetString(dr.GetOrdinal("cabeza"));
+                        mItem.CUERPO = dr.IsDBNull(dr.GetOrdinal("cuerpo")) ? string.Empty : dr.GetString(dr.GetOrdinal("cuerpo"));
+                        mItem.PELAJE = dr.IsDBNull(dr.GetOrdinal("pelaje")) ? string.Empty : dr.GetString(dr.GetOrdinal("pelaje"));
+                        mItem.OREJA = dr.IsDBNull(dr.GetOrdinal("oreja")) ? string.Empty : dr.GetString(dr.GetOrdinal("oreja"));
+                        mItem.COLA = dr.IsDBNull(dr.GetOrdinal("cola")) ? string.Empty : dr.GetString(dr.GetOrdinal("cola"));
+                        lista.Add(mItem);
+                    }
+                }
+            }
+            return lista;
+        }
+
         public static List<ERaza> listarRaza(ERaza objE) {
             List<ERaza> lista = new List<ERaza>();
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))

@@ -15,14 +15,19 @@ namespace NEGOCIOS
             return DRaza.actualizarRaza(ent);
         }
 
+        public static List<ERaza> obtenerRaza(ERaza ent)
+        {
+            return DRaza.obtenerRaza(ent);
+        }
+
         public static List<ERaza> listarRaza(ERaza ent)
         {
             return DRaza.listarRaza(ent);
         }
 
-        public static List<ERaza> obtenerRaza(ERaza ent)
+        public static List<EEnciclopedia> listarEnciclopedia()
         {
-            return DRaza.obtenerRaza(ent);
+            return DRaza.listarEnciclopedia();
         }
     }
 }

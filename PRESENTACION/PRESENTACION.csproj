@@ -438,6 +438,7 @@
     <Content Include="js\inicioSesion.js" />
     <Content Include="js\forgotPassword.js" />
     <Content Include="js\adoptame.js" />
+    <Content Include="js\enciclopedia.js" />
     <Content Include="js\page\mantenimiento\clinica.js" />
     <Content Include="js\page\mantenimiento\raza.js" />
     <Content Include="js\page\mantenimiento\solicitud.js" />
