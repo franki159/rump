@@ -25,9 +25,9 @@ namespace NEGOCIOS
             return DRaza.listarRaza(ent);
         }
 
-        public static List<EEnciclopedia> listarEnciclopedia()
+        public static List<EEnciclopedia> listarEnciclopedia(EEnciclopedia ent)
         {
-            return DRaza.listarEnciclopedia();
+            return DRaza.listarEnciclopedia(ent);
         }
     }
 }

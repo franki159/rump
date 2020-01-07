@@ -17,6 +17,8 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="templatePage/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>">
+    <!-- Select 2 filtro-->
+    <link href="assets/select2/css/select2.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -41,8 +43,27 @@
     <!--  Title Breadcrumb Area End -->
 
     <!-- Blog Area Start -->
-    <section class="roberto-blog-area section-padding-100-0">
+    <section class="roberto-blog-area">
         <div class="container">
+            <div class="row mb-30">
+                <div class="col-6">
+                    <label style="color: black">Tipo</label>
+                    <select id="sel_tipo" class="form-control sel_autocomplete" style="width: 100%;">
+                        <option value="0">Todos</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label style="color: black">Raza</label>
+                    <select id="sel_raza" class="form-control sel_autocomplete" style="width: 100%;">
+                        <option value="0">Todos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-30">
+                    <button id="btn_buscar_enciclopedia" class="btn roberto-btnO align-content-center">BUSCAR</button>
+                </div>
+            </div>
             <div class="row" id="list-enciclopedia">
                 <!-- Single Post Area -->
                 <div class="col-12 col-md-6 col-lg-6">

@@ -11,13 +11,15 @@ namespace DATOS
 {
     public class DRaza
     {
-        public static List<EEnciclopedia> listarEnciclopedia()
+        public static List<EEnciclopedia> listarEnciclopedia(EEnciclopedia objE)
         {
             List<EEnciclopedia> lista = new List<EEnciclopedia>();
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_lst_enciclopedia", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@mascota_tipo_id", objE.TIPO_MASCOTA_ID);
+                cmd.Parameters.AddWithValue("@mascota_raza_id", objE.TIPO_RAZA_ID);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows)
@@ -26,8 +28,10 @@ namespace DATOS
                     {
                         EEnciclopedia mItem = new EEnciclopedia();
                         mItem.ID = (dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetInt32(dr.GetOrdinal("id")));
+                        mItem.TIPO_MASCOTA_ID = (dr.IsDBNull(dr.GetOrdinal("mascota_tipo_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("mascota_tipo_id")));
                         mItem.TIPO_MASCOTA = dr.IsDBNull(dr.GetOrdinal("tipo_mascota")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo_mascota"));
                         mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                        mItem.TIPO_RAZA_ID = (dr.IsDBNull(dr.GetOrdinal("mascota_raza_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("mascota_raza_id")));
                         mItem.TIPO_RAZA = dr.IsDBNull(dr.GetOrdinal("tipo_raza")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo_raza"));
                         mItem.TAMANO_MACHO = dr.IsDBNull(dr.GetOrdinal("tamano_macho")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano_macho"));
                         mItem.TAMANO_HEMBRA = dr.IsDBNull(dr.GetOrdinal("tamano_hembra")) ? string.Empty : dr.GetString(dr.GetOrdinal("tamano_hembra"));

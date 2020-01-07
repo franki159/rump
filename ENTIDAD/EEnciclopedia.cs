@@ -10,8 +10,10 @@ namespace ENTIDAD
     {
         public int ID { get; set; }
         public string TIPO_MASCOTA { get; set; }
+        public decimal TIPO_MASCOTA_ID { get; set; }
         public string NOMBRE { get; set; }
         public string TIPO_RAZA { get; set; }
+        public decimal TIPO_RAZA_ID { get; set; }
         public string TAMANO_MACHO { get; set; }
         public string TAMANO_HEMBRA { get; set; }
         public string GRADO_CUIDADO { get; set; }

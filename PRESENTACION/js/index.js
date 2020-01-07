@@ -47,6 +47,7 @@ function fc_listar_inicio() {
         data: JSON.stringify({ objE: objE }),
         async: false,
         beforeSend: function () {
+            $('#sel_tipo').empty();
             openLoading();
         },
         success: function (data) {
@@ -55,7 +56,7 @@ function fc_listar_inicio() {
                 return;
             }
             
-            $('#sel_tipo').append("<option></option>");
+            $('#sel_tipo').append("<option>TODOS</option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_tipo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }
@@ -256,7 +257,7 @@ $("#sel_tipo").on('change', function () {
                 return;
             }
 
-            $('#sel_raza').append("<option></option>");
+            $('#sel_raza').append("<option>TODOS</option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_raza').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }

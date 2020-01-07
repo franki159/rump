@@ -18,12 +18,12 @@ namespace PRESENTACION
         }
 
         [WebMethod()]
-        public static object Lista()
+        public static object Lista(EEnciclopedia objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try
             {
-                List<EEnciclopedia> objResultado = NRaza.listarEnciclopedia();
+                List<EEnciclopedia> objResultado = NRaza.listarEnciclopedia(objE);
 
                 objRespuesta.Resultado = objResultado;
             }
