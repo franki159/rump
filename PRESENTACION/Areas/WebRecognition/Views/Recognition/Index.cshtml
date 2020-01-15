@@ -11,18 +11,47 @@
 }
 
 <style>
-.modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 255, 255, 255, .8 ) url('/Areas/WebRecognition/img/loader-dog.gif') 50% 50% no-repeat; }
+    .modalx {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba( 255, 255, 255, .8 ) url('/Areas/WebRecognition/img/loader-dog.gif') 50% 50% no-repeat;
+    }
 
     /* When the body has the loading class, we turn     url('http://i.stack.imgur.com/FhHRx.gif')
     the scrollbar off with overflow:hidden */
-    body.loading .modal {
+    body.loading .modalx {
         overflow: hidden;
     }
 
     /* Anytime the body has the loading class, our
     modal element will be visible */
-    body.loading .modal {
+    body.loading .modalx {
         display: block;
+    }
+
+    .imgRedonda {
+        width: 200px;
+        height: 200px;
+        border-radius: 150px;
+    }
+
+    .table {
+        cursor: pointer;
+    }
+
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
     }
 </style>
 
@@ -86,7 +115,7 @@
                         <table id="tbResult" class="table table-bordered table-hover" style="width:100%;">
                             <thead>
                                 <tr class="bg-warning">
-                                    <th>...</th>
+                                    @*<th>...</th>*@
                                     <th>DNI</th>
                                     <th>MASCOTA</th>
                                     <th>Confiabilidad</th>
@@ -107,7 +136,171 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class=" modal-title" id="PERFIL">Infromacion Detallada de la Mascota</h4>
+            </div>
+            <div class="modal-body">
 
+                <div class="row">
+                    <div class="col-sm-3" style="text-align:center; margin: 0 auto; ">
+                        <div class="form-group ">
+                            <img id="ImgMascotaDetalle" class='imgRedonda' src="#" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-9">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 style="font-size:25px;font-weight: bold;">Datos Generales</h4>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group ">
+                                        <p>Nombre y Apellido de la Mascota:</p>
+                                        <p id="lblMASCOTA" style="font-size:20px;"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group ">
+                                        <p>Sexo:</p>
+                                        <p id="lblSEXO" style="font-size:20px;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+
+                            <div class="col-sm-12">
+                                <div class="col-sm-4">
+                                    <div class="form-group ">
+                                        <p>Calificacion:</p>
+                                        <p id="lblCALIFICACION" style="font-size:20px;"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group ">
+                                        <p>Especie o Tipo:</p>
+                                        <p id="lblESPECIE" style="font-size:20px;"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group ">
+                                        <p>Raza:</p>
+                                        <p id="lblRAZA" style="font-size:20px;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <hr>
+
+                <div class="row">
+
+
+                    <div class="col-sm-12">
+                        <h4 style="font-size:25px;font-weight: bold;">Padres Humanos</h4>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group ">
+                            <p>Nombre del Padre:</p>
+                            <p id="lblNOMBREPADRE" style="font-size:20px;"></p>
+                        </div>
+                        <div class="form-group ">
+                            <p>Telefono:</p>
+                            <a id="telefono_Padre" href="#">-</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group ">
+                            <p>Nombre de la Madre:</p>
+                            <p id="lblNOMBREMADRE" style="font-size:20px;"></p>
+                        </div>
+                        <div class="form-group ">
+                            <p>Telefono:</p>
+                            <a id="telefono_Madre" href="#">-</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <h4 style="font-size:25px;font-weight: bold;">Direccion</h4>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group ">
+                            <p>Departamento:</p>
+                            <p id="lblDEPARTAMENTO" style="font-size:20px;"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group ">
+                            <p>Provincia:</p>
+                            <p id="lblPROVINCIA" style="font-size:20px;"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group ">
+                            <p>Distrito:</p>
+                            <p id="lblDISTRITO" style="font-size:20px;"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group ">
+                            <p>Direccion:</p>
+                            <p id="lbLDIRECCION" style="font-size:20px;"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group ">
+                            <p>Referencia:</p>
+                            <p id="lblREFERENCIA" style="font-size:20px;"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group ">
+                            <p>Datos Adiconales:</p>
+                            <p id="lblBIOGRAFIA" style="font-size:20px;"></p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <br><p>
 
     <div>
@@ -162,9 +355,9 @@
 </p>
 
 
-<img src="/Areas/WebRecognition/img_proc/2_.jpg" width="100" height="100" id="img1" style="display:none" crossorigin="anonymous"/>
+<img src="/Areas/WebRecognition/img_proc/2_.jpg" width="100" height="100" id="img1" style="display:none" crossorigin="anonymous" />
 
-<div class="modal"><strong style="margin-top:50%;margin-left:50%;  position:absolute">Cargando...</strong></div>
+<div class="modalx"><strong style="margin-top:50%;margin-left:50%;  position:absolute">Cargando...</strong></div>
 
 
 
@@ -177,20 +370,15 @@
 
 <script>
 
-    var xUrl_WebAdmin = "";
-    var xUrl_WebApi = "";
-    var xUrl_Imagenes = "";
-    var xConfiabilidad = "";
-
-    xUrl_WebAdmin = "@sUrl_WebAdmin";
-    xUrl_WebApi = "@sUrl_WebApi";
-    xUrl_Imagenes = "@sUrl_Imagenes";
-    xConfiabilidad = "@sConfiabilidad";
+    var xUrl_WebAdmin = "@sUrl_WebAdmin";
+    var xUrl_WebApi = "@sUrl_WebApi";
+    var xUrl_Imagenes = "@sUrl_Imagenes";
+    var xConfiabilidad = "@sConfiabilidad";
 
 </script>
 
 
-<script src="/Areas/WebRecognition/Scripts/2A0UG1u5t9zxhjX.js?v=345"></script>
-<script src="/Areas/WebRecognition/Scripts/2A1UG1u5t9zxhjX.js?v=345"></script>
-<script src="/Areas/WebRecognition/Scripts/2ARUG1u5t9zxhjX.js?v=345"></script>
+<script src="/Areas/WebRecognition/Scripts/2A0UG1u5t9zxhjX.js?v=346"></script>
+<script src="/Areas/WebRecognition/Scripts/2A1UG1u5t9zxhjX.js?v=346"></script>
+<script src="/Areas/WebRecognition/Scripts/2ARUG1u5t9zxhjX.js?v=346"></script>
 

@@ -187,5 +187,42 @@ namespace PRESENTACION.Areas.WebRecognition.Controllers
         }
 
 
+
+        [HttpPost]
+        public object mMascota_Info_Detalle_Dni(string sDNI)
+        {
+            object objResult = null;
+            string sError = "";
+            Logic logic = new Logic();
+            Model modeloRpta = new Model();
+
+            try
+            {
+                object objRpta = logic.mMascota_Info_Detalle_Dni(sDNI);
+
+                modeloRpta = (Model)objRpta;
+
+            }
+            catch (Exception ex)
+            {
+                sError = ex.Message.ToString();
+                sError = Regex.Replace(sError, @"[^0-9A-Za-z]", " ", RegexOptions.None);
+                sError = Regex.Replace(sError, @"[^\w\.@-]", " ", RegexOptions.None);
+                sError = sError.Replace("'", "");
+
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = 500;
+                modeloRpta.sRpta = sError;
+                modeloRpta.obj = null;
+            }
+
+            string sjsonRpta = JsonConvert.SerializeObject(modeloRpta);
+
+            objResult = sjsonRpta;//respiuesta de WepApi Rest-Full
+
+            return Json(objResult);
+        }
+
+
     }
 }

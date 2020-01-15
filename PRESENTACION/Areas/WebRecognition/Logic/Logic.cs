@@ -156,5 +156,41 @@ namespace PRESENTACION.Areas.WebRecognition
         }
 
 
+        public object mMascota_Info_Detalle_Dni(string sDNI)
+        {
+            object objRpta = null;
+
+            Model modeloRpta = new Model();
+
+            try
+            {
+                string sUrlWebApi = ConfigurationManager.ConnectionStrings["Url_WebApi"].ConnectionString.ToString();
+
+                string sParamentros = "/" + sDNI;
+
+                HttpClient http = new HttpClient();
+                var response = http.GetAsync(sUrlWebApi + "mMascota_Info_Detalle_Dni" + sParamentros).Result;
+                string sJson = response.Content.ReadAsStringAsync().Result;
+                object data = JsonConvert.DeserializeObject<Model>(sJson);
+
+                modeloRpta = (Model)data;
+
+                objRpta = modeloRpta;
+            }
+            catch (Exception ex)
+            {
+                modeloRpta.bEstado = false;
+                modeloRpta.iCodigo = 1;
+                modeloRpta.sRpta = ex.ToString();
+                //modeloRpta.dt = dt;
+                modeloRpta.obj = null;
+
+                objRpta = modeloRpta;
+            }
+
+            return objRpta;
+        }
+
+
     }
 }

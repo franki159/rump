@@ -99,6 +99,7 @@
     <Content Include="Areas\WebRecognition\Content\Site.css" />
     <Content Include="Areas\WebRecognition\dist\bootstrap.css" />
     <Content Include="Areas\WebRecognition\dist\bootstrap.min.css" />
+    <Content Include="Areas\WebRecognition\dist\bootstrap.min.js" />
     <Content Include="Areas\WebRecognition\dist\jquery-ui.min.js" />
     <Content Include="Areas\WebRecognition\dist\jquery.min.js" />
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.svg" />

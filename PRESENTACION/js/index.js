@@ -666,6 +666,7 @@ $(".btn-dat-msc").click(function (evt) {
     showDatosMascota($("#bus_txt_dni").val());
 });
 $(".btn-recog-face").click(function (evt) {
-    $("#pnl_reconoc_facial").modal();
+    //$("#pnl_reconoc_facial").modal();
+    window.open("WebRecognition/Recognition/Index", '_blank');
 });
 
