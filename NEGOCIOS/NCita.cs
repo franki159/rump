@@ -19,5 +19,11 @@ namespace NEGOCIOS
         {
             return DCita.listarCita(ent);
         }
+
+        public static ECita obtenerCita(ECita ent)
+        {
+            return DCita.obtenerCita(ent);
+        }
+        
     }
 }

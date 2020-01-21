@@ -337,8 +337,8 @@ function fc_listar_mascota() {
                             $("#sel_calificacion").val(data.d.Resultado.CALIFICACION).change();
                             $("#txt_color").val(data.d.Resultado.COLOR);
                             if (data.d.Resultado.FEC_NAC !== null) {
-                                $("#txt_fecha_nac").val(formatDate(parseDateServer(data.d.Resultado.FEC_NAC), "dd/MM/yyyy")).change();
-                                $("#txt_fecha_nac").parent().datepicker("update", $("#txt_fecha_nac").val());
+                                $("#txt_fecha_nac").val(formatDate(parseDateServer(data.d.Resultado.FEC_NAC), "yyyy-MM-dd"));//.change();
+                                //$("#txt_fecha_nac").parent().datepicker("update", $("#txt_fecha_nac").val());
                             }
                             //Familia
                             $("#txt_nom_padre").val(data.d.Resultado.FAMILIARP);
@@ -503,7 +503,14 @@ function fc_listar_mascota() {
                         orientation: "top left"
                     });
                 } else if ($(this).attr("name") === "cit-med") {
+                    //Ocultando los botones
+                    $(".add-cli").show();
+                    $(".add-med").show();
+                    $("#btn_guardar_cita").show();
+                    $("#pnl_cita_medica input").attr("disabled", false);
+                    $("#pnl_cita_medica textarea").attr("disabled", false);
                     limpiarCita();
+
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $("#imgMascotaCita").attr("src", $(this).parent().parent().parent().parent().parent().find("td").eq(2).children().children().children(0)[0].src + '?v=' + valRND);
                     $("#lbl_nom_mascota").val($(this).parent().parent().parent().parent().parent().find("td").eq(5).html());
@@ -564,60 +571,6 @@ function fc_sol_servicio(opcion) {
         }
     });
     event.preventDefault();
-}
-function fc_ver_historial() {
-    var objE = {
-        ID_ENCRIP: id_mascota
-    };
-
-    $.ajax({
-        type: "POST",
-        url: "page/mantenimiento/citaMedica.aspx/ListaCitaWM",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify({ objE: objE }),
-        async: true,
-        beforeSend: function () {
-            $("#errorDiv").html('');
-            $("#pnl_historial .modal-body").html("");
-            openLoading();
-        },
-        success: function (data) {
-            if (!data.d.Activo) {
-                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
-                closeLoading();
-                return;
-            }
-
-            var vhtml = "";
-
-            for (var i = 0; i < data.d.Resultado.length; i++) {
-                vhtml += '' +
-                    '<div class="card">' +
-                    '   <div class="card-header">' + data.d.Resultado[i].TIPO +
-                    '       <span class="float-right">' + formatDate(parseDateServer(data.d.Resultado[i].FECHA_ATENCION_MEDICA), "dd/MM/yyyy") + '</span>' +
-                    '   </div>' +
-                    '   <div class="card-body">' +
-                    '       <blockquote class="blockquote mb-0">' +
-                    '           <p>' + data.d.Resultado[i].MOTIVO + '</p>' +
-                    '           <footer class="blockquote-footer">' + data.d.Resultado[i].OBSERVACIONES + '</footer>' +
-                    '       </blockquote>' +
-                    '   </div>' +
-                    '</div><br>';
-            }
-
-
-            $("#pnl_historial .modal-body").html(vhtml);
-
-            closeLoading();
-            $("#pnl_historial").modal('show');
-        },
-        error: function (data) {
-            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-            $("#tbl_mascota button").removeAttr("disabled");
-            closeLoading();
-        }
-    });
 }
 function aceptarConfirm() {
     switch (txh_idConfirm) {
@@ -1225,15 +1178,14 @@ $("#btn_guardar").click(function (evt) {
             return;
         }*/
     }
-
     if (validIdInput($("#txt_nombre").val()) || validIdInput($("#txt_apellido").val())) {
         $("#errorMascota").html(GenerarAlertaWarning("Nombre: Debe ingresar el nombre y el apellido"));
         closeLoading();
         activaTab('dato');
         $("#txt_nombre").focus();
         return;
-    } else if (validIdInput($("#txt_fecha_nac").val())) {
-        $("#errorMascota").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
+    } else if (isDate($("#txt_fecha_nac").val(), "yyyy-MM-dd")===false) {
+        $("#errorMascota").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida dd/MM/yyyy"));
         closeLoading();
         activaTab('dato');
         $("#txt_fecha_nac").focus();
@@ -1307,7 +1259,7 @@ $("#btn_guardar").click(function (evt) {
         NOMBRE: $("#txt_nombre").val(),
         APELLIDO: $("#txt_apellido").val(),
         SEXO: $("#sel_sexo").val(),
-        FEC_NAC: getDateFromFormat($("#txt_fecha_nac").val(), 'dd/MM/yyyy'),
+        FEC_NAC: $("#txt_fecha_nac").val() === "" ? null : getDateFromFormat($("#txt_fecha_nac").val(), 'yyyy-MM-dd'),
         //************
         COD_MICROCHIP: $("#txt_cod_microchip").val(),
         TAMANO: $("#sel_tamano").val(),
@@ -1562,6 +1514,9 @@ function limpiarCita() {
     $('#sel_departamento_cita').val(null).change();
     $("#sel_provincia_cita").empty();
     $("#sel_distrito_cita").empty();
+
+    $("#lbl_nom_mascota").attr("disabled", true);
+    $("#lbl_direccion_cli").attr("disabled", true);
 }
 function listarTipoCita() {
     var objE = {
@@ -1663,6 +1618,123 @@ function listarMedicos() {
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+}
+function fc_ver_historial() {
+    var objE = {
+        ID_ENCRIP: id_mascota
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/citaMedica.aspx/ListaCitaWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            $("#errorDiv").html('');
+            $("#pnl_historial .modal-body").html("");
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            var vhtml = "";
+
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                vhtml += '' +
+                    '<a onclick="verConsultaMedica(\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><div class="card text-white btn-3-info">' +
+                    '   <div class="card-header card-header-fcp">' + data.d.Resultado[i].TIPO +
+                    '       <span class="float-right">' + formatDate(parseDateServer(data.d.Resultado[i].FECHA_ATENCION_MEDICA), "dd/MM/yyyy") + '</span>' +
+                    '   </div>' +
+                    '   <div class="card-body">' +
+                    '       <blockquote class="blockquote mb-0">' +
+                    '           <p>' + data.d.Resultado[i].MOTIVO + '</p>' +
+                    '           <footer class="blockquote-footer">' + data.d.Resultado[i].OBSERVACIONES + '</footer>' +
+                    '       </blockquote>' +
+                    '   </div>' +
+                    '</div></a><br>';
+            }
+
+            $("#pnl_historial .modal-body").html(vhtml);
+
+            closeLoading();
+            $("#pnl_historial").modal('show');
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#tbl_mascota button").removeAttr("disabled");
+            closeLoading();
+        }
+    });
+}
+function verConsultaMedica(numCita) {  
+    var objE = {
+        ID_ENCRIP: numCita
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/citaMedica.aspx/ObtenerCitaWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+    $("#pnl_historial").modal('hide');
+            $("#errorDiv").html('');
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+            
+            limpiarCita();
+            //Ocultando los botones
+            $(".add-cli").hide();
+            $(".add-med").hide();
+            $("#btn_guardar_cita").hide();
+            //$("#pnl_cita_medica select2").attr("disabled", true);
+            $("#pnl_cita_medica input").attr("disabled", true);
+            $("#pnl_cita_medica textarea").attr("disabled", true);
+            //$("#sel_clinica").hide();
+            //$("#sel_veterinario").hide();
+            //$("#sel_tipo_cita").hide();
+            //***************************
+            $("#imgMascotaCita").attr("src", "img/mascota/" + data.d.Resultado.vPARAM2 + '?v=' + valRND);
+            $("#lbl_nom_mascota").val(data.d.Resultado.vPARAM1);
+            $("#sel_clinica").val(data.d.Resultado.CLINICA_ID).change();
+            $("#sel_veterinario").val(data.d.Resultado.MEDICO_ID).change();
+            $("#sel_tipo_cita").val(data.d.Resultado.TIPO).change();
+            $("#txt_motivo").val(data.d.Resultado.MOTIVO);
+            $("#txt_fecha_cita").val(formatDate(parseDateServer(data.d.Resultado.FECHA_ATENCION_MEDICA), "dd/MM/yyyy")).change();
+            $("#txt_peso").val(data.d.Resultado.PESO);
+            $("#txt_motivo").val(data.d.Resultado.MOTIVO);
+            $("#txt_temperatura").val(data.d.Resultado.TEMPERATURA);
+            $("#txt_sintomas").val(data.d.Resultado.SINTOMAS);
+            $("#txt_diagnostico").val(data.d.Resultado.DIAGNOSTICO);
+            $("#txt_tratamiento").val(data.d.Resultado.TRATAMIENTO);
+            $("#txt_observacion").val(data.d.Resultado.OBSERVACION);
+            $("#txt_antecedentes").val(data.d.Resultado.ANTECEDENTES);
+            $("#txt_formula").val(data.d.Resultado.FORMULA);            
+            activaTab('datoCita');
+            $('#pnl_cita_medica .modal-title').html('Ver cita médica ' + formatDate(parseDateServer(data.d.Resultado.FECHA_ATENCION_MEDICA), "dd/MM/yyyy"));
+            $("#pnl_cita_medica").modal('show');
+            closeLoading();            
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#tbl_mascota button").removeAttr("disabled");
             closeLoading();
         }
     });

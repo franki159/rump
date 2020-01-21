@@ -145,6 +145,9 @@ function InfoSesion() {
                 htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/mascota">';
                 htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span>Mascota</span>';
                 htmlMenu += '</a>';
+                htmlMenu += '<a class="nav-link collapsed" href="#!/page/mantenimiento/evento">';
+                htmlMenu += '   <i class="fas fa-calendar-check"></i><span>Cronograma Eventos</span>';
+                htmlMenu += '</a>';
                 htmlMenu += "<a  class='nav-link collapsed' href='./documentos/convenios.pdf' target='_blank' rel='noreferrer'>";              
                 htmlMenu += '   <i class="far fa-star"></i><span>Beneficios</span>';
                 htmlMenu += '</a>';

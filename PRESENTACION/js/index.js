@@ -390,6 +390,7 @@ function guardarImagen(evt, nameId, file) {
 $("#btn_registrar").click(function (evt) {
     $("#errorRegistro").html('');
     openLoading();
+    debugger;
     if (validIdInput($("#txt_nombre_pre").val()) || validIdInput($("#txt_apellido_pre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Nombre: Debe Ingresar el nombre y el apellido"));
         closeLoading();
@@ -432,8 +433,8 @@ $("#btn_registrar").click(function (evt) {
         activaTab('mascota');
         $("#txt_nombre_padre").focus();
         return;
-    } else if (validIdInput($("#txt_fecha_nac").val())) {
-        $("#errorRegistro").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida"));
+    } else if (isDate($("#txt_fecha_nac").val(), "yyyy-MM-dd")===false) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida dd/MM/yyyy"));
         closeLoading();
         activaTab('mascota');
         $("#txt_fecha_nac").focus();

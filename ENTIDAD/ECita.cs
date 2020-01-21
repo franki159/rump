@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ENTIDAD
 {
-    public class ECita
+    public class ECita:EGeneral
     {
         public decimal ID { get; set; }
         public string ID_ENCRIP { get; set; }
@@ -14,7 +14,6 @@ namespace ENTIDAD
         public decimal MASCOTA_ID { get; set; }
         public decimal CLINICA_ID { get; set; }
         public decimal MEDICO_ID { get; set; }
-        public string TIPO { get; set; }
         public string MOTIVO { get; set; }
         public string PESO { get; set; }
         public string TEMPERATURA { get; set; }

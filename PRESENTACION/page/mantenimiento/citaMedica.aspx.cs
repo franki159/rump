@@ -148,5 +148,27 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
+        [WebMethod()]
+        public static object ObtenerCitaWM(ECita objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                ECita objResultado = new ECita();
+                objResultado = NCita.obtenerCita(objE);
+                objRespuesta.Resultado = objResultado;
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }
