@@ -116,11 +116,14 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
+            <!-- Sidebar Toggler (Cerrar) -->
+            <div class="text-center d-block d-md-none">
+                <button class="rounded-circle border-0" id="sidebarCerrar"></button>
+            </div>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
+            </div>            
         </ul>
         <!-- End of Sidebar -->
 
@@ -146,7 +149,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small name_user">Propietario</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 name_user">Propietario</span>
                                 <img class="img-profile rounded-circle img-user-rump" src="#" onerror="this.src='img/avatarUser.png';">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -214,7 +217,7 @@
     <script src="templateSoft/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="templateSoft/js/sb-admin-2.min.js"></script>
+    <script src="templateSoft/js/sb-admin-2.js"></script>
 
     <script src="js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
     <script src="js/default.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" type="text/javascript"></script>

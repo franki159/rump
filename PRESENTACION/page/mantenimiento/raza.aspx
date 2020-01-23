@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <button id="btn_buscar" class="btn btn-3-info btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-search"></i>

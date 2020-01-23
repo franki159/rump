@@ -109,6 +109,39 @@ namespace PRESENTACION.page.mantenimiento
             return objRespuesta;
         }
         [WebMethod()]
+        public static object CuponMascotaWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                int objResultado = 0;
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO_ID = eSession.ID;
+
+                objResultado = NMascota.CuponMascotaWM(objE);
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("El cupón ingresado no es válido.");
+                }
+                else
+                {
+                    objRespuesta.Success("El cupón fue utilizado correctamente.");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
         public static object AdopcionMascotaWM(EMascota objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();

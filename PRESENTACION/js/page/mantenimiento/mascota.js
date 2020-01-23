@@ -166,6 +166,7 @@ function fc_listar_mascota() {
 
                 if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
                     htmlBotones += formatButton.format('name="soli-dni"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
+                    htmlBotones += formatButton.format('name="cup-dni"', 'bg-success', 'fas fa-ticket-alt', 'Tengo un cupón');
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
                     htmlBotones += formatButton.format('name="quit-adop"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
                 } else if (data.d.Resultado[i].ESTADO === 1) {//Con DNI (no adopcion)
@@ -430,7 +431,19 @@ function fc_listar_mascota() {
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     txh_idConfirm = 'SOLICITAR';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>SOLICITAR EL DNI</strong> para su mascota?");
-                } else if ($(this).attr("name") === "pon-adop") {
+                } else if ($(this).attr("name") === "cup-dni") {
+                    limpiarMascota();
+                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    txh_idConfirm = 'CUPON';
+                    var contenido_html = "<div id='errorCupon'></div><h4>¡Saludos desde RUMP!</h4>";
+                    contenido_html += "<p>Canjea tus cupones de descuento.</p>" +
+                        '   <div class="form-group">' +
+                        '       <label>Ingrese código</label>' +
+                        '       <input id="txt_codigo_cupon" type="text" style="text-transform:uppercase" class="form-control">' +
+                        '   </div>';
+
+                    window.parent.fc_mostrar_confirmacion(contenido_html);
+                }else if ($(this).attr("name") === "pon-adop") {
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     txh_idConfirm = 'ADOPCION';
@@ -444,7 +457,7 @@ function fc_listar_mascota() {
                     limpiarMascota();
                     id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     txh_idConfirm = 'PERDIDA';
-                    var contenido_html = "<div id='errorPerdida'></div><h4>¡Saludos desde RUMP!</h4>";
+                    contenido_html = "<div id='errorPerdida'></div><h4>¡Saludos desde RUMP!</h4>";
                     contenido_html += "Lamentamos oír que su mascota se ha extraviado."+
                         "<p>Nos gustaría saber específicamente las circunstancias en la que su mascota se " +
                         "perdió, de este modo podremos aconsejarle para que esta situación no se vuelva a dar.</p>" +
@@ -573,6 +586,7 @@ function fc_sol_servicio(opcion) {
     event.preventDefault();
 }
 function aceptarConfirm() {
+    var estProc = true;
     switch (txh_idConfirm) {
         case "ANULAR":
             var objE = {
@@ -613,6 +627,49 @@ function aceptarConfirm() {
         case "SOLICITAR":
             fc_sol_servicio(1);
 
+            break;
+        case "CUPON":
+            if (validIdInput($("#txt_codigo_cupon").val())) {
+                $("#errorCupon").html(GenerarAlertaWarning("Ingrese el código de cupón"));
+                $("#txt_codigo_cupon").focus();
+                return false;
+            } 
+
+            objE = {
+                ID_ENCRIP: id_mascota,
+                REFERENCIA: $("#txt_codigo_cupon").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/mascota.aspx/CuponMascotaWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: false,
+                beforeSend: function () {
+                    $("#errorCupon").html('');
+                    openLoading();
+                },
+                success: function (data) {
+                    if (!data.d.Activo) {
+                        $("#errorCupon").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        estProc = false;
+                        return;
+                    }
+                    estProc = true;
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    fc_listar_mascota();
+                },
+                error: function (data) {
+                    $("#errorCupon").html(GenerarAlertaError("Inconveniente en la operación"));
+                    closeLoading();
+                    estProc = false;
+                    return;
+                }
+            });
+            
             break;
         case "ADOPCION":
             objE = {
@@ -821,6 +878,8 @@ function aceptarConfirm() {
         default:
             break;
     }
+
+    return estProc;
 }
 function guardarImagen(evt, nameId, file) {
     var objResp = 0;

@@ -321,6 +321,21 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static int CuponMascotaWM(EMascota objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@referencia", objE.REFERENCIA);
+                cmd.Parameters.AddWithValue("@opcion", 15);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        
         public static int EncontradaMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))

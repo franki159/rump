@@ -304,12 +304,12 @@ function fc_aceptar_confirmacion() {
 }
 
 function openNav() {
-    $("#mySidenav").css("width", "350px");
+    $("#accordionSidebar").css("width", "350px");
     $(".backdrop-fcp").css("display", "block");
 }
 
 function closeNav() {
-    $("#mySidenav").css("width", "0px");
+    $("#accordionSidebar").css("width", "0px");
     $(".backdrop-fcp").css("display", "none");
 }
 

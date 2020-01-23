@@ -48,6 +48,10 @@ namespace NEGOCIOS
         {
             return DMascota.AdopcionMascotaWM(ent);
         }
+        public static int CuponMascotaWM(EMascota ent)
+        {
+            return DMascota.CuponMascotaWM(ent);
+        }
         public static int EncontradaMascotaWM(EMascota ent)
         {
             return DMascota.EncontradaMascotaWM(ent);

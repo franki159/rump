@@ -14,18 +14,11 @@ $(function () {
     });
 
     fc_listar_inicio();
-
-    $("#txt_bus_dni").focus();
+    
+    $("#txt_dni_msc").focus();
 });
 function fc_listar_inicio() {
-    /************************ Listado de Tipo ****************************/
-    if (sessionStorage.getItem('PERFIL_ID') === "4") {
-        $("#divBusqueda").remove();
-        fc_listar_mascota();
-    } else {
-        $("#divBusqueda").show();
-    }
-  
+    /************************ Listado de Especie ****************************/  
     var objE = {
         CODIGO: "TIPO"
     };
@@ -47,7 +40,7 @@ function fc_listar_inicio() {
                 return;
             }
             ;
-            $('#sel_tipo').append("<option></option>");
+            $('#sel_tipo').append("<option value='0'>TODOS</option");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_tipo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }
@@ -76,12 +69,10 @@ function fc_listar_inicio() {
                 return;
             }
 
-            $('#sel_departamento').append("<option></option>");
-            $('#sel_departamento_cita').append("<option></option>");
+            $('#sel_departamento').append("<option value='0'>TODOS</option");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_departamento').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
-                $('#sel_departamento_cita').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
-            }            
+            }
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -89,29 +80,26 @@ function fc_listar_inicio() {
         }
     });
 
-    listarClinicas();
-    listarMedicos();
-    listarTipoCita();
+    closeLoading();
 }
-/*Funciones*/
-function fc_listar_mascota() {
-    if (sessionStorage.getItem('PERFIL_ID') !== "4" && $("#txt_bus_dni").val() === "") {
-        closeLoading();
-        return;
-    }
+function fc_listar_mascota() {    
     openLoading();
 
     var eMascota = {
-        DNI: $("#txt_bus_dni").val(),
-        USUARIO_ID: 0
+        DNI: $("#txt_dni_msc").val(),
+        NOMBRE: $("#txt_nom_msc").val(),
+        CORREO: $("#txt_email_pro").val(),
+        NOMBRE_PRE: $("#txt_nom_pro").val(),
+        MASCOTA_TIPO_ID: $("#sel_tipo").val(),
+        MASCOTA_RAZA_ID: $("#sel_raza").val(),
+        DEPARTAMENTO: $("#sel_departamento").val(),
+        PROVINCIA: $("#sel_provincia").val(),
+        DISTRITO: $("#sel_distrito").val(),
+        MES: $("#sel_mes").val(),
+        FEC_INI: $("#txt_ini_reg").val() === "" ? null : getDateFromFormat($("#txt_ini_reg").val(), 'yyyy-MM-dd'),
+        FEC_FIN: $("#txt_fin_reg").val() === "" ? null : getDateFromFormat($("#txt_fin_reg").val(), 'yyyy-MM-dd'),
+        SEXO: $("#sel_sexo").val()
     };
-
-    if (sessionStorage.getItem('PERFIL_ID') === "4") {
-        eMascota = {
-            DNI: "",
-            USUARIO_ID: sessionStorage.getItem('ID')
-        };
-    }
 
     $.ajax({
         type: "POST",
@@ -584,4 +572,148 @@ $(document).keydown(function (evt) {
             }
             break;
     }
+});
+$("#sel_tipo").on('change', function () {
+    /************************ Listado de Raza ****************************/
+    var objE = {
+        CODIGO: "RAZA",
+        vPARAM1: $("#sel_tipo").val()
+    };
+
+    if ($("#sel_tipo").val() === '') {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $('#errorMascota').html("");
+            $('#sel_raza').empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_raza').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_raza').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            if (raza_id !== 0) {
+                $("#sel_raza").val(raza_id);
+            }
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+});
+$("#sel_departamento").on('change', function () {
+    /************************ Listado de Provincia ****************************/
+    var objE = {
+        CODIGO: "PROVINCIA",
+        vPARAM1: $("#sel_departamento").val()
+    };
+
+    if ($("#sel_departamento").val() === '') {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $('#sel_provincia').empty();
+            $("#sel_distrito").empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_provincia').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_provincia').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            if (prov_id !== 0) {
+                $("#sel_provincia").val(prov_id).change();
+                prov_id = 0;
+            }
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+});
+$("#sel_provincia").on('change', function () {
+    /************************ Listado de Distrito ****************************/
+    var objE = {
+        CODIGO: "DISTRITO",
+        vPARAM1: $("#sel_departamento").val(),
+        vPARAM2: $("#sel_provincia").val()
+    };
+
+    if ($("#sel_provincia").val() === '') {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/listarParametro",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+            $('#sel_distrito').empty();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#errorMascota").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_distrito').append("<option></option>");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_distrito').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            if (dis_id !== 0) {
+                $("#sel_distrito").val(dis_id).change();
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+            closeLoading();
+        }
+    });
+});
+$("#btn_buscar").click(function () {
+    $("#errorDiv").html('');
+    fc_listar_mascota();
 });

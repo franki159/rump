@@ -490,7 +490,7 @@ legend.scheduler-border {
 }
 
 .table-fcp {
-    font-size: 0.8rem!important;
+    font-size: 12px!important;
 }
 
 .icon-circle {
@@ -516,7 +516,7 @@ legend.scheduler-border {
 }
 
 .table-fcp td {
-    padding: 0.65rem!important;
+    padding: 0.6rem!important;
     vertical-align: middle !important;
     border-top: 1px solid #e3e6f0;
 }

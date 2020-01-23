@@ -85,6 +85,9 @@ namespace ENTIDAD
         public string NOMBRE_PRE { get; set; }
         public string APELLIDO_PRE { get; set; }
         public string PASSWORD { get; set; }
-
+        //FILTRO
+        public string MES { get; set; }
+        public Nullable<DateTime> FEC_INI { get; set; }
+        public Nullable<DateTime> FEC_FIN { get; set; }
     }
 }
