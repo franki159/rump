@@ -18,26 +18,24 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>DNI mascota</label>
-                            <input id="txt_dni_msc" placeholder="Escriba el dni de la mascota..." class="form-control" type="text" maxlength="100">
+                            <label>DNI mascota&nbsp;/&nbsp;Correo propietario</label>
+                            <input id="txt_dni_msc" placeholder="DNI o correo..." class="form-control" type="text" maxlength="100">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Nombre mascota</label>
-                            <input id="txt_nom_msc" placeholder="Escriba el nombre de la mascota..." class="form-control" type="text" maxlength="100">
+                            <label>Nombre mascota&nbsp;/&nbsp;propietario</label>
+                            <input id="txt_nom_msc" placeholder="Nombre de mascota o propietario..." class="form-control" type="text" maxlength="100">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Correo propietario</label>
-                            <input id="txt_email_pro" placeholder="Escriba el email del dueño..." class="form-control" type="text" maxlength="100">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Nombre propietario</label>
-                            <input id="txt_nom_pro" placeholder="Escriba el nombre del dueño..." class="form-control" type="text" maxlength="100">
+                            <label>Sexo</label>
+                            <select id="sel_sexo" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;">
+                                <option value="0">Seleccionar</option>
+                                <option value="Macho">Macho</option>
+                                <option value="Hembra">Hembra</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -52,26 +50,6 @@
                         <div class="form-group">
                             <label>Raza <strong class="text-danger">(*)</strong></label>
                             <select id="sel_raza" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Departamento <strong class="text-danger">(*)</strong></label>
-                            <select id="sel_departamento" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;">
-                                <option></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Provincia</label>
-                            <select id="sel_provincia" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Distrito</label>
-                            <select id="sel_distrito" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;"></select>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -96,6 +74,26 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label>Departamento <strong class="text-danger">(*)</strong></label>
+                            <select id="sel_departamento" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;">
+                                <option></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Provincia</label>
+                            <select id="sel_provincia" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Distrito</label>
+                            <select id="sel_distrito" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label>Fecha registro Inicio</label>
                             <input id="txt_ini_reg" class="form-control" type="date">
                         </div>
@@ -106,21 +104,11 @@
                             <input id="txt_fin_reg" class="form-control" type="date">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Sexo</label>
-                            <select id="sel_sexo" class="form-control sel_autocomplete_bus" data-minimum-results-for-search="5" style="width: 100%;">
-                                <option value="0">Seleccionar</option>
-                                <option value="Macho">Macho</option>
-                                <option value="Hembra">Hembra</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <button id="btn_nuevo" class="btn btn-primary btn-icon-split">
+                    <button id="btn_buscar" class="btn btn-primary btn-icon-split">
                         <span class="icon text-white-50">
                             <i class="fas fa-search"></i>
                         </span>
@@ -136,14 +124,12 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow mb-4">
-            <div class="panel">
+            <div class="panel pre-scrollable">
                 <table id="tbl_mascota" class="table table-striped table-hover table-fcp">
                     <thead>
                         <tr>
-                            <th style="display: none"></th>
-                            <th></th>
                             <th>DNI</th>
-                            <th>Nombre</th>
+                            <th>Mascota</th>
                             <th>Dueño</th>
                             <th>Telefono</th>
                             <th>Fecha Registro</th>

@@ -70,32 +70,40 @@ namespace ENTIDAD
 
         public static string getDesencriptar(string clave)
         {
-            byte[] keyArray;
-            //convierte el texto en una secuencia de bytes
-            byte[] Array_a_Descifrar = Convert.FromBase64String(clave);
+            try
+            {
+                byte[] keyArray;
+                //convierte el texto en una secuencia de bytes
+                byte[] Array_a_Descifrar = Convert.FromBase64String(clave);
 
-            //se llama a las clases que tienen los algoritmos
-            //de encriptación se le aplica hashing
-            //algoritmo MD5
-            MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+                //se llama a las clases que tienen los algoritmos
+                //de encriptación se le aplica hashing
+                //algoritmo MD5
+                MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
 
-            keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
 
-            hashmd5.Clear();
+                hashmd5.Clear();
 
-            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+                TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
 
-            tdes.Key = keyArray;
-            tdes.Mode = CipherMode.ECB;
-            tdes.Padding = PaddingMode.PKCS7;
+                tdes.Key = keyArray;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
 
-            ICryptoTransform cTransform = tdes.CreateDecryptor();
+                ICryptoTransform cTransform = tdes.CreateDecryptor();
 
-            byte[] resultArray = cTransform.TransformFinalBlock(Array_a_Descifrar, 0, Array_a_Descifrar.Length);
+                byte[] resultArray = cTransform.TransformFinalBlock(Array_a_Descifrar, 0, Array_a_Descifrar.Length);
 
-            tdes.Clear();
-            //se regresa en forma de cadena
-            return UTF8Encoding.UTF8.GetString(resultArray);
+                tdes.Clear();
+                //se regresa en forma de cadena
+                return UTF8Encoding.UTF8.GetString(resultArray);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
         }
 
         public static string encriptaPHP(string _key24, string _iv, string _data)
@@ -172,7 +180,8 @@ namespace ENTIDAD
             return (fecha <= new DateTime(1900, 12, 31) ? new DateTime(1900, 1, 1) : fecha);
         }
 
-        public static string retornaDecimalToString(string valor) {
+        public static string retornaDecimalToString(string valor)
+        {
             if (valor.Contains("."))
             {
                 return valor.Replace(",", "");
@@ -185,7 +194,8 @@ namespace ENTIDAD
             {
                 return valor.Replace(",", ".");
             }
-            else {
+            else
+            {
                 return valor;
             }
         }

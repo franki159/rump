@@ -53,6 +53,35 @@ namespace PRESENTACION.page.mantenimiento
             return objRespuesta;
         }
         [WebMethod()]
+        public static object filtroMascotaWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                List<EMascota> objResultado = new List<EMascota>();
+                objResultado = NMascota.filtroMascotaWM(objE);
+                if (objResultado.Count == 0)
+                {
+                    objRespuesta.Error("No se encontraron registros.");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
         public static object ObtenerMascotaWM(EMascota objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();

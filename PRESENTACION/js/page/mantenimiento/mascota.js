@@ -531,8 +531,8 @@ function fc_listar_mascota() {
                     $('#pnl_cita_medica .modal-title').html('Registrar Cita médica');
                     $("#pnl_cita_medica").modal('show');
                 } else if ($(this).attr("name") === "his-med") {
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
-                    fc_ver_historial();
+                    var cod_act_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    fc_ver_historial(cod_act_mascota);
                 }
             });
             
@@ -1681,10 +1681,12 @@ function listarMedicos() {
         }
     });
 }
-function fc_ver_historial() {
+function fc_ver_historial(cod_act) {
     var objE = {
-        ID_ENCRIP: id_mascota
+        ID_ENCRIP: cod_act
     };
+
+    alert(cod_act);
 
     $.ajax({
         type: "POST",

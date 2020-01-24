@@ -74,7 +74,7 @@ namespace DATOS
         {
             ECita mItem = new ECita();
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
-            {
+            {                
                 SqlCommand cmd = new SqlCommand("usp_mnt_cita_medica", cn);
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@opcion", 3);

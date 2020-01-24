@@ -20,6 +20,11 @@ namespace NEGOCIOS
             return DMascota.listarMascota(ent);
         }
 
+        public static List<EMascota> filtroMascotaWM(EMascota ent)
+        {
+            return DMascota.filtroMascotaWM(ent);
+        }
+
         public static List<EMascota> listarMascotaAdopcion(EMascota ent)
         {
             return DMascota.listarMascotaAdopcion(ent);

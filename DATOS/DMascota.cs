@@ -46,7 +46,47 @@ namespace DATOS
             }
             return lista;
         }
+        public static List<EMascota> filtroMascotaWM(EMascota objE)
+        {
+            List<EMascota> lista = new List<EMascota>();
 
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+
+                SqlCommand cmd = new SqlCommand("usp_lst_mascota", cn);
+                cmd.Parameters.AddWithValue("@nombre", objE.NOMBRE);
+                cmd.Parameters.AddWithValue("@dni", objE.DNI);
+                cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
+                cmd.Parameters.AddWithValue("@mascota_tipo_id", objE.MASCOTA_TIPO_ID);
+                cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);
+                cmd.Parameters.AddWithValue("@departamento", objE.DEPARTAMENTO);
+                cmd.Parameters.AddWithValue("@provincia", objE.PROVINCIA);
+                cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
+                cmd.Parameters.AddWithValue("@mes", objE.MES);
+                cmd.Parameters.AddWithValue("@fec_ini", objE.FEC_INI);
+                cmd.Parameters.AddWithValue("@fec_fin", objE.FEC_FIN);
+                cmd.Parameters.AddWithValue("@opcion", 1);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        EMascota mItem = new EMascota();
+                        //mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
+                        mItem.DNI = dr.IsDBNull(dr.GetOrdinal("dni")) ? string.Empty : dr.GetString(dr.GetOrdinal("dni"));
+                        mItem.NOMBRE = dr.IsDBNull(dr.GetOrdinal("nombre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre"));
+                        mItem.NOMBRE_PRE = dr.IsDBNull(dr.GetOrdinal("nombre_pre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre_pre"));
+                        mItem.TELEFONO = dr.IsDBNull(dr.GetOrdinal("telefono")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefono"));
+                        mItem.FEC_INI = mItem.FEC_QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_ini")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_ini"));
+                        lista.Add(mItem);
+                    }
+                }
+            }
+            return lista;
+        }
+        
         public static List<EMascota> listarMascotaAdopcion(EMascota objE)
         {
             List<EMascota> lista = new List<EMascota>();

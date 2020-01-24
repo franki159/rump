@@ -382,6 +382,7 @@
     <Content Include="img\checkbox\Thumbs.db" />
     <Content Include="img\dni\fondo.jpg" />
     <Content Include="img\favicon.png" />
+    <Content Include="img\fondo_rump.jpg" />
     <Content Include="img\icons\favicon.ico" />
     <Content Include="img\icons\Thumbs.db" />
     <Content Include="assets\font-awesome\css\font-awesome.css.map" />
@@ -432,7 +433,6 @@
     <Content Include="img\puntero_mapa\punterodemapa-4.png" />
     <Content Include="img\worldpetsperu_logo.png" />
     <Content Include="index.aspx" />
-    <Content Include="indexPage.aspx" />
     <Content Include="js\all\jquery.base64.min.js" />
     <Content Include="js\all\jquery.min.js" />
     <Content Include="js\all\moment.min.js" />
@@ -2736,13 +2736,6 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="indexPage.aspx.cs">
-      <DependentUpon>indexPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="indexPage.aspx.designer.cs">
-      <DependentUpon>indexPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="active.aspx.cs">
       <DependentUpon>active.aspx</DependentUpon>
