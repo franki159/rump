@@ -301,7 +301,7 @@ function fc_listar_mascota() {
             $("#tbl_mascota a").click(function () {
                 if ($(this).attr("name") === "edit-mascota") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     $('#pnl_mascota .modal-title').html('Editar Mascota');
                     var objE = {
                         ID_ENCRIP: id_mascota
@@ -416,11 +416,6 @@ function fc_listar_mascota() {
                         }
                     });
                     event.preventDefault();
-                } else if ($(this).attr("name") === "delete-mascota") {
-                    limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
-                    $("#txh_idConfirm").val('ANULAR');
-                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la mascota?");
                 }
             });
 

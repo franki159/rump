@@ -191,7 +191,8 @@ function fc_listar_clinica() {
                 if ($(this).attr("name") === "editar") {
                     $('#pnl_clinica .modal-title').html('Editar Convenio');
 
-                    txh_clinica = $(this).parent().parent().find("td").eq(1).html();
+                    txh_clinica = 
+                        .find("td").eq(1).html();
 
                     objE = {
                         ID_ENCRIP: txh_clinica

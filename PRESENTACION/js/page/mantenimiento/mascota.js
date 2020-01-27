@@ -162,27 +162,27 @@ function fc_listar_mascota() {
                 htmlBotones += '    <h6 class="dropdown-header">';
                 htmlBotones += '        Opciones de mascota';
                 htmlBotones += '    </h6>';
-                htmlBotones += formatButton.format('href="#" name="edit-mascota"', 'bg-primary', 'fas fa-pencil-alt', 'Editar');
+                htmlBotones += formatButton.format('href="#" name="edit-mascota" indx="' + (i+1) +'"', 'bg-primary', 'fas fa-pencil-alt', 'Editar');
 
                 if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
-                    htmlBotones += formatButton.format('name="soli-dni"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
-                    htmlBotones += formatButton.format('name="cup-dni"', 'bg-success', 'fas fa-ticket-alt', 'Tengo un cupón');
+                    htmlBotones += formatButton.format('name="soli-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
+                    htmlBotones += formatButton.format('name="cup-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-ticket-alt', 'Tengo un cupón');
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
-                    htmlBotones += formatButton.format('name="quit-adop"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
+                    htmlBotones += formatButton.format('name="quit-adop" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
                 } else if (data.d.Resultado[i].ESTADO === 1) {//Con DNI (no adopcion)
                     $('#sel_mascota').append("<option dni-msct='" + data.d.Resultado[i].DNI + "' value='" + data.d.Resultado[i].ID_ENCRIP + "'>" + data.d.Resultado[i].NOMBRE + "</option>");
 
-                    htmlBotones += formatButton.format('name="rep-per"', 'bg-warning', 'far fa-sad-cry', 'Reportar perdida');
-                    htmlBotones += formatButton.format('name="pon-adop"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
-                    htmlBotones += formatButton.format('name="sol-dup"', 'bg-success', 'fas fa-copy', 'Solicitudes y trámites');
-                    htmlBotones += formatButton.format('name="cit-med"', 'bg-success', 'fas fa-clinic-medical', 'Nueva Cita Médica');
-                    htmlBotones += formatButton.format('name="his-med"', 'bg-success', 'fas fa-notes-medical', 'Ver historial Médico');
-                    htmlBotones += formatButton.format('name="mst-dead"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
+                    htmlBotones += formatButton.format('name="rep-per" indx="' + (i + 1) +'"', 'bg-warning', 'far fa-sad-cry', 'Reportar perdida');
+                    htmlBotones += formatButton.format('name="pon-adop" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
+                    htmlBotones += formatButton.format('name="sol-dup" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-copy', 'Solicitudes y trámites');
+                    htmlBotones += formatButton.format('name="cit-med" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-clinic-medical', 'Nueva Cita Médica');
+                    htmlBotones += formatButton.format('name="his-med" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-notes-medical', 'Ver historial Médico');
+                    htmlBotones += formatButton.format('name="mst-dead" indx="' + (i + 1) +'"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
                     htmlBotones += formatButton.format('name="rep-enc"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
                 }
 
-                htmlBotones += formatButton.format('name="delete-mascota"', 'bg-danger', 'fas fa-trash-alt', 'Eliminar');
+                htmlBotones += formatButton.format('name="delete-mascota" indx="' + (i + 1) +'"', 'bg-danger', 'fas fa-trash-alt', 'Eliminar');
 
                 htmlBotones += '</div>';
                    
@@ -290,7 +290,7 @@ function fc_listar_mascota() {
                     event.preventDefault();
                 } else if ($(this).attr("name") === "edit-mascota") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;//$(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
                     $('#pnl_mascota .modal-title').html('Editar Mascota');
                     objE = {
                         ID_ENCRIP: id_mascota
@@ -423,17 +423,17 @@ function fc_listar_mascota() {
                     event.preventDefault();
                 } else if ($(this).attr("name") === "delete-mascota") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'ANULAR';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la mascota?");
                 } else if ($(this).attr("name") === "soli-dni") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'SOLICITAR';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>SOLICITAR EL DNI</strong> para su mascota?");
                 } else if ($(this).attr("name") === "cup-dni") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'CUPON';
                     var contenido_html = "<div id='errorCupon'></div><h4>¡Saludos desde RUMP!</h4>";
                     contenido_html += "<p>Canjea tus cupones de descuento.</p>" +
@@ -445,17 +445,17 @@ function fc_listar_mascota() {
                     window.parent.fc_mostrar_confirmacion(contenido_html);
                 }else if ($(this).attr("name") === "pon-adop") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'ADOPCION';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>PONER EN ADOPCION</strong> la mascota?");
                 } else if ($(this).attr("name") === "quit-adop") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'NOADOPCION';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>SACAR DE ADOPCION</strong> la mascota?");
                 } else if ($(this).attr("name") === "rep-per") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'PERDIDA';
                     contenido_html = "<div id='errorPerdida'></div><h4>¡Saludos desde RUMP!</h4>";
                     contenido_html += "Lamentamos oír que su mascota se ha extraviado."+
@@ -482,16 +482,16 @@ function fc_listar_mascota() {
                     });
                 } else if ($(this).attr("name") === "rep-enc") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'ENCONTRADA';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>REPORTAR MASCOSTA COMO ENCONTRADA?</strong>");
                 } else if ($(this).attr("name") === "sol-dup") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     $("#copiaModal").modal();
                 } else if ($(this).attr("name") === "mst-dead") {
                     limpiarMascota();
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     txh_idConfirm = 'FALLECIMIENTO';
                     contenido_html = "<div id='errorMuerte'></div><h4>¡Saludos desde RUMP!</h4>";
                     contenido_html += "Lamentamos oír que su mascota ha fallecido." +
@@ -524,14 +524,14 @@ function fc_listar_mascota() {
                     $("#pnl_cita_medica textarea").attr("disabled", false);
                     limpiarCita();
 
-                    id_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     $("#imgMascotaCita").attr("src", $(this).parent().parent().parent().parent().parent().find("td").eq(2).children().children().children(0)[0].src + '?v=' + valRND);
                     $("#lbl_nom_mascota").val($(this).parent().parent().parent().parent().parent().find("td").eq(5).html());
                     activaTab('datoCita');
                     $('#pnl_cita_medica .modal-title').html('Registrar Cita médica');
                     $("#pnl_cita_medica").modal('show');
                 } else if ($(this).attr("name") === "his-med") {
-                    var cod_act_mascota = $(this).parent().parent().parent().parent().parent().find("td").eq(0).html();
+                    var cod_act_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     fc_ver_historial(cod_act_mascota);
                 }
             });
