@@ -6,6 +6,7 @@ $(document).ready(function () {
     $('.back').click(function () {
         $('.nav-tabs .active').parent().prev('li').find('a').trigger('click');
     });
+    closeLoading();
     InfoSesion();
     fc_listar_inicio();
     //closeLoading();
@@ -56,7 +57,7 @@ function fc_listar_inicio() {
                 return;
             }
             
-            $('#sel_tipo').append("<option>TODOS</option>");
+            $('#sel_tipo').append("<option></option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_tipo').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }
@@ -131,8 +132,8 @@ $(".send-email-contact").click(function () {
         $("#errorMail").html(GenerarAlertaWarning("Correo: Ingrese un correo válido"));
         $("#txt_email").focus();
         return;
-    } else if (isEmail($("#txt_celular").val().trim()) === false) {
-        $("#errorMail").html(GenerarAlertaWarning("CElular: Ingrese un celular válido"));
+    } else if (validIdInput($("#txt_celular").val())) {
+        $("#errorMail").html(GenerarAlertaWarning("Celular: Ingrese un celular válido"));
         $("#txt_celular").focus();
         return;
     } else if ($("#txt_mensaje").val().trim() === "") {
@@ -257,7 +258,7 @@ $("#sel_tipo").on('change', function () {
                 return;
             }
 
-            $('#sel_raza').append("<option>TODOS</option>");
+            $('#sel_raza').append("<option></option>");
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 $('#sel_raza').append("<option value='" + data.d.Resultado[i].CODIGO + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
             }
@@ -390,7 +391,6 @@ function guardarImagen(evt, nameId, file) {
 $("#btn_registrar").click(function (evt) {
     $("#errorRegistro").html('');
     openLoading();
-    debugger;
     if (validIdInput($("#txt_nombre_pre").val()) || validIdInput($("#txt_apellido_pre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Nombre: Debe Ingresar el nombre y el apellido"));
         closeLoading();

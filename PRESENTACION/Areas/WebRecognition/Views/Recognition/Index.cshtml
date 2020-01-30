@@ -10,54 +10,10 @@
     string sConfiabilidad = ViewBag.sConfiabilidad;
 }
 
-<style>
-    .modalx {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba( 255, 255, 255, .8 ) url('/Areas/WebRecognition/img/loader-dog.gif') 50% 50% no-repeat;
-    }
-
-    /* When the body has the loading class, we turn     url('http://i.stack.imgur.com/FhHRx.gif')
-    the scrollbar off with overflow:hidden */
-    body.loading .modalx {
-        overflow: hidden;
-    }
-
-    /* Anytime the body has the loading class, our
-    modal element will be visible */
-    body.loading .modalx {
-        display: block;
-    }
-
-    .imgRedonda {
-        width: 200px;
-        height: 200px;
-        border-radius: 150px;
-    }
-
-    .table {
-        cursor: pointer;
-    }
-
-    hr {
-        display: block;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        margin-left: auto;
-        margin-right: auto;
-        border-style: inset;
-        border-width: 1px;
-    }
-</style>
-
 <link href="/Areas/WebRecognition/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+<link href="/Areas/WebRecognition/sweetalert/style.css" rel="stylesheet" />
 
-<div class="container" style="width:100%;">
+<div class="container" style="max-width:600px;">
 
     <div class="row">
         <div class="col-sm-12">
@@ -68,11 +24,8 @@
         </div>
     </div>
 
-    <div class="row" style="width:100%">
-
-
-        <div class="col-sm-6">
-            <div class="col-sm-4">
+    <div class="row justify-content-center" style="width:100%">
+            <div class="col-sm-12">
                 <div class="form-group ">
                     <label>Tipo</label>
                     <select id="cmbTIPO" class="form-control" onchange="mTipoSelect(this)"></select>
@@ -94,45 +47,41 @@
                     <select id="cmbDISTRITO" class="form-control"></select>
                 </div>
             </div>
-
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <div style="text-align:center;margin:0 auto; width:100%;">
                     <input type="file" id="filesimgBuscar" name="files[]" accept="image/png, image/jpeg" /><br />
                     <img src="~/Areas/WebRecognition/img/huella2.png" id="imgTomada" style="width:150px; height:150px;" crossorigin="anonymous" />
                 </div>
             </div>
-        </div>
 
-
-
-        <div class="col-sm-4">
-            <div style="text-align:center;margin:0 auto; width:99%;">
-                <br>
-                <button id="btnProcessRecognition" class="btn-lg btn-info"><span class="glyphicon-cloud"></span>&nbsp;Buscar Mascota</button>
-                <br><br>
-                <div class="form-group " style="width:100%;">
-                    <div class="table-responsive" style="width:100%;">
-                        <table id="tbResult" class="table table-bordered table-hover" style="width:100%;">
-                            <thead>
-                                <tr class="bg-warning">
-                                    @*<th>...</th>*@
-                                    <th>DNI</th>
-                                    <th>MASCOTA</th>
-                                    <th>Confiabilidad</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbResult_Det"></tbody>
-                        </table>
+            <div class="col-sm-12">
+                <div style="text-align:center;margin:0 auto; width:99%;">
+                    <br>
+                    <button id="btnProcessRecognition" class="btn-lg btn-info"><span class="glyphicon-cloud"></span>&nbsp;Buscar Mascota</button>
+                    <br><br>
+                    <div class="form-group " style="width:100%;">
+                        <div class="table-responsive" style="width:100%;">
+                            <table id="tbResult" class="table table-bordered table-hover" style="width:100%;">
+                                <thead>
+                                    <tr class="bg-warning">
+                                        @*<th>...</th>*@
+                                        <th>DNI</th>
+                                        <th>MASCOTA</th>
+                                        <th>Confiabilidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbResult_Det"></tbody>
+                            </table>
+                        </div>
                     </div>
+
                 </div>
+                <br />
+                <div id="ResultRecognition"></div>
+                <div id="ListImgRecognition"></div>
 
+                <br />
             </div>
-            <br />
-            <div id="ResultRecognition"></div>
-            <div id="ListImgRecognition"></div>
-
-            <br />
-        </div>
     </div>
 </div>
 
@@ -301,8 +250,6 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<br><p>
-
     <div>
         <table style="">
 
@@ -346,14 +293,8 @@
         </table>
     </div>
 
-</p>
-<br />
-
-<p>
     @*<button id="buttonPredict">Iniciar prediccion</button><br>*@
     <!--  <button id="clearAll">Limpiar todo</button><br> --->
-</p>
-
 
 <img src="/Areas/WebRecognition/img_proc/2_.jpg" width="100" height="100" id="img1" style="display:none" crossorigin="anonymous" />
 

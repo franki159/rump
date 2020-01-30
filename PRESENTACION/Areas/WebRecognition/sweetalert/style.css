@@ -1,0 +1,54 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    /*background-image: linear-gradient(180deg, #13c5adc7 10%, #0f695dcc 100%);*/
+    background-image: linear-gradient(180deg, #5bc0de 10%, #000000 100%);
+    color: #fff;
+}
+
+.modalx {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba( 255, 255, 255, .8 ) url('/Areas/WebRecognition/img/loader-dog.gif') 50% 50% no-repeat;
+}
+
+/* When the body has the loading class, we turn     url('http://i.stack.imgur.com/FhHRx.gif')
+    the scrollbar off with overflow:hidden */
+body.loading .modalx {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+    modal element will be visible */
+body.loading .modalx {
+    display: block;
+}
+
+.imgRedonda {
+    width: 200px;
+    height: 200px;
+    border-radius: 150px;
+}
+
+.table {
+    cursor: pointer;
+    color: #000;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}

@@ -1686,8 +1686,6 @@ function fc_ver_historial(cod_act) {
         ID_ENCRIP: cod_act
     };
 
-    alert(cod_act);
-
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/citaMedica.aspx/ListaCitaWM",
