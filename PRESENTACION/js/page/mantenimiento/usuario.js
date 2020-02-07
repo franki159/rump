@@ -123,6 +123,7 @@ function fc_listar_usuario() {
             $("#tbl_usuario button").click(function () {
                 limpiarUsuario();
                 id_usuario = $(this).parent().parent().find("td").eq(0).html();
+                id_usuario = validaTableMobile(id_usuario);
 
                 if ($(this).attr("name") === "editar") {
                     $('#pnl_usuario .modal-title').html('Editar Usuario');
@@ -185,7 +186,7 @@ function fc_listar_usuario() {
 
             $("#tbl_usuario img").click(function () {
                 id_usuario = $(this).parent().parent().parent().find("td").eq(0).html();
-
+                id_usuario = validaTableMobile(id_usuario);
                 if ($(this).attr("name") === "activar") {
                     activo_usuario = $(this).attr("data-a");
                     $("#txh_idConfirm").val('ACTIVAR');

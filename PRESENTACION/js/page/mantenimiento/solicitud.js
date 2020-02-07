@@ -75,11 +75,13 @@ function fc_listar_solicitud() {
                 if ($(this).attr("name") === "atender") {
                     limpiarSolicitud();
                     id_solicitud = $(this).parent().parent().find("td").eq(0).html();
+                    id_solicitud = validaTableMobile(id_solicitud);
                     txh_idConfirm = 'ATENDER';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Atender</strong> la solicitud?");
                 } else if ($(this).attr("name") === "anular") {
                     limpiarSolicitud();
                     id_solicitud = $(this).parent().parent().find("td").eq(0).html();
+                    id_solicitud = validaTableMobile(id_solicitud);
                     txh_idConfirm = 'ANULAR';
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la solicitud?");
                 }

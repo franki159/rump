@@ -191,8 +191,8 @@ function fc_listar_clinica() {
                 if ($(this).attr("name") === "editar") {
                     $('#pnl_clinica .modal-title').html('Editar Convenio');
 
-                    txh_clinica = 
-                        .find("td").eq(1).html();
+                    txh_clinica = $(this).parent().parent().find("td").eq(1).html();
+                    txh_clinica = validaTableMobile(txh_clinica);
 
                     objE = {
                         ID_ENCRIP: txh_clinica
@@ -242,6 +242,7 @@ function fc_listar_clinica() {
                 } else if ($(this).attr("name") === "anular") {
                     txh_idConfirm = 'ANULAR';
                     txh_clinica = $(this).parent().parent().find("td").eq(1).html();
+                    txh_clinica = validaTableMobile(txh_clinica);
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>ELIMINAR</strong> el Convenio?");
                 }
             });

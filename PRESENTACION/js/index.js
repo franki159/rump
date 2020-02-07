@@ -49,7 +49,6 @@ function fc_listar_inicio() {
         async: false,
         beforeSend: function () {
             $('#sel_tipo').empty();
-            openLoading();
         },
         success: function (data) {
             if (!data.d.Activo) {

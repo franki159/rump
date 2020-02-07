@@ -386,6 +386,19 @@ function validate_hour(inputStr) {
     }
 }
 
+function validaTableMobile(valor) {
+    var lvalor = valor.split('<font style="vertical-align: inherit;">');
+    var lvalorF;
+
+    if (lvalor.length > 1) {
+        lvalorF = lvalor[2].split("</font>");
+    } else {
+        lvalorF = lvalor;
+    }
+
+    return lvalorF[0];
+}
+
 //**********************************INICIO FUNCIONES DE FORMATO************************************/
 function toDecimal(num, decimals) {
     var t = Math.pow(10, decimals);

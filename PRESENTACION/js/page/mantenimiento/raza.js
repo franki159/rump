@@ -141,6 +141,7 @@ function fc_listar_raza() {
                     $('#pnl_raza .modal-title').html('Editar Raza');
 
                     txh_idRaza = $(this).parent().parent().find("td").eq(1).html();
+                    txh_idRaza = validaTableMobile(txh_idRaza);
 
                     objE = {
                         ID_ENCRIP: txh_idRaza
@@ -179,6 +180,7 @@ function fc_listar_raza() {
                 } else if ($(this).attr("name") === "anular") {
                     txh_idConfirm = 'ANULAR';
                     txh_idRaza = $(this).parent().parent().find("td").eq(1).html();
+                    txh_idRaza = validaTableMobile(txh_idRaza);
                     window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>ELIMINAR</strong> la Raza?");
                 }
             });
