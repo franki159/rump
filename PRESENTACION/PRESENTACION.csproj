@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PRESENTACION</RootNamespace>
     <AssemblyName>PRESENTACION</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -23,6 +23,7 @@
     <Use64BitIISExpress />
     <UseGlobalApplicationHostFile />
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,24 +52,31 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\integracionConJson\Codigos Fuentes Varios Lenguajes\NET_CON_JASON\Json\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\..\integracionConJson\Codigos Fuentes Varios Lenguajes\NET_CON_JASON\Json\bin\Debug\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -85,13 +93,13 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\WebRecognition\Content\bootstrap.css" />
@@ -122,6 +130,11 @@
     <Content Include="Areas\WebRecognition\Scripts\Alert.js" />
     <Content Include="Areas\WebRecognition\Scripts\bootstrap.js" />
     <Content Include="Areas\WebRecognition\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\WebApi\Views\web.config" />
+    <Content Include="Areas\WebApi\Views\Home\Index.cshtml" />
+    <Content Include="Areas\WebApi\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WebApi\Views\Shared\_LayoutPageMaster.cshtml" />
+    <Content Include="Areas\WebApi\Views\_ViewStart.cshtml" />
     <None Include="Areas\WebRecognition\Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.js" />
     <Content Include="Areas\WebRecognition\Scripts\jquery-1.10.2.min.js" />
@@ -513,6 +526,8 @@
     <Content Include="assets\fullcalendar\timegrid\package.json" />
     <Content Include="assets\fullcalendar\timegrid\README.md" />
     <Content Include="documentos\convenios.pdf" />
+    <Content Include="Areas\WebRecognition\Views\Recognition\pruebaAA.cshtml" />
+    <Content Include="Areas\WebRecognition\Views\prueba\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Carpeta para FTP.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -2708,8 +2723,40 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\WebApi\App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\WebApi\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\WorldPetsController.cs" />
+    <Compile Include="Areas\WebApi\Dato\Dato.cs" />
+    <Compile Include="Areas\WebApi\Logic\Logic.cs" />
+    <Compile Include="Areas\WebApi\Models\AccountBindingModels.cs" />
+    <Compile Include="Areas\WebApi\Models\AccountViewModels.cs" />
+    <Compile Include="Areas\WebApi\Models\AgregarClinica.cs" />
+    <Compile Include="Areas\WebApi\Models\AgregarImagenMascota.cs" />
+    <Compile Include="Areas\WebApi\Models\AgregarMedico.cs" />
+    <Compile Include="Areas\WebApi\Models\AutenticationGoogle.cs" />
+    <Compile Include="Areas\WebApi\Models\CitaMedica.cs" />
+    <Compile Include="Areas\WebApi\Models\CrearMascota.cs" />
+    <Compile Include="Areas\WebApi\Models\EditarMascota.cs" />
+    <Compile Include="Areas\WebApi\Models\Evento.cs" />
+    <Compile Include="Areas\WebApi\Models\EventoCrear.cs" />
+    <Compile Include="Areas\WebApi\Models\Evento_Cronograma.cs" />
+    <Compile Include="Areas\WebApi\Models\Evento_Detalle.cs" />
+    <Compile Include="Areas\WebApi\Models\Evento_Periodo.cs" />
+    <Compile Include="Areas\WebApi\Models\Evento_Tipo.cs" />
+    <Compile Include="Areas\WebApi\Models\Info_Dialog_Cronograma.cs" />
+    <Compile Include="Areas\WebApi\Models\Login.cs" />
+    <Compile Include="Areas\WebApi\Models\MascotaExtraviada.cs" />
+    <Compile Include="Areas\WebApi\Models\Mascotas_Usuario.cs" />
+    <Compile Include="Areas\WebApi\Models\Model.cs" />
+    <Compile Include="Areas\WebApi\Models\prueba.cs" />
+    <Compile Include="Areas\WebApi\Models\ReportarMascotaPerdida.cs" />
+    <Compile Include="Areas\WebApi\Models\Usuario.cs" />
+    <Compile Include="Areas\WebApi\Models\UsuarioCrear.cs" />
+    <Compile Include="Areas\WebApi\WebApiAreaRegistration.cs" />
     <Compile Include="Areas\WebRecognition\App_Start\RouteConfig.cs" />
     <Compile Include="Areas\WebRecognition\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\WebRecognition\Controllers\pruebaAAController.cs" />
+    <Compile Include="Areas\WebRecognition\Controllers\pruebaController.cs" />
     <Compile Include="Areas\WebRecognition\Controllers\RecognitionController.cs" />
     <Compile Include="Areas\WebRecognition\Logic\Logic.cs" />
     <Compile Include="Areas\WebRecognition\Models\Model.cs" />
@@ -2932,6 +2979,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\WebRecognition\Views\pruebaAA\" />
     <Folder Include="img\mascota\" />
     <Folder Include="img\usuario\" />
   </ItemGroup>
@@ -2944,6 +2992,9 @@
     <TypeScriptCompile Include="assets\fullcalendar\interaction\main.d.ts" />
     <TypeScriptCompile Include="assets\fullcalendar\list\main.d.ts" />
     <TypeScriptCompile Include="assets\fullcalendar\timegrid\main.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -17,7 +17,7 @@
 
                             <a class="itel"><img src="templatePage/img/core-img/phone.png"></a>
 
-                            <a class="baraitem" href="tel:+517316407">(01)7316407</a>
+                            <a class="baraitem" href="tel:+51 01 6516502">(01) 6516502</a>
                             
 							
 							<br><br>

@@ -18,7 +18,7 @@
                                 <img src="templatePage/img/core-img/whatsapp.png"></a>
                             <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem">+51 992975292</a>
                             <a class="itel2"><img src="templatePage/img/core-img/phone.png"></a>
-                            <a class="baraitem" href="tel:+517316407">(01)7316407</a>
+                            <a class="baraitem" href="tel:+51 01 6516502">(01) 6516502</a>
                         </div>
                     </div>
 
