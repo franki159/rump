@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace PRESENTACION.Areas.WebApi.Controllers
 {
-    //[RoutePrefix("Api/WorldPets")]
+    [RoutePrefix("Api/WorldPets")]
 
     public class WorldPetsController : ApiController
     {
