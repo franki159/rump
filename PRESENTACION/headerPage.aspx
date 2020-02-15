@@ -70,7 +70,7 @@
                                         <a href="#">Servicios</a>
                                         <ul class="dropdown">
                                             <li><a href="./Servicios">Servicios</a></li>
-                                            <li><a href="./convenios.aspx">Convenios</a></li>
+                                            <li><a href="./Establecimientos">Convenios</a></li>
 									    </ul>
                                     </li>
                                     <li><a href="./MascotasExtraviadas">Mascotas extraviadas</a></li>
