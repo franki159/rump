@@ -1043,3 +1043,98 @@ legend.scheduler-border {
         font-size: 50px;
     }
 /*Color bootstrap  fin 3*/
+/*CUPON DE DESCUENTO*/
+@font-face {
+    font-family: "ubuntu";
+    font-style: italic;
+    font-weight: 300;
+    src: local("Lato Light Italic"), local("Lato-LightItalic"), url(https://fonts.gstatic.com/s/ubuntucondensed/v8/u-4k0rCzjgs5J7oXnJcM_0kACGMtT-Dfqw.woff2) format("woff2");
+}
+
+a {
+    text-decoration: none;
+    color: #9ca0b1;
+}
+
+    .wrapper h1 {
+        font-size: 80px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: "Josefin Sans", sans-serif;
+        background: linear-gradient(to right, #ee1515 10%, #fff 50%, #a81414 60%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 1.5s linear infinite;
+        display: inline-block;
+    }
+
+.sub-wrapper {
+    color: #a81414;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+}
+
+.cod-promocion {
+    color: #000;
+    font-size: 60px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+}
+
+@media (max-width: 850px) {
+    .cod-promocion {
+        font-size: 40px;
+    }
+
+    .sub-wrapper {
+        font-size: 30px;
+    }
+
+    .wrapper h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 450px) {
+    .cod-promocion {
+        font-size: 30px;
+    }
+
+    .sub-wrapper {
+        font-size: 20px;
+    }
+
+    .wrapper h1 {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 330px) {
+    .cod-promocion {
+        font-size: 20px;
+    }
+
+    .sub-wrapper {
+        font-size: 16px;
+    }
+
+    .wrapper h1 {
+        font-size: 35px;
+    }
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}

@@ -43,7 +43,7 @@
                     $("#frmLogin :input").removeAttr("disabled");
                     $("#usuario").focus();
                 } else {
-                    window.location = "default.aspx";
+                    window.location = "Sistema";
                 }
             },
             error: function (data) {

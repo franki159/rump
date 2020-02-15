@@ -159,6 +159,7 @@
     <Content Include="Areas\WebRecognition\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\WebRecognition\img\huella.png" />
     <Content Include="Areas\WebRecognition\img\huella2.png" />
+    <Content Include="Areas\WebRecognition\img\huella3.png" />
     <Content Include="Areas\WebRecognition\img\loader-dog.gif" />
     <Content Include="Areas\WebRecognition\img_proc\00001726-IMG-20170902-WA0016.jpg" />
     <Content Include="Areas\WebRecognition\img_proc\1_.jpg" />
@@ -455,6 +456,7 @@
     <Content Include="css\components.css" />
     <Content Include="css\stylePropio.css" />
     <Content Include="css\vendor-72d47c3353.css" />
+    <Content Include="felicidades.aspx" />
     <Content Include="Global.asax" />
     <Content Include="img\av-hombre.png" />
     <Content Include="img\avatarUser.png" />
@@ -516,8 +518,8 @@
     <Content Include="js\all\jquery.base64.min.js" />
     <Content Include="js\all\jquery.min.js" />
     <Content Include="js\all\moment.min.js" />
+    <Content Include="js\felicidades.js" />
     <Content Include="js\index.js" />
-    <Content Include="js\inicioSesion.js" />
     <Content Include="js\forgotPassword.js" />
     <Content Include="js\adoptame.js" />
     <Content Include="js\enciclopedia.js" />
@@ -541,6 +543,7 @@
     <Content Include="page\mantenimiento\solicitud.aspx" />
     <Content Include="page\mantenimiento\evento.aspx" />
     <Content Include="enciclopedia.aspx" />
+    <Content Include="politicas_privacidad.html" />
     <Content Include="register.aspx" />
     <Content Include="page\mantenimiento\citaMedica.aspx" />
     <Content Include="password.aspx" />
@@ -2872,6 +2875,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="felicidades.aspx.cs">
+      <DependentUpon>felicidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="felicidades.aspx.designer.cs">
+      <DependentUpon>felicidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

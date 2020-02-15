@@ -19,7 +19,7 @@ namespace PRESENTACION.page.consulta
         {
             if (Page.IsPostBack == false)
             {
-                if (Session["userRump"] == null) Response.Redirect("~/login.aspx");
+                if (Session["userRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
     }

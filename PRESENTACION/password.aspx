@@ -64,7 +64,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="text-gray-900" href="login.aspx"><p><strong>Volver al Inicio de Sesion</strong></p></a>
+                                        <a class="text-gray-900" href="InicioSesion"><p><strong>Volver al Inicio de Sesion</strong></p></a>
                                     </div>
                                     <%--<div class="text-center">
                                         <a class="small" href="register.html">Crear una Cuenta!</a>

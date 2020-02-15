@@ -64,7 +64,7 @@ function InfoSesion() {
         success: function (data, status) {
             if (!data.d.Activo) {
                 alert(data.d.Mensaje);
-                window.location = "login.aspx";
+                window.location = "InicioSesion";
                 return;
             }
             $(".name_user").text(data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0]);

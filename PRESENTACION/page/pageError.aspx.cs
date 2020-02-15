@@ -18,7 +18,7 @@ namespace PRESENTACION.page
         {
             if (Page.IsPostBack == false)
             {
-                if (Session["UserData"] == null) Response.Redirect("~/login.aspx");
+                if (Session["UserData"] == null) Response.Redirect("~/InicioSesion");
             }
         }
     }

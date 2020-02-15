@@ -13,14 +13,28 @@ namespace PRESENTACION
 {
     public class Global : System.Web.HttpApplication
     {
-
+        protected void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute("Inicio", "Inicio", "~/index.aspx");
+            routes.MapPageRoute("InicioSesion", "InicioSesion", "~/login.aspx");
+            routes.MapPageRoute("Sistema", "Sistema", "~/default.aspx");
+            routes.MapPageRoute("Registro", "Registro", "~/register.aspx");
+            routes.MapPageRoute("OlvidoClave", "OlvidoClave", "~/forgotPassword.aspx");
+            routes.MapPageRoute("Servicios", "Servicios", "~/servicios.aspx");
+            routes.MapPageRoute("MascotasExtraviadas", "MascotasExtraviadas", "~/mextraviadas.aspx");
+            routes.MapPageRoute("Adopcion", "Adopcion", "~/adoptame.aspx");
+            routes.MapPageRoute("QuienesSomos", "QuienesSomos", "~/quienessomos.aspx");
+            routes.MapPageRoute("Contacto", "Contacto", "~/contacto.aspx");
+            routes.MapPageRoute("Establecimientos", "Establecimientos", "~/convenios.aspx");
+        }
         protected void Application_Start(object sender, EventArgs e)
         {
+            RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(PRESENTACION.Areas.WebApi.WebApiConfig.Register);
+            /*GlobalConfiguration.Configure(PRESENTACION.Areas.WebApi.WebApiConfig.Register);
             PRESENTACION.Areas.WebApi.FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             PRESENTACION.Areas.WebApi.RouteConfig.RegisterRoutes(RouteTable.Routes);
-            PRESENTACION.Areas.WebApi.BundleConfig.RegisterBundles(BundleTable.Bundles);
+            PRESENTACION.Areas.WebApi.BundleConfig.RegisterBundles(BundleTable.Bundles);*/
         }
 
         protected void Session_Start(object sender, EventArgs e)

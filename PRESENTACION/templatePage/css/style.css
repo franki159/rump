@@ -1155,5 +1155,9 @@ text-shadow: none;
 	.glyph .fs1 {
 		font-size: 2em;
 	}
-
+@media (max-width: 480px) {
+    .hidden-phone {
+        display: none !important;
+    }
+}
 	

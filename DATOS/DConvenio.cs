@@ -55,5 +55,26 @@ namespace DATOS
             }
             return mItem;
         }
+        public static EClinica obtenerCupon()
+        {
+            EClinica mItem = new EClinica();
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
+                cmd.Parameters.AddWithValue("@opcion", 16);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        mItem = new EClinica();
+                        mItem.DESCRIPCION = dr.IsDBNull(dr.GetOrdinal("descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("descripcion"));
+                    }
+                }
+            }
+            return mItem;
+        }
     }
 }

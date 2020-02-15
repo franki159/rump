@@ -62,10 +62,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="text-gray-900" href="forgotPassword.aspx"><p><strong>Olvidó Password?</strong></p></a>
+                                        <a class="text-gray-900" href="OlvidoClave"><p><strong>Olvidó Password?</strong></p></a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="text-gray-900" href="register.aspx"><p><strong>Crear una Cuenta!</strong></p></a>
+                                        <a class="text-gray-900" href="Registro"><p><strong>Crear una Cuenta!</strong></p></a>
                                       </div>
                                 </div>
                             </div>

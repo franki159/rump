@@ -18,7 +18,7 @@ namespace PRESENTACION.page
         {
             if (Page.IsPostBack == false)
             {
-                if (Session["UserRump"] == null) Response.Redirect("~/login.aspx");
+                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
 

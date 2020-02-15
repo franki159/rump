@@ -179,7 +179,7 @@ function fc_listar_mascota() {
                     htmlBotones += formatButton.format('name="his-med" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-notes-medical', 'Ver historial Médico');
                     htmlBotones += formatButton.format('name="mst-dead" indx="' + (i + 1) +'"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
-                    htmlBotones += formatButton.format('name="rep-enc"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
+                    htmlBotones += formatButton.format('name="rep-enc" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
                 }
 
                 htmlBotones += formatButton.format('name="delete-mascota" indx="' + (i + 1) +'"', 'bg-danger', 'fas fa-trash-alt', 'Eliminar');

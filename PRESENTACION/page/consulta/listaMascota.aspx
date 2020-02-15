@@ -132,6 +132,7 @@
                             <th>Mascota</th>
                             <th>Dueño</th>
                             <th>Telefono</th>
+                            <th>Fecha Nacimiento</th>
                             <th>Fecha Registro</th>
                         </tr>
                     </thead>

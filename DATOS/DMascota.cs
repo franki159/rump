@@ -80,6 +80,7 @@ namespace DATOS
                         mItem.NOMBRE_PRE = dr.IsDBNull(dr.GetOrdinal("nombre_pre")) ? string.Empty : dr.GetString(dr.GetOrdinal("nombre_pre"));
                         mItem.TELEFONO = dr.IsDBNull(dr.GetOrdinal("telefono")) ? string.Empty : dr.GetString(dr.GetOrdinal("telefono"));
                         mItem.FEC_INI = mItem.FEC_QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_ini")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_ini"));
+                        mItem.FEC_NAC = mItem.FEC_QUINTUPLE = dr.IsDBNull(dr.GetOrdinal("fecha_nacimiento")) ? DateTime.MinValue : dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento"));
                         lista.Add(mItem);
                     }
                 }

@@ -469,7 +469,7 @@
                                 <h6 data-animation="fadeInUp" data-delay="200ms">Bienvenido a RUMP</h6>
                                 <h2 data-animation="fadeInUp" data-delay="500ms">1er Servicio profesional de registro de mascotas en el Perú</h2>
 
-                                <a href="quienessomos.aspx" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="900ms">Conócenos más</a>
+                                <a href="QuienesSomos" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="900ms">Conócenos más</a>
                             </div>
 
                         </div>
@@ -490,7 +490,7 @@
                                     <h6 data-animation="fadeInDown" data-delay="200ms">Solicita ahora tu sistema de identificación </h6>
                                     <h2 data-animation="fadeInDown" data-delay="500ms">Chapita identificadora + DNI<br />
                                         Accederás a muchos servicios más</h2>
-                                    <a href="contacto.aspx" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
+                                    <a href="Contacto" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="900ms">¡SOLICITALO YA!</a>
                                 </div>
                             </div>
                         </div>
@@ -530,6 +530,108 @@
     </div>
 
 	<!-- REGISTRO Sección Area End -->
+
+    <!-- Breadcrumb3 Area Start -->
+    <div class="breadcrumb-area4 bg-img" style="background-image: url(templatePage/img/bg-img/buscadordem.jpg);">
+        <div class="container h-50">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <br>
+                        <br>
+                        <img src="templatePage/img/core-img/buscadordemascotas.png" alt="">
+
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <img src="templatePage/img/core-img/dniychapita.png" alt="">
+                            </div>
+
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <h5 class="textoadd">Buscador vía código RUMP</h5>
+                                <div class="single-footer-widget">
+                                    <form action="home.html" class="nl-form">
+                                        <input type="email" class="form-control" id="bus_txt_dni" placeholder="DNI de la mascota">
+                                    </form>
+                                </div>
+                                <br>
+                                <button type="button" class="btn roberto-btnO align-content-center btn-dat-msc" aria-hidden="true">Buscar</button>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <img src="templatePage/img/core-img/reconocimientofacial.png" alt="">
+                            </div>
+
+                            <div class="col-12 col-lg-6 align-items-center">
+                                <h5 class="textoadd">Buscador de reconocimieto facial</h5>
+                                <br>
+                                <button type="button" class="btn roberto-btnO align-content-center btn-recog-face" aria-hidden="true">Buscar</button>
+
+                            </div>
+                        </div>
+                        <br>
+                        <h5 class="textoadd text-center"><strong>Recomendación:</strong> Para la foto de reconocimiento facial, fotografíar el rostro de la mascota aproximadamente a 50cm de distancia. </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb3 Area End -->
+
+    <!-- Breadcrumb2 Area Start -->
+    <div class="breadcrumb-area3 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/mascotasextraviadas.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <img src="templatePage/img/core-img/encontrasteunamascota.png" alt="">
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <br />
+                                <li class="textoextraviada active" aria-current="page">Ahora puedes ayudar al cambio poniendo de tu parte para disminuir la tasa de animales en las calles. Si eres dueño de una mascota, es importante que la identifiques. Con RUMP te aseguras de que tu consentido siempre volverá a casa. <strong>Si has encontrado una mascota, con nuestra chapita identificadora puedes reportarla aquí como perdida, ayudando a que encuentre a su familia.</strong>
+                                    <br />
+                                </li>
+                            </ol>
+                            <br />
+                            <br />
+                            <a href="#" class="btn roberto-btnR reportar-msct-etv">REPORTAR</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb2 Area End -->
+
+    <!-- Breadcrumb ADD Area Start -->
+    <div class="breadcrumb-area2 bg-img" style="background-image: url(templatePage/img/bg-img/add.jpg);">
+
+        <div class="container h-100 align-content-center">
+            <div class="row h-50 align-items-center">
+
+
+                <!-- Single Post Area -->
+                <div class="col-12 col-md-6 align-content-center">
+                    <!-- Post Title -->
+                    <div class="breadcrumb-content text-center">
+                        <h2 class="mascotas-extraviadas">Mascotas Extraviadas</h2>
+                        <h6 class="textoadd">Ellos te siguen buscando ayúdanos a encontrarlos</h6>
+                    </div>
+                </div>
+
+                <!-- Single Post Area -->
+                <div class="col-12 col-md-6 align-content-center">
+                    <div class="breadcrumb-content text-center">
+                        <a href="MascotasExtraviadas" class="btn roberto-btnR align-content-center">Búscala aquí</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 
     <!-- Projects Area Start -->
     <section class="roberto-project-area section-padding-100-0">
@@ -721,133 +823,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
     </section>
     <!-- Blog Area End -->
 
-    <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area bg-img" style="background-image: url(templatePage/img/bg-img/registrarmascotas.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-						 <img src="templatePage/img/core-img/porqueregistraratumascota.png" alt="">
-                        <nav aria-label="breadcrumb">
-                             <br/>
-							   
-							 <h6 class="">En RUMP buscamos disminuir la población animal en las calles. Una forma para lograrlo es el registro nacional de mascotas, así nos aseguramos de que tu mascota siempre podrá volver a casa. Organizamos campañas de salud y concienciación para educar a la sociedad en la importancia del respeto hacia los animales. Con nuestros diversos convenios en todo el Perú, ofrecemos descuentos y servicios exclusivos que tu mascota podrá disfrutar.</strong></h6>
-							<br/>
-							<a href="quienessomos.html" class="btn roberto-btnM" >Saber más</a>	
-							
-                        </nav>
-						<br/>
-						
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb Area End -->
-
-    <!-- Breadcrumb2 Area Start -->
-    <div class="breadcrumb-area3 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/mascotasextraviadas.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <img src="templatePage/img/core-img/encontrasteunamascota.png" alt="">
-
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center">
-                                <br />
-                                <li class="textoextraviada active" aria-current="page">Ahora puedes ayudar al cambio poniendo de tu parte para disminuir la tasa de animales en las calles. Si eres dueño de una mascota, es importante que la identifiques. Con RUMP te aseguras de que tu consentido siempre volverá a casa. <strong>Si has encontrado una mascota, con nuestra chapita identificadora puedes reportarla aquí como perdida, ayudando a que encuentre a su familia.</strong>
-                                    <br />
-                                </li>
-                            </ol>
-                            <br />
-                            <br />
-                            <a href="#" class="btn roberto-btnR reportar-msct-etv">REPORTAR</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb2 Area End -->
-
-
-    <!-- Breadcrumb ADD Area Start -->
-    <div class="breadcrumb-area2 bg-img" style="background-image: url(templatePage/img/bg-img/add.jpg);">
-
-        <div class="container h-100 align-content-center">
-            <div class="row h-50 align-items-center">
-
-
-                <!-- Single Post Area -->
-                <div class="col-12 col-md-6 align-content-center">
-                    <!-- Post Title -->
-                    <div class="breadcrumb-content text-center">
-                        <h2 class="mascotas-extraviadas">Mascotas Extraviadas</h2>
-                        <h6 class="textoadd">Ellos te siguen buscando ayúdanos a encontrarlos</h6>
-                    </div>
-                </div>
-
-                <!-- Single Post Area -->
-                <div class="col-12 col-md-6 align-content-center">
-                    <div class="breadcrumb-content text-center">
-                        <a href="mextraviadas.aspx" class="btn roberto-btnR align-content-center">Búscala aquí</a>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Breadcrumb3 Area Start -->
-    <div class="breadcrumb-area4 bg-img" style="background-image: url(templatePage/img/bg-img/buscadordem.jpg);">
-        <div class="container h-50">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <br>
-                        <br>
-                        <img src="templatePage/img/core-img/buscadordemascotas.png" alt="">
-
-                        <div class="row align-items-center">
-                            <div class="col-12 col-lg-6 align-items-center">
-                                <img src="templatePage/img/core-img/dniychapita.png" alt="">
-                            </div>
-
-                            <div class="col-12 col-lg-6 align-items-center">
-                                <h5 class="textoadd">Buscador vía código RUMP</h5>
-                                <div class="single-footer-widget">
-                                    <form action="home.html" class="nl-form">
-                                        <input type="email" class="form-control" id="bus_txt_dni" placeholder="DNI de la mascota">
-                                    </form>
-                                </div>
-                                <br>
-                                <button type="button" class="btn roberto-btnO align-content-center btn-dat-msc" aria-hidden="true">Buscar</button>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center">
-                            <div class="col-12 col-lg-6 align-items-center">
-                                <img src="templatePage/img/core-img/reconocimientofacial.png" alt="">
-                            </div>
-
-                            <div class="col-12 col-lg-6 align-items-center">
-                                <h5 class="textoadd">Buscador de reconocimieto facial</h5>
-                                <br>
-                                <button type="button" class="btn roberto-btnO align-content-center btn-recog-face" aria-hidden="true">Buscar</button>
-
-                            </div>
-                        </div>
-                        <br>
-                        <h5 class="textoadd text-center"><strong>Recomendación:</strong> Para la foto de reconocimiento facial, fotografíar el rostro de la mascota aproximadamente a 50cm de distancia. </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb3 Area End -->
-
+    
     <!-- Breadcrumb4 Area Start -->
     <div class="breadcrumb-area5 bg-img jarallax" style="background-image: url(templatePage/img/bg-img/fondoapp.jpg);">
         <div class="container h-100">

@@ -19,7 +19,7 @@ namespace PRESENTACION.page.proceso
         {
             try
             {
-                if (Session["UserRump"] == null) Response.Redirect("~/login.aspx");
+                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
 
                 var num_dni = Request.QueryString["numIdentify"];
 

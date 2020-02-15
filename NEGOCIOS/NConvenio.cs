@@ -14,5 +14,10 @@ namespace NEGOCIOS
         {
             return DConvenio.listarMapa();
         }
+
+        public static EClinica obtenerCupon()
+        {
+            return DConvenio.obtenerCupon();
+        }
     }
 }

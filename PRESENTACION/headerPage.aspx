@@ -66,12 +66,18 @@
                             <div class="classynav">
                                 <ul id="nav">
                                     <li class="active"><a href="./">Inicio</a></li>
-                                    <li><a href="./servicios.aspx">Servicios</a></li>
-                                    <li><a href="./mextraviadas.aspx">Mascotas extraviadas</a></li>
-                                    <li><a href="./adoptame.aspx">Adóptame</a></li>
-                                    <li><a href="./quienessomos.aspx">¿Quiénes somos?</a></li>
+                                    <li class="cn-dropdown-item has-down">
+                                        <a href="#">Servicios</a>
+                                        <ul class="dropdown">
+                                            <li><a href="./Servicios">Servicios</a></li>
+                                            <li><a href="./convenios.aspx">Convenios</a></li>
+									    </ul>
+                                    </li>
+                                    <li><a href="./MascotasExtraviadas">Mascotas extraviadas</a></li>
+                                    <li><a href="./Adopcion">Adóptame</a></li>
+                                    <li><a href="./QuienesSomos">¿Quiénes somos?</a></li>
 
-                                    <li><a href="./contacto.aspx">Contacto</a></li>
+                                    <li><a href="./Contacto">Contacto</a></li>
                                 </ul>
 
                             </div>

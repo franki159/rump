@@ -129,7 +129,10 @@ function fc_listar_mascota() {
                 html += '<td>' + data.d.Resultado[i].NOMBRE + '</td>';
                 html += '<td>' + data.d.Resultado[i].NOMBRE_PRE + '</td>';
                 html += '<td>' + data.d.Resultado[i].TELEFONO + '</td>';
-                
+                if (data.d.Resultado[i].FEC_NAC !== null)
+                    html += '<td>' + formatDate(parseDateServer(data.d.Resultado[i].FEC_NAC), "dd-MM-yyyy") + '</td>';
+                else
+                    html += '<td></td>';
                 if (data.d.Resultado[i].FEC_INI !== null) 
                     html += '<td>' + formatDate(parseDateServer(data.d.Resultado[i].FEC_INI), "dd-MM-yyyy") + '</td></tr>';
                 else

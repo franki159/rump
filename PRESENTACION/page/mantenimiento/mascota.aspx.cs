@@ -19,7 +19,7 @@ namespace PRESENTACION.page.mantenimiento
         {
             if (Page.IsPostBack == false)
             {
-                if (Session["userRump"] == null) Response.Redirect("~/login.aspx");
+                if (Session["userRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
         [WebMethod()]
@@ -102,6 +102,23 @@ namespace PRESENTACION.page.mantenimiento
             {
                 objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
             }
+            return objRespuesta;
+        }
+
+        [WebMethod()]
+        public static object ObtenerCuponWM()
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+
+            try
+            {
+                objRespuesta.Resultado = NConvenio.obtenerCupon();
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(string.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+
             return objRespuesta;
         }
         [WebMethod()]

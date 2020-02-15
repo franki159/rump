@@ -34,7 +34,6 @@
                     $("#page-loader").hide();
                     msg_OpenDay("c", data.d.Mensaje);
                     $("#frmLogin a").hide();
-                    //window.location = "login.aspx";
                 }
             },
             error: function (data) {

@@ -17,7 +17,7 @@ namespace PRESENTACION
             if (Page.IsPostBack == false)
             {
 
-                if (Session["UserRump"] == null) Response.Redirect("~/login.aspx");
+                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
 
@@ -56,7 +56,7 @@ namespace PRESENTACION
             HttpContext.Current.Session.Clear();
 
             ERespuestaJson objRespuesta = new ERespuestaJson();
-            objRespuesta.Resultado = "login.aspx";
+            objRespuesta.Resultado = "InicioSesion";
             return objRespuesta;
         }
 

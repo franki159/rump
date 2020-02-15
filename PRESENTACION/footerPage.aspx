@@ -64,11 +64,11 @@
                             <!-- Footer Nav -->
                             <ul class="footer-nav">
                                 <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Noticias</a></li>
-                                <li><a href="./servicios.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Servicios</a></li>
-                                <li><a href="./mextraviadas.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Mascotas extraviadas</a></li>
-                                <li><a href="./adoptame.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Adóptame</a></li>
-                                <li><a href="./quienessomos.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>¿Quiénes somos?</a></li>
-                                <li><a href="./contacto.aspx"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
+                                <li><a href="./Servicios"><i class="fa fa-caret-right" aria-hidden="true"></i>Servicios</a></li>
+                                <li><a href="./MascotasExtraviadas"><i class="fa fa-caret-right" aria-hidden="true"></i>Mascotas extraviadas</a></li>
+                                <li><a href="./Adopcion"><i class="fa fa-caret-right" aria-hidden="true"></i>Adóptame</a></li>
+                                <li><a href="./QuienesSomos"><i class="fa fa-caret-right" aria-hidden="true"></i>¿Quiénes somos?</a></li>
+                                <li><a href="./Contacto"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
                             </ul>
                         </div>
                     </div>

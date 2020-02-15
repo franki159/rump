@@ -23,9 +23,9 @@ function InfoSesion() {
         async: false,
         success: function (data, status) {
             if (!data.d.Activo) {
-                $("#divLoginUser").html('<a href="login.aspx"><strong>Iniciar Sesión</br></strong> </br></a><i class="fa fa-user-circle" aria-hidden="true"/>');
+                $("#divLoginUser").html('<a href="InicioSesion"><strong class="hidden-phone">Iniciar Sesión</br></strong> </br></a><a href="InicioSesion"><i class="fa fa-user-circle" aria-hidden="true"/></a>');
             } else {
-                $("#divLoginUser").html('<a href="default.aspx"><strong>' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i class="fa fa-user - circle" aria-hidden="true"></i>');
+                $("#divLoginUser").html('<a href="Sistema"><strong>' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i class="fa fa-user - circle" aria-hidden="true"></i>');
 
             }
         },
@@ -560,7 +560,7 @@ $("#btn_registrar").click(function (evt) {
 
                         guardarImagen(evt, dataImg.d.Resultado, imgTemp);
 
-                        window.location = "default.aspx";
+                        window.location = "Sistema";
                     },
                     error: function (data) {
                         $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -568,7 +568,7 @@ $("#btn_registrar").click(function (evt) {
                     }
                 });
             } else {
-                window.location = "default.aspx";
+                window.location = "Sistema";
             }
         },
         error: function (data) {

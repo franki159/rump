@@ -64,7 +64,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="text-gray-900" href="login.aspx"><p><strong>Volver al Inicio de Sesión</strong></p></a>
+                                        <a class="text-gray-900" href="InicioSesion"><p><strong>Volver al Inicio de Sesión</strong></p></a>
                                       </div>
                                 </div>
                             </div>
