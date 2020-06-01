@@ -27,23 +27,10 @@ $(document).keydown(function (evt) {
     }
 });
 
-//function guardarImagen(evt) {
-//    $.ajax({
-//        type: "POST",
-//        url: "page/proceso/hh_imprimirDNi.ashx",
-//        data: dataImagen,
-//        contentType: false,
-//        processData: false,
-//        success: function (result) {
-//            msg_OpenDay("c", "Usuario guardado correctamente");
-//        },
-//        error: function (err) {
-//            msg_OpenDay("e", "Error al guardar imagen");
-//        }
-//    });
-
-//    evt.preventDefault();
-//}
 $("#btn_print").click(function (evt) {
-    window.open('page/proceso/visorWeb.aspx?numIdentify=' + $("#txt_dni").val(), '_blank');
+    window.open('page/proceso/visorWeb.aspx?tipoImpresion=DNI&numIdentify=' + $("#txt_dni").val(), '_blank');
+});
+
+$("#btn_print_reg").click(function (evt) {
+    window.open('page/proceso/visorWeb.aspx?tipoImpresion=REGISTRO&numIdentify=' + $("#txt_dni").val(), '_blank');
 });

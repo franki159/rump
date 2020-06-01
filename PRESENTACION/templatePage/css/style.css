@@ -1160,4 +1160,21 @@ text-shadow: none;
         display: none !important;
     }
 }
-	
+
+.opt-new {
+    display: inline-block;
+    right: 0px;
+    top: 0px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    color: rgb(233, 233, 233);
+    font-size: 12px;
+    font-weight: 500;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.27) 0px 1px 0px;
+    position: absolute;
+    background: rgb(252, 147, 87);
+    border-radius: 50%;
+}

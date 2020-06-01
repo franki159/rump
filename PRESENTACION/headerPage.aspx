@@ -67,10 +67,11 @@
                                 <ul id="nav">
                                     <li class="active"><a href="./">Inicio</a></li>
                                     <li class="cn-dropdown-item has-down">
-                                        <a href="#">Servicios</a>
+                                        <a href="#">Servicios<span class="opt-new">N</span></a>                                        
                                         <ul class="dropdown">
                                             <li><a href="./Servicios">Servicios</a></li>
                                             <li><a href="./Establecimientos">Convenios</a></li>
+                                            <li><a href="./Genealogia">Genealogia<span class="opt-new">N</span></a></li>
 									    </ul>
                                     </li>
                                     <li><a href="./MascotasExtraviadas">Mascotas extraviadas</a></li>

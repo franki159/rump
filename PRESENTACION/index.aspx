@@ -24,7 +24,20 @@
 
 <body>
     <!--#include file="headerPage.aspx"-->
-
+    <!-- MENSAGE INICIAL -->
+    <div class='modal modal-scroll fade' id='pnl_mascota_mensaje' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span aria-hidden="true">&times;</span></button>
+                    <img src="templatePage/img/core-img/logo-orange.png" alt="">
+                    <h3 class="text-info">Estamos mejorando para tí</h3>
+                    <p>A nombre de la familia RUMP, te ofrecemos disculpas por las demoras en los despachos de tus DNI y chapitas.</p>
+                    <p>Actualmente la sociedad atraviesa un momento difícil por la pandemia mundial. <span class="text-danger"><strong>#YoMeQuedoEnCasa.</strong></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- REPORTAR MASCOTA ENCONTRADA -->
     <div class='modal modal-scroll fade' id='pnl_report_mascota' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
         <div class="modal-dialog modal-xl">
@@ -176,19 +189,19 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Nombres del padre humano<strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo del padre" required="">
+                                        <h6><strong>Nombres del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo del responsable 1" required="">
                                     </div>
                                 </div>
                                  <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Nombres de la madre humano<strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo de la madre" required="">
+                                        <h6><strong>Nombres del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo del responsable 2" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Sexo de la mascota<strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>Sexo de la mascota <strong class="text-danger">(*)</strong></strong></h6>
                                         <select id="sel_sexo" class="form-control">
                                             <option value="0">Seleccionar</option>
                                             <option value="Macho">Macho</option>

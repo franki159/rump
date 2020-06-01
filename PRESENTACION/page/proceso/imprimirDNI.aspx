@@ -22,7 +22,13 @@
                             <span class="icon text-white-50">
                                 <i class="fas fa-print"></i>
                             </span>
-                            <span class="text">Imprimir</span>
+                            <span class="text">Imprimir DNI</span>
+                        </button>
+                        <button id="btn_print_reg" class="btn btn-info btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-print"></i>
+                            </span>
+                            <span class="text">Imprimir Registro</span>
                         </button>
                     </div>
                 </div>

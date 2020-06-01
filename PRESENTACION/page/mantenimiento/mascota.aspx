@@ -185,40 +185,40 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombre del Padre humano <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nom_padre" placeholder="Escriba el nombre del padre humano" class="form-control" type="text" maxlength="100" />
+                                        <label>Nombre del Responsable 1 <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_nom_padre" placeholder="Escriba el nombre del Responsable 1" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>DNI del padre humano <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_dni_padre" placeholder="Escriba el DNI del padre..." class="form-control" type="text" maxlength="100" />
+                                        <label>DNI del Responsable 1 <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_dni_padre" placeholder="Escriba el DNI del Responsable 1" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Teléfono del padre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_tel_padre" placeholder="Escriba el teléfono del padre humano" class="form-control" type="text" maxlength="100" />
+                                        <label>Teléfono del Responsable 1 <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_tel_padre" placeholder="Escriba el teléfono del Responsable 1" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombre de la madre humana <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_nom_madre" placeholder="Escriba el nombre de la madre humana" class="form-control" type="text" maxlength="100" />
+                                        <label>Nombre del Responsable 2 <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_nom_madre" placeholder="Escriba el nombre del Responsable 2" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>DNI de la madre humana <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_dni_madre" placeholder="Escriba el DNI de la madre humana" class="form-control" type="text" maxlength="100" />
+                                        <label>DNI del Responsable 2 <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_dni_madre" placeholder="Escriba el DNI del Responsable 2" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Teléfono de la madre <strong class="text-danger">(*)</strong></label>
-                                        <input id="txt_tel_madre" placeholder="Escriba el teléfono de la madre..." class="form-control" type="text" maxlength="100" />
+                                        <label>Teléfono del Responsable 2 <strong class="text-danger">(*)</strong></label>
+                                        <input id="txt_tel_madre" placeholder="Escriba el teléfono del Responsable 2" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
                             </div>

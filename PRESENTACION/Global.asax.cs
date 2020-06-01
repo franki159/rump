@@ -26,6 +26,7 @@ namespace PRESENTACION
             routes.MapPageRoute("QuienesSomos", "QuienesSomos", "~/quienessomos.aspx");
             routes.MapPageRoute("Contacto", "Contacto", "~/contacto.aspx");
             routes.MapPageRoute("Establecimientos", "Establecimientos", "~/convenios.aspx");
+            routes.MapPageRoute("Genealogia", "Genealogia", "~/genealogia.aspx");
         }
         protected void Application_Start(object sender, EventArgs e)
         {

@@ -147,6 +147,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="genealogia.aspx" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\WebRecognition\Content\bootstrap.css" />
     <Content Include="Areas\WebRecognition\Content\bootstrap.min.css" />
@@ -463,6 +464,8 @@
     <Content Include="img\charpe.png" />
     <Content Include="img\checkbox\Thumbs.db" />
     <Content Include="img\dni\fondo.jpg" />
+    <Content Include="img\dni\registro.jpeg" />
+    <Content Include="img\dni\registro.jpg" />
     <Content Include="img\favicon.png" />
     <Content Include="img\fondo_rump.jpg" />
     <Content Include="img\icons\favicon.ico" />
@@ -664,6 +667,7 @@
     <Content Include="templatePage\img\bg-img\Allqu&amp;Michi-1.jpg" />
     <Content Include="templatePage\img\bg-img\Allqu&amp;Michi-2.jpg" />
     <Content Include="templatePage\img\bg-img\Allqu&amp;Michi-3.jpg" />
+    <Content Include="templatePage\img\bg-img\arbolgenealogico-fondo.jpg" />
     <Content Include="templatePage\img\bg-img\buscadordem.jpg" />
     <Content Include="templatePage\img\bg-img\conejos.jpg" />
     <Content Include="templatePage\img\bg-img\contact.jpg" />
@@ -672,7 +676,9 @@
     <Content Include="templatePage\img\bg-img\dniychapita.png" />
     <Content Include="templatePage\img\bg-img\educacion.jpg" />
     <Content Include="templatePage\img\bg-img\establecimiento-Allqu&amp;Michi.jpg" />
+    <Content Include="templatePage\img\bg-img\establecimiento-fondo.jpg" />
     <Content Include="templatePage\img\bg-img\esterilizacion.jpg" />
+    <Content Include="templatePage\img\bg-img\firmasjuntas.jpg" />
     <Content Include="templatePage\img\bg-img\fondo-quienessomosvideo.jpg" />
     <Content Include="templatePage\img\bg-img\fondoapp.jpg" />
     <Content Include="templatePage\img\bg-img\gatos.jpg" />
@@ -686,16 +692,19 @@
     <Content Include="templatePage\img\bg-img\ig6.jpg" />
     <Content Include="templatePage\img\bg-img\imag-bunny.png" />
     <Content Include="templatePage\img\bg-img\imag-cat.png" />
+    <Content Include="templatePage\img\bg-img\imag-chicken.jpg" />
     <Content Include="templatePage\img\bg-img\imag-cirug.png" />
     <Content Include="templatePage\img\bg-img\imag-cuy.png" />
     <Content Include="templatePage\img\bg-img\imag-dog.png" />
     <Content Include="templatePage\img\bg-img\imag-eriz.png" />
+    <Content Include="templatePage\img\bg-img\imag-erizo.jpg" />
     <Content Include="templatePage\img\bg-img\imag-groom.png" />
     <Content Include="templatePage\img\bg-img\imag-hamster.png" />
     <Content Include="templatePage\img\bg-img\imag-laborat.png" />
     <Content Include="templatePage\img\bg-img\imag-loro.png" />
     <Content Include="templatePage\img\bg-img\imag-mas.png" />
     <Content Include="templatePage\img\bg-img\imag-medi.png" />
+    <Content Include="templatePage\img\bg-img\imag-perico.jpg" />
     <Content Include="templatePage\img\bg-img\imag-petshop.png" />
     <Content Include="templatePage\img\bg-img\imgadopcion.jpg" />
     <Content Include="templatePage\img\bg-img\imgapp.jpg" />
@@ -788,6 +797,7 @@
     <Content Include="templatePage\img\core-img\logocircle.png" />
     <Content Include="templatePage\img\core-img\mascotasextraviadas.png" />
     <Content Include="templatePage\img\core-img\massrevicios.png" />
+    <Content Include="templatePage\img\core-img\nocompresadopta.png" />
     <Content Include="templatePage\img\core-img\notirump.png" />
     <Content Include="templatePage\img\core-img\nuestro-programa.png" />
     <Content Include="templatePage\img\core-img\phone.png" />
@@ -2790,6 +2800,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="genealogia.aspx.cs">
+      <DependentUpon>genealogia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="genealogia.aspx.designer.cs">
+      <DependentUpon>genealogia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
