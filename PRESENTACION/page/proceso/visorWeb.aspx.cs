@@ -42,10 +42,13 @@ namespace PRESENTACION.page.proceso
 
         public string letraCapital(string valor) {
             string resultado = "";
-            var arrayTexto = valor.Split(Convert.ToChar(" "));
+            var arrayTexto = valor.Trim().Split(Convert.ToChar(" "));
             for (int i = 0; i < arrayTexto.Length; i++)
             {
-                resultado += arrayTexto[i].Trim().Substring(0, 1).ToUpper() + arrayTexto[i].Trim().Substring(1, arrayTexto[i].Trim().Length - 1).ToLower() + " ";
+                if (arrayTexto[i].Trim() != "")
+                {
+                    resultado += arrayTexto[i].Trim().Substring(0, 1).ToUpper() + arrayTexto[i].Trim().Substring(1, arrayTexto[i].Trim().Length - 1).ToLower() + " ";
+                }                
             }
 
             return resultado.Trim();

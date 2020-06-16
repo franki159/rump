@@ -502,6 +502,7 @@
                                                 <label class="btn btn-primary btn-upload">
 										            Subir<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
 				                                </label>
+                                                <span><label class="lblPortada">Portada</label></span>
                                             </div><!-- col-2 -->
                                             <i class="fa fa-plus imgAdd"></i>
                                         </div><!-- row -->
