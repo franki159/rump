@@ -16,21 +16,29 @@ namespace PRESENTACION.page.mantenimiento
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            string str_image = "";
-
-            foreach (string s in context.Request.Files)
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
             {
-                HttpPostedFile file = context.Request.Files[s];
-                str_image = context.Request.Form["name"];
+                context.Response.ContentType = "text/plain";
+                string str_image = "";
 
-                if (!string.IsNullOrEmpty(str_image))
+                foreach (string s in context.Request.Files)
                 {
-                    string pathToSave = HttpContext.Current.Server.MapPath("~/img/mascota/") + str_image;
-                    file.SaveAs(pathToSave);
+                    HttpPostedFile file = context.Request.Files[s];
+                    str_image = context.Request.Form["name"];
+
+                    if (!string.IsNullOrEmpty(str_image))
+                    {
+                        string pathToSave = HttpContext.Current.Server.MapPath("~/img/mascota/") + str_image;
+                        file.SaveAs(pathToSave);
+                    }
                 }
+                context.Response.Write(str_image);
             }
-            context.Response.Write(str_image);
+            catch (Exception ex)
+            {
+                NMascota.log_error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message, "imagen mascota");
+            }
         }
         
         public bool IsReusable

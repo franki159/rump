@@ -900,15 +900,15 @@ function guardarImagen(evt, nameId, file) {
     var dataImagen = new FormData();
     dataImagen.append('file', file);
     dataImagen.append('name', nameId);
-
+    
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/hh_imagenMascota.ashx",
         data: dataImagen,
         async: false,
-        contentType: false,
+        contentType: "application/json; charset=utf-8",
         processData: false,
-        success: function (result) {
+        success: function (data) {
             //msg_OpenDay("c", "Mascota guardada correctamente");
             objResp = 0;
         },

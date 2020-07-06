@@ -376,7 +376,19 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
-        
+        public static int log_error(string p_error, string p_tipo)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_log_error", cn);
+                cmd.Parameters.AddWithValue("@v_error", p_error);
+                cmd.Parameters.AddWithValue("@tipo", p_tipo);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
         public static int EncontradaMascotaWM(EMascota objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))

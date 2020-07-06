@@ -2,7 +2,7 @@
 
 <%--<link href="../../assets/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
 <script src="../../assets/dropzone/dropzone.js" type="text/javascript"></script>--%>
-<link href="../../assets/upGalleryFCP/upGalleryFCP.css" rel="stylesheet" />
+<link href="../../assets/upGalleryFCP/upGalleryFCP.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
 <script src="../../assets/upGalleryFCP/upGalleryFCP.js"></script>
 
 <div id="errorDiv"></div>

@@ -34,3 +34,7 @@ $("#btn_print").click(function (evt) {
 $("#btn_print_reg").click(function (evt) {
     window.open('page/proceso/visorWeb.aspx?tipoImpresion=REGISTRO&numIdentify=' + $("#txt_dni").val(), '_blank');
 });
+
+$("#btn_print_resp").click(function (evt) {
+    window.open('page/proceso/visorWeb.aspx?tipoImpresion=RESPONSABLE&numIdentify=' + $("#txt_dni").val(), '_blank');
+});

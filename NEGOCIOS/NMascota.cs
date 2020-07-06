@@ -104,5 +104,10 @@ namespace NEGOCIOS
         {
             return DMascota.ReportarMascotaWM(ent);
         }
+
+        public static int log_error(string p_error, string p_tipo)
+        {
+            return DMascota.log_error(p_error, p_tipo);
+        }
     }
 }
