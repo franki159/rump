@@ -87,6 +87,7 @@ namespace ENTIDAD
         public string PASSWORD { get; set; }
         //FILTRO
         public int MES { get; set; }
+        public int INDICE { get; set; }
         public Nullable<DateTime> FEC_INI { get; set; }
         public Nullable<DateTime> FEC_FIN { get; set; }
     }

@@ -81,7 +81,7 @@ namespace NEGOCIOS
         {
             return DMascota.ActualizarMascotaWM(ent);
         }
-        public static int ActualizarFotoMascotaWM(EMascota ent)
+        public static string ActualizarFotoMascotaWM(EMascota ent)
         {
             return DMascota.ActualizarFotoMascotaWM(ent);
         }

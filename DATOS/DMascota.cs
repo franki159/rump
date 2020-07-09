@@ -553,17 +553,31 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
-        public static int ActualizarFotoMascotaWM(EMascota objE)
+        public static string ActualizarFotoMascotaWM(EMascota objE)
         {
+            string foto = "";
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_mascota", cn);
-                cmd.Parameters.AddWithValue("@galeria_id", objE.GALERIA_ID);
+                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@foto", objE.FOTO);
+                cmd.Parameters.AddWithValue("@indice", objE.INDICE);
+                cmd.Parameters.AddWithValue("@galeria_id", objE.GALERIA_ID);
                 cmd.Parameters.AddWithValue("@opcion", 5);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
-                return cmd.ExecuteNonQuery();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            foto = dr.IsDBNull(dr.GetOrdinal("FOTO")) ? string.Empty : dr.GetString(dr.GetOrdinal("FOTO"));
+                        }
+                    }
+                }
+
+                return foto;
             }
         }
         public static string InsertarFotoMascotaWM(EMascota objE)

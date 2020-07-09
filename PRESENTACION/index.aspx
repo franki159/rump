@@ -113,10 +113,10 @@
                     <div id="errorRegistro"></div>
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="nav-item">
-                            <a class="nav-link active" id="propietario-tab" data-toggle="tab" href="#propietario" role="tab" aria-controls="propietario" aria-selected="true">Datos de propietario</a>
+                            <a class="nav-link active" id="propietario-tab" data-toggle="tab" href="#propietario" role="tab" aria-controls="propietario" aria-selected="true">Responsable</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="mascota-tab" data-toggle="tab" href="#mascota" role="tab" aria-controls="mascota" aria-selected="false">Datos de la mascota</a>
+                            <a class="nav-link" id="mascota-tab" data-toggle="tab" href="#mascota" role="tab" aria-controls="mascota" aria-selected="false">Mascota</a>
                         </li>
                     </ul>
                     <div class="tab-content">

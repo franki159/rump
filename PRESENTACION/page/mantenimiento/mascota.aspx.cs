@@ -523,18 +523,18 @@ namespace PRESENTACION.page.mantenimiento
                     return objRespuesta;
                 }
 
-                int objResultado = 0;
+                string objResultado = "";
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
-                objE.FOTO = EUtil.getEncriptar(EUtil.getDesencriptar(objE.ID_ENCRIP)) + "." + objE.EXTENSION;
+                objE.FOTO = objE.EXTENSION;
                 objResultado = NMascota.ActualizarFotoMascotaWM(objE);
 
-
-                if (objResultado == 0)
+                if (objResultado == "")
                 {
                     objRespuesta.Error("No se pudo actualizar.");
                 }
                 else
                 {
+                    objRespuesta.Resultado = objResultado;
                     objRespuesta.Success("Se guardó la información correctamente");
                 }
             }

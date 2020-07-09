@@ -906,7 +906,7 @@ function guardarImagen(evt, nameId, file) {
         url: "page/mantenimiento/hh_imagenMascota.ashx",
         data: dataImagen,
         async: false,
-        contentType: "application/json; charset=utf-8",
+        contentType: false,
         processData: false,
         success: function (data) {
             //msg_OpenDay("c", "Mascota guardada correctamente");
@@ -1446,17 +1446,50 @@ $("#btn_guardar").click(function (evt) {
             } else if (id_mascota !== "") {//Modificar
                 //Guardando todas las imagenes BD
                 error_img = 0;
-
+                var inxImg = 0;
                 //Las imagenes cambiadas (solo actualiza las imagenes en el servidor no BD)
                 $(".container-file").find($("input")).each(function () {
                     if ($(this).get(0).files.length !== 0) {
                         if ($(this).parent().parent().children(0)[0].id !== "") {//Solo los que tiene id
                             var imgTemp = $(this)[0].files[0];
                             var nameAct = $(this).parent().parent().children(0).attr("img-fcp-url");
+                            var gal_id = $(this).parent().parent().children(0)[0].id.split("_")[1];
+                            //Actualizando el nombre en la base de datos
+                            eMascota = {
+                                ID_ENCRIP: id_mascota,
+                                EXTENSION: getExtension(imgTemp.name),
+                                GALERIA_ID: gal_id,
+                                INDICE: inxImg
+                            };
+
+                            $.ajax({
+                                type: "POST",
+                                url: "page/mantenimiento/mascota.aspx/ActualizarFotoMascotaWM",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                data: JSON.stringify({ objE: eMascota }),
+                                async: false,
+                                success: function (dataImg) {
+                                    if (!dataImg.d.Activo) {
+                                        $("#errorMascota").html(GenerarAlertaError(dataImg.d.Mensaje));
+                                        closeLoading();
+                                        return;
+                                    }
+
+                                    error_img += guardarImagen(evt, dataImg.d.Resultado, imgTemp);
+                                },
+                                error: function (data) {
+                                    $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
+                                    closeLoading();
+                                }
+                            });
+
+                            event.preventDefault();
                             
-                            error_img += guardarImagen(evt, nameAct, imgTemp);
+                            //error_img += guardarImagen(evt, nameAct, imgTemp);
                         }                        
                     }
+                    inxImg++;
                 });
                 //Si agrego mas imagenes (los que no tienen id, insertan en la bd)
                 $(".container-file").find($("input")).each(function () {

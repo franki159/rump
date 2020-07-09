@@ -534,6 +534,7 @@ $("#btn_registrar").click(function (evt) {
                 closeLoading();
                 return;
             }
+            
             //Guardando Foto
             if ($("#customFile").get(0).files.length !== 0) {
                 var imgTemp = $("#customFile")[0].files[0];
@@ -561,7 +562,7 @@ $("#btn_registrar").click(function (evt) {
 
                         guardarImagen(evt, dataImg.d.Resultado, imgTemp);
 
-                        window.location = "Sistema";
+                        window.location = "Sistema#!/page/mantenimiento/mascota";
                     },
                     error: function (data) {
                         $("#errorMascota").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -569,7 +570,7 @@ $("#btn_registrar").click(function (evt) {
                     }
                 });
             } else {
-                window.location = "Sistema";
+                window.location = "Sistema#!/page/mantenimiento/mascota";
             }
         },
         error: function (data) {
