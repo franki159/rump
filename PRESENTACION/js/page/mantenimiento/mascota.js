@@ -249,42 +249,84 @@ function fc_listar_mascota() {
 
             $("#tbl_mascota a").click(function () {
                 if ($(this).attr("name") === "detalles") {
-                    var objE = {
+                    var eMascota = {
                         ID_ENCRIP: $(this).attr("id")
                     };
-
+                 
                     $.ajax({
                         type: "POST",
-                        url: "page/mantenimiento/mascota.aspx/ObtenerMascotaWM",
+                        url: "index.aspx/ObtenerMascotaxIdWM",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
-                        data: JSON.stringify({ objE: objE }),
-                        async: true,
+                        data: JSON.stringify({ objE: eMascota }),
                         beforeSend: function () {
                             $("#errorMascota_v").html('');
-                            $("#tbl_mascota button").attr("disabled", true);
                         },
+                        async: true,
                         success: function (data) {
-                            $("#tbl_mascota button").removeAttr("disabled");
-
-                            if (data.d.error) {
-                                $("#errorDiv").html(GenerarAlertaError(data.d.error));
+                            if (!data.d.Activo) {
+                                msg_OpenDay("e", "Error al consultar el DNI");
+                                closeLoading();
                                 return;
                             }
 
+                            if (data.d.Resultado.ID === 0) {
+                                msg_OpenDay("e", "El dni es incorrecto");
+                                closeLoading();
+                                return;
+                            }
+
+                            $(".tbl-dni-msc").html(data.d.Resultado.DNI);
+                            $(".tbl-ape-msc").html(data.d.Resultado.NOMBRE);
+                            $(".tbl-nom-msc").html(data.d.Resultado.APELLIDO);
+                            $(".tbl-sex-msc").html(data.d.Resultado.SEXO);
+                            $(".tbl-est-rep").html(data.d.Resultado.CASTRADO === 1 ? "Si" : "No");
+                            $(".tbl-fec-nac").html(formatDate(parseDateServer(data.d.Resultado.FEC_NAC), "dd MM yyyy"));
+                            $(".tbl-fec-ins").html(formatDate(parseDateServer(data.d.Resultado.FEC_CREA), "dd MM yyyy"));
+                            $(".tbl-fec-emi").html(formatDate(parseDateServer(data.d.Resultado.FEC_EMI), "dd MM yyyy"));
+                            $(".tbl-fec-cad").html(formatDate(parseDateServer(data.d.Resultado.FEC_CAD), "dd MM yyyy"));
+
+                            //Vuelta
+                            //Direccion
+                            $(".tbl-dep-msc").html(data.d.Resultado.DEPARTAMENTO);
+                            $(".tbl-pro-msc").html(data.d.Resultado.PROVINCIA);
+                            $(".tbl-dis-msc").html(data.d.Resultado.DISTRITO);
+                            $(".tbl-dir-msc").html(data.d.Resultado.DIRECCION);
+                            //Padres
+                            $(".tbl-res1-msc").html(data.d.Resultado.FAMILIARP);
+                            $(".tbl-res2-msc").html(data.d.Resultado.FAMILIARM);
+
+                            $(".tbl-raz-msc").html(data.d.Resultado.RAZA);
+
+                            var calificacion = data.d.Resultado.CALIFICACION;
+                            switch (calificacion) {
+                                case "Rojo":
+                                    calificacion = "AGRESIVO"; break;
+                                case "Verde":
+                                    calificacion = "AMISTOSO"; break;
+                                case "Blanco":
+                                    calificacion = "DISCAPACITADO"; break;
+                                case "Azul":
+                                    calificacion = "ENTRENADO"; break;
+                                case "Amarillo":
+                                    calificacion = "MIEDOSO"; break;
+                                case "Naranja":
+                                    calificacion = "PELEADOR"; break;
+                            }
+
                             if (data.d.Resultado.lMASCOTA.length > 0)
-                                $("#img_Foto_v").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + "?v=" + valRND);
-                            $("#txt_nombre_v").val(data.d.Resultado.NOMBRE + ' ' + data.d.Resultado.APELLIDO);
-                            $("#txt_dni_v").val(data.d.Resultado.DNI);
-                            $("#txt_tel_v").val(data.d.Resultado.TELEFONOP);
-                            $("#txt_dir_v").val(data.d.Resultado.DIRECCION);
-                            $("#sel_calificacion_v").val(data.d.Resultado.CALIFICACION);
+                                $(".tbl-img-msc").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + '?v=' + valRND);
+
+                            $(".tbl-cla-msc").html(calificacion);
+                            $(".tbl-col-msc").html(data.d.Resultado.COLOR);
+
+                            closeLoading();
 
                             $("#pnl_mascota_v").modal('show');
                         },
                         error: function (data) {
-                            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
-                            $("#tbl_mascota button").removeAttr("disabled");
+                            msg_OpenDay("e", "Error al consultar el DNI");
+                            closeLoading();
                         }
                     });
                     event.preventDefault();

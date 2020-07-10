@@ -562,7 +562,7 @@
 </div>
 <!--***********************  MASCOTA DETALLE  **************************-->
 <div class='modal modal-scroll fade' id='pnl_mascota_v' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Detalles de la Mascota</h4>
@@ -571,58 +571,157 @@
             <div class="modal-body">
                 <div id="errorMascota_v"></div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group text-center">
-                            <img src="#" id="img_Foto_v" style="width: 150px; height: 150px; background-color: #d6d6d6; border-radius: 50%;" onerror="this.src='img/noPets.png';" />
-                        </div>
+                    <div class="col-md-6">
+                        <table style="background-image: url(img/dni/fondo_nuevo.png);background-size: 500px 340px;background-repeat: no-repeat; color:#000; border: 1px solid #000;" >
+                            <tr>
+                                <td colspan="5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="3" class="text-center"><b>REPÚBLICA DEL PERÚ<br>REGISTRO ÚNICO DE MASCOTAS</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-dni-msc text-danger text-center" style="font-weight:bold; padding-left:20px;padding-right:20px">DNI</td>
+                                <td colspan="2" class="text-primary">Apellidos</td>
+                                <td rowspan="8">
+                                    <img src="#" class="tbl-img-msc" style="width: 150px; height: 180px; background-color: #d6d6d6;" onerror="this.src='img/noPets.png';" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan ="7"></td><td class="tbl-ape-msc" style="font-weight:bold;">Apellido mascota</td>
+                                <td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary">Nombres</td>
+                                <td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="tbl-nom-msc" style="font-weight:bold;">Nombre mascota</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary">Sexo</td>
+                                <td class="text-primary">Estado Reproductivo</td><td></td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-sex-msc" style="font-weight:bold;">Sexo mascota</td>
+                                <td class="tbl-est-rep" style="font-weight:bold;">Est rep</td><td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary">Fecha de nacimiento</td>
+                                <td class="text-primary">Fecha de emisión</td><td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan ="4" class="text-center">
+                                    <img src="#" class="tbl-img-msc" style="width: 50px; height: 57px; background-color: #d6d6d6;" onerror="this.src='img/noPets.png';" />
+                                </td>
+                                <td class="tbl-fec-nac" style="font-weight:bold;">fec nac</td>
+                                <td class="tbl-fec-emi" style="font-weight:bold;">fec emi</td>
+                                <td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td class="text-primary">Fecha de Inscripción</td>
+                                <td class="text-primary">Fecha de caducidad</td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-fec-ins" style="font-weight:bold;">fec ins</td>
+                                <td class="tbl-fec-cad" style="font-weight:bold;">fec cad</td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                        </table>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><strong>Nombre</strong></label>
-                            <input id="txt_nombre_v" class="form-control" type="text" disabled="disabled" maxlength="100" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><strong>DNI</strong></label>
-                            <input id="txt_dni_v" class="form-control" type="text" disabled="disabled" maxlength="100" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><strong>Teléfono</strong></label>
-                            <input id="txt_tel_v" class="form-control" type="text" disabled="disabled" maxlength="100" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><strong>Dirección</strong></label>
-                            <input id="txt_dir_v" class="form-control" type="text" disabled="disabled" maxlength="100" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><strong>Calificación</strong></label>
-                            <select id="sel_calificacion_v" disabled="disabled" class="form-control">
-                                <option value="0">Seleccionar</option>
-                                <option value="Rojo">Agresivo</option>
-                                <option value="Verde">Amistoso</option>
-                                <option value="Blanco">Discapacitado</option>
-                                <option value="Azul">Entrenado</option>
-                                <option value="Amarillo">Miedoso</option>
-                                <option value="Naranja">Peleador</option>
-                            </select>
-                        </div>
+                    <div class="col-md-6">
+                        <table style="color:#000; border: 1px solid #000;" >
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td width="150">Departamento</td>
+                                <td width="150">Provincia</td>
+                                <td width="220" colspan="2">Distrito</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-dep-msc">Departamento</td>
+                                <td class="tbl-pro-msc">Provincia</td>
+                                <td class="tbl-dis-msc" colspan="2">Distrito</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Direccion</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-dir-msc" colspan="3">Direccion</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Responsable 1</td><td rowspan="11"></td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-res1-msc" colspan="3">resp1</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Responsable 2</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-res2-msc" colspan="3">resp2</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Raza</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-raz-msc" colspan="3">raza</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Color</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-col-msc" colspan="3">color</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Clasificación</td>
+                            </tr>
+                            <tr>
+                                <td class="tbl-cla-msc" colspan="4">clasifi</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

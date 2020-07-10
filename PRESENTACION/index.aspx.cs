@@ -176,5 +176,22 @@ namespace PRESENTACION
             }
             return objRespuesta;
         }
+
+        [WebMethod()]
+        public static object ObtenerMascotaxIdWM(EMascota objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                EMascota objResultado = new EMascota();
+                objResultado = NMascota.ObtenerMascotaxId(objE);
+                objRespuesta.Resultado = objResultado;
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
     }
 }
