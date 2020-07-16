@@ -277,8 +277,9 @@ function fc_listar_mascota() {
                             }
 
                             $(".tbl-dni-msc").html(data.d.Resultado.DNI);
-                            $(".tbl-ape-msc").html(data.d.Resultado.NOMBRE);
-                            $(".tbl-nom-msc").html(data.d.Resultado.APELLIDO);
+                            $(".tbl-ape-msc").html(data.d.Resultado.APELLIDO.trim() === "" ? "-" : data.d.Resultado.APELLIDO);
+                            $(".tbl-nom-msc").html(data.d.Resultado.NOMBRE.trim() === "" ? "-" : data.d.Resultado.NOMBRE);
+                            $(".lbl-est-rep").html(data.d.Resultado.SEXO === "Macho" ? "Castrado" : "Esterilizada");
                             $(".tbl-sex-msc").html(data.d.Resultado.SEXO);
                             $(".tbl-est-rep").html(data.d.Resultado.CASTRADO === 1 ? "Si" : "No");
                             $(".tbl-fec-nac").html(formatDate(parseDateServer(data.d.Resultado.FEC_NAC), "dd MM yyyy"));
@@ -293,8 +294,8 @@ function fc_listar_mascota() {
                             $(".tbl-dis-msc").html(data.d.Resultado.DISTRITO);
                             $(".tbl-dir-msc").html(data.d.Resultado.DIRECCION);
                             //Padres
-                            $(".tbl-res1-msc").html(data.d.Resultado.FAMILIARP);
-                            $(".tbl-res2-msc").html(data.d.Resultado.FAMILIARM);
+                            $(".tbl-res1-msc").html(data.d.Resultado.FAMILIARP.trim() === "" ? "-" : data.d.Resultado.FAMILIARP);
+                            $(".tbl-res2-msc").html(data.d.Resultado.FAMILIARM.trim() === "" ? "-" : data.d.Resultado.FAMILIARM);
 
                             $(".tbl-raz-msc").html(data.d.Resultado.RAZA);
 
@@ -318,7 +319,7 @@ function fc_listar_mascota() {
                                 $(".tbl-img-msc").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + '?v=' + valRND);
 
                             $(".tbl-cla-msc").html(calificacion);
-                            $(".tbl-col-msc").html(data.d.Resultado.COLOR);
+                            $(".tbl-col-msc").html(data.d.Resultado.COLOR.trim() === "" ? "-" : data.d.Resultado.COLOR);
 
                             closeLoading();
 
@@ -1503,7 +1504,7 @@ $("#btn_guardar").click(function (evt) {
                                 GALERIA_ID: gal_id,
                                 INDICE: inxImg
                             };
-
+                            debugger;
                             $.ajax({
                                 type: "POST",
                                 url: "page/mantenimiento/mascota.aspx/ActualizarFotoMascotaWM",

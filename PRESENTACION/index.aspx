@@ -30,10 +30,12 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span aria-hidden="true">&times;</span></button>
-                    <img src="templatePage/img/core-img/logo-orange.png" alt="">
-                    <h3 class="text-info">Estamos mejorando para tí</h3>
-                    <p>A nombre de la familia RUMP, te ofrecemos disculpas por las demoras en los despachos de tus DNI y chapitas.</p>
-                    <p>Actualmente la sociedad atraviesa un momento difícil por la pandemia mundial. <span class="text-danger"><strong>#YoMeQuedoEnCasa.</strong></span></p>
+                    <img src="img/inicio/boton-pago.jpg" alt="">
+                    <h3 class="text-info">Ahora puedes pagar online</h3>
+                    <p><span class="text-danger"><strong>#YoMeQuedoEnCasa.</strong></span></p>
+                    <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js"
+                    data-preference-id="334567666-607712ca-bc25-4835-a04c-ffb7d94ed2db">
+                    </script>
                 </div>
             </div>
         </div>

@@ -99,7 +99,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nombre de la mascota<strong class="text-danger">(*)</strong></label>
+                                        <label>Nombre de la mascota <strong class="text-danger">(*)</strong></label>
                                         <input id="txt_nombre" placeholder="Escriba el nombre de la mascota..." class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
@@ -565,14 +565,15 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Detalles de la Mascota</h4>
+                <h4 class="modal-title">DNI Virtual</h4>
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color: #333333;">
                 <div id="errorMascota_v"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <table style="background-image: url(img/dni/fondo_nuevo.png);background-size: 500px 340px;background-repeat: no-repeat; color:#000; border: 1px solid #000;" >
+                        <div style="padding-right: 0.75rem;padding-left: 0.75rem;border: 3px solid #000;border-radius: 25px;background-repeat: no-repeat;max-width: 470px!important;background-image: url(img/dni/fondo_nuevo.png);background-size: cover;color: #000;">
+                        <table>
                             <tr>
                                 <td colspan="5">&nbsp;</td>
                             </tr>
@@ -587,13 +588,10 @@
                                 <td colspan="5">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td colspan="5">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="tbl-dni-msc text-danger text-center" style="font-weight:bold; padding-left:20px;padding-right:20px">DNI</td>
+                                <td class="tbl-dni-msc text-danger text-center" style="font-weight:bold; padding-left:10px;padding-right:10px">DNI</td>
                                 <td colspan="2" class="text-primary">Apellidos</td>
                                 <td rowspan="8">
-                                    <img src="#" class="tbl-img-msc" style="width: 150px; height: 180px; background-color: #d6d6d6;" onerror="this.src='img/noPets.png';" />
+                                    <img src="#" class="tbl-img-msc" style="width: 130px; height: 150px; background-color: #d6d6d6;" onerror="this.src='img/noPets.png';" />
                                 </td>
                                 <td></td>
                             </tr>
@@ -614,14 +612,14 @@
                             </tr>
                             <tr>
                                 <td class="text-primary">Sexo</td>
-                                <td class="text-primary">Estado Reproductivo</td><td></td>
+                                <td class="text-primary lbl-est-rep">Estado Reproductivo</td><td></td>
                             </tr>
                             <tr>
                                 <td class="tbl-sex-msc" style="font-weight:bold;">Sexo mascota</td>
                                 <td class="tbl-est-rep" style="font-weight:bold;">Est rep</td><td></td>
                             </tr>
                             <tr>
-                                <td class="text-primary">Fecha de nacimiento</td>
+                                <td class="text-primary">Fecha de nacimiento</td>
                                 <td class="text-primary">Fecha de emisión</td><td></td>
                             </tr>
                             <tr>
@@ -634,7 +632,7 @@
                             </tr>
                             <tr>
                                 <td class="text-primary">Fecha de Inscripción</td>
-                                <td class="text-primary">Fecha de caducidad</td><td></td><td></td>
+                                <td class="text-primary">Fecha de caducidad</td><td></td><td></td>
                             </tr>
                             <tr>
                                 <td class="tbl-fec-ins" style="font-weight:bold;">fec ins</td>
@@ -644,9 +642,11 @@
                                 <td colspan="4">&nbsp;</td>
                             </tr>
                         </table>
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <table style="color:#000; border: 1px solid #000;" >
+                        <div style="padding-right: 0.75rem;padding-left: 0.75rem;border: 3px solid #000;border-radius: 25px;background: #fff;max-width: 470px!important;color: #000;">
+                        <table>
                             <tr>
                                 <td colspan="4">&nbsp;</td>
                             </tr>
@@ -669,12 +669,6 @@
                             <tr>
                                 <td class="tbl-dir-msc" colspan="3">Direccion</td>
                                 <td></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">&nbsp;</td>
                             </tr>
                             <tr>
                                 <td colspan="4">&nbsp;</td>
@@ -713,20 +707,15 @@
                                 <td class="tbl-col-msc" colspan="3">color</td>
                             </tr>
                             <tr>
-                                <td colspan="4">&nbsp;</td>
-                            </tr>
-                            <tr>
                                 <td colspan="4">Clasificación</td>
                             </tr>
                             <tr>
                                 <td class="tbl-cla-msc" colspan="4">clasifi</td>
                             </tr>
                         </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
