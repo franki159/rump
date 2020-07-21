@@ -43,7 +43,7 @@
                     $("#frmLogin :input").removeAttr("disabled");
                     $("#usuario").focus();
                 } else {
-                    window.location = "Sistema";
+                    window.location = "Sistema#!/page/mantenimiento/mascota";
                 }
             },
             error: function (data) {

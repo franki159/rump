@@ -31,7 +31,7 @@ function activaTab(tab) {
 }
 function fc_listar_inicio() {
     /************************ Listado de Tipo ****************************/
-    if (sessionStorage.getItem('PERFIL_ID') === "4") {
+    if (sessionStorage.getItem('PERFIL_ID') === "4") {//Para los propietarios
         $("#divBusqueda").remove();
         fc_listar_mascota();
     } else {
@@ -156,6 +156,8 @@ function fc_listar_mascota() {
             formatButton += '        </div>';
             formatButton += '    </a>';
 
+            var cont_dni_problema = 0;
+
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 var htmlBotones = '';
                 htmlBotones += '<div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="row_' + i*100 +'">';
@@ -164,12 +166,12 @@ function fc_listar_mascota() {
                 htmlBotones += '    </h6>';
                 htmlBotones += formatButton.format('href="#" name="edit-mascota" indx="' + (i+1) +'"', 'bg-primary', 'fas fa-pencil-alt', 'Editar');
 
-                if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
+                if (data.d.Resultado[i].ESTADO === 2 || data.d.Resultado[i].ESTADO === 100) {//Sin DNI
                     htmlBotones += formatButton.format('name="soli-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
                     htmlBotones += formatButton.format('name="cup-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-ticket-alt', 'Tengo un cupón');
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
                     htmlBotones += formatButton.format('name="quit-adop" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
-                } else if (data.d.Resultado[i].ESTADO === 1) {//Con DNI (no adopcion)
+                } else if (data.d.Resultado[i].ESTADO === 1 || data.d.Resultado[i].ESTADO === 200) {//Con DNI (no adopcion)
                     $('#sel_mascota').append("<option dni-msct='" + data.d.Resultado[i].DNI + "' value='" + data.d.Resultado[i].ID_ENCRIP + "'>" + data.d.Resultado[i].NOMBRE + "</option>");
 
                     htmlBotones += formatButton.format('name="rep-per" indx="' + (i + 1) +'"', 'bg-warning', 'far fa-sad-cry', 'Reportar perdida');
@@ -215,6 +217,7 @@ function fc_listar_mascota() {
                     '</td>'; 
 
                 html += '<td>' + data.d.Resultado[i].DNI + '</td>';
+
                 switch (data.d.Resultado[i].ESTADO) {
                     case 1:
                         html += '<td><i class="fas fa-check-circle text-success" style="font-size: 25px;"></i></td>';
@@ -231,6 +234,14 @@ function fc_listar_mascota() {
                     case 5:
                         html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;FALLECIDO</span></td>';
                         break;
+                    case 100:
+                        html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-ban"></i>&nbsp;VENCIDO</span></td>';
+                        cont_dni_problema++;
+                        break;
+                    case 200:
+                        html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-minus-square"></i>&nbsp;POR VENCER</span></td>';
+                        cont_dni_problema++;
+                        break;
                     default:
                         html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;--</span></td>';
                         break;                    
@@ -243,7 +254,7 @@ function fc_listar_mascota() {
                 html += '<td>' + data.d.Resultado[i].TIPO_DSC + '</td>';
                 html += '<td>' + data.d.Resultado[i].RAZA_DSC + '</td></tr>';
             }
-
+            
             $("#tbl_mascota tbody").append(html);
             $("#lblTotalReg").html("Total Registros: " + data.d.Resultado.length);
 
@@ -594,6 +605,9 @@ function fc_listar_mascota() {
             });
             
             closeLoading();
+            if (cont_dni_problema > 0) {
+                msg_OpenDay("a", "Algunos dni estan por vencer o vencidos. No te quedes sin los beneficios y renuevalos.");
+            }
         },
         error: function (data) {
             $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
