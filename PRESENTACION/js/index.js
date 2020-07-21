@@ -9,7 +9,7 @@ $(document).ready(function () {
     closeLoading();
     InfoSesion();
     fc_listar_inicio();
-    $("#pnl_mascota_mensaje").modal('show');
+    //$("#pnl_mascota_mensaje").modal('show');
     //closeLoading();
 });
 function activaTab(tab) {
@@ -363,6 +363,13 @@ $("#customFile").on('change', function () {
 $(".btn-pre-registrar").click(function () {
     $("#pnl_pre_registro").modal();
 });
+$("#sel_sexo").on('change', function () {
+    if ($(this).val() === 'Macho') {
+        $("#lbl_masc_castrada").html('¿La mascota está castrada?');
+    } else {
+        $("#lbl_masc_castrada").html('¿La mascota está esterilizada?');
+    }
+});
 
 function guardarImagen(evt, nameId, file) {
     var objResp = 0;
@@ -430,7 +437,7 @@ $("#btn_registrar").click(function (evt) {
     } else if (validIdInput($("#txt_nombre_padre").val()) && validIdInput($("#txt_nombre_madre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Familia: Ingresar el nombre del padre o de la madre"));
         closeLoading();
-        activaTab('mascota');
+        activaTab('propietario');
         $("#txt_nombre_padre").focus();
         return;
     } else if (isDate($("#txt_fecha_nac").val(), "yyyy-MM-dd")===false) {
@@ -493,6 +500,18 @@ $("#btn_registrar").click(function (evt) {
         activaTab('mascota');
         $("#sel_distrito").focus();
         return;
+    } else if (validIdInput($("#txt_tel_padre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Telefono: Ingrese telefono del responsable 1"));
+        closeLoading();
+        activaTab('propietario');
+        $("#txt_tel_padre").focus();
+        return;
+    } else if (validIdInput($("#txt_tel_madre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Telefono: Ingrese telefono del responsable 2"));
+        closeLoading();
+        activaTab('propietario');
+        $("#txt_tel_madre").focus();
+        return;
     }
   
     var eMascota = {
@@ -503,18 +522,21 @@ $("#btn_registrar").click(function (evt) {
         TELEFONO: $("#txt_telefono_pre").val(),
         DNI: $("#txt_documento_pre").val(),
         PASSWORD: $("#txt_password_pre").val(),
+        FAMILIARP: $("#txt_nombre_padre").val(),
+        TELEFONOP: $("#txt_tel_padre").val(),
+        FAMILIARM: $("#txt_nombre_madre").val(),
+        TELEFONOM: $("#txt_tel_madre").val(),
         //Mascota***********
         NOMBRE: $("#txt_nombre_masc").val(),
-        APELLIDO: $("#txt_apellido_masc").val(),
-        FAMILIARP: $("#txt_nombre_padre").val(),
-        FAMILIARM: $("#txt_nombre_madre").val(),
+        APELLIDO: $("#txt_apellido_masc").val(),        
         FEC_NAC: $("#txt_fecha_nac").val() === "" ? null : getDateFromFormat($("#txt_fecha_nac").val(), 'yyyy-MM-dd'),
         SEXO: $("#sel_sexo").val(),
         MASCOTA_RAZA_ID: $("#sel_raza").val(),
         CALIFICACION: $("#sel_calificacion").val(),
         COLOR: $("#txt_color").val(),
         DIRECCION: $("#txt_direccion").val(),
-        GEOGRAFIA_ID: $("#sel_distrito").val()
+        GEOGRAFIA_ID: $("#sel_distrito").val(),
+        CASTRADO: $("#sel_castrada").val()
     };
 
     $.ajax({

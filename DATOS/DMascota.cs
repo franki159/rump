@@ -834,7 +834,10 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@nombre_masc", objE.NOMBRE);
                         cmd.Parameters.AddWithValue("@apellido_masc", objE.APELLIDO);
                         cmd.Parameters.AddWithValue("@nombre_padre", objE.FAMILIARP);
+                        cmd.Parameters.AddWithValue("@telef_padre", objE.TELEFONOP);
                         cmd.Parameters.AddWithValue("@nombre_madre", objE.FAMILIARM);
+                        cmd.Parameters.AddWithValue("@telef_madre", objE.TELEFONOM);
+                        cmd.Parameters.AddWithValue("@castrado", objE.CASTRADO);
                         cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);
                         cmd.Parameters.AddWithValue("@sexo", objE.SEXO);
                         cmd.Parameters.AddWithValue("@mascota_raza_id", objE.MASCOTA_RAZA_ID);

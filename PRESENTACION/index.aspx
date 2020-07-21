@@ -162,6 +162,30 @@
                                         <input class="form-control integerFCP" id="txt_documento_pre" placeholder="Número de documento de identidad" required="">
                                     </div>
                                 </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <h6><strong>Nombres del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo responsable 1" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Telefono del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_tel_padre" placeholder="Telefono responsable 1" required="">
+                                    </div>
+                                </div>
+                                 <div class="col-md-8">
+                                    <div class="form-group">
+                                        <h6><strong>Nombres del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo responsable 2" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Telefono del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_tel_madre" placeholder="Telefono responsable 2" required="">
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
@@ -191,18 +215,6 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Nombres del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo del responsable 1" required="">
-                                    </div>
-                                </div>
-                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>Nombres del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo del responsable 2" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <h6><strong>Sexo de la mascota <strong class="text-danger">(*)</strong></strong></h6>
                                         <select id="sel_sexo" class="form-control">
                                             <option value="0">Seleccionar</option>
@@ -213,16 +225,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Especie <strong class="text-danger">(*)</strong></strong></h6>
-                                        <select id="sel_tipo" class="form-control sel_autocomplete" style="width: 100%;">
-                                            <option style="width: 100%;"></option>
+                                        <h6><strong><span id="lbl_masc_castrada">¿La mascota está castrada?</span> <strong class="text-danger">(*)</strong></strong></h6>
+                                        <select id="sel_castrada" class="form-control">
+                                            <option value="0">No</option>
+                                            <option value="1">Si</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>Raza <strong class="text-danger">(*)</strong></strong></h6>
-                                        <select id="sel_raza" class="form-control sel_autocomplete" style="width: 100%;"></select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -241,11 +248,25 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <h6><strong>Especie <strong class="text-danger">(*)</strong></strong></h6>
+                                        <select id="sel_tipo" class="form-control sel_autocomplete" style="width: 100%;">
+                                            <option style="width: 100%;"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Raza <strong class="text-danger">(*)</strong></strong></h6>
+                                        <select id="sel_raza" class="form-control sel_autocomplete" style="width: 100%;"></select>
+                                    </div>
+                                </div>                                
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <h6><strong>Color de pelaje <strong class="text-danger">(*)</strong></strong></h6>
                                         <input id="txt_color" placeholder="Color del pelaje" class="form-control" type="text" maxlength="100" />
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <h6><strong>Dirección <strong class="text-danger">(*)</strong></strong></h6>
                                         <input id="txt_direccion" placeholder="Escriba la dirección..." class="form-control" type="text" maxlength="200" />
