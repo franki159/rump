@@ -729,8 +729,9 @@
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
             </div>
             <div class="modal-body text-center">
-                <div class="row">
-                    <div class="col-md-3">
+                <div class="row serv-msc">
+                    <div class="col-md-12">
+                        <div class="">
                         <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(2)">
                             <div class="card-header card-header-fcp">
                                 <i class="far fa-images"></i>

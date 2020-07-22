@@ -166,8 +166,9 @@ function fc_listar_mascota() {
                 htmlBotones += '    </h6>';
                 htmlBotones += formatButton.format('href="#" name="edit-mascota" indx="' + (i+1) +'"', 'bg-primary', 'fas fa-pencil-alt', 'Editar');
 
-                if (data.d.Resultado[i].ESTADO === 2 || data.d.Resultado[i].ESTADO === 100) {//Sin DNI
-                    htmlBotones += formatButton.format('name="soli-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
+                if (data.d.Resultado[i].ESTADO === 2) {//Sin DNI
+                    //htmlBotones += formatButton.format('name="soli-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-address-card', 'Solicitar DNI');
+                    htmlBotones += formatButton.format('name="sol-dup" indx="' + (i + 1) + '"', 'bg-success', 'fas fa-copy', 'Solicitudes y trámites');
                     htmlBotones += formatButton.format('name="cup-dni" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-ticket-alt', 'Tengo un cupón');
                 } else if (data.d.Resultado[i].ESTADO === 3) {//En Adopcion
                     htmlBotones += formatButton.format('name="quit-adop" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-tags', 'Quitar de adopción');
@@ -182,6 +183,11 @@ function fc_listar_mascota() {
                     htmlBotones += formatButton.format('name="mst-dead" indx="' + (i + 1) +'"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 } else if (data.d.Resultado[i].ESTADO === 4) {//Extraviada
                     htmlBotones += formatButton.format('name="rep-enc" indx="' + (i + 1) +'"', 'bg-success', 'fas fa-tags', 'Reportar mascota encontrada');
+                } else if (data.d.Resultado[i].ESTADO === 100) {//DNI Vencido
+                    htmlBotones += formatButton.format('name="cup-dni" indx="' + (i + 1) + '"', 'bg-success', 'fas fa-ticket-alt', 'Tengo un cupón');
+                    htmlBotones += formatButton.format('name="sol-dup" indx="' + (i + 1) + '"', 'bg-success', 'fas fa-copy', 'Solicitudes y trámites');
+                    htmlBotones += formatButton.format('name="pon-adop" indx="' + (i + 1) + '"', 'bg-success', 'fas fa-tags', 'Poner en adopción');
+                    htmlBotones += formatButton.format('name="mst-dead" indx="' + (i + 1) + '"', 'bg-danger', 'fas fa-radiation', 'Mascota falleció');
                 }
 
                 htmlBotones += formatButton.format('name="delete-mascota" indx="' + (i + 1) +'"', 'bg-danger', 'fas fa-trash-alt', 'Eliminar');
@@ -551,7 +557,52 @@ function fc_listar_mascota() {
                     limpiarMascota();
                     id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
                     id_mascota = validaTableMobile(id_mascota);
-                    $("#copiaModal").modal();
+
+                    //Listar servicios segun mascota
+                    var objE = {
+                        ID_ENCRIP: id_mascota
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "page/mantenimiento/solicitud.aspx/ListaServicioXmascotaWM",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify({ objE: objE }),
+                        async: true,
+                        beforeSend: function () {
+                            openLoading();
+                        },
+                        success: function (data) {
+                            if (!data.d.Activo) {
+                                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                                closeLoading();
+                                return;
+                            }
+                            $("#copiaModal .serv-msc").html('');
+                            for (var i = 0; i < data.d.Resultado.length; i++) {
+                                var html_cont = '';
+                                html_cont = '<div class="col-md-3">' +
+                                    '   <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(\'' + data.d.Resultado[i].ID + '\', ' + data.d.Resultado[i].PRECIO + ',\'' + data.d.Resultado[i].DESCRIPCION + '\')">'+
+                                            '       <div class="card-header card-header-fcp">'+
+                                            '           <i class="far fa-images"></i>'+
+                                            '       </div>'+
+                                            '       <div class="card-body">'+
+                                    '           <span class="card-title"><strong>' + data.d.Resultado[i].DESCRIPCION + ' (S/. ' + data.d.Resultado[i].PRECIO +')</strong></span>'+
+                                            '       </div>'+
+                                            '   </div>'+
+                                            '</div>';
+                                $("#copiaModal .serv-msc").append(html_cont);
+                            }
+                            closeLoading();
+                            $("#copiaModal").modal();
+                        },
+                        error: function (data) {
+                            closeLoading();
+                            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                        }
+                    });
+                    event.preventDefault();
                 } else if ($(this).attr("name") === "mst-dead") {
                     limpiarMascota();
                     id_mascota = document.getElementById("tbl_mascota").rows[$(this).attr("indx")].cells[0].innerHTML;
@@ -616,7 +667,70 @@ function fc_listar_mascota() {
         }
     });
 }
-function fc_sol_servicio(opcion) {
+function fc_sol_servicio(opcion, precio, descripcion) {
+    var btn_pagoDeliv = '';
+    var btn_lprov = '';
+    var btn_prov = '';
+
+    $("#copiaModal").modal("hide");
+    for (var i = 1; i < 7; i++) {
+        $(".btn-lim-" + i).hide();
+        $(".btn-lprov-" + i).hide();
+        $(".btn-prov-" + i).hide();
+    }
+    $(".btn-lim-" + opcion).show();
+    $(".btn-lprov-" + opcion).show();
+    $(".btn-prov-" + opcion).show();
+
+    $("#modalPagoGen .leyend-lim-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 999999999 para poder verificar el pago.</p>" +
+        "<p>(*) Envío a todo lima metropolitana y la Provincia constitucional del Callao.</p><p class='text-secondary'>Costo de servicio: S/. " + precio + "</p><p class='text-secondary'>Costo de delivery: S/. 5.50</p><p class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 5.50) + "</p><b>");
+    $("#modalPagoGen .leyend-lprov-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 999999999 para poder verificar el pago.</p>" +
+        "<p>(*) Envio a Ica, Pisco, Huaral y Huacho.</p> <p class='text-secondary'>Costo de servicio: S/. " + precio + "</p> <p class='text-secondary'>Costo de delivery: S/. 10.00</p> <p class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 10.00) + "</p> <b>");
+    $("#modalPagoGen .leyend-prov-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 999999999 para poder verificar el pago.</p>" +
+        "<p>(*) Envio a todo Provincias.</p><p class='text-secondary'>Costo de servicio: S/. " + precio + "</p><p class='text-secondary'>Costo de delivery: S/. 12.00</p><p class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 12.00) + "</p><b>");
+
+    $('#modalPagoGen .modal-title').html('Solicitud de ' + descripcion);
+    
+    
+    /*
+    //$(".serv-msc").html('');
+    //$('#modalPagoGen .modal-title').html('Seleccione Tipo de envío');
+    var html_cont = '';
+    html_cont ='<div class="col-md-12">' +
+        '   <ul class="nav nav-tabs" role="tablist">' +
+        '       <li role="presentation" class="nav-item">' +
+        '           <a class="nav-link active" id="lima-tab" data-toggle="tab" href="#lima" role="tab" aria-controls="dato" aria-selected="true">Lima</a>' +
+        '       </li>' +
+        '       <li class="nav-item">' +
+        '           <a class="nav-link" id="limprov-tab" data-toggle="tab" href="#limprov" role="tab" aria-controls="dato" aria-selected="true">Lima provincia</a>' +
+        '       </li>' +
+        '       <li class="nav-item">' +
+        '           <a class="nav-link" id="prov-tab" data-toggle="tab" href="#prov" role="tab" aria-controls="dato" aria-selected="true">Provincias</a>' +
+        '       </li>' +
+        '   </ul>' +
+        '   <div class="tab-content">' +
+        '       <div role="tabpanel" class="tab-pane fade active show" id="lima">' +
+        '           <div class="div-leyenda-fcp">' +
+        '               <b class="text-danger">Envío a todo lima metropolitana y la Provincia constitucional del Callao. Costo S/. 5.50</b>' +
+        '           </div>' + btn_lima +
+        '       </div>' +
+        '       <div class="tab-pane fade panel-body" id="limprov">' +
+        '           <div class="div-leyenda-fcp">' +
+        '               <b class="text-danger">Envio a Ica, Pisco, Huaral y Huacho. Costo S/. 10.00</b>' +
+        '           </div>' + btn_lprov +
+        '       </div>' +
+        '       <div class="tab-pane fade panel-body" id="prov">' +
+        '           <div class="div-leyenda-fcp">' +
+        '               <b class="text-danger">Envio a todo Provincias. Costo S/. 12.00</b>' +
+        '           </div>' + btn_prov+
+        '       </div>' +
+        '   </div>';
+    ' </div>';
+        */
+
+    //$("#modalPagoGen .serv-msc").append(html_cont);
+    fc_mostrar_pago();
+    /*
     var objE = {
         ID_ENCRIP: id_mascota,
         OPCION: opcion
@@ -654,7 +768,7 @@ function fc_sol_servicio(opcion) {
             $("#copiaModal").modal('hide');
         }
     });
-    event.preventDefault();
+    event.preventDefault();*/
 }
 function aceptarConfirm() {
     var estProc = true;
@@ -1044,7 +1158,7 @@ $(document).keydown(function (evt) {
 });
 
 $("#sel_sexo").on('change', function () {
-    if ($(this).val() == 'Macho') {
+    if ($(this).val() === 'Macho') {
         $("#lbl_masc_castrada").html('¿La mascota está castrada?');
     } else {
         $("#lbl_masc_castrada").html('¿La mascota está esterilizada?');
@@ -1518,7 +1632,7 @@ $("#btn_guardar").click(function (evt) {
                                 GALERIA_ID: gal_id,
                                 INDICE: inxImg
                             };
-                            debugger;
+
                             $.ajax({
                                 type: "POST",
                                 url: "page/mantenimiento/mascota.aspx/ActualizarFotoMascotaWM",

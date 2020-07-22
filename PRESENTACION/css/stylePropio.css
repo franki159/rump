@@ -1138,3 +1138,22 @@ a {
         background-position: 200% center;
     }
 }
+.div-leyenda-fcp {
+    background-color: #e0ebf9;
+    box-shadow: 5px 5px rgba(185, 210, 241, 0.2);
+    color: #010407;
+    margin: 10px 0px 10px 0px;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #b5cff0;
+    text-align: left;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background: rgba(29, 90, 123, 0.7);
+    color: #fff;
+}
+
+.mercadopago-button {
+    width: 100%;
+    font-size: 17px!important;
+}

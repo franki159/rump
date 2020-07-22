@@ -47,6 +47,33 @@ namespace DATOS
             }
             return lista;
         }
+        public static List<ESolicitud> listarServicioXmascota(ESolicitud objE)
+        {
+            List<ESolicitud> lista = new List<ESolicitud>();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_listarServicioXmascota", cn);
+                cmd.Parameters.AddWithValue("@id_mascota", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        ESolicitud mItem = new ESolicitud();
+                        mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
+                        mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.DESCRIPCION = dr.IsDBNull(dr.GetOrdinal("descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("descripcion"));
+                        mItem.PRECIO = dr.IsDBNull(dr.GetOrdinal("precio")) ? 0 : dr.GetDecimal(dr.GetOrdinal("precio"));
+                        lista.Add(mItem);
+                    }
+                }
+            }
+            return lista;
+        }
+
         public static int AtenderSolicitud(ESolicitud objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))

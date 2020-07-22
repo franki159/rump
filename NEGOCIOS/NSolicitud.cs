@@ -14,6 +14,10 @@ namespace NEGOCIOS
         {
             return DSolicitud.listarSolicitud(ent);
         }
+        public static List<ESolicitud> listarServicioXmascota(ESolicitud ent)
+        {
+            return DSolicitud.listarServicioXmascota(ent);
+        }
         public static int AtenderSolicitud(ESolicitud ent)
         {
             return DSolicitud.AtenderSolicitud(ent);

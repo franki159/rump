@@ -53,6 +53,37 @@ namespace PRESENTACION.page.mantenimiento
             return objRespuesta;
         }
         [WebMethod()]
+        public static object ListaServicioXmascotaWM(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                List<ESolicitud> objResultado = new List<ESolicitud>();
+
+                objResultado = NSolicitud.listarServicioXmascota(objE);
+
+                if (objResultado.Count == 0)
+                {
+                    objRespuesta.Error("No se encontraron registros.");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
         public static object AtenderSolicitudWM(ESolicitud objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();

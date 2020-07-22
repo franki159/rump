@@ -9,7 +9,7 @@ $(document).ready(function () {
     closeLoading();
     InfoSesion();
     fc_listar_inicio();
-    //$("#pnl_mascota_mensaje").modal('show');
+    $("#pnl_mascota_mensaje").modal('show');
     //closeLoading();
 });
 function activaTab(tab) {

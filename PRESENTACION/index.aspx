@@ -30,12 +30,12 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span aria-hidden="true">&times;</span></button>
-                    <img src="img/inicio/boton-pago.jpg" alt="">
+                    <img  style="display:none;" src="img/inicio/boton-pago.jpg" alt="">
                     <h3 class="text-info">Ahora puedes pagar online</h3>
-                    <p><span class="text-danger"><strong>#YoMeQuedoEnCasa.</strong></span></p>
-                    <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js"
-                    data-preference-id="334567666-607712ca-bc25-4835-a04c-ffb7d94ed2db">
-                    </script>
+                    <div style="text-align:center;">
+                        <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 238px; height: 238px; margin: 0px;">
+                    </div>
+                    <p><span class="text-danger"><strong>#YoMeQuedoEnCasa.</strong></span></p>                   
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ namespace ENTIDAD
         public string ID_ENCRIP { get; set; }
         public Nullable<DateTime> FECHA_SOL { get; set; }
         public decimal TOTAL { get; set; }
+        public decimal PRECIO { get; set; }
         public decimal USUARIO_ID { get; set; }
         public decimal USUARIO { get; set; }
         public decimal MASCOTA_ID { get; set; }

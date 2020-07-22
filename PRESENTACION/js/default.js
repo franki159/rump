@@ -299,6 +299,10 @@ function fc_mostrar_confirmacion(contenido) {
     $("#modalConfirm").modal('show');
 }
 
+function fc_mostrar_pago() {
+    $("#modalPagoGen").modal('show');
+}
+
 function fc_aceptar_confirmacion() {
     if (aceptarConfirm() !== false) {
         $("#modalConfirm").modal('hide');
