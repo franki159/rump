@@ -110,65 +110,104 @@
                                 <div role="tabpanel" class="tab-pane fade active show" id="lima">           
                                     <div class="div-leyenda-fcp leyend-lim-txt">               
                                         <b class="text-danger">Envío a todo lima metropolitana y la Provincia constitucional del Callao. Costo S/. 5.50</b>
-                                    </div>                                    
-                                    <div class="btn-lim-1">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-4c834873-7417-4530-99b1-5b324bed501d"></script>
                                     </div>
-                                    <div class="btn-lim-2">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
+                                    <div class="row">
+                                        <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
+                                            <h4>Opcion 1</h4>
+                                            <img src="img/mercadopago/mercadopago-qr.png" style="margin: 0px;">
+                                        </div>
+                                        <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
+                                            <h4>Opcion 2</h4>
+                                            <br>
+                                            <img src="img/mercadopago/tarjetas_pago.png" style="margin: 0px;">
+                                            <img src="img/mercadopago/pago-efectivo.png" style="margin: 0px;">
+                                            <br>                                            
+                                            <div class="btn-lim-1">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-4c834873-7417-4530-99b1-5b324bed501d"></script>
+                                            </div>
+                                            <div class="btn-lim-2">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
+                                            </div>
+                                            <div class="btn-lim-3">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
+                                            </div>
+                                            <div class="btn-lim-5">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-3d15a9f4-0a9d-490c-a5a7-e6043c4aacc4"></script>
+                                            </div>
+                                            <div class="btn-lim-6">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
+                                            </div>
+                                            <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
+                                        </div>
                                     </div>
-                                    <div class="btn-lim-3">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
-                                    </div>
-                                    <div class="btn-lim-5">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-3d15a9f4-0a9d-490c-a5a7-e6043c4aacc4"></script>
-                                    </div>
-                                    <div class="btn-lim-6">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
-                                    </div>
-                                    <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
                                 </div>       
                                 <div class="tab-pane fade panel-body" id="limprov">           
                                     <div class="div-leyenda-fcp leyend-lprov-txt">               
                                         <b class="text-danger">Envio a Ica, Pisco, Huaral y Huacho. Costo S/. 10.00</b>           
                                     </div>
-                                    <div class="btn-lprov-1">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-9f3c0d22-19c5-4dda-836e-d4518e46b75b"></script>       
+                                    <div class="row">
+                                        <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
+                                            <h4>Opcion 1</h4>
+                                            <img src="img/mercadopago/mercadopago-qr.png" style="margin: 0px;">
+                                        </div>
+                                        <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
+                                            <h4>Opcion 2</h4>
+                                            <br>
+                                            <img src="img/mercadopago/tarjetas_pago.png" style="margin: 0px;">
+                                            <img src="img/mercadopago/pago-efectivo.png" style="margin: 0px;">
+                                            <br>
+                                            <div class="btn-lprov-1">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-9f3c0d22-19c5-4dda-836e-d4518e46b75b"></script>       
+                                            </div>
+                                            <div class="btn-lprov-2">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
+                                            </div>
+                                            <div class="btn-lprov-3">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
+                                            </div>
+                                            <div class="btn-lprov-5">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-71d8d983-cf68-4c42-b487-737f6ca73e61"></script>       
+                                            </div>
+                                            <div class="btn-lprov-6">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
+                                            </div>
+                                            <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
+                                        </div>
                                     </div>
-                                    <div class="btn-lprov-2">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
-                                    </div>
-                                    <div class="btn-lprov-3">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
-                                    </div>
-                                    <div class="btn-lprov-5">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-71d8d983-cf68-4c42-b487-737f6ca73e61"></script>       
-                                    </div>
-                                    <div class="btn-lprov-6">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
-                                    </div>
-                                    <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
                                 </div>       
                                 <div class="tab-pane fade panel-body" id="prov">  
                                     <div class="div-leyenda-fcp leyend-prov-txt">               
                                         <b class="text-danger">Envio a todo Provincias. Costo S/. 12.00</b>       
                                     </div>
-                                    <div class="btn-prov-1">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-36c907bc-8dd7-4717-9504-c2d264df81e5"></script>       
+                                    <div class="row">
+                                        <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
+                                            <h4>Opcion 1</h4>
+                                            <img src="img/mercadopago/mercadopago-qr.png" style="margin: 0px;">
+                                        </div>
+                                        <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
+                                            <h4>Opcion 2</h4>
+                                            <br>
+                                            <img src="img/mercadopago/tarjetas_pago.png" style="margin: 0px;">
+                                            <img src="img/mercadopago/pago-efectivo.png" style="margin: 0px;">
+                                            <br>
+                                            <div class="btn-prov-1">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-36c907bc-8dd7-4717-9504-c2d264df81e5"></script>       
+                                            </div>
+                                            <div class="btn-prov-2">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
+                                            </div>
+                                            <div class="btn-prov-3">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
+                                            </div>
+                                            <div class="btn-prov-5">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-292987e5-be5e-490e-83c0-7915906d6651"></script>
+                                            </div>
+                                            <div class="btn-prov-6">
+                                                <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
+                                            </div>
+                                            <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
+                                        </div>
                                     </div>
-                                    <div class="btn-prov-2">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
-                                    </div>
-                                    <div class="btn-prov-3">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
-                                    </div>
-                                    <div class="btn-prov-5">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-292987e5-be5e-490e-83c0-7915906d6651"></script>
-                                    </div>
-                                    <div class="btn-prov-6">
-                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
-                                    </div>
-                                    <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
                                 </div>   
                             </div>
                         </div>

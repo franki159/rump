@@ -160,6 +160,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\mercadopago\mercadopago-qr.png" />
+    <Content Include="img\mercadopago\mercadopago_logo.png" />
+    <Content Include="img\mercadopago\pago-efectivo.png" />
+    <Content Include="img\mercadopago\tarjetas_pago.png" />
+    <Content Include="js\pago_exitoso.js" />
+    <Content Include="pago_error.aspx" />
+    <Content Include="pago_exitoso.aspx" />
     <Content Include="genealogia.aspx" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\WebRecognition\Content\bootstrap.css" />
@@ -829,6 +836,7 @@
     <Content Include="templatePage\img\core-img\TITULO-ADOPCIÓN.png" />
     <Content Include="templatePage\img\core-img\titulogenealogia.png" />
     <Content Include="templatePage\img\core-img\tw.png" />
+    <Content Include="templatePage\img\core-img\whatsaap-media.png" />
     <Content Include="templatePage\img\core-img\whatsapp.png" />
     <Content Include="templatePage\img\core-img\yt.png" />
     <Content Include="templatePage\img\core-img\__imgapp.png" />
@@ -2816,6 +2824,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="pago_error.aspx.cs">
+      <DependentUpon>pago_error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pago_error.aspx.designer.cs">
+      <DependentUpon>pago_error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pago_exitoso.aspx.cs">
+      <DependentUpon>pago_exitoso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pago_exitoso.aspx.designer.cs">
+      <DependentUpon>pago_exitoso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="genealogia.aspx.cs">
       <DependentUpon>genealogia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

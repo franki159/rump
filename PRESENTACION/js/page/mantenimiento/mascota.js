@@ -682,15 +682,52 @@ function fc_sol_servicio(opcion, precio, descripcion) {
     $(".btn-lprov-" + opcion).show();
     $(".btn-prov-" + opcion).show();
 
-    $("#modalPagoGen .leyend-lim-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 999999999 para poder verificar el pago.</p>" +
-        "<p>(*) Envío a todo lima metropolitana y la Provincia constitucional del Callao.</p><p class='text-secondary'>Costo de servicio: S/. " + precio + "</p><p class='text-secondary'>Costo de delivery: S/. 5.50</p><p class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 5.50) + "</p><b>");
-    $("#modalPagoGen .leyend-lprov-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 999999999 para poder verificar el pago.</p>" +
-        "<p>(*) Envio a Ica, Pisco, Huaral y Huacho.</p> <p class='text-secondary'>Costo de servicio: S/. " + precio + "</p> <p class='text-secondary'>Costo de delivery: S/. 10.00</p> <p class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 10.00) + "</p> <b>");
-    $("#modalPagoGen .leyend-prov-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 999999999 para poder verificar el pago.</p>" +
-        "<p>(*) Envio a todo Provincias.</p><p class='text-secondary'>Costo de servicio: S/. " + precio + "</p><p class='text-secondary'>Costo de delivery: S/. 12.00</p><p class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 12.00) + "</p><b>");
+
+    $("#modalPagoGen .leyend-lim-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 992975292 para poder verificar el pago.</p>" +
+        "<p>(*) Envío a todo lima metropolitana y la Provincia constitucional del Callao.</p>" +
+        "<span class='text-secondary'>Costo de servicio: S/. " + precio + "</span><br>" +
+        "<span class='text-secondary'>Costo de delivery: S/. 5.50</span><br>" +
+        "<span class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 5.50) + "</span><b>");
+    $("#modalPagoGen .leyend-lprov-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 992975292 para poder verificar el pago.</p>" +
+        "<p>(*) Envio a Ica, Pisco, Huaral y Huacho.</p>" +
+        "<span class='text-secondary'>Costo de servicio: S/. " + precio + "</span><br>" +
+        "<span class='text-secondary'>Costo de delivery: S/. 10.00</span><br>" +
+        "<span class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 10.00) + "</span> <b>");
+    $("#modalPagoGen .leyend-prov-txt").html("<b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 992975292 para poder verificar el pago.</p>" +
+        "<p>(*) Envio a todo Provincias.</p>" +
+        "<span class='text-secondary'>Costo de servicio: S/. " + precio + "</span><br>" +
+        "<span class='text-secondary'>Costo de delivery: S/. 12.00</span><br>" +
+        "<span class='text-secondary'>Costo Total: S/. " + (parseFloat(precio) + 12.00) + "</span><b>");
 
     $('#modalPagoGen .modal-title').html('Solicitud de ' + descripcion);
+
+    var objE = {
+        ID_ENCRIP: id_mascota,
+        OPCION: opcion
+    };
     
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/mascota.aspx/SolicitarServicioWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                closeLoading();
+                return;
+            }
+            fc_mostrar_pago();
+            closeLoading();
+        },
+        error: function (data) {
+            closeLoading();
+        }
+    });
     
     /*
     //$(".serv-msc").html('');
@@ -729,7 +766,7 @@ function fc_sol_servicio(opcion, precio, descripcion) {
         */
 
     //$("#modalPagoGen .serv-msc").append(html_cont);
-    fc_mostrar_pago();
+    
     /*
     var objE = {
         ID_ENCRIP: id_mascota,
