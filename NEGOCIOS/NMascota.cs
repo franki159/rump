@@ -77,7 +77,7 @@ namespace NEGOCIOS
         {
             return DMascota.MuerteMascotaWM(ent);
         }
-        public static string SolicitarServicioWM(EMascota ent)
+        public static string SolicitarServicioWM(ESolicitud ent)
         {
             return DMascota.SolicitarServicioWM(ent);
         }

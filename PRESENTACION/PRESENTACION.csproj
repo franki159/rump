@@ -160,11 +160,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\multisteps\script.js" />
+    <Content Include="assets\multisteps\style.css" />
     <Content Include="img\mercadopago\mercadopago-qr.png" />
     <Content Include="img\mercadopago\mercadopago_logo.png" />
     <Content Include="img\mercadopago\pago-efectivo.png" />
     <Content Include="img\mercadopago\tarjetas_pago.png" />
+    <Content Include="js\page\pagoSolicitud.js" />
     <Content Include="js\pago_exitoso.js" />
+    <Content Include="page\pagoSolicitud.aspx" />
     <Content Include="pago_error.aspx" />
     <Content Include="pago_exitoso.aspx" />
     <Content Include="genealogia.aspx" />
@@ -621,6 +625,7 @@
     <Content Include="assets\fullcalendar\timegrid\package.json" />
     <Content Include="assets\fullcalendar\timegrid\README.md" />
     <Content Include="documentos\convenios.pdf" />
+    <Content Include="documentos\manual.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Carpeta para FTP.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -2824,6 +2829,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="page\pagoSolicitud.aspx.cs">
+      <DependentUpon>pagoSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\pagoSolicitud.aspx.designer.cs">
+      <DependentUpon>pagoSolicitud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pago_error.aspx.cs">
       <DependentUpon>pago_error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

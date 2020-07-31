@@ -48,7 +48,7 @@
                     <thead>
                         <tr>
                             <th style="display: none"></th>
-                            <th></th>
+                            <th>OPCION</th>
                             <th>FOTO</th>
                             <th>DNI</th>
                             <th>ESTADO</th>
@@ -731,55 +731,14 @@
             <div class="modal-body text-center">
                 <div class="row serv-msc">
                     <div class="col-md-12">
-                        <div class="">
-                        <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(2)">
-                            <div class="card-header card-header-fcp">
-                                <i class="far fa-images"></i>
-                            </div>
-                            <div class="card-body">
-                                <span class="card-title"><strong>Copia DNI</strong></span>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-white btn-3-warning mb-3" onclick="javascript:fc_sol_servicio(3)">
-                            <div class="card-header card-header-fcp">
-                                <i class="fas fa-tags"></i>
-                            </div>
-                            <div class="card-body">
-                                <span class="card-title"><strong>Copia Chapita</strong></span>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-white btn-3-danger mb-3" onclick="javascript:fc_sol_servicio(4)">
-                            <div class="card-header card-header-fcp">
-                                <i class="fas fa-user-tag"></i>
-                            </div>
-                            <div class="card-body">
-                                <span class="card-title"><strong>DNI y Chapita</strong></span>
-                            </div>
-                        </div>
                     </div>                    
                      <div class="col-md-3">
-                        <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(5)">
-                            <div class="card-header card-header-fcp">
-                                <i class="fas fa-user-tag"></i>
-                            </div>
-                            <div class="card-body">
-                                <span class="card-title"><strong>Renovación DNI</strong></span>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-white btn-3-success mb-3" onclick="javascript:fc_sol_servicio(6)">
-                            <div class="card-header card-header-fcp">
-                                <i class="far fa-images"></i>
-                            </div>
-                            <div class="card-body">
-                                <span class="card-title"><strong>Cerfiticado<br>dueño<br>responsable</strong></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

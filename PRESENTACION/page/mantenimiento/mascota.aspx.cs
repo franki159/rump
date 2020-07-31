@@ -403,7 +403,7 @@ namespace PRESENTACION.page.mantenimiento
             return objRespuesta;
         }
         [WebMethod()]
-        public static object SolicitarServicioWM(EMascota objE)
+        public static object SolicitarServicioWM(ESolicitud objE)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try

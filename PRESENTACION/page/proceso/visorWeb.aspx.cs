@@ -126,9 +126,7 @@ namespace PRESENTACION.page.proceso
                         
                     table.AddCell(cell);
 
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
-
-                    cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM") + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
+                    cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
                     cell.Border = 0;
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
                     cell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -240,10 +238,8 @@ namespace PRESENTACION.page.proceso
                     }
 
                     table.AddCell(cell);
-
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
-
-                    cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM") + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
+                    
+                    cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
                     cell.Border = 0;
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
                     cell.VerticalAlignment = Element.ALIGN_MIDDLE;

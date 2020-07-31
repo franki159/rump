@@ -560,7 +560,7 @@ namespace DATOS
                 return email;
             }
         }
-        public static string SolicitarServicioWM(EMascota objE)
+        public static string SolicitarServicioWM(ESolicitud objE)
         {
             string email = "";
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
@@ -569,6 +569,16 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
                 cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
                 cmd.Parameters.AddWithValue("@opcion", objE.OPCION);
+
+                cmd.Parameters.AddWithValue("@nom_rep", objE.NOM_REP);
+                cmd.Parameters.AddWithValue("@ape_rep", objE.APE_REP);
+                cmd.Parameters.AddWithValue("@tel_rep", objE.TEL_REP);
+                cmd.Parameters.AddWithValue("@email_rep", objE.EMAIL);
+                cmd.Parameters.AddWithValue("@direccion", objE.DIRECCION);
+                cmd.Parameters.AddWithValue("@referencia", objE.REFERENCIA);
+                cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
+
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())

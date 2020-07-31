@@ -215,9 +215,10 @@ function fc_listar_mascota() {
                 html += '</td> ';
                 
                 html += '<td>' +
-                            '<div>' +
+                            '<div class="text-center">' +
                                 '<a href="#" name="detalles" id="' + data.d.Resultado[i].ID_ENCRIP + '" data-toggle="modal" data-target="#modalVerMascota">' +
-                    '<img class="img-row-mascota" src="img/mascota/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND +'" onerror="this.src=\'img/noPets.png\';">' +
+                    '<img class="img-row-mascota" src="img/mascota/' + encodeURIComponent(data.d.Resultado[i].FOTO) + '?v=' + valRND + '" onerror="this.src=\'img/noPets.png\';">' +
+                    '<br><span class="text-primary">DNI virtual</span>'+
                                 '</a>' +
                             '</div>'+
                     '</td>'; 
@@ -229,7 +230,7 @@ function fc_listar_mascota() {
                         html += '<td><i class="fas fa-check-circle text-success" style="font-size: 25px;"></i></td>';
                         break;
                     case 2:
-                        html += '<td><span class="btn btn-danger btn-sm"><i class="far fa-credit-card"></i>&nbsp;NO PAGO</span></td>';
+                        html += '<td><button class="btn btn-danger btn-sm" onclick="javascript:fc_sol_servicio(\'DYfVN+70kB0=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;PAGAR</button></td>';
                         break;
                     case 3:
                         html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';
@@ -241,11 +242,11 @@ function fc_listar_mascota() {
                         html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;FALLECIDO</span></td>';
                         break;
                     case 100:
-                        html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-ban"></i>&nbsp;VENCIDO</span></td>';
+                        html += '<td><button class="btn btn-warning btn-sm" onclick="javascript:fc_sol_servicio(\'nPbg/Uz9NNE=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;RENOVAR</button></td>';
                         cont_dni_problema++;
                         break;
                     case 200:
-                        html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-minus-square"></i>&nbsp;POR VENCER</span></td>';
+                        html += '<td><button class="btn btn-warning btn-sm" onclick="javascript:fc_sol_servicio(\'nPbg/Uz9NNE=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;RENOVAR</button></td>';
                         cont_dni_problema++;
                         break;
                     default:
@@ -583,7 +584,7 @@ function fc_listar_mascota() {
                             for (var i = 0; i < data.d.Resultado.length; i++) {
                                 var html_cont = '';
                                 html_cont = '<div class="col-md-3">' +
-                                    '   <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(\'' + data.d.Resultado[i].ID + '\', ' + data.d.Resultado[i].PRECIO + ',\'' + data.d.Resultado[i].DESCRIPCION + '\')">'+
+                                    '   <div class="card text-white btn-3-primary mb-3" onclick="javascript:fc_sol_servicio(\'' + data.d.Resultado[i].ID_ENCRIP + '\',\'' + id_mascota +'\')">' +
                                             '       <div class="card-header card-header-fcp">'+
                                             '           <i class="far fa-images"></i>'+
                                             '       </div>'+
@@ -667,12 +668,52 @@ function fc_listar_mascota() {
         }
     });
 }
-function fc_sol_servicio(opcion, precio, descripcion) {
+function fc_sol_servicio(idSolicitud, idMascota) {
+    var objE = {
+        ID_ENCRIP: idSolicitud,
+        ID_MSC_ENCRIP: idMascota
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/solicitud.aspx/addCarritoItemWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                $("#copiaModal").modal("hide");
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+
+                return;
+            }
+            
+            $("#copiaModal").modal("hide");
+
+            window.location = "Checkout";
+        },
+        error: function (data) {
+            $("#copiaModal").modal("hide");
+            closeLoading();
+        }
+    });
+
+    /*
     var btn_pagoDeliv = '';
     var btn_lprov = '';
     var btn_prov = '';
 
+    sessionStorage.setItem("tip_sol", opcion);
+
     $("#copiaModal").modal("hide");
+
+
+
     for (var i = 1; i < 7; i++) {
         $(".btn-lim-" + i).hide();
         $(".btn-lprov-" + i).hide();
@@ -704,8 +745,8 @@ function fc_sol_servicio(opcion, precio, descripcion) {
     var objE = {
         ID_ENCRIP: id_mascota,
         OPCION: opcion
-    };
-    
+    };*/
+    /*
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/mascota.aspx/SolicitarServicioWM",
@@ -727,8 +768,8 @@ function fc_sol_servicio(opcion, precio, descripcion) {
         error: function (data) {
             closeLoading();
         }
-    });
-    
+    });*/
+    //fc_mostrar_pago();
     /*
     //$(".serv-msc").html('');
     //$('#modalPagoGen .modal-title').html('Seleccione Tipo de envío');
@@ -1167,6 +1208,9 @@ function limpiarMascota() {
     $(".container-file").find($(".imgSecond")).each(function () {
         $(this).remove();
     });
+
+    $(".container-file .imagePreview").removeAttr("id");
+    $(".container-file .imagePreview").removeAttr("img-fcp-url");
     
     $(".container-file").find($(".imagePreview")).css("background-image", "url(../../img/noPets.png)");
 }
@@ -1601,7 +1645,7 @@ $("#btn_guardar").click(function (evt) {
                 closeLoading();
                 return;
             }
-
+            
             valRND = Math.floor(Math.random() * 1000);
             
             if (id_mascota === "") {//Solo para nuevos

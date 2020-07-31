@@ -12,17 +12,55 @@ $(function () {
     });
 
     $("#sel_estado").val(0);
+    fc_listar_servicio();
     closeLoading();
     $("#txt_bus_email").focus();
 });
 
 /*Funciones*/
+
+function fc_listar_servicio() {
+    openLoading();
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/solicitud.aspx/ListaServicioWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        beforeSend: function () {            
+            $('#tbl_solicitud tbody').empty();
+            openLoading();
+        },
+        success: function (data) {
+            $("#btn_buscar").removeAttr("disabled");
+
+            if (!data.d.Activo) {
+                $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                closeLoading();
+                return;
+            }
+
+            $('#sel_tipo').append("<option value='0'>TODOS</option");
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $('#sel_tipo').append("<option value='" + data.d.Resultado[i].ID + "'>" + data.d.Resultado[i].DESCRIPCION + "</option>");
+            }
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+            $("#btn_buscar").removeAttr("disabled");
+            closeLoading();
+        }
+    });
+}
 function fc_listar_solicitud() {
     openLoading();
 
     var eSolicitud = {
         DNI: $("#txt_bus_dni").val(),
         EMAIL: $("#txt_bus_email").val(),
+        ID: $("#sel_tipo").val(),
         ESTADO: $("#sel_estado").val()
     };
 
@@ -35,7 +73,7 @@ function fc_listar_solicitud() {
             objE: eSolicitud
         }),
         async: false,
-        beforeSend: function () {            
+        beforeSend: function () {
             $('#tbl_solicitud tbody').empty();
             openLoading();
         },
@@ -57,7 +95,7 @@ function fc_listar_solicitud() {
                 if (data.d.Resultado[i].ESTADO === 1) {
                     html += '<td>' + htmlBotones + '</td>';
                 } else {
-                    html += '<td>' + data.d.Resultado[i].vPARAM2+'</td>';
+                    html += '<td>' + data.d.Resultado[i].vPARAM2 + '</td>';
                 }
                 html += '<td>Solicitud ' + data.d.Resultado[i].TIPO + '</td>';
                 html += '<td>' + data.d.Resultado[i].vPARAM1 + '</td>';
@@ -65,7 +103,13 @@ function fc_listar_solicitud() {
                 html += '<td>' + data.d.Resultado[i].MASCOTA + '</td>';
                 html += '<td>' + data.d.Resultado[i].PROPIETARIO + '</td>';
                 html += '<td>' + data.d.Resultado[i].EMAIL + '</td>';
-                html += '<td>' + data.d.Resultado[i].TELEFONO + '</td></tr>';
+                html += '<td>' + data.d.Resultado[i].TELEFONO + '</td>';
+
+                html += '<td>' + data.d.Resultado[i].NOM_REP + ' ' + data.d.Resultado[i].APE_REP  + '</td>';
+                html += '<td>' + data.d.Resultado[i].TEL_REP + '</td>';
+                html += '<td>' + data.d.Resultado[i].DEPARTAMENTO + '|' + data.d.Resultado[i].PROVINCIA + '|' + data.d.Resultado[i].DISTRITO + '</td>';
+                html += '<td>' + data.d.Resultado[i].DIRECCION + '</td>';
+                html += '<td>' + data.d.Resultado[i].REFERENCIA + '</td></tr>';
             }
 
             $("#tbl_solicitud tbody").append(html);

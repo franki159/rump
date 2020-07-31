@@ -20,7 +20,62 @@ namespace PRESENTACION.page.mantenimiento
                 if (Session["userRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
+        [WebMethod()]
+        public static object addCarritoItemWM(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+                
+                List<ESolicitud> objResultado = new List<ESolicitud>();
+                
 
+                objResultado.Add(NSolicitud.listarSolicitudxId(objE));
+
+                HttpContext.Current.Session["carritoMascota"] = objResultado;
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+
+        [WebMethod()]
+        public static object getCarritoItemWM()
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                List<ESolicitud> objResultado = new List<ESolicitud>();
+                objResultado = (List<ESolicitud>)HttpContext.Current.Session["carritoMascota"];
+
+                if (objResultado == null || objResultado.Count == 0)
+                {
+                    objRespuesta.Error("SR");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
         [WebMethod()]
         public static object ListaSolicitudWM(ESolicitud objE)
         {
@@ -67,6 +122,37 @@ namespace PRESENTACION.page.mantenimiento
                 List<ESolicitud> objResultado = new List<ESolicitud>();
 
                 objResultado = NSolicitud.listarServicioXmascota(objE);
+
+                if (objResultado.Count == 0)
+                {
+                    objRespuesta.Error("No se encontraron registros.");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object ListaServicioWM()
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                List<ESolicitud> objResultado = new List<ESolicitud>();
+
+                objResultado = NSolicitud.listarServicio();
 
                 if (objResultado.Count == 0)
                 {

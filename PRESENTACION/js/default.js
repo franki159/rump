@@ -2,14 +2,14 @@
 
 function documentLoad() {
     var url = $(location).attr('href');
-
+    
     if (url.indexOf("#!") !== -1) {
-       
+
         var elem = url.split("#!/");
         var get = elem[elem.length - 1];
-        
+
         get = get.split('?')[0];
-        
+
         $(".wrapper").empty().html("Cargando...");
 
         $.get(get + '.aspx', function (data) {
@@ -24,7 +24,6 @@ function documentLoad() {
         }).fail(function () {
             $(".wrapper").empty().html(GenerarAlertaWarning("No disponible."));
         });
-
     } else {
         $.get('page/inicio.aspx#', function (data) {
             $(".wrapper").html(data);

@@ -33,6 +33,13 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Tipo de Servicio </label>
+                            <select id="sel_tipo" class="form-control">
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -65,6 +72,12 @@
                             <th>Propietario</th>
                             <th>Email</th>
                             <th>Telefono</th>
+
+                            <th>Recibe</th>
+                            <th>Tel. Recibe</th>
+                            <th>DEP|PROV|DIST</th>
+                            <th>Dir. Entrega</th>
+                            <th>Referencia</th>
                         </tr>
                     </thead>
                     <tbody>
