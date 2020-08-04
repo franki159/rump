@@ -11,6 +11,14 @@
         $('#page-loader').fadeOut('1000', function () {
             //$("#page-loader").hide();
         });
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 30) {
+                $('.top-header-area').addClass('header-fixed');
+            } else {
+                $('.top-header-area').removeClass('header-fixed');
+            }
+        });
     });
 
     // ****************************

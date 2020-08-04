@@ -24,9 +24,9 @@ function InfoSesion() {
         async: false,
         success: function (data, status) {
             if (!data.d.Activo) {
-                $("#divLoginUser").html('<a href="InicioSesion"><strong class="hidden-phone">Iniciar Sesión</br></strong> </br></a><a href="InicioSesion"><i class="fa fa-user-circle" aria-hidden="true"/></a>');
+                $("#divLoginUser").html('<a href="InicioSesion"><strong class="hidden-phone">Iniciar Sesión</br></strong> </br></a><a href="InicioSesion"><i class="fa fa-user-circle" style="font-size: 30px;" aria-hidden="true"/></a>');
             } else {
-                $("#divLoginUser").html('<a href="Sistema"><strong>' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i class="fa fa-user - circle" aria-hidden="true"></i>');
+                $("#divLoginUser").html('<a href="Sistema"><strong>' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i style="font-size: 30px;" class="fa fa-user-circle" aria-hidden="true"></i>');
 
             }
         },
@@ -434,13 +434,19 @@ $("#btn_registrar").click(function (evt) {
         activaTab('mascota');
         $("#txt_apellido_masc").focus();
         return;
-    } else if (validIdInput($("#txt_nombre_padre").val()) && validIdInput($("#txt_nombre_madre").val())) {
+    } else if (validIdInput($("#txt_nombre_padre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Familia: Ingresar el nombre del padre o de la madre"));
         closeLoading();
         activaTab('propietario');
         $("#txt_nombre_padre").focus();
         return;
-    } else if (isDate($("#txt_fecha_nac").val(), "yyyy-MM-dd")===false) {
+    } else if (validIdInput($("#txt_dni_padre").val())) {
+        $("#errorRegistro").html(GenerarAlertaWarning("DNI: Ingresar el DNI del responsable 1"));
+        closeLoading();
+        activaTab('propietario');
+        $("#txt_dni_padre").focus();
+        return;
+    } else if (isDate($("#txt_fecha_nac").val(), "yyyy-MM-dd") === false) {
         $("#errorRegistro").html(GenerarAlertaWarning("Fecha Nacimiento: ingresar una fecha de nacimiento válida dd/MM/yyyy"));
         closeLoading();
         activaTab('mascota');
@@ -506,12 +512,6 @@ $("#btn_registrar").click(function (evt) {
         activaTab('propietario');
         $("#txt_tel_padre").focus();
         return;
-    } else if (validIdInput($("#txt_tel_madre").val())) {
-        $("#errorRegistro").html(GenerarAlertaWarning("Telefono: Ingrese telefono del responsable 2"));
-        closeLoading();
-        activaTab('propietario');
-        $("#txt_tel_madre").focus();
-        return;
     }
   
     var eMascota = {
@@ -523,8 +523,10 @@ $("#btn_registrar").click(function (evt) {
         DNI: $("#txt_documento_pre").val(),
         PASSWORD: $("#txt_password_pre").val(),
         FAMILIARP: $("#txt_nombre_padre").val(),
+        DNIP: $("#txt_dni_padre").val(),
         TELEFONOP: $("#txt_tel_padre").val(),
         FAMILIARM: $("#txt_nombre_madre").val(),
+        DNIM: $("#txt_dni_madre").val(),
         TELEFONOM: $("#txt_tel_madre").val(),
         //Mascota***********
         NOMBRE: $("#txt_nombre_masc").val(),

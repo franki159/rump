@@ -223,7 +223,7 @@ function fc_listar_mascota() {
                             '</div>'+
                     '</td>'; 
 
-                html += '<td>' + data.d.Resultado[i].DNI + '</td>';
+                html += '<td class="text-center"><a href="#" name="detalles" id="' + data.d.Resultado[i].ID_ENCRIP + '" data-toggle="modal" data-target="#modalVerMascota"><span class="fcp-lbl-resalt">' + data.d.Resultado[i].DNI + '</span></a></td>';
 
                 switch (data.d.Resultado[i].ESTADO) {
                     case 1:

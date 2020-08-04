@@ -9,7 +9,9 @@ namespace ENTIDAD
     public class ESolicitud:EGeneral
     {
         public decimal ID { get; set; }
+        public decimal SOLICITUD_ID { get; set; }
         public string ID_ENCRIP { get; set; }
+        public string SOLICITUD_ID_ENCRIP { get; set; }
         public string ID_MSC_ENCRIP { get; set; }
 
         public Nullable<DateTime> FECHA_SOL { get; set; }
@@ -28,7 +30,7 @@ namespace ENTIDAD
         public string NOM_REP { get; set; }
         public string APE_REP { get; set; }
         public string TEL_REP { get; set; }
-        public string EMAIL_REP { get; set; }
+        public string DNI_REP { get; set; }
         public string DIRECCION { get; set; }
         public string REFERENCIA { get; set; }
         public decimal GEOGRAFIA_ID { get; set; }

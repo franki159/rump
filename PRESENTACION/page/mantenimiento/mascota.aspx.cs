@@ -104,7 +104,6 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
-
         [WebMethod()]
         public static object ObtenerCuponWM()
         {

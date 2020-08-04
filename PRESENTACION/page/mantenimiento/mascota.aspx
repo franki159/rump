@@ -27,11 +27,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <button id="btn_nuevo" class="btn btn-secondary btn-icon-split">
+                        <button id="btn_nuevo" class="btn btn-warning btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-file"></i>
                             </span>
-                            <span class="text">Nuevo</span>
+                            <span class="text">AGREGAR MASCOTA</span>
                         </button>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                             <th style="display: none"></th>
                             <th>OPCION</th>
                             <th>FOTO</th>
-                            <th>DNI</th>
+                            <th>DNI RUMP</th>
                             <th>ESTADO</th>
                             <th>Nombre</th>
                             <th>Sexo</th>

@@ -131,8 +131,8 @@
                               <input class="multisteps-form__input form-control" id="txt-tel" type="text" placeholder="Telefono"/>
                             </div>
                             <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                <label>Email</label>
-                              <input class="multisteps-form__input form-control" id="txt-email" type="email" placeholder="Email"/>
+                                <label>DNI</label>
+                              <input class="multisteps-form__input form-control" id="txt-dni" type="text" placeholder="DNI"/>
                             </div>
                           </div>
                           <div class="button-row d-flex mt-4">
@@ -196,8 +196,8 @@
                                                 <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
                                                     <h4><br>Opcion 2</h4>
                                                     <br>
-                                                    <img src="img/mercadopago/tarjetas_pago.png" style="margin: 0px;">
-                                                    <img src="img/mercadopago/pago-efectivo.png" style="margin: 0px;">
+                                                    <img src="img/mercadopago/tarjetas_pago.png" style="margin: 0px; width: 120px;">
+                                                    <img src="img/mercadopago/pago-efectivo.png" style="margin: 0px; width: 120px;">
                                                     <br> 
                                                     <div class="btn-lim-1">
                                                         <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-4c834873-7417-4530-99b1-5b324bed501d"></script>
@@ -246,12 +246,10 @@
                                                     <div class="btn-prov-6">
                                                         <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
                                                     </div>
-
+                                                    <br>
                                                     <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
                                                 </div>
                                             </div>
-
-
                           <div class="button-row d-flex mt-4">
                             <button class="btn btn-primary js-btn-prev" type="button" title="Prev"><< Atras</button>
                           </div>

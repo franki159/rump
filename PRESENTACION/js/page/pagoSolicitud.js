@@ -275,7 +275,7 @@ $("#btn-domicilio").click(function () {
         NOM_REP: $("#txt-nom").val(),
         APE_REP: $("#txt-ape").val(),
         TEL_REP: $("#txt-tel").val(),
-        EMAIL_REP: $("#txt-email").val(),
+        DNI_REP: $("#txt-dni").val(),
         DIRECCION: $("#txt_direccion").val(),
         REFERENCIA: $("#txt_referencia").val(),
         GEOGRAFIA_ID: $("#sel_distrito").val()

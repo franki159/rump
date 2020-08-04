@@ -162,27 +162,39 @@
                                         <input class="form-control integerFCP" id="txt_documento_pre" placeholder="Número de documento de identidad" required="">
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Nombres del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>Nombre responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo responsable 1" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Telefono del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>DNI responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_dni_padre" placeholder="DNI responsable 1" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Telefono responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" id="txt_tel_padre" placeholder="Telefono responsable 1" required="">
                                     </div>
                                 </div>
-                                 <div class="col-md-8">
+                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Nombres del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>Nombre responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo responsable 2" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <h6><strong>Telefono del responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <h6><strong>DNI responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                        <input class="form-control" id="txt_dni_madre" placeholder="DNI responsable 2" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <h6><strong>Telefono del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" id="txt_tel_madre" placeholder="Telefono responsable 2" required="">
                                     </div>
                                 </div>

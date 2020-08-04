@@ -573,7 +573,7 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@nom_rep", objE.NOM_REP);
                 cmd.Parameters.AddWithValue("@ape_rep", objE.APE_REP);
                 cmd.Parameters.AddWithValue("@tel_rep", objE.TEL_REP);
-                cmd.Parameters.AddWithValue("@email_rep", objE.EMAIL);
+                cmd.Parameters.AddWithValue("@dni_rep", objE.DNI_REP);
                 cmd.Parameters.AddWithValue("@direccion", objE.DIRECCION);
                 cmd.Parameters.AddWithValue("@referencia", objE.REFERENCIA);
                 cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
@@ -844,8 +844,10 @@ namespace DATOS
                         cmd.Parameters.AddWithValue("@nombre_masc", objE.NOMBRE);
                         cmd.Parameters.AddWithValue("@apellido_masc", objE.APELLIDO);
                         cmd.Parameters.AddWithValue("@nombre_padre", objE.FAMILIARP);
+                        cmd.Parameters.AddWithValue("@dni_padre", objE.DNIP);
                         cmd.Parameters.AddWithValue("@telef_padre", objE.TELEFONOP);
                         cmd.Parameters.AddWithValue("@nombre_madre", objE.FAMILIARM);
+                        cmd.Parameters.AddWithValue("@dni_madre", objE.DNIM);
                         cmd.Parameters.AddWithValue("@telef_madre", objE.TELEFONOM);
                         cmd.Parameters.AddWithValue("@castrado", objE.CASTRADO);
                         cmd.Parameters.AddWithValue("@fecha_nac", objE.FEC_NAC);

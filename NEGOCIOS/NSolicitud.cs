@@ -35,5 +35,10 @@ namespace NEGOCIOS
         {
             return DSolicitud.AnularSolicitud(ent);
         }
+
+        public static int ActualizarSolicitud(ESolicitud ent)
+        {
+            return DSolicitud.ActualizarSolicitud(ent);
+        }
     }
 }

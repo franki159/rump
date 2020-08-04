@@ -4488,3 +4488,24 @@ iframe {
 .custom-file-input:lang(en) ~ .custom-file-label::after {
     content: "Buscar";
 }
+
+.header-fixed {
+    position: fixed;
+}
+
+.fcp-btn-celeste-tit {
+    background: linear-gradient(#53e3ff, #003969);
+    z-index: 1;
+    height: 40px;
+    line-height: 35px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0px 30px;
+    margin-top: 5px;
+    text-align: center;
+    text-transform: capitalize;
+    border: 2px solid #9a9393;
+    color: #ffffff;
+    border-radius: 25px;
+}

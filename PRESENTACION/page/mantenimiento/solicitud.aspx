@@ -27,7 +27,6 @@
                         <div class="form-group">
                             <label>Estado </label>
                             <select id="sel_estado" class="form-control">
-                                <option value="0">TODOS</option>
                                 <option value="1">PENDIENTES</option>
                                 <option value="2">ATENDIDOS</option>
                             </select>
@@ -64,7 +63,7 @@
                     <thead>
                         <tr>
                             <th style="display: none"></th>
-                            <th></th>
+                            <th style="width: 120px;"></th>
                             <th>Tipo</th>
                             <th>Fecha</th>
                             <th>DNI</th>
@@ -74,6 +73,7 @@
                             <th>Telefono</th>
 
                             <th>Recibe</th>
+                            <th>DNI</th>
                             <th>Tel. Recibe</th>
                             <th>DEP|PROV|DIST</th>
                             <th>Dir. Entrega</th>
@@ -85,6 +85,118 @@
                 </table>
             </div>
             <div id="lblTotalReg" class="footer-table-fcp"></div>
+        </div>
+    </div>
+</div>
+
+<div class='modal modal-scroll fade' id='pnl_editar' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class="modal-dialog modal-extend-fgp">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Solicitud</h4>
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="errorSolicitud"></div>
+                <div class="">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="nav-item">
+                            <a class="nav-link active" id="dato-tab" data-toggle="tab" href="#dato" role="tab" aria-controls="dato" aria-selected="true">Datos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="domicilio-tab" data-toggle="tab" href="#domicilio" role="tab" aria-controls="domicilio" aria-selected="false">Domicilio</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="dato" aria-labelledby="dato-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Nombres</label>
+                                        <input id="txt-nom" placeholder="Nombres" class="form-control" type="text" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Apellidos</label>
+                                        <input id="txt-ape" placeholder="Apellidos" class="form-control" type="text" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Telefono</label>
+                                        <input id="txt-tel" placeholder="Telefono" class="form-control" type="text" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>DNI</label>
+                                        <input id="txt-dni" placeholder="DNI" class="form-control" type="text" maxlength="100" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-sm continue"><i class="fas fa-angle-double-right"></i>&nbsp;Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade panel-body" id="domicilio" aria-labelledby="domicilio-tab">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Departamento</label>
+                                        <select id="sel_departamento" class="form-control sel_autocomplete" style="width: 100%;">
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Provincia</label>
+                                        <select id="sel_provincia" class="form-control sel_autocomplete" style="width: 100%;"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Distrito</label>
+                                        <select id="sel_distrito" class="form-control sel_autocomplete" style="width: 100%;"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Dirección</label>
+                                        <input id="txt_direccion" placeholder="Dirección/Departamento/Interior" class="form-control" type="text" maxlength="200" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Referencia (avenidas o calles principales)</label>
+                                        <textarea id="txt_referencia" placeholder="Avenidas o calles principales..." maxlength="500" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-sm back"><i class="fas fa-angle-double-left"></i>&nbsp;Atras</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="push"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn_guardar" type="button" class="btn btn-info btn-sm" data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Guardando"><i class="fa fa-floppy-o" aria-hidden="true"></i>GUARDAR</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>
