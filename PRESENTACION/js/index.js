@@ -398,6 +398,7 @@ function guardarImagen(evt, nameId, file) {
 $("#btn_registrar").click(function (evt) {
     $("#errorRegistro").html('');
     openLoading();
+
     if (validIdInput($("#txt_nombre_pre").val()) || validIdInput($("#txt_apellido_pre").val())) {
         $("#errorRegistro").html(GenerarAlertaWarning("Nombre: Debe Ingresar el nombre y el apellido"));
         closeLoading();
@@ -511,6 +512,12 @@ $("#btn_registrar").click(function (evt) {
         closeLoading();
         activaTab('propietario');
         $("#txt_tel_padre").focus();
+        return;
+    } else if ($("#chk_politicas").is(':checked') === false) {
+        $("#errorRegistro").html(GenerarAlertaWarning("Politicas: Debe aceptar las políticas"));
+        closeLoading();
+        activaTab('mascota');
+        $("#chk_politicas").focus();
         return;
     }
   
@@ -672,6 +679,13 @@ function showDatosMascota(p_dni) {
             $(".dni-ref-msc").html(data.d.Resultado.REFERENCIA);
 
             closeLoading();
+            $("#pnl_mascota_codigo .modal-header").css('background', '#084e65');
+            $("#pnl_mascota_codigo .modal-footer").css('background', '#084e65');
+            $("#pnl_mascota_codigo .modal-title").css('color', '#fff');
+            $("#pnl_mascota_codigo .modal-body").css('background', 'linear-gradient(#0c637e, #000000)');
+            $("#pnl_mascota_codigo .modal-body").css('color', '#fff');
+            $("#pnl_mascota_codigo .modal-body hr").css('border-top', '1px solid rgb(255 255 255)');
+            $("#pnl_mascota_codigo .modal-body .img-row-mascota").css('background', '#fff');
             $("#pnl_mascota_codigo").modal();
         },
         error: function (data) {

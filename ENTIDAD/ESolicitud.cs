@@ -15,7 +15,7 @@ namespace ENTIDAD
         public string ID_MSC_ENCRIP { get; set; }
 
         public Nullable<DateTime> FECHA_SOL { get; set; }
-        public decimal TOTAL { get; set; }
+        public double TOTAL { get; set; }
         public decimal PRECIO { get; set; }
         public decimal USUARIO_ID { get; set; }
         public decimal USUARIO { get; set; }
@@ -26,6 +26,8 @@ namespace ENTIDAD
         public string PROPIETARIO { get; set; }
         public string TELEFONO { get; set; }
         public int ESTADO { get; set; }
+        public int SOL_TOMADA { get; set; }
+        public string EST_DSC { get; set; }
 
         public string NOM_REP { get; set; }
         public string APE_REP { get; set; }
@@ -33,10 +35,16 @@ namespace ENTIDAD
         public string DNI_REP { get; set; }
         public string DIRECCION { get; set; }
         public string REFERENCIA { get; set; }
-        public decimal GEOGRAFIA_ID { get; set; }
+        public Nullable<decimal> GEOGRAFIA_ID { get; set; }
 
         public string DEPARTAMENTO { get; set; }
         public string PROVINCIA { get; set; }
         public string DISTRITO { get; set; }
+
+        public string COMENTARIO { get; set; }
+        public string FOTO { get; set; }
+
+        public Nullable<DateTime> FEC_INI { get; set; }
+        public Nullable<DateTime> FEC_FIN { get; set; }
     }
 }

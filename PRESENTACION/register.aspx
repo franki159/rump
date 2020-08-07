@@ -52,6 +52,12 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="clave" id="txtPassword" placeholder="Ingrese contraseña...">
                                         </div>
+                                        <div class="form-group">
+                                          <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="chk_politicas">
+                                            <label class="custom-control-label" for="chk_politicas">He leído y acepto las <a target="_blank" class="text-primary" href="./politicas_privacidad.html">políticas de privacidad</a></label>
+                                          </div>
+                                        </div>
                                         <a href="#" id="btnAcceder" class="btn btn-warning btn-user btn-block" style="background-color: #e88101;">Registrarse
                                         </a>
                                         <%--<hr>

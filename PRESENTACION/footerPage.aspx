@@ -63,12 +63,13 @@
 
                             <!-- Footer Nav -->
                             <ul class="footer-nav">
-                                <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i>Noticias</a></li>
-                                <li><a href="./Servicios"><i class="fa fa-caret-right" aria-hidden="true"></i>Servicios</a></li>
-                                <li><a href="./MascotasExtraviadas"><i class="fa fa-caret-right" aria-hidden="true"></i>Mascotas extraviadas</a></li>
-                                <li><a href="./Adopcion"><i class="fa fa-caret-right" aria-hidden="true"></i>Adóptame</a></li>
-                                <li><a href="./QuienesSomos"><i class="fa fa-caret-right" aria-hidden="true"></i>¿Quiénes somos?</a></li>
-                                <li><a href="./Contacto"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
+                                <li><a href="./blog.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Noticias</a></li>
+                                <li><a href="./Servicios"><i class="fa fa-caret-right" aria-hidden="true"></i> Servicios</a></li>
+                                <li><a href="./MascotasExtraviadas"><i class="fa fa-caret-right" aria-hidden="true"></i> Mascotas extraviadas</a></li>
+                                <li><a href="./Adopcion"><i class="fa fa-caret-right" aria-hidden="true"></i> Adóptame</a></li>
+                                <li><a href="./QuienesSomos"><i class="fa fa-caret-right" aria-hidden="true"></i> ¿Quiénes somos?</a></li>
+                                <li><a href="./Contacto"><i class="fa fa-caret-right" aria-hidden="true"></i> Contacto</a></li>
+                                <li><a href="./politicas_privacidad.html"><i class="fa fa-caret-right" aria-hidden="true"></i> Políticas de privacidad</a></li>
                             </ul>
                         </div>
                     </div>

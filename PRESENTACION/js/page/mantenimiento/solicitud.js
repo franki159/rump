@@ -18,8 +18,18 @@ $(function () {
         $('.nav-tabs .active').parent().prev('li').find('a').trigger('click');
     });
     $("#sel_estado").val(1);
+    $("#pnl_editar").modal({ show: false, backdrop: 'static' });
     fc_listar_inicio();
     closeLoading();
+
+    ////Fecha actual
+    var fullDate = new Date();
+    var primerDia = new Date(fullDate.getFullYear(), fullDate.getMonth(), 1);
+    var ultimoDia = new Date(fullDate.getFullYear(), fullDate.getMonth() + 1, 0);
+    
+    $("#txt_ini").val(formatDate(primerDia, "yyyy-MM-dd"));
+    $("#txt_fin").val(formatDate(fullDate, "yyyy-MM-dd"));
+
     $("#txt_bus_email").focus();
 });
 
@@ -98,9 +108,11 @@ function fc_listar_solicitud(p_sinc) {
         DNI: $("#txt_bus_dni").val(),
         EMAIL: $("#txt_bus_email").val(),
         ID: $("#sel_tipo").val(),
-        ESTADO: $("#sel_estado").val()
+        ESTADO: $("#sel_estado").val(),
+        FEC_INI: $("#txt_ini").val() === "" ? null : getDateFromFormat($("#txt_ini").val(), 'yyyy-MM-dd'),
+        FEC_FIN: $("#txt_fin").val() === "" ? null : getDateFromFormat($("#txt_fin").val(), 'yyyy-MM-dd')
     };
-
+    
     $.ajax({
         type: "POST",
         url: "page/mantenimiento/solicitud.aspx/ListaSolicitudWM",
@@ -111,6 +123,7 @@ function fc_listar_solicitud(p_sinc) {
         }),
         async: p_sinc,
         beforeSend: function () {
+            $('#errorDiv').empty();
             $('#tbl_solicitud tbody').empty();
             openLoading();
         },
@@ -123,60 +136,58 @@ function fc_listar_solicitud(p_sinc) {
                 return;
             }
 
-            var htmlBotones = '<button name="atender" title="Atender solicitud" class="btn btn-success btn-sm"><i class="far fa-thumbs-up"></i></button> ' +
-                '<button name="editar" title="Anular solicitud"  class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></button> ' + 
-                '<button name="anular" title="Anular solicitud"  class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';
+            var htmlBotones = '' +/*'<button name="atender" title="Atender solicitud" class="btn btn-success btn-sm"><i class="far fa-thumbs-up"></i></button> ' +*/
+                '<button name="editar" title="Editar solicitud"  class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></button> '; 
+                /*'<button name="anular" title="Anular solicitud"  class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>';*/
 
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 html += '<tr><td style="display:none">' + data.d.Resultado[i].ID_ENCRIP + '</td>';
                 if (data.d.Resultado[i].ESTADO === 1) {
-                    html += '<td>' + htmlBotones + '</td>';
+                    html += '<td><button name="editar" title="Editar solicitud" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></button></td>';
+                } else if (data.d.Resultado[i].ESTADO === 3) {
+                    if (data.d.Resultado[i].SOL_TOMADA === 1) {
+                        html += '<td><button name="editar" title="Editar solicitud" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></button></td>';
+                    } else {
+                        html += '<td>' + data.d.Resultado[i].vPARAM2 + '</td>';
+                    }                    
                 } else {
                     html += '<td>' + data.d.Resultado[i].vPARAM2 + '</td>';
                 }
                 html += '<td>Solicitud ' + data.d.Resultado[i].TIPO + '</td>';
-                html += '<td>' + data.d.Resultado[i].vPARAM1 + '</td>';
-                html += '<td>' + data.d.Resultado[i].DNI + '</td>';
+                html += '<td class="text-center">' + data.d.Resultado[i].vPARAM1 + '</td>';
+                html += '<td class="text-center">' + data.d.Resultado[i].DNI + '</td>';
                 html += '<td>' + data.d.Resultado[i].MASCOTA + '</td>';
                 html += '<td>' + data.d.Resultado[i].PROPIETARIO + '</td>';
-                html += '<td>' + data.d.Resultado[i].EMAIL + '</td>';
-                html += '<td>' + data.d.Resultado[i].TELEFONO + '</td>';
+                html += '<td class="text-center">' + data.d.Resultado[i].EMAIL + '</td>';
+                html += '<td class="text-center">' + data.d.Resultado[i].TELEFONO + '</td>';
+                html += '<td class="text-center">' + (data.d.Resultado[i].NOM_REP === "" ? "No" : "Si") + '</td>';
+                html += '<td class="text-center">' + (data.d.Resultado[i].DIRECCION === "" ? "No" : "Si") + '</td></tr>';
 
-                html += '<td>' + data.d.Resultado[i].NOM_REP + ' ' + data.d.Resultado[i].APE_REP + '</td>';
-                html += '<td>' + data.d.Resultado[i].DNI_REP + '</td>';
-                html += '<td>' + data.d.Resultado[i].TEL_REP + '</td>';
-                html += '<td>' + data.d.Resultado[i].DEPARTAMENTO + '|' + data.d.Resultado[i].PROVINCIA + '|' + data.d.Resultado[i].DISTRITO + '</td>';
-                html += '<td>' + data.d.Resultado[i].DIRECCION + '</td>';
-                html += '<td>' + data.d.Resultado[i].REFERENCIA + '</td></tr>';
+                //html += '<td>' + data.d.Resultado[i].NOM_REP + ' ' + data.d.Resultado[i].APE_REP + '</td>';
+                //html += '<td>' + data.d.Resultado[i].DNI_REP + '</td>';
+                //html += '<td>' + data.d.Resultado[i].TEL_REP + '</td>';
+                //html += '<td>' + data.d.Resultado[i].DEPARTAMENTO + '|' + data.d.Resultado[i].PROVINCIA + '|' + data.d.Resultado[i].DISTRITO + '</td>';
+                //html += '<td>' + data.d.Resultado[i].DIRECCION + '</td>';
+                //html += '<td>' + data.d.Resultado[i].REFERENCIA + '</td></tr>';
             }
 
             $("#tbl_solicitud tbody").append(html);
             $("#lblTotalReg").html("Total Registros: " + data.d.Resultado.length);
 
             $("#tbl_solicitud button").click(function () {
-                if ($(this).attr("name") === "atender") {
-                    limpiarSolicitud();
-                    id_solicitud = $(this).parent().parent().find("td").eq(0).html();
-                    id_solicitud = validaTableMobile(id_solicitud);
-                    txh_idConfirm = 'ATENDER';
-                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Atender</strong> la solicitud?");
-                } else if ($(this).attr("name") === "editar") {
+                if ($(this).attr("name") === "editar") {
                     limpiarEdicion();
                     id_solicitud = $(this).parent().parent().find("td").eq(0).html();
                     id_solicitud = validaTableMobile(id_solicitud);
 
                     var eSolicitud = {
-                        SOLICITUD_ID_ENCRIP: id_solicitud,
-                        DNI: '',
-                        EMAIL: '',
-                        ID: '0',
-                        ESTADO: '0'
+                        SOLICITUD_ID_ENCRIP: id_solicitud
                     };
                     
                     $.ajax({
                         type: "POST",
-                        url: "page/mantenimiento/solicitud.aspx/ListaSolicitudWM",
+                        url: "page/mantenimiento/solicitud.aspx/ListaSolicitudxIdWM",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         data: JSON.stringify({
@@ -194,7 +205,35 @@ function fc_listar_solicitud(p_sinc) {
                                 closeLoading();
                                 return;
                             }
-
+                            //solicitud
+                            $("#pnl_editar .modal-title").html(data.d.Resultado[0].TIPO);
+                            //$("#srv-tip").html(data.d.Resultado[0].TIPO);
+                            $("#srv-pre").html(data.d.Resultado[0].TOTAL);
+                            $("#srv-fec").html(data.d.Resultado[0].vPARAM1);
+                            switch (data.d.Resultado[0].ESTADO) {
+                                case 0: $("#srv-est").css("border-color", "#e74a3b"); $("#srv-est").css("color", "#e74a3b!important"); break;
+                                case 1: $("#srv-est").css("border-color", "#858796"); $("#srv-est").css("color", "#858796!important"); break;
+                                case 2: $("#srv-est").css("border-color", "#1cc88a"); $("#srv-est").css("color", "#1cc88a!important"); break;
+                                case 3: $("#srv-est").css("border-color", "#f6c23e"); $("#srv-est").css("color", "#f6c23e!important"); break;
+                                default:
+                            }
+                            $("#srv-est").html(data.d.Resultado[0].EST_DSC);
+                            //mascota
+                            $("#imgMascotaCita").attr("src", "img/mascota/" + data.d.Resultado[0].FOTO + '?v=' + valRND);
+                            $("#dni-dni-msc").html(data.d.Resultado[0].DNI);
+                            $("#dni-nom-msc").html(data.d.Resultado[0].MASCOTA);
+                            $("#dni-prop-msc").html(data.d.Resultado[0].PROPIETARIO);
+                            $("#dni-email-msc").html(data.d.Resultado[0].EMAIL);
+                            $("#dni-tel-msc").html(data.d.Resultado[0].TELEFONO);  
+                            if (data.d.Resultado[0].COMENTARIO === "") {
+                                $("#lbl-com-sol").hide();
+                            } else {
+                                $("#lbl-com-sol").show();
+                                $("#lbl-com-sol").html(data.d.Resultado[0].COMENTARIO);
+                            }
+                            
+                            $("#txt_comentario").val('');
+                            
                             $("#txt-nom").val(data.d.Resultado[0].NOM_REP);
                             $("#txt-ape").val(data.d.Resultado[0].APE_REP);
                             $("#txt-tel").val(data.d.Resultado[0].TEL_REP);
@@ -216,13 +255,6 @@ function fc_listar_solicitud(p_sinc) {
                             closeLoading();
                         }
                     });
-
-                }else if ($(this).attr("name") === "anular") {
-                    limpiarSolicitud();
-                    id_solicitud = $(this).parent().parent().find("td").eq(0).html();
-                    id_solicitud = validaTableMobile(id_solicitud);
-                    txh_idConfirm = 'ANULAR';
-                    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Eliminar</strong> la solicitud?");
                 }
             });
 
@@ -239,7 +271,8 @@ function aceptarConfirm() {
     switch (txh_idConfirm) {
         case "ATENDER":
             var objE = {
-                ID_ENCRIP: id_solicitud
+                ID_ENCRIP: id_solicitud,
+                COMENTARIO: $("#txt_comentario").val()
             };
 
             $.ajax({
@@ -264,6 +297,7 @@ function aceptarConfirm() {
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
                     fc_listar_solicitud(false);
+                    $("#pnl_editar").modal('hide');
                     closeLoading();
                 },
                 error: function (data) {
@@ -276,7 +310,8 @@ function aceptarConfirm() {
             break;
         case "ANULAR":
             objE = {
-                ID_ENCRIP: id_solicitud
+                ID_ENCRIP: id_solicitud,
+                COMENTARIO: $("#txt_comentario").val()
             };
 
             $.ajax({
@@ -301,12 +336,93 @@ function aceptarConfirm() {
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
                     fc_listar_solicitud(false);
+                    $("#pnl_editar").modal('hide');
                     closeLoading();
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
                     $("#tbl_solicitud button").removeAttr("disabled");
                     closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "LIBERAR":
+            objE = {
+                ID_ENCRIP: id_solicitud
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/solicitud.aspx/LiberarSolicitud",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    $("#errorDiv").html('');
+                    $("#tbl_solicitud button").attr("disabled", true);
+                    openLoading();
+                },
+                success: function (data) {
+                    $("#tbl_solicitud button").removeAttr("disabled");
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
+                        closeLoading();
+                        return;
+                    }
+
+                    $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
+                    fc_listar_solicitud(false);
+                    $("#pnl_editar").modal('hide');
+                    closeLoading();
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
+                    $("#tbl_solicitud button").removeAttr("disabled");
+                    closeLoading();
+                }
+            });
+            event.preventDefault();
+            break;
+        case "GUARDAR":
+            objE = {
+                ID_ENCRIP: id_solicitud,
+                NOM_REP: $("#txt-nom").val(),
+                APE_REP: $("#txt-ape").val(),
+                TEL_REP: $("#txt-tel").val(),
+                DNI_REP: $("#txt-dni").val(),
+                DIRECCION: $("#txt_direccion").val(),
+                REFERENCIA: $("#txt_referencia").val(),
+                GEOGRAFIA_ID: $("#sel_distrito").val(),
+                COMENTARIO: $("#txt_comentario").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/solicitud.aspx/ActualizarSolicitudWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    openLoading();
+                },
+                success: function (data) {
+                    if (!data.d.Activo) {
+                        $("#errorSolicitud").html(GenerarAlertaWarning(data.d.Mensaje));
+                        closeLoading();
+                        return false;
+                    }
+
+                    fc_listar_solicitud(false);
+                    $("#pnl_editar").modal('hide');
+                    closeLoading();
+                },
+                error: function (data) {
+                    $("#errorSolicitud").html(GenerarAlertaError("Inconveniente en la operación"));
+                    closeLoading();
+                    return false;
                 }
             });
             event.preventDefault();
@@ -330,10 +446,10 @@ function limpiarSolicitud() {
     txh_idConfirm = "";
     $("#pnl_busqueda").css("pointer-events", "visible");
     //$("#pnl_busqueda select").val('0');
-    $("#pnl_busqueda input").val('');
-    $("#pnl_busqueda textarea").val('');
-    $("#pnl_busqueda select").attr("disabled", false);
-    $("#pnl_busqueda input").attr("disabled", false);
+    //$("#pnl_busqueda input").val('');
+    //$("#pnl_busqueda textarea").val('');
+    //$("#pnl_busqueda select").attr("disabled", false);
+    //$("#pnl_busqueda input").attr("disabled", false);
  
 }
 /*Eventos por Control*/
@@ -364,6 +480,19 @@ $("#btn_buscar").click(function () {
     $("#btn_buscar").attr("disabled", true);
     fc_listar_solicitud(true);
 });
+$("#btn_exportar").click(function () {
+    $("#btn_exportar").attr("disabled", true);
+    var total_reg = $('#tbl_solicitud tr').length;
+
+    if (total_reg < 2) {
+        $("#errorDiv").html(GenerarAlertaWarning("Cantidad de Registros: No hay registros para exportar"));
+        $("#btn_exportar").attr("disabled", false);
+        return;
+    }
+    exportGridToExcel("tbl_solicitud", "solicitudes_rump");
+    $("#btn_exportar").attr("disabled", false);
+});
+
 $("#sel_departamento").on('change', function () {
     /************************ Listado de Provincia ****************************/
     var objE = {
@@ -459,43 +588,38 @@ $("#sel_provincia").on('change', function () {
     });
 });
 $("#btn_guardar").click(function () {
-    var objE = {
-        ID_ENCRIP: id_solicitud,
-        NOM_REP: $("#txt-nom").val(),
-        APE_REP: $("#txt-ape").val(),
-        TEL_REP: $("#txt-tel").val(),
-        DNI_REP: $("#txt-dni").val(),
-        DIRECCION: $("#txt_direccion").val(),
-        REFERENCIA: $("#txt_referencia").val(),
-        GEOGRAFIA_ID: $("#sel_distrito").val()
-    };
+    if (validIdInput($("#txt_comentario").val())) {
+        $("#errorSolicitud").html(GenerarAlertaWarning("Comentario: Ingrese un comentario"));
+        $("#txt_comentario").focus();
+        return;
+    }
 
-    $.ajax({
-        type: "POST",
-        url: "page/mantenimiento/solicitud.aspx/ActualizarSolicitudWM",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify({ objE: objE }),
-        async: true,
-        beforeSend: function () {
-            openLoading();
-        },
-        success: function (data) {
-            if (!data.d.Activo) {
-                $("#errorSolicitud").html(GenerarAlertaWarning(data.d.Mensaje));
-                closeLoading();
-                return false;
-            }
-
-            fc_listar_solicitud(false);
-            $("#pnl_editar").modal('hide');
-            closeLoading();
-        },
-        error: function (data) {
-            $("#errorSolicitud").html(GenerarAlertaWarning(data.d.Mensaje));
-            closeLoading();
-            return false;
-        }
-    });
-    
+    limpiarSolicitud();
+    txh_idConfirm = 'GUARDAR';
+    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Guardar</strong> la solicitud?");    
+});
+$("#btn_atender").click(function () {
+    if (validIdInput($("#txt_comentario").val())) {
+        $("#errorSolicitud").html(GenerarAlertaWarning("Comentario: Ingrese un comentario"));
+        $("#txt_comentario").focus();
+        return;
+    }
+    limpiarSolicitud();
+    txh_idConfirm = 'ATENDER';
+    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Atender</strong> la solicitud?");
+});
+$("#btn_liberar").click(function () {
+    limpiarSolicitud();
+    txh_idConfirm = 'LIBERAR';
+    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>LIBERAR</strong> la solicitud?");
+});
+$("#btn_anular").click(function () {
+    if (validIdInput($("#txt_comentario").val())) {
+        $("#errorSolicitud").html(GenerarAlertaWarning("Comentario: Ingrese un comentario"));
+        $("#txt_comentario").focus();
+        return;
+    }
+    limpiarSolicitud();
+    txh_idConfirm = 'ANULAR';
+    window.parent.fc_mostrar_confirmacion("¿Esta seguro de <strong>Anular</strong> la solicitud?");
 });

@@ -26,6 +26,12 @@
             $("#txtEmail").focus();
             return;
         }
+        if ($("#chk_politicas").is(':checked') === false) {
+            $("#msgError").html(GenerarAlertaWarning("Politicas: Debe aceptar las políticas"));
+            $("#chk_politicas").focus();
+            return;
+        }
+
 
         $.ajax({
             type: "POST",

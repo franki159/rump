@@ -361,7 +361,7 @@ function isEmail(email) {
 }
 
 function validIdInput(valor) {
-    if (valor === "" || valor === "0" || valor === null)
+    if (valor === "0" || valor === null || valor.trim() === "")
         return true;
     else
         return false;
@@ -425,14 +425,18 @@ function exportGridToExcel(tableID, filename = '') {
     document.body.appendChild(copyTable);
 
     $("#copyTable thead tr th").each(function () {
-        if ($(this).context.style.display === "none" || $(this).context.outerText.trim() === "") {
-            $(this).remove();
+        if ($(this).context !== undefined) {
+            if ($(this).context.style.display === "none" || $(this).context.outerText.trim() === "") {
+                $(this).remove();
+            }
         }
     });
 
     $("#copyTable tbody tr td").each(function () {
-        if ($(this).context.style.display === "none" || $(this).context.outerHTML.includes("button")) {
-            $(this).remove();
+        if ($(this).context !== undefined) {
+            if ($(this).context.style.display === "none" || $(this).context.outerHTML.includes("button")) {
+                $(this).remove();
+            }
         }
     });
 

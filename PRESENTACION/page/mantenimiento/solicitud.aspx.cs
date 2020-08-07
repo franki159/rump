@@ -35,7 +35,7 @@ namespace PRESENTACION.page.mantenimiento
                 List<ESolicitud> objResultado = new List<ESolicitud>();
                 
 
-                objResultado.Add(NSolicitud.listarSolicitudxId(objE));
+                objResultado.Add(NSolicitud.listarServicioxId(objE));
 
                 HttpContext.Current.Session["carritoMascota"] = objResultado;
             }
@@ -89,8 +89,41 @@ namespace PRESENTACION.page.mantenimiento
                 }
 
                 List<ESolicitud> objResultado = new List<ESolicitud>();
-
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO = eSession.ID;
                 objResultado = NSolicitud.listarSolicitud(objE);
+
+                if (objResultado.Count == 0)
+                {
+                    objRespuesta.Error("No se encontraron registros.");
+                }
+                else
+                {
+                    objRespuesta.Resultado = objResultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object ListaSolicitudxIdWM(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                List<ESolicitud> objResultado = new List<ESolicitud>();
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO = eSession.ID;
+                objResultado = NSolicitud.listarSolicitudxId(objE);
 
                 if (objResultado.Count == 0)
                 {
@@ -265,5 +298,38 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
+        [WebMethod()]
+        public static object LiberarSolicitud(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                int objResultado = 0;
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO = eSession.ID;
+                objResultado = NSolicitud.LiberarSolicitud(objE);
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("No se pudo eliminar.");
+                }
+                else
+                {
+                    objRespuesta.Success("Se eliminó la solicitud correctamente");
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        
     }
 }

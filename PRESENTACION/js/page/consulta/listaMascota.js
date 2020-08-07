@@ -13,6 +13,14 @@ $(function () {
         orientation: "top left"
     });
 
+    ////Fecha actual
+    var fullDate = new Date();
+    var primerDia = new Date(fullDate.getFullYear(), fullDate.getMonth(), 1);
+    var ultimoDia = new Date(fullDate.getFullYear(), fullDate.getMonth() + 1, 0);
+
+    $("#txt_ini_reg").val(formatDate(primerDia, "yyyy-MM-dd"));
+    $("#txt_fin_reg").val(formatDate(fullDate, "yyyy-MM-dd"));
+
     fc_listar_inicio();
     
     $("#txt_dni_msc").focus();

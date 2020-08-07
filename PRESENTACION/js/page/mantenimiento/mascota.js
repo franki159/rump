@@ -33,7 +33,7 @@ function fc_listar_inicio() {
     /************************ Listado de Tipo ****************************/
     if (sessionStorage.getItem('PERFIL_ID') === "4") {//Para los propietarios
         $("#divBusqueda").remove();
-        fc_listar_mascota();
+        fc_listar_mascota(true);
     } else {
         $("#divBusqueda").show();
     }
@@ -106,7 +106,7 @@ function fc_listar_inicio() {
     listarTipoCita();
 }
 /*Funciones*/
-function fc_listar_mascota() {
+function fc_listar_mascota(mAlerta) {
     if (sessionStorage.getItem('PERFIL_ID') !== "4" && $("#txt_bus_dni").val() === "") {
         closeLoading();
         return;
@@ -279,6 +279,7 @@ function fc_listar_mascota() {
                         data: JSON.stringify({ objE: eMascota }),
                         beforeSend: function () {
                             $("#errorMascota_v").html('');
+                            openLoading();
                         },
                         async: true,
                         success: function (data) {
@@ -335,12 +336,18 @@ function fc_listar_mascota() {
 
                             if (data.d.Resultado.lMASCOTA.length > 0)
                                 $(".tbl-img-msc").attr("src", "img/mascota/" + data.d.Resultado.lMASCOTA[0].FOTO + '?v=' + valRND);
+                            else {
+                                $(".tbl-img-msc").attr("src", "");
+                            }
 
                             $(".tbl-cla-msc").html(calificacion);
                             $(".tbl-col-msc").html(data.d.Resultado.COLOR.trim() === "" ? "-" : data.d.Resultado.COLOR);
 
                             closeLoading();
-
+                            $("#pnl_mascota_v .modal-title").html('DNI RUMP Virtual');
+                            $("#pnl_mascota_v .modal-header").css('background', '#084e65');                            
+                            $("#pnl_mascota_v .modal-header").css('color', '#fff');
+                            $("#pnl_mascota_v .modal-body").css('background', 'linear-gradient(#0c637e, #000000)');
                             $("#pnl_mascota_v").modal('show');
                         },
                         error: function (data) {
@@ -657,8 +664,9 @@ function fc_listar_mascota() {
             });
             
             closeLoading();
-            if (cont_dni_problema > 0) {
+            if (cont_dni_problema > 0 && mAlerta) {
                 msg_OpenDay("a", "Algunos dni estan por vencer o vencidos. No te quedes sin los beneficios y renuevalos.");
+                closeLoading();
             }
         },
         error: function (data) {
@@ -877,7 +885,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -923,7 +931,7 @@ function aceptarConfirm() {
                     }
                     estProc = true;
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorCupon").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -960,7 +968,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -996,7 +1004,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1044,7 +1052,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1080,7 +1088,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1128,7 +1136,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota();
+                    fc_listar_mascota(false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1460,7 +1468,7 @@ $("#btn_buscar").click(function () {
         $("#txt_bus_dni").focus();
         return;
     }
-    fc_listar_mascota();
+    fc_listar_mascota(true);
 });
 $("#btn_nuevo").click(function () {
     //Si es un asesor o un administrador
@@ -1693,7 +1701,7 @@ $("#btn_guardar").click(function (evt) {
                     msg_OpenDay("c", "Mascota guardada correctamente");
                 }
 
-                fc_listar_mascota();
+                fc_listar_mascota(false);
                 $("#pnl_mascota").modal('hide');
             } else if (id_mascota !== "") {//Modificar
                 //Guardando todas las imagenes BD
@@ -1786,7 +1794,7 @@ $("#btn_guardar").click(function (evt) {
                     msg_OpenDay("c", "Mascota guardada correctamente");
                 }
 
-                fc_listar_mascota();
+                fc_listar_mascota(false);
                 $("#pnl_mascota").modal('hide');
             }
         },

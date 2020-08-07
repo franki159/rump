@@ -311,6 +311,14 @@
                                         <label class="custom-file-label" for="customFile">Foto de su mascota</label>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <br>
+                                        <input type="checkbox" id="chk_politicas">
+                                        <label class="text-secondary" for="">He leído y acepto las</label>
+                                        <a target="_blank" class="text-primary" href="./politicas_privacidad.html">políticas de privacidad</a>
+                                    </div>
+                                </div>
                             </div>
                             <br>
                             <div class="row">
@@ -347,109 +355,109 @@
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group text-secondary">
-                                        Nombres de la mascota
-                                        <h6><strong><span class="dni-nom-msc"></span></strong></h6>
+                                    <div class="form-group">
+                                        Nombres de la mascota<br>
+                                        <label><b class="dni-nom-msc"></b></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group text-secondary">
-                                        Apellidos de la mascota
-                                        <h6><strong><span class="dni-ape-msc"></span></strong></h6>
+                                    <div class="form-group">
+                                        Apellidos de la mascota<br>
+                                        <label><b class="dni-ape-msc"></b></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group text-secondary">
-                                        SEXO
-                                        <h6><strong><span class="dni-sex-msc"></span></strong></h6>
+                                    <div class="form-group">
+                                        SEXO<br>
+                                        <label><b class="dni-sex-msc"></b></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group text-secondary">
-                                        Calificación
-                                        <h6><strong><span class="dni-cal-msc"></span></strong></h6>
+                                    <div class="form-group">
+                                        Calificación<br>
+                                        <label><b class="dni-cal-msc"></b></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group text-secondary">
-                                        Especie
-                                        <h6><strong><span class="dni-esp-msc"></span></strong></h6>
+                                    <div class="form-group">
+                                        Especie<br>
+                                        <label><b class="dni-esp-msc"></b></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group text-secondary">
-                                        RAZA
-                                        <h6><strong><span class="dni-raz-msc"></span></strong></h6>
+                                    <div class="form-group">
+                                        RAZA<br>
+                                        <label><b class="dni-raz-msc"></b></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        Datos adicionales<br>
+                                        <label><b class="dni-bio-msc"></b></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <h5>Padres humanos</h5>
+                    <strong>Responsables humanos</strong>
                     <hr>
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="form-group text-secondary">
-                                Nombres del Padre
-                                <h6><strong><span class="dni-nom-padre"></span></strong></h6>
+                            <div class="form-group">
+                                Nombres responsable 1<br>
+                                <label><b class="dni-nom-padre"></b></label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group text-secondary">
-                                Telefono del Padre
-                                <h6><strong><span class="dni-tel-padre"></span></strong></h6>
+                            <div class="form-group">
+                                Telefono responsable 1<br>
+                                <label><b class="dni-tel-padre"></b></label>
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <div class="form-group text-secondary">
-                                Nombres de la Madre
-                                <h6><strong><span class="dni-nom-madre"></span></strong></h6>
+                            <div class="form-group">
+                                Nombres responsable 2<br>
+                                <label><b class="dni-nom-madre"></b></label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group text-secondary">
-                                Telefono de la Madre
-                                <h6><strong><span class="dni-tel-madre"></span></strong></h6>
+                            <div class="form-group">
+                                Telefono responsable 2<br>
+                                <label><b class="dni-tel-madre"></b></label>
                             </div>
                         </div>
                     </div>
-                    <h5>Direccion</h5>
+                    <strong>Direccion</strong>
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="form-group text-secondary">
-                                Departamento
-                                <h6><strong><span class="dni-dep-msc"></span></strong></h6>
+                            <div class="form-group">
+                                Departamento<br>
+                                <label><b class="dni-dep-msc"></b></label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group text-secondary">
-                                Provincia
-                                <h6><strong><span class="dni-prov-msc"></span></strong></h6>
+                            <div class="form-group">
+                                Provincia<br>
+                                <label><b class="dni-prov-msc"></b></label>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group text-secondary">
-                                Distrito
-                                <h6><strong><span class="dni-dist-msc"></span></strong></h6>
+                            <div class="form-group">
+                                Distrito<br>
+                                <label><b class="dni-dist-msc"></b></label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group text-secondary">
-                                DIRECCION
-                                <h6><strong><span class="dni-dir-msc"></span></strong></h6>
+                            <div class="form-group">
+                                DIRECCION<br>
+                                <label><b class="dni-dir-msc"></b></label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group text-secondary">
-                                REFERENCIA
-                                <h6><strong><span class="dni-ref-msc"></span></strong></h6>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group text-secondary">
-                                Datos adicionales
-                                <h6><strong><span class="dni-bio-msc"></span></strong></h6>
+                            <div class="form-group">
+                                REFERENCIA<br>
+                                <label><b class="dni-ref-msc"></b></label>
                             </div>
                         </div>
                     </div>

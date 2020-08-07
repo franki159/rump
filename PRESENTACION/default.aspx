@@ -341,6 +341,7 @@
     <script src="js/all/jquery.history.js"></script>
     <script src="templateSoft/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <script src="js/all/jquery.base64.min.js"></script>
     <!-- Datetimepicker-->
     <script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
