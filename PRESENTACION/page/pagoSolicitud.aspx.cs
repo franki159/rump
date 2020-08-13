@@ -9,6 +9,10 @@ using ENTIDAD;
 using NEGOCIOS;
 using System.Globalization;
 using System.Threading;
+using MercadoPago;
+using MercadoPago.Resources;
+using MercadoPago.DataStructures.Payment;
+using MercadoPago.Common;
 
 namespace PRESENTACION.page
 {
@@ -18,7 +22,7 @@ namespace PRESENTACION.page
         {
             if (Page.IsPostBack == false)
             {
-                if (Session["UserRump"] == null) Response.Redirect("~/pagoSolicitudSesion");
+                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
 
@@ -121,6 +125,6 @@ namespace PRESENTACION.page
                 objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
             }
             return objRespuesta;
-        }
+        }      
     }
 }
