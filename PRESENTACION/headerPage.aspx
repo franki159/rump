@@ -14,7 +14,7 @@
 
                     <div class="col-4">
                         <div class="top-header-content">
-                            <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="itel">
+                            <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="itel hidden-phone">
                                 <img src="templatePage/img/core-img/whatsapp.png">
                             </a>
                             <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" class="baraitem hidden-phone">+51 992975292</a>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="col-5">
-                        <a href="#" class="btn fcp-btn-celeste-tit btn-pre-registrar">REGISTRAR</a>
+                        <a href="#" class="btn fcp-btn-celeste-tit btn-pre-registrar hidden-phone">REGISTRAR</a>
                     </div>
                     <div class="col-3">
                         <div class="top-header-content float-right" id="divLoginUser" style="padding-top: 5px;">

@@ -12,26 +12,13 @@
 
     <title>World Pets Perú</title>
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-    <!-- Datetimepicker-->
-    <link href="../assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
-    <link href="../assets/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet" />
-    <!-- Select 2 filtro-->
-    <link href="../assets/select2/css/select2.css" rel="stylesheet" />
-
-    <!-- Custom fonts for this template-->
-    <link href="../templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../templateSoft/css/sb-admin-2.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet">
+    <link href="../css/bootstrap3.4.min.css" rel="stylesheet" />
+    <%--<link href="../templateSoft/css/sb-admin-2.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet">--%>
 
     <link href="../css/stylePropio.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
-
-    <link href="../assets/multisteps/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
     <style>
-        html, body, #wrapper {
-            height:100%;
-        }
         *,
         :before,
         :after {
@@ -48,7 +35,6 @@
                 font-size: 3em;
                 font-weight: 300;
                 text-align: center;
-                color: #2196F3;
             }
 
             form h5 {
@@ -103,7 +89,6 @@
                 textarea:valid ~ label {
                     top: -14px;
                     font-size: 12px;
-                    color: #2196F3;
                 }
 
                 input:focus ~ .bar:before,
@@ -226,43 +211,49 @@
             </div>
             <div class="col-md-3">
                 <div class="group">
-                    <input required="required" class="integerFCP" maxlength="2" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                    <label for="cardExpirationMonth">Mes de vencimiento</label>
+                    <label style="top: -10px;font-size: 12px;">Mes venc</label>
+                    <span class="highlight"></span><span class="bar"></span>
+                    <input required="required" class="integerFCP" placeholder="MM" maxlength="2" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="group">
-                    <input required="required" class="integerFCP" maxlength="4" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                    <label for="cardExpirationYear">Año de vencimiento</label>
+                    <label style="top: -10px;font-size: 12px;">Año venc</label>
+                    <span class="highlight"></span><span class="bar"></span>
+                    <input required="required" class="integerFCP" placeholder="YYYY" maxlength="4" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="group">
                     <input required="required" type="text" id="cardholderName" data-checkout="cardholderName" />
+                    <span class="highlight"></span><span class="bar"></span>
                     <label for="cardholderName">Nombre y apellido</label>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="group">
                     <input required="required" class="cc-cvc-input integerFCP" maxlength="3" type="text" id="securityCode" data-checkout="securityCode" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                    <span class="highlight"></span><span class="bar"></span>
                     <label for="securityCode">Código de seguridad</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="group">
                     <input required="required" type="email" id="email" name="email" />
-                <label for="email">Email</label>
+                    <span class="highlight"></span><span class="bar"></span>
+                    <label for="email">Email</label>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="group" style="margin: 8px 0;">
-                    <label for="docType" style="position: revert;top: -14px;font-size: 12px; color: #2196F3;">Tipo de documento</label>                   
+                    <label for="docType" style="position: revert;top: -14px;font-size: 12px;">Tipo de documento</label>                   
                     <select id="docType" class="form-control" data-checkout="docType"></select>                    
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="group">
                     <input required="required" class="integerFCP" maxlength="12" type="text" id="docNumber" data-checkout="docNumber" />
+                    <span class="highlight"></span><span class="bar"></span>
                     <label for="docNumber">Número</label>
                 </div>
             </div>
@@ -279,30 +270,12 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="../templateSoft/vendor/jquery/jquery.min.js"></script>
-    <%--<script src="js/all/jquery.js" type="text/javascript"></script>--%>
-    <script src="../js/all/jquery-migrate-1.2.1.js" type="text/javascript"></script>
-    <script src="../js/all/jquery.history.js"></script>
-    <script src="../templateSoft/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Datetimepicker-->
-    <script src="../assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../templateSoft/vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages-->
-    <script src="../templateSoft/js/sb-admin-2.js"></script>
-
+    <%--<script src="../templateSoft/js/sb-admin-2.js"></script>--%>
+    <script src="../js/all/bootstrap.min.js"></script>
     <script src="../js/general.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>
-
-    <script src="../js/all/date.js" type="text/javascript"></script>
-    <!-- Select 2 filtro-->
-    <script src="../assets/select2/js/select2.full.js"></script>
-    <%--<script src="../assets/multisteps/script.js?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>"></script>--%>
     <!-- Mercado Pago-->
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
-    <script src="https://material-ui.com/_next/static/PRqmf0vDnRqO9YmLGDtjZ/pages/components/text-fields.js"></script>
     
     <script>
         let ccNumberInput = document.querySelector(".cc-number-input"),

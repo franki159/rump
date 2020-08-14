@@ -17,6 +17,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="templatePage/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>">
+    <link rel="stylesheet" href="templatePage/stylePropio.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>">
     <link href="templateSoft/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Select 2 filtro-->
     <link href="assets/select2/css/select2.css" rel="stylesheet" />
@@ -25,17 +26,48 @@
 <body>
     <!--#include file="headerPage.aspx"-->
     <!-- MENSAGE INICIAL -->
-    <div class='modal modal-scroll fade' id='pnl_mascota_mensaje' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+   <%-- <div class='modal modal-scroll fade' id='pnl_mascota_mensaje' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
-                    <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-body single-footer-widget">
+                    <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span style="color: #000;font-size: 1.5rem;" aria-hidden="true">&times;</span></button>
                     <img  style="display:none;" src="img/inicio/boton-pago.jpg" alt="">
-                    <h3 class="text-info">Ahora puedes pagar online</h3>
-                    <div style="text-align:center;">
-                        <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 238px; height: 238px; margin: 0px;">
+                    <h5 class="widget-title">¿Encontraste una mascota?</h5>
+                    <div class="col-md-12">
+                        <div class="single-footer-widget mb-40">
+                            <!-- Widget Title -->
+                            <span>Comunicate con su dueño ingresando el DNI RUMP (aparece en la chapita)</span>
+
+                            <!-- Newsletter Form -->
+                            <div class="nl-form">
+                                <input id="bus_ini_txt_dni" type="text" class="form-control" maxlength="8" placeholder="Escribe el DNI RUMP...">
+                                <button type="submit" class="btn-ini-dat-msc"><i class="fas fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
                     </div>
+
                     <p><span class="text-danger"><strong>#YoMeQuedoEnCasa.</strong></span></p>                   
+                </div>
+            </div>
+        </div>
+    </div>--%>
+     <div class='modal modal-scroll fade' id='pnl_mascota_mensaje' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body single-footer-widget">
+                    <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span style="color: #000;font-size: 1.5rem;" aria-hidden="true">&times;</span></button>
+                    <img  src="img/inicio/mascota_perdida.png" alt="">
+
+                    <div class="col-md-12">
+                        <div class="single-footer-widget mb-40">
+                            <!-- Widget Title -->
+                            <!-- Newsletter Form -->
+                            <div class="nl-form">
+                                <input id="bus_ini_txt_dni" type="text" class="form-control" maxlength="8" placeholder="Escribe el DNI RUMP...">
+                                <button type="submit" class="btn-ini-dat-msc"><i class="fas fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>                
                 </div>
             </div>
         </div>
@@ -603,10 +635,10 @@
                             </div>
 
                             <div class="col-12 col-lg-6 align-items-center">
-                                <h5 class="textoadd">Buscador vía código RUMP</h5>
+                                <h5 class="textoadd">Buscador vía DNI RUMP</h5>
                                 <div class="single-footer-widget">
                                     <form action="home.html" class="nl-form">
-                                        <input type="email" class="form-control" id="bus_txt_dni" placeholder="DNI de la mascota">
+                                        <input id="bus_txt_dni" type="text" class="form-control" maxlength="8" placeholder="Escribe el DNI RUMP...">
                                     </form>
                                 </div>
                                 <br>
@@ -918,6 +950,8 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
 
     <!-- Footer Area Start -->
     <!--#include file="footerPage.aspx"-->
+    <a href="#" class="mant-to-middle-blue mode-mobile-act  btn-pre-registrar"><i class="far fa-registered"></i></a>
+    <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" rel="noopener" class="mant-to-middle mode-mobile-act" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
 </body>
 
 </html>

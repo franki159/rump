@@ -162,6 +162,8 @@
   <ItemGroup>
     <Content Include="assets\multisteps\script.js" />
     <Content Include="assets\multisteps\style.css" />
+    <Content Include="css\bootstrap3.4.min.css" />
+    <Content Include="img\inicio\mascota_perdida.png" />
     <Content Include="img\mercadopago\mercadopago-qr.png" />
     <Content Include="img\mercadopago\mercadopago_logo.png" />
     <Content Include="img\mercadopago\pago-efectivo.png" />
@@ -890,6 +892,7 @@
     <Content Include="templatePage\js\roberto.bundle.js" />
     <Content Include="templatePage\js\waypoints.min.js" />
     <Content Include="templatePage\js\wow.min.js" />
+    <Content Include="templatePage\stylePropio.css" />
     <Content Include="templatePage\style.css" />
     <Content Include="templateSoft\.browserslistrc" />
     <Content Include="templateSoft\.travis.yml" />

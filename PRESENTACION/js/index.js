@@ -9,7 +9,14 @@ $(document).ready(function () {
     closeLoading();
     InfoSesion();
     fc_listar_inicio();
-    $("#pnl_mascota_mensaje").modal('show');
+
+    //$("#pnl_mascota_mensaje .modal-body").css('background', 'linear-gradient(#0c637e, #000000)');
+    $("#pnl_mascota_mensaje .modal-body").css('background', '#ff9400');    
+    $("#pnl_mascota_mensaje .modal-body").css('color', '#fff');
+    $("#pnl_mascota_mensaje .modal-body hr").css('border-top', '1px solid rgb(255 255 255)');
+    $("#pnl_mascota_mensaje .modal-body .img-row-mascota").css('background', '#fff');
+    $("#pnl_mascota_mensaje").modal();
+    $("#bus_ini_txt_dni").focus();
     //closeLoading();
 });
 function activaTab(tab) {
@@ -26,7 +33,7 @@ function InfoSesion() {
             if (!data.d.Activo) {
                 $("#divLoginUser").html('<a href="InicioSesion"><strong class="hidden-phone">Iniciar Sesión</br></strong> </br></a><a href="InicioSesion"><i class="fa fa-user-circle" style="font-size: 30px;" aria-hidden="true"/></a>');
             } else {
-                $("#divLoginUser").html('<a href="Sistema"><strong>' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i style="font-size: 30px;" class="fa fa-user-circle" aria-hidden="true"></i>');
+                $("#divLoginUser").html('<a href="Sistema"><strong class="hidden-phone">' + data.d.Resultado.NOMBRE.split(" ")[0] + " " + data.d.Resultado.APELLIDO.split(" ")[0] + '<br></strong> <br></a><i style="font-size: 30px;" class="fa fa-user-circle" aria-hidden="true"></i>');
 
             }
         },
@@ -639,6 +646,7 @@ function showDatosMascota(p_dni) {
                 return;
             }
 
+            $("#pnl_mascota_codigo .modal-title").html("DNI RUMP: " + data.d.Resultado.DNI);
             $(".dni-nom-msc").html(data.d.Resultado.NOMBRE);
             $(".dni-ape-msc").html(data.d.Resultado.APELLIDO);
             $(".dni-sex-msc").html(data.d.Resultado.SEXO);
@@ -668,9 +676,9 @@ function showDatosMascota(p_dni) {
             $(".dni-bio-msc").html(data.d.Resultado.BIOGRAFIA);
             //Padres
             $(".dni-nom-padre").html(data.d.Resultado.FAMILIARP);
-            $(".dni-tel-padre").html(data.d.Resultado.TELEFONOP);
+            $(".dni-tel-padre").html("<a class='text-warning' href='tel: +51 " + data.d.Resultado.TELEFONOP + "'>" + data.d.Resultado.TELEFONOP + "</a>");
             $(".dni-nom-madre").html(data.d.Resultado.FAMILIARM);
-            $(".dni-tel-madre").html(data.d.Resultado.TELEFONOM);
+            $(".dni-tel-madre").html("<a class='text-warning' href='tel: +51 " + data.d.Resultado.TELEFONOM + "'>" + data.d.Resultado.TELEFONOM +"</a>");
             //Direccion
             $(".dni-dep-msc").html(data.d.Resultado.DEPARTAMENTO);
             $(".dni-prov-msc").html(data.d.Resultado.PROVINCIA);
@@ -703,10 +711,26 @@ $(".btn-dat-msc").click(function (evt) {
         msg_OpenDay("a", "Debe ingresar el número de DNI de la mascota");
         return;
     }    
+
     showDatosMascota($("#bus_txt_dni").val());
+    $("#bus_txt_dni").val("");
+});
+$(".btn-ini-dat-msc").click(function (evt) {
+    if (validIdInput($("#bus_ini_txt_dni").val())) {
+        msg_OpenDay("a", "Debe ingresar el número de DNI de la mascota");
+        return;
+    }
+
+    showDatosMascota($("#bus_ini_txt_dni").val());
+    $("#bus_ini_txt_dni").val("");
+    $("#pnl_mascota_mensaje").modal('hide');
 });
 $(".btn-recog-face").click(function (evt) {
     //$("#pnl_reconoc_facial").modal();
     window.open("WebRecognition/Recognition/Index", '_blank');
+});
+$("#bus_ini_txt_dni").on("keydown", function (event) {
+    if (event.which === 13)
+        $(".btn-ini-dat-msc").click();
 });
 

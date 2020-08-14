@@ -1,0 +1,39 @@
+/*Mantener en medio*/
+.mant-to-middle {
+    border-radius: 20% !important;
+    position: fixed;
+    background: linear-gradient(#5ffb7a, #2bb827) !important;
+    color: #fff;
+    line-height: 1;
+    padding: 4px 8px 4px 8px;
+    font-size: 40px;
+    right: 15px;
+    bottom: 180px;
+    z-index: 10;
+    box-shadow: 2px 2px 5px #242424;
+}
+
+.mant-to-middle-blue {
+    border-radius: 20% !important;
+    position: fixed;
+    background: linear-gradient(#5265f3, #267ac1) !important;
+    color: #fff;
+    line-height: 1;
+    padding: 4px 8px 4px 8px;
+    font-size: 40px;
+    right: 15px;
+    bottom: 250px;
+    z-index: 10;
+    box-shadow: 2px 2px 5px #242424;
+}
+
+.mode-mobile-act {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+
+    .mode-mobile-act {
+        display: inline-block !important;
+    }
+}
