@@ -14,11 +14,15 @@
     <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 
     <!-- Custom styles for this template-->
-    <link href="../css/bootstrap3.4.min.css" rel="stylesheet" />
-    <%--<link href="../templateSoft/css/sb-admin-2.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet">--%>
+    <%--<link href="../css/bootstrap3.4.min.css" rel="stylesheet" />--%>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../templateSoft/css/sb-admin-2.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet">
 
     <link href="../css/stylePropio.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
     <style>
+         html, body, #wrapper {
+            height:100%;
+        }
         *,
         :before,
         :after {
@@ -27,7 +31,7 @@
 
         form {
             /*width: 320px;*/
-            width: 650px;
+            /*width: 650px;*/
             margin: 45px auto;
         }
 
@@ -186,88 +190,236 @@
             text-align: center;
             margin: 50px 0;
         }
+
+
+        .layout-col {
+            min-width: 646px;
+            max-width: 70.75em;
+            width: 100%;
+        }
+        .layout-col-left {
+            width:70%;
+            padding:10px;
+            background: #eee;
+        }
+            .layout-col-left .payment-card {
+                margin: 0 auto;
+                font-size: .625em;
+                height: 120px;
+                width: 200px;
+                position: relative;
+            }
+            .layout-col-left .payment-card-rotate {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+            }
+            .layout-col-left .payment-card-front {
+                transform: rotateY(0deg);
+                z-index: 2;
+                backface-visibility: hidden;
+                background-size: contain;
+                border-radius: .84615em;
+                color: #333;
+                font-family: Roboto Mono;
+                overflow: hidden;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                padding: 1.07692em .61538em;
+                box-shadow: 0 0.30769em 0.76923em 0 rgba(0,0,0,.2);
+            }
+            .layout-col-left .payment-card-bg {
+                background: linear-gradient(90deg,#c5c5c5,#f3f3f3);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -3;
+            }
+            .layout-col-left .payment-card-bg-overlay {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+            .layout-col-left .payment-card-bg-overlay:before {
+                top: .875em;
+                left: -9em;
+                background: rgba(0,0,0,.03);
+                position: absolute;
+                border-radius: 50%;
+                width: 26.25em;
+                height: 26.25em;
+                content: " ";
+                z-index: 1;
+            }
+            .layout-col-left .payment-card-bg-overlay:after {
+                right: -11.188em;
+                top: -15.875em;
+                left: 2.188em;
+                box-shadow: -1px 1px 1px hsla(0,0%,100%,.12);
+                background: rgba(58,58,58,.03);
+                position: absolute;
+                border-radius: 50%;
+                width: 26.25em;
+                height: 26.25em;
+                content: " ";
+                z-index: 1;
+            }
+            .layout-col-left .payment-card-row {
+                width: 100%;
+                font-size: 1.30769em;
+                padding: 0 10px;
+                color: #868686;
+            }
+        .layout-col-right {
+            width:30%;
+            padding:10px;
+        }
+            .layout-col-right .brand-image {
+                width: 2.625em;
+                height: 2.625em;
+            }
+            .layout-col-right .brand-name {
+                font-size: 1.5em;
+                margin-left: .5em;
+                font-weight: 700;
+                line-height: 1;
+                word-break: break-word;
+                font-family: Proxima Nova,Helvetica Neue,Helvetica,Arial,sans-serif;
+            }
+            .center {
+              width: 100%;
+              margin: auto;
+            }
     </style>
 </head>
 
 <body id="page-top">
-
-
-    <form action="/page/paymentGen.aspx" method="post" id="pay" name="pay">
-        <div class="row">
-            <%--<div class="group">
-          <input type="text" name="description" id="description" value="Ítem seleccionado"/>
-          <label for="description">Descripción</label>
-        </div>                   
-         <div class="group">
-          <input name="transaction_amount" id="transaction_amount" value="100"/>
-          <label for="transaction_amount">Monto a pagar</label>      
-        </div>--%>
-            <div class="col-md-6">
-                <div class="group">
-                    <input required="required" class="cc-number-input" type="text" id="cardNumber" data-checkout="cardNumber" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                    <span class="highlight"></span><span class="cardNumber-bar bar"></span>
-                    <label for="cardNumber">Número de la tarjeta</label>
+    <div class="layout-col center">
+        <div class="layout-col-left float-left p-3">
+            <h3>Ingrese datos de la tarjeta</h3>
+            <div class="bg-white p-3">
+                <div class="payment-card">
+                    <div class="payment-card-rotate">
+                        <div class="payment-card-front">
+                            <div class="payment-card-bg"></div>
+                            <div class="payment-card-bg-overlay"></div>
+                            <div class="payment-card-row"></div>
+                            <div class="payment-card-row"></div>
+                            <div class="payment-card-row" style="font-family: monospace;font-size: 16px;">
+                                <br><br><br><br>
+                                ****&nbsp;****&nbsp;****&nbsp;****
+                            </div>
+                            <div class="payment-card-row text-left" style="font-family: monospace;font-size: 1.2em;">
+                                NOMBRE Y APELLIDO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MM/AA
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <form action="/page/paymentGen.aspx" method="post" id="pay" name="pay">
+                    <div class="row">
+                        <%--<div class="group">
+                        <input type="text" name="description" id="description" value="Ítem seleccionado"/>
+                        <label for="description">Descripción</label>
+                    </div>                   
+                        <div class="group">
+                        <input name="transaction_amount" id="transaction_amount" value="100"/>
+                        <label for="transaction_amount">Monto a pagar</label>      
+                    </div>--%>
+                        <div class="col-md-6">
+                            <div class="group">
+                                <input required="required" class="cc-number-input" type="text" id="cardNumber" data-checkout="cardNumber" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                                <span class="highlight"></span><span class="cardNumber-bar bar"></span>
+                                <label for="cardNumber">Número de la tarjeta</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="group">
+                                <label style="top: -10px;font-size: 12px;">Mes venc</label>
+                                <span class="highlight"></span><span class="bar"></span>
+                                <input required="required" class="integerFCP" placeholder="MM" maxlength="2" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                                <span class="highlight"></span><span class="cardExpirationMonth-bar bar"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="group">
+                                <label style="top: -10px;font-size: 12px;">Año venc</label>
+                                <span class="highlight"></span><span class="bar"></span>
+                                <input required="required" class="integerFCP" placeholder="AAAA" maxlength="4" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                                <span class="highlight"></span><span class="cardExpirationYear-bar bar"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="group">
+                                <input required="required" type="text" id="cardholderName" data-checkout="cardholderName" />
+                                <span class="highlight"></span><span class="bar"></span>
+                                <label for="cardholderName">Nombre y apellido</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="group">
+                                <input required="required" class="cc-cvc-input integerFCP" maxlength="3" type="text" id="securityCode" data-checkout="securityCode" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                                <span class="highlight"></span><span class="bar"></span>
+                                <label for="securityCode">Código de seguridad</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="group">
+                                <input required="required" type="email" id="email" name="email" />
+                                <span class="highlight"></span><span class="bar"></span>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="group" style="margin: 8px 0;">
+                                <label for="docType" style="position: revert;top: -14px;font-size: 12px;">Tipo de documento</label>                   
+                                <select id="docType" class="form-control" data-checkout="docType"></select>                    
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="group">
+                                <input required="required" class="integerFCP" maxlength="12" type="text" id="docNumber" data-checkout="docNumber" />
+                                <span class="highlight"></span><span class="bar"></span>
+                                <label for="docNumber">Número</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <%--<div class="group">
+                                <label for="installments" style="position: revert;">Cuotas</label>
+                                <select id="installments" class="form-control" name="installments"></select>
+                            </div>--%>
+                            <input type="hidden" name="payment_method_id" id="payment_method_id" />
+                            <input type="submit" class="btn btn-submit" value="Pagar" />
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="col-md-3">
-                <div class="group">
-                    <label style="top: -10px;font-size: 12px;">Mes venc</label>
-                    <span class="highlight"></span><span class="bar"></span>
-                    <input required="required" class="integerFCP" placeholder="MM" maxlength="2" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="group">
-                    <label style="top: -10px;font-size: 12px;">Año venc</label>
-                    <span class="highlight"></span><span class="bar"></span>
-                    <input required="required" class="integerFCP" placeholder="YYYY" maxlength="4" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="group">
-                    <input required="required" type="text" id="cardholderName" data-checkout="cardholderName" />
-                    <span class="highlight"></span><span class="bar"></span>
-                    <label for="cardholderName">Nombre y apellido</label>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="group">
-                    <input required="required" class="cc-cvc-input integerFCP" maxlength="3" type="text" id="securityCode" data-checkout="securityCode" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                    <span class="highlight"></span><span class="bar"></span>
-                    <label for="securityCode">Código de seguridad</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="group">
-                    <input required="required" type="email" id="email" name="email" />
-                    <span class="highlight"></span><span class="bar"></span>
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="group" style="margin: 8px 0;">
-                    <label for="docType" style="position: revert;top: -14px;font-size: 12px;">Tipo de documento</label>                   
-                    <select id="docType" class="form-control" data-checkout="docType"></select>                    
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="group">
-                    <input required="required" class="integerFCP" maxlength="12" type="text" id="docNumber" data-checkout="docNumber" />
-                    <span class="highlight"></span><span class="bar"></span>
-                    <label for="docNumber">Número</label>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <%--<div class="group">
-                    <label for="installments" style="position: revert;">Cuotas</label>
-                    <select id="installments" class="form-control" name="installments"></select>
-                </div>--%>
-                <input type="hidden" name="payment_method_id" id="payment_method_id" />
-                <input type="submit" class="btn btn-submit" value="Pagar" />
+            
+        </div>
+        <div class="layout-col-right float-right">
+            <span class="brand-image">
+                <img src="https://mpe-s1-p.mlstatic.com/820214-MPE43100003857_082020-O.jpg" alt="RUMP" title="RUMP">
+            </span>
+            <span class="brand-name">RUMP</span>
+            <br />
+            <br />
+            <h4><span>Detalle de tu compra</span></h4>
+            <br />
+            <br />
+            <div class="row-summary">
+                <span class="float-left">??</span>
+                <span class="float-right">??</span>
             </div>
         </div>
-    </form>
-
+    </div>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="../templateSoft/vendor/jquery/jquery.min.js"></script>
     <!-- Custom scripts for all pages-->

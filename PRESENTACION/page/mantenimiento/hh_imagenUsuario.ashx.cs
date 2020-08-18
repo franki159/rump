@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.IO;
+using ENTIDAD;
+using NEGOCIOS;
+using System.Drawing;
+
 
 namespace PRESENTACION.page.mantenimiento
 {
@@ -13,21 +18,31 @@ namespace PRESENTACION.page.mantenimiento
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            string str_image = "";
-
-            foreach (string s in context.Request.Files)
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
             {
-                HttpPostedFile file = context.Request.Files[s];
-                str_image = context.Request.Form["name"];
+                context.Response.ContentType = "text/plain";
+                string str_image = "";
 
-                if (!string.IsNullOrEmpty(str_image))
+                foreach (string s in context.Request.Files)
                 {
-                    string pathToSave = HttpContext.Current.Server.MapPath("~/img/usuario/") + str_image;
-                    file.SaveAs(pathToSave);
+                    HttpPostedFile file = context.Request.Files[s];
+                    str_image = context.Request.Form["name"];
+
+                    if (!string.IsNullOrEmpty(str_image))
+                    {
+                        string pathToSave = HttpContext.Current.Server.MapPath("~/img/usuario/") + str_image;
+                        Image img = clsUtil.RedimensionarImagen(file.InputStream, 200);
+                        img.Save(pathToSave);
+                        //file.SaveAs(pathToSave);
+                    }
                 }
+                context.Response.Write(str_image);
             }
-            context.Response.Write(str_image);
+            catch (Exception ex)
+            {
+                NMascota.log_error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message, "imagen usuario");
+            }
         }
 
         public bool IsReusable

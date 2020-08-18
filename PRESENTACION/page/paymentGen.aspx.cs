@@ -13,6 +13,8 @@ using MercadoPago;
 using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago.Common;
+using ENTIDAD;
+using NEGOCIOS;
 
 namespace PRESENTACION.page
 {
@@ -24,25 +26,28 @@ namespace PRESENTACION.page
             {
                 //if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
-
             //get params form
             var tokencard = Request.Form["token"];
             var payMethod = Request.Form["payment_method_id"];
             var installmt = 1;//Request.Form["installments"];***********cuotas
-            var payAmount = Request.Form["transaction_amount"];
+            //get total pedido
+            List<ESolicitud> objCarrito = new List<ESolicitud>();
+            objCarrito = (List<ESolicitud>)HttpContext.Current.Session["carritoMascota"];
+            float payAmount = (float)objCarrito.Sum(x => x.PRECIO);//Request.Form["transaction_amount"];
 
-
-
-            if (tokencard != null)
+            if (tokencard != null && payMethod != null && payAmount != 0)
             {
-                response_card_mercadopago(tokencard, payMethod, (float)Convert.ToInt32(payAmount), installmt);
+                var rp_payment = response_card_mercadopago(tokencard, payMethod, payAmount, installmt);
+                processPaymentResponse(rp_payment);
+            }
+            else{
+                //log('error: parametros nulos')
             }
         }
 
         public object response_card_mercadopago(string tokencard, string payMethod, float payAmount, int installmt)
         {
-
-            object payResult= null;
+            object payResult = null;
 
             MercadoPago.SDK.AccessToken = "TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666";
             //MercadoPago.SDK.SetAccessToken("TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666");
@@ -74,6 +79,35 @@ namespace PRESENTACION.page
             }
 
             return payResult;
+        }
+        public void processPaymentResponse(dynamic payment) {
+
+            if (payment != null)
+            {
+                switch (payment.Status)
+                {
+                    case "approved":
+                    case "authorized":
+                        break;
+                    case "cancelled":
+                        //cancelado
+                        break;
+                    case "rejected":
+                        //fallido
+                        break;
+                    case "in_process":
+                        //Caso particular de MercadoPago (pago pendiente de revision, se da hasta 6hrs para revision)
+                        break;
+                    case null:
+                        //Error en la pasarela de pago. Intente nuevamente por favor
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else {
+
+            }
         }
     }
 }

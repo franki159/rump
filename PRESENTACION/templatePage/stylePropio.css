@@ -11,6 +11,7 @@
     bottom: 180px;
     z-index: 10;
     box-shadow: 2px 2px 5px #242424;
+    z-index: 9999;
 }
 
 .mant-to-middle-blue {
@@ -25,6 +26,7 @@
     bottom: 250px;
     z-index: 10;
     box-shadow: 2px 2px 5px #242424;
+    z-index: 9999;
 }
 
 .mode-mobile-act {

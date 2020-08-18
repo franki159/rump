@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using ENTIDAD;
 using NEGOCIOS;
+using System.Drawing;
 
 namespace PRESENTACION.page.mantenimiento
 {
@@ -30,7 +31,9 @@ namespace PRESENTACION.page.mantenimiento
                     if (!string.IsNullOrEmpty(str_image))
                     {
                         string pathToSave = HttpContext.Current.Server.MapPath("~/img/mascota/") + str_image;
-                        file.SaveAs(pathToSave);
+                        Image img = clsUtil.RedimensionarImagen(file.InputStream, 300);
+                        img.Save(pathToSave);
+                        //file.SaveAs(pathToSave);
                     }
                 }
                 context.Response.Write(str_image);
@@ -40,7 +43,7 @@ namespace PRESENTACION.page.mantenimiento
                 NMascota.log_error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message, "imagen mascota");
             }
         }
-        
+
         public bool IsReusable
         {
             get

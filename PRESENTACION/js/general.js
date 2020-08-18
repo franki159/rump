@@ -276,6 +276,40 @@ function msg_OpenDay(tipo, contenido) {
 
     $("#modalAlert").modal();
 }
+function img_OpenDay(tipo) {
+    var heading, cssClas, icono = '';
+    switch (tipo) {
+        case 'c':
+            heading = 'Correcto';
+            icono = 'far fa-check-circle';
+            cssClas = 'success'; break;
+        case 'a':
+            heading = 'Alerta';
+            icono = 'fas fa-exclamation-circle';
+            cssClas = 'warning'; break;
+        case 'e':
+            heading = 'Error';
+            icono = 'fas fa-times-circle';
+            cssClas = 'danger'; break;
+        default:
+    }
+
+    $('#modalAlert').remove();
+
+    $('body').append(
+        '<div class= "modal modal-scroll fade" style="z-index: 1051;" id="modalAlert" aria-hidden="true" aria-labelledby="myModalLabel" role = "dialog"> ' +
+        '<div class= "modal-dialog">' +
+        '   <div class="modal-content">' +
+        '       <div class="modal-body">' +
+        '           <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span style="color: #000;font-size: 1.5rem;" aria-hidden="true">&times;</span></button> ' +
+        '           <img class="w-100" alt=""> ' +
+        '       </div>' +
+        '   </div>' +
+        '</div> ' +
+        '</div >');
+
+    $("#modalAlert").modal();
+}
 
 function f_open_window_max(aURL) {
     var wOpen;

@@ -619,7 +619,7 @@ $("#btn_registrar").click(function (evt) {
     });
 });
 /******************** /PRE-REGISTRO *****************/
-/******************** VAR DATOS POR DNI **********************/
+/******************** VAR DATOS POR DNI *************/
 function showDatosMascota(p_dni) {
     openLoading();
     var eMascota = {

@@ -22,6 +22,42 @@ function fc_listar_inicio() {
     document.getElementById('cardNumber').addEventListener('change', guessPaymentMethod);
 
     document.querySelector('#pay').addEventListener('submit', doPay);
+    //get detalis pay
+    //get session solicitud
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/solicitud.aspx/getCarritoItemWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: true,
+        beforeSend: function () {
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                if (data.d.Mensaje === "SR") {
+                    alert("No selecciono ninguna solicitud");
+                    window.location = "Sistema";
+                    return;
+                } else {
+                    closeLoading();
+                    return;
+                }
+            }
+
+            for (var i = 0; i < data.d.Resultado.length; i++) {
+                $(".row-summary").html("<span class='float-left'>" + data.d.Resultado[i].DESCRIPCION + "</span><span class='float-right'>" + data.d.Resultado[i].PRECIO + "</span>");
+            }
+
+            //g_id_mascota = data.d.Resultado[0].ID_MSC_ENCRIP;
+            //g_id_sol = data.d.Resultado[0].ID;
+
+            closeLoading();
+        },
+        error: function (data) {
+            closeLoading();
+        }
+    });
 }
 //***************************************************************************************************
 //************************* Obtener método de pago de la tarjeta Inicio *****************************

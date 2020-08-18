@@ -33,7 +33,7 @@ function fc_listar_inicio() {
     /************************ Listado de Tipo ****************************/
     if (sessionStorage.getItem('PERFIL_ID') === "4") {//Para los propietarios
         $("#divBusqueda").remove();
-        fc_listar_mascota(true);
+        fc_listar_mascota(true, true);
     } else {
         $("#divBusqueda").show();
     }
@@ -106,7 +106,7 @@ function fc_listar_inicio() {
     listarTipoCita();
 }
 /*Funciones*/
-function fc_listar_mascota(mAlerta) {
+function fc_listar_mascota(mAlerta, mConsejo) {
     if (sessionStorage.getItem('PERFIL_ID') !== "4" && $("#txt_bus_dni").val() === "") {
         closeLoading();
         return;
@@ -667,6 +667,13 @@ function fc_listar_mascota(mAlerta) {
             if (cont_dni_problema > 0 && mAlerta) {
                 msg_OpenDay("a", "Algunos dni estan por vencer o vencidos. No te quedes sin los beneficios y renuevalos.");
                 closeLoading();
+            } else {
+                if (mConsejo) {
+                    img_OpenDay("a");
+                    $("#modalAlert .modal-dialog").addClass("modal-xl");
+                    $("#modalAlert .modal-body img").attr("src", "img/inicio/mascota_registrada.png");
+                    $("#modalAlert .modal-body").css("background", "#f4ddaf");
+                }
             }
         },
         error: function (data) {
@@ -704,6 +711,7 @@ function fc_sol_servicio(idSolicitud, idMascota) {
             $("#copiaModal").modal("hide");
 
             window.location = "Checkout";
+            //window.location = "payment-mercadopago";
         },
         error: function (data) {
             $("#copiaModal").modal("hide");
@@ -885,7 +893,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -931,7 +939,7 @@ function aceptarConfirm() {
                     }
                     estProc = true;
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorCupon").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -968,7 +976,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1004,7 +1012,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1052,7 +1060,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1088,7 +1096,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1136,7 +1144,7 @@ function aceptarConfirm() {
                     }
 
                     $("#errorDiv").html(GenerarAlertaSuccess(data.d.Mensaje));
-                    fc_listar_mascota(false);
+                    fc_listar_mascota(false, false);
                 },
                 error: function (data) {
                     $("#errorDiv").html(GenerarAlertaError("Inconveniente en la operación"));
@@ -1468,7 +1476,7 @@ $("#btn_buscar").click(function () {
         $("#txt_bus_dni").focus();
         return;
     }
-    fc_listar_mascota(true);
+    fc_listar_mascota(true, false);
 });
 $("#btn_nuevo").click(function () {
     //Si es un asesor o un administrador
@@ -1701,7 +1709,7 @@ $("#btn_guardar").click(function (evt) {
                     msg_OpenDay("c", "Mascota guardada correctamente");
                 }
 
-                fc_listar_mascota(false);
+                fc_listar_mascota(false, false);
                 $("#pnl_mascota").modal('hide');
             } else if (id_mascota !== "") {//Modificar
                 //Guardando todas las imagenes BD
@@ -1794,7 +1802,7 @@ $("#btn_guardar").click(function (evt) {
                     msg_OpenDay("c", "Mascota guardada correctamente");
                 }
 
-                fc_listar_mascota(false);
+                fc_listar_mascota(false, false);
                 $("#pnl_mascota").modal('hide');
             }
         },
