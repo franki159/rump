@@ -17,6 +17,7 @@ namespace ENTIDAD
         public Nullable<DateTime> FECHA_SOL { get; set; }
         public double TOTAL { get; set; }
         public decimal PRECIO { get; set; }
+        public int CANTIDAD { get; set; }
         public decimal USUARIO_ID { get; set; }
         public decimal USUARIO { get; set; }
         public decimal MASCOTA_ID { get; set; }

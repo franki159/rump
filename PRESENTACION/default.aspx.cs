@@ -38,7 +38,7 @@ namespace PRESENTACION
 
                     EEvento objEvento = new EEvento() { USUARIO_ID = eSession.ID };
                     eSession.EVENTOS = NEvento.listarEventoNotificacion(objEvento);
-
+                    eSession.CARRITO = (List<ESolicitud>)HttpContext.Current.Session["carritoMascota"];
                     objRespuesta.Resultado = eSession;
                 }
             }

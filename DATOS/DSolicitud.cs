@@ -19,6 +19,7 @@ namespace DATOS
             {
                 SqlCommand cmd = new SqlCommand("usp_listarServicioXmascota", cn);
                 cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@id_mascota", EUtil.getDesencriptar(objE.ID_MSC_ENCRIP));
                 cmd.Parameters.AddWithValue("@opcion", 2);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
@@ -31,7 +32,10 @@ namespace DATOS
                         lista.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
                         lista.DESCRIPCION = dr.IsDBNull(dr.GetOrdinal("descripcion")) ? string.Empty : dr.GetString(dr.GetOrdinal("descripcion"));
                         lista.PRECIO = dr.IsDBNull(dr.GetOrdinal("precio")) ? 0 : dr.GetDecimal(dr.GetOrdinal("precio"));
+                        lista.TIPO = dr.IsDBNull(dr.GetOrdinal("TIPO")) ? string.Empty : dr.GetString(dr.GetOrdinal("TIPO"));
+                        lista.FOTO = dr.IsDBNull(dr.GetOrdinal("FOTO")) ? string.Empty : dr.GetString(dr.GetOrdinal("FOTO"));
                         lista.ID_MSC_ENCRIP = objE.ID_MSC_ENCRIP;
+                        lista.CANTIDAD = 1;
                     }
                 }
             }

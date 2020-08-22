@@ -22,7 +22,7 @@ namespace PRESENTACION.page
         {
             if (Page.IsPostBack == false)
             {
-                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
+                //if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
         }
 

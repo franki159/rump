@@ -275,6 +275,13 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Carrito -->
+                        <li class="nav-item dropdown no-arrow mx-1" id="bodyCarbuy" style="font-size: 16px;">
+                          <a class="nav-link dropdown-toggle" href="./carritoRUMP" role="button">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge badge-danger badge-counter">0</span>
+                          </a>
+                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 

@@ -101,9 +101,9 @@
                 <div class="row">
                   <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
                     <div class="multisteps-form__progress">
-                      <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">Recibe</button>
-                      <button class="multisteps-form__progress-btn" type="button" title="Address">Despacho</button>
-                      <button class="multisteps-form__progress-btn" type="button" title="Order Info">Pago</button>
+                      <button class="btn multisteps-form__progress-btn js-active" type="button" title="User Info">BOLSA DE COMPRA</button>
+                      <button class="btn multisteps-form__progress-btn" type="button" title="Address">DESPACHO</button>
+                      <button class="btn multisteps-form__progress-btn" type="button" title="Order Info">PAGO</button>
                     </div>
                   </div>
                 </div>
@@ -112,36 +112,42 @@
                   <div class="col-md-8">
                     <div class="multisteps-form__form">
                       <!--single form panel-->
-                      <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                      <div class="multisteps-form__panel p-4 bg-white js-active" data-animation="scaleIn">
+                          <div class="body-items">
+
+                          </div>
+                          <div class="button-row d-flex mt-4">
+                            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next" id="btn-carrito">
+                                <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Ir a comprar
+                            </button>
+                          </div>
+                      </div>
+                      <!--single form panel-->
+                      <div class="multisteps-form__panel p-4 bg-white" data-animation="scaleIn">
                         <h3 class="multisteps-form__title">¿Quién recibe?</h3>
                         <div class="multisteps-form__content">
                           <div class="form-row mt-4">
                             <div class="col-12 col-sm-6">
-                                <label>Nombres <strong class="text-danger">(*)</strong></label>
+                                <label>Nombres</label>
                               <input class="multisteps-form__input form-control" id="txt-nom" type="text" placeholder="Nombres"/>
                             </div>
                             <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                <label>Apellidos <strong class="text-danger">(*)</strong></label>
+                                <label>Apellidos</label>
                               <input class="multisteps-form__input form-control" id="txt-ape" type="text" placeholder="Apellidos"/>
                             </div>
                           </div>
                           <div class="form-row mt-4">
                             <div class="col-12 col-sm-6">
-                                <label>Telefono <strong class="text-danger">(*)</strong></label>
-                              <input class="multisteps-form__input form-control" id="txt-tel" type="text" placeholder="Telefono"/>
+                                <label>Telefono</label>
+                              <input class="multisteps-form__input form-control integerFCP" maxlength="15" id="txt-tel" type="text" placeholder="Telefono"/>
                             </div>
                             <div class="col-12 col-sm-6 mt-4 mt-sm-0">
                                 <label>DNI</label>
-                              <input class="multisteps-form__input form-control" id="txt-dni" type="text" placeholder="DNI"/>
+                              <input class="multisteps-form__input form-control integerFCP" maxlength="15" id="txt-dni" type="text" placeholder="DNI"/>
                             </div>
                           </div>
-                          <div class="button-row d-flex mt-4">
-                            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next" id="btn-recibe">Siguiente >></button>
-                          </div>
                         </div>
-                      </div>
-                      <!--single form panel-->
-                      <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                          <br />
                         <h3 class="multisteps-form__title">¿A dónde lo llevamos?</h3>
                         <div class="multisteps-form__content">
                                     <div class="row">
@@ -185,9 +191,53 @@
                         </div>
                       </div>
                       <!--single form panel-->
-                      <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                      <div class="multisteps-form__panel p-4 bg-white" data-animation="scaleIn">
                         <h3 class="multisteps-form__title">Elige tu medio de pago</h3>
                         <div class="multisteps-form__content">
+
+
+                            <div class="card-body">
+                              <div class="px-4 py-4 bg-gray-100 border-bottom-primary">
+                                  <div class="row">
+                                       <div class="col-0">
+                                          <i class="fas fa-credit-card text-primary h2"></i>
+                                      </div>
+                                      <div class="col-10  my-auto">
+                                          <div class="col-12">
+                                              <span>Tarjeta</span>
+                                          </div>
+                                          <div class="col-12 col-12 py-1">
+                                              <span class="text-gray-500 h5">Débito o crédito</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="px-4 py-4 bg-gray-100 border-bottom-primary">
+                                  <div class="row">
+                                       <div class="col-0">
+                                          <i class="far fa-money-bill-alt text-primary h2"></i>
+                                      </div>
+                                      <div class="col-10  my-auto">
+                                          <div class="col-12">
+                                              <span>Efectivo en agentes</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="px-4 py-4 bg-gray-100">
+                                  <div class="row">
+                                       <div class="col-0">
+                                          <i class="fas fa-university"></i>
+                                      </div>
+                                      <div class="col-10  my-auto">
+                                          <div class="col-12">
+                                              <span>Banca por internet</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+
                                             <div class="row text-center">
                                                 <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
                                                     <h4><br>Opcion 1</h4>
@@ -260,14 +310,14 @@
                   <div class="col-md-4">
                     <form class="multisteps-form__form">
                       <!--single form panel-->
-                      <div class="shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                      <div class="p-4 bg-white js-active" data-animation="scaleIn">
                         <h3 class="multisteps-form__title">Resumen de Orden</h3>
                         <div class="multisteps-form__content">
                           <div class="form-row mt-4">
                             <div class="col-12">
                                 <p><span class="dsc-prod-pag text-primary"></span></p>
-                                <p><b>Costo de servicio:</b><span class="dsc-pre-pag" style="float:right"></span></p>
-                                <p><b>Costo de envío:</b><span class="dsc-env-pag" style="float:right">-</span></p>
+                                <p>Costo de servicio:<span class="dsc-pre-pag" style="float:right"></span></p>
+                                <p>Costo de envío:<span class="dsc-env-pag" style="float:right">-</span></p>
                                 <p><b>Total:<span class="dsc-tot-pag" style="float:right"></span></b></p>
                             </div>
                           </div>

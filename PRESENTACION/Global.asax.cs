@@ -18,7 +18,7 @@ namespace PRESENTACION
             routes.MapPageRoute("Inicio", "Inicio", "~/index.aspx");
             routes.MapPageRoute("InicioSesion", "InicioSesion", "~/login.aspx");
             routes.MapPageRoute("Sistema", "Sistema", "~/default.aspx");
-            routes.MapPageRoute("Checkout", "Checkout", "~/page/pagoSolicitud.aspx");
+            routes.MapPageRoute("carritoRUMP", "carritoRUMP", "~/page/pagoSolicitud.aspx");
             routes.MapPageRoute("payment-mercadopago", "payment-mercadopago", "~/page/paymentGen.aspx");
             routes.MapPageRoute("Registro", "Registro", "~/register.aspx");
             routes.MapPageRoute("OlvidoClave", "OlvidoClave", "~/forgotPassword.aspx");

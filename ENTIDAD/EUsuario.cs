@@ -27,5 +27,6 @@ namespace ENTIDAD
         public string TOKEN_PASSWORD { get; set; }
         public EUsuarioPerfil USUARIO_PERFIL { get; set; }
         public List<EEvento> EVENTOS { get; set; }
+        public List<ESolicitud> CARRITO { get; set; }
     }
 }

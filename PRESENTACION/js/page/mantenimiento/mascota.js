@@ -230,23 +230,23 @@ function fc_listar_mascota(mAlerta, mConsejo) {
                         html += '<td><i class="fas fa-check-circle text-success" style="font-size: 25px;"></i></td>';
                         break;
                     case 2:
-                        html += '<td><button class="btn btn-danger btn-sm" onclick="javascript:fc_sol_servicio(\'DYfVN+70kB0=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;PAGAR</button></td>';
+                        html += '<td><button class="btn btn-danger btn-sm" onclick="javascript:fc_sol_servicio(\'DYfVN+70kB0=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;Comprar</button></td>';
                         break;
                     case 3:
-                        html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;EN ADOPCION</span></td>';
+                        html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;En adopción</span></td>';
                         break;
                     case 4:
-                        html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-sad-cry"></i>&nbsp;EXTRAVIADA</span></td>';
+                        html += '<td><span class="btn btn-warning btn-sm"><i class="far fa-sad-cry"></i>&nbsp;Extraviada</span></td>';
                         break;
                     case 5:
-                        html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;FALLECIDO</span></td>';
+                        html += '<td><span class="btn btn-danger btn-sm"><i class="fas fa-radiation"></i>&nbsp;Fallecido</span></td>';
                         break;
                     case 100:
-                        html += '<td><button class="btn btn-warning btn-sm" onclick="javascript:fc_sol_servicio(\'nPbg/Uz9NNE=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;RENOVAR</button></td>';
+                        html += '<td><button class="btn btn-warning btn-sm" onclick="javascript:fc_sol_servicio(\'nPbg/Uz9NNE=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;Renovar</button></td>';
                         cont_dni_problema++;
                         break;
                     case 200:
-                        html += '<td><button class="btn btn-warning btn-sm" onclick="javascript:fc_sol_servicio(\'nPbg/Uz9NNE=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;RENOVAR</button></td>';
+                        html += '<td><button class="btn btn-warning btn-sm" onclick="javascript:fc_sol_servicio(\'nPbg/Uz9NNE=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;Renovar</button></td>';
                         cont_dni_problema++;
                         break;
                     default:
@@ -709,9 +709,16 @@ function fc_sol_servicio(idSolicitud, idMascota) {
             }
             
             $("#copiaModal").modal("hide");
-
-            window.location = "Checkout";
-            //window.location = "payment-mercadopago";
+            
+            $("#bodyCarbuy .badge-counter").html(data.d.Resultado.length);
+            closeLoading();
+            //abrir popup de seguir comprando
+            msg_OpenDay("c", 'Agregado a la bolsa');
+            
+            $("#modalAlert .modal-title").addClass("text-center");
+            $("#modalAlert .modal-title").html("<i class='far fa-check-circle'></i> Agregado a la bolsa");
+            $("#modalAlert .modal-body").html("<a href='./carritoRUMP' class='btn btn-warning btn-block btn-lg'>Ir a la bolsa</a><p class='text-center'><button class='btn btn-link text-warning btn-lg' data-dismiss='modal'>Seguir agregando items</button></p>");
+            $("#modalAlert .modal-footer").remove();
         },
         error: function (data) {
             $("#copiaModal").modal("hide");

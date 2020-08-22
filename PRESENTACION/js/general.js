@@ -131,7 +131,7 @@ $(".go-top").click(function () {
     return false;
 });
 
-
+//******************* MENSAJES POPUP*******************
 function confirmWP(question, heading, type, callbackOk, callbackCancel) {
     $('#Modalpw').remove();
     var confirmModal =
@@ -347,7 +347,7 @@ $(function () {
     $.ajaxSetup({
         beforeSend: function () {
             if ($("#loadingbar").length === 0) {
-                $("body").append("<div id='loadingbar' class='ajax-progress'></div>")
+                $("body").append("<div id='loadingbar' class='ajax-progress'></div>");
                 $("#loadingbar").width((50 + Math.random() * 30) + "%");
             }
         },
@@ -387,6 +387,34 @@ String.prototype.format = function () {
     }
     return a
 };
+
+function formatNumber(number, dec) {
+    var num;
+    if (number % 1 === 0)
+        dec = 0;
+
+    if (dec > 0) {
+        num = formatNumber(number, dec);
+    } else {
+        number = roundNumber(number, dec);
+        num = Math.floor(number).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    }
+
+    return num;
+}
+
+function roundNumber(num, scale) {
+    if (("" + num).indexOf("e") === -1) {
+        return +(Math.round(num + "e+" + scale) + "e-" + scale);
+    } else {
+        var arr = ("" + num).split("e");
+        var sig = "";
+        if (+arr[1] + scale > 0) {
+            sig = "+";
+        }
+        return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
+    }
+}
 //**********************************FUNCIONES DE VALIDACION************************************/
 function isEmail(email) {
     var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;

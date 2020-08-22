@@ -21,24 +21,19 @@ function fc_listar_inicio() {
         beforeSend: function () {
             openLoading();
         },
-        success: function (data) {
+       success: function (data) {
             if (!data.d.Activo) {
                 if (data.d.Mensaje === "SR") {
-                    alert("No selecciono ninguna solicitud");
                     window.location = "Sistema";
                     return;
                 } else {
+                    msg_OpenDay('e', data.d.Mensaje);
                     closeLoading();
                     return;
                 }
             }
             
-            $(".dsc-prod-pag").html("Solicitud de " + data.d.Resultado[0].DESCRIPCION);
-            $(".dsc-pre-pag").html("S/. " + data.d.Resultado[0].PRECIO);
-            $(".dsc-tot-pag").html("S/. " + data.d.Resultado[0].PRECIO);
-            
-            g_id_mascota = data.d.Resultado[0].ID_MSC_ENCRIP;
-            g_id_sol = data.d.Resultado[0].ID;
+           fc_listar_item_carrito(data.d.Resultado);
 
             closeLoading();
         },
@@ -227,7 +222,7 @@ $("#sel_distrito").on('change', function () {
     });    
 });
 
-$("#btn-recibe").click(function () {
+$("#btn-domicilio").click(function () {
     //Validar Recibe
     $("#errorDiv").html("");
     if (validIdInput($("#txt-nom").val())) {
@@ -242,12 +237,11 @@ $("#btn-recibe").click(function () {
         $("#errorDiv").html(GenerarAlertaWarning("Telefono: Ingrese telefono"));
         $("#txt-tel").focus();
         return false;
-    }
-});
-$("#btn-domicilio").click(function () {
-    //Validar Recibe
-    $("#errorDiv").html("");
-    if (validIdInput($("#sel_departamento").val())) {
+    } else if (validIdInput($("#txt-dni").val())) {
+        $("#errorDiv").html(GenerarAlertaWarning("DNI: Ingrese DNI"));
+        $("#txt-dni").focus();
+        return false;
+    } else if (validIdInput($("#sel_departamento").val())) {
         $("#errorDiv").html(GenerarAlertaWarning("Departamento: seleccione un Departamento"));
         $("#sel_departamento").focus();
         return false;
@@ -268,6 +262,8 @@ $("#btn-domicilio").click(function () {
         $("#txt_referencia").focus();
         return false;
     }
+
+    /*
 
     var objE = {
         ID_ENCRIP: g_id_mascota,
@@ -305,8 +301,128 @@ $("#btn-domicilio").click(function () {
             closeLoading();
             return false;
         }
-    });
+    });*/
 });
+
+function fc_listar_item_carrito(listaCarrito) {
+    //listando los items del carrito
+    var html_cont = '';
+    var acu_total = 0;
+    for (var i = 0; i < listaCarrito.length; i++) {
+        html_cont += ' <div class="alert alert-dismissible alert-primary small bg-white">' +
+            '      <div class="row">' +
+            '          <div class="col-md-1 mw-100">' +
+            '              <img onerror="this.src=\'img/noPets.png\';" src="img/productos/' + listaCarrito[i].FOTO + '" alt="" border="0">' +
+            '          </div>' +
+            '          <div class="col-md-7 font-weight-bold my-auto">' + listaCarrito[i].DESCRIPCION + '</div>' +
+            '          <div class="col-md-4 my-auto">' +
+            '              <div class="row">' +
+            '                  <div class="col-md-12 mb-2">' +
+            '                      <span>Cantidad</span>' +
+            '                      <div class="float-right">' +
+            '                       <button class="btn btn-3-default" onclick="javascript:fc_del_carrito(\'' + listaCarrito[i].ID_ENCRIP + '\', \'' + listaCarrito[i].ID_MSC_ENCRIP + '\', 1)">-</button>' +
+            '                       <span class="btn btn-default"> ' + listaCarrito[i].CANTIDAD + ' </span>' +
+            '                       <button class="btn btn-3-default" onclick="javascript:fc_add_carrito(\'' + listaCarrito[i].ID_ENCRIP + '\', \'' + listaCarrito[i].ID_MSC_ENCRIP + '\')">+</button></div > ' +
+            '                  </div>' +
+            '                  <div class="col-md-12 mb-2">' +
+            '                      <span>Precio Unidad</span><div class="float-right">S/ ' + formatNumber(listaCarrito[i].PRECIO, 2) + '</div>' +
+            '                  </div>' +
+            '                  <div class="col-md-12 mb-2">' +
+            '                      <span class="font-weight-bold">Precio Total</span><div class="float-right text-danger font-weight-bold">S/ ' + formatNumber(listaCarrito[i].PRECIO * listaCarrito[i].CANTIDAD, 2) + '</div>' +
+            '                  </div>' +
+            '              </div>' +
+            '          </div>' +
+            '      </div>' +
+            '      <button class="close" onclick="javascript:fc_del_carrito(\'' + listaCarrito[i].ID_ENCRIP + '\', \'' + listaCarrito[i].ID_MSC_ENCRIP + '\', 2)" aria-label="Close" type="button"><span aria-hidden="true"><i class="fas fa-trash-alt"></i></span></button>' +
+            '  </div>';
+        acu_total += listaCarrito[i].PRECIO * listaCarrito[i].CANTIDAD;
+    }
+
+    $(".multisteps-form__form .body-items").html(html_cont);
+    $(".multisteps-form__form").css("height", $(".multisteps-form__form .js-active").css("height"));
+
+    $(".dsc-pre-pag").html("S/. " + formatNumber(acu_total, 2));
+    $(".dsc-tot-pag").html("S/. " + formatNumber(acu_total, 2));
+}
+
+function fc_del_carrito(idSolicitud, idMascota, pOpcion) {
+    var objE = {
+        ID_ENCRIP: idSolicitud,
+        ID_MSC_ENCRIP: idMascota,
+        OPCION: pOpcion
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/solicitud.aspx/delCarritoItemWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                if (data.d.Mensaje === "SR") {
+                    window.location = "Sistema";
+                    return;
+                } else {
+                    msg_OpenDay('e', data.d.Mensaje);
+                    closeLoading();
+                    return;
+                }
+            }
+            $("#copiaModal").modal("hide");
+            fc_listar_item_carrito(data.d.Resultado);
+            
+            closeLoading();
+            
+        },
+        error: function (data) {
+            $("#copiaModal").modal("hide");
+            closeLoading();
+        }
+    }); 
+}
+function fc_add_carrito(idSolicitud, idMascota) {
+    var objE = {
+        ID_ENCRIP: idSolicitud,
+        ID_MSC_ENCRIP: idMascota
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "page/mantenimiento/solicitud.aspx/addCarritoItemWM",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({ objE: objE }),
+        async: true,
+        beforeSend: function () {
+            openLoading();
+        },
+        success: function (data) {
+            if (!data.d.Activo) {
+                if (data.d.Mensaje === "SR") {
+                    window.location = "Sistema";
+                    return;
+                } else {
+                    msg_OpenDay('e', data.d.Mensaje);
+                    closeLoading();
+                    return;
+                }
+            }
+            $("#copiaModal").modal("hide");
+            fc_listar_item_carrito(data.d.Resultado);
+
+            closeLoading();
+        },
+        error: function (data) {
+            $("#copiaModal").modal("hide");
+            closeLoading();
+        }
+    });
+}
 
 function openLoading() {
     $("#page-loader").show();

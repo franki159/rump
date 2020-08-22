@@ -168,6 +168,7 @@
     <Content Include="img\mercadopago\mercadopago_logo.png" />
     <Content Include="img\mercadopago\pago-efectivo.png" />
     <Content Include="img\mercadopago\tarjetas_pago.png" />
+    <Content Include="img\productos\C4CA4238A0B923820DCC509A6F75849B.jpg" />
     <Content Include="js\page\paymentGen.js" />
     <Content Include="js\page\pagoSolicitud.js" />
     <Content Include="js\pago_exitoso.js" />

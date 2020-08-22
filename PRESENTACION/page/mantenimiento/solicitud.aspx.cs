@@ -31,13 +31,45 @@ namespace PRESENTACION.page.mantenimiento
                     objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
                     return objRespuesta;
                 }
-                
-                List<ESolicitud> objResultado = new List<ESolicitud>();
-                
+                //*************** Validando items anteriores ***************
+                if (HttpContext.Current.Session["carritoMascota"] == null)//nuevo item
+                {
+                    List<ESolicitud> carritoMascota = new List<ESolicitud>();
+                    carritoMascota.Add(NSolicitud.listarServicioxId(objE));
+                    HttpContext.Current.Session["carritoMascota"] = carritoMascota;
+                    objRespuesta.Resultado = carritoMascota;
+                }
+                else
+                {
+                    List<ESolicitud> carritoMascota = new List<ESolicitud>((List<ESolicitud>)HttpContext.Current.Session["carritoMascota"]);
+                    ESolicitud itemCarrito = NSolicitud.listarServicioxId(objE);
+                    bool itemEncontrado = false;
 
-                objResultado.Add(NSolicitud.listarServicioxId(objE));
+                    foreach (ESolicitud item in carritoMascota)
+                    {
+                        if (item.ID == itemCarrito.ID && item.ID_MSC_ENCRIP == (itemCarrito.TIPO == "mascota" ? item.ID_MSC_ENCRIP : item.ID_MSC_ENCRIP))
+                        {
+                            item.CANTIDAD += 1;
+                            itemEncontrado = true;
+                        }
+                    }
+                    
+                    if (itemEncontrado == false)
+                    {
+                        carritoMascota.Add(itemCarrito);
+                    }
+                    
+                    HttpContext.Current.Session["carritoMascota"] = carritoMascota;
 
-                HttpContext.Current.Session["carritoMascota"] = objResultado;
+                    if (carritoMascota == null || carritoMascota.Count == 0)
+                    {
+                        objRespuesta.Error("SR");
+                    }
+                    else
+                    {
+                        objRespuesta.Resultado = carritoMascota;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -45,7 +77,68 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
+        [WebMethod()]
+        public static object delCarritoItemWM(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+                //*************** Validando items anteriores ***************
+                if (HttpContext.Current.Session["carritoMascota"] == null)
+                {
+                    objRespuesta.Error("No existen items");
+                }
+                else
+                {
+                    List<ESolicitud> carritoMascota = new List<ESolicitud>((List<ESolicitud>)HttpContext.Current.Session["carritoMascota"]);
+                    ESolicitud itemCarrito = NSolicitud.listarServicioxId(objE);
+                    ESolicitud itemEncontrado = null;
 
+                    foreach (ESolicitud item in carritoMascota)
+                    {
+                        if (item.ID == itemCarrito.ID && item.ID_MSC_ENCRIP == (itemCarrito.TIPO == "mascota" ? item.ID_MSC_ENCRIP : item.ID_MSC_ENCRIP))
+                        {
+                            if (objE.OPCION == 1)
+                            {
+                                if (item.CANTIDAD == 1)
+                                    itemEncontrado = item;
+                                else 
+                                    item.CANTIDAD -= 1;
+                            }
+                            else if(objE.OPCION == 2) {
+                                itemEncontrado = item;
+                            }
+                        }
+                    }
+
+                    if (itemEncontrado != null)
+                    {
+                        carritoMascota.Remove(itemEncontrado);
+                    }                    
+
+                    HttpContext.Current.Session["carritoMascota"] = carritoMascota;
+
+                    if (carritoMascota == null || carritoMascota.Count == 0)
+                    {
+                        objRespuesta.Error("SR");
+                    }
+                    else
+                    {
+                        objRespuesta.Resultado = carritoMascota;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
         [WebMethod()]
         public static object getCarritoItemWM()
         {
@@ -330,6 +423,6 @@ namespace PRESENTACION.page.mantenimiento
             }
             return objRespuesta;
         }
-        
+
     }
 }

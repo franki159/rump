@@ -458,7 +458,7 @@ namespace PRESENTACION.page.mantenimiento
                     correo.Para = objResultado;
                     correo.Asunto = asunto;
                     correo.Mensaje = mensaje;
-                    correo.Enviar();
+                    //correo.Enviar();
 
                     objRespuesta.Success("Se realizó la solicitud correctamente");
                 }
