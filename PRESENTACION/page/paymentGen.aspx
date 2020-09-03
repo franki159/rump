@@ -302,10 +302,10 @@
 </head>
 
 <body id="page-top">
-    <div class="layout-col center">
-        <div class="layout-col-left float-left p-3">
-            <h3>Ingrese datos de la tarjeta</h3>
-            <div class="bg-white p-3">
+    <div class="layout-col center mt-3 rounded" style="overflow: auto;background: #f7f7f7;box-shadow: 0 0.125em 0.375em rgba(0,0,0,.3);">
+        <div class="layout-col-left float-left p-3 rounded-left">
+            <h3 class="mt-3 mb-3 text-dark">Ingrese datos de la tarjeta</h3>
+            <div class="bg-white p-3 rounded">
                 <div class="payment-card">
                     <div class="payment-card-rotate">
                         <div class="payment-card-front">
@@ -359,14 +359,14 @@
                         <div class="col-md-8">
                             <div class="group">
                                 <input required="required" type="text" id="cardholderName" data-checkout="cardholderName" />
-                                <span class="highlight"></span><span class="bar"></span>
+                                <span class="highlight"></span><span class="cardholderName-bar bar"></span>
                                 <label for="cardholderName">Nombre y apellido</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="group">
-                                <input required="required" class="cc-cvc-input integerFCP" maxlength="3" type="text" id="securityCode" data-checkout="securityCode" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
-                                <span class="highlight"></span><span class="bar"></span>
+                                <input required="required" class="cc-cvc-input integerFCP" maxlength="4" type="text" id="securityCode" data-checkout="securityCode" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                                <span class="highlight"></span><span class="securityCode-bar bar"></span>
                                 <label for="securityCode">Código de seguridad</label>
                             </div>
                         </div>
@@ -386,8 +386,8 @@
                         <div class="col-md-3">
                             <div class="group">
                                 <input required="required" class="integerFCP" maxlength="12" type="text" id="docNumber" data-checkout="docNumber" />
-                                <span class="highlight"></span><span class="bar"></span>
-                                <label for="docNumber">Número</label>
+                                <span class="highlight"></span><span class="docNumber-bar bar"></span>
+                                <label for="docNumber">Número dni</label>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -403,17 +403,17 @@
             </div>
             
         </div>
-        <div class="layout-col-right float-right">
+        <div class="layout-col-right float-right p-4">
             <span class="brand-image">
                 <img src="https://mpe-s1-p.mlstatic.com/820214-MPE43100003857_082020-O.jpg" alt="RUMP" title="RUMP">
             </span>
-            <span class="brand-name">RUMP</span>
+            <span class="brand-name text-dark">RUMP</span>
             <br />
             <br />
-            <h4><span>Detalle de tu compra</span></h4>
+            <h4><span class="text-dark">Detalle de tu compra</span></h4>
             <br />
             <br />
-            <div class="row-summary">
+            <div class="row-summary h5">
                 <span class="float-left">??</span>
                 <span class="float-right">??</span>
             </div>

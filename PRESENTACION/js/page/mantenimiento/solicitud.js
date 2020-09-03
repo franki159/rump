@@ -206,44 +206,44 @@ function fc_listar_solicitud(p_sinc) {
                                 return;
                             }
                             //solicitud
-                            $("#pnl_editar .modal-title").html(data.d.Resultado[0].TIPO);
+                            $("#pnl_editar .modal-title").html(data.d.Resultado.TIPO);
                             //$("#srv-tip").html(data.d.Resultado[0].TIPO);
-                            $("#srv-pre").html(data.d.Resultado[0].TOTAL);
-                            $("#srv-fec").html(data.d.Resultado[0].vPARAM1);
-                            switch (data.d.Resultado[0].ESTADO) {
+                            $("#srv-pre").html(data.d.Resultado.TOTAL);
+                            $("#srv-fec").html(data.d.Resultado.vPARAM1);
+                            switch (data.d.Resultado.ESTADO) {
                                 case 0: $("#srv-est").css("border-color", "#e74a3b"); $("#srv-est").css("color", "#e74a3b!important"); break;
                                 case 1: $("#srv-est").css("border-color", "#858796"); $("#srv-est").css("color", "#858796!important"); break;
                                 case 2: $("#srv-est").css("border-color", "#1cc88a"); $("#srv-est").css("color", "#1cc88a!important"); break;
                                 case 3: $("#srv-est").css("border-color", "#f6c23e"); $("#srv-est").css("color", "#f6c23e!important"); break;
                                 default:
                             }
-                            $("#srv-est").html(data.d.Resultado[0].EST_DSC);
+                            $("#srv-est").html(data.d.Resultado.EST_DSC);
                             //mascota
-                            $("#imgMascotaCita").attr("src", "img/mascota/" + data.d.Resultado[0].FOTO + '?v=' + valRND);
-                            $("#dni-dni-msc").html(data.d.Resultado[0].DNI);
-                            $("#dni-nom-msc").html(data.d.Resultado[0].MASCOTA);
-                            $("#dni-prop-msc").html(data.d.Resultado[0].PROPIETARIO);
-                            $("#dni-email-msc").html(data.d.Resultado[0].EMAIL);
-                            $("#dni-tel-msc").html(data.d.Resultado[0].TELEFONO);  
-                            if (data.d.Resultado[0].COMENTARIO === "") {
+                            $("#imgMascotaCita").attr("src", "img/mascota/" + data.d.Resultado.FOTO + '?v=' + valRND);
+                            $("#dni-dni-msc").html(data.d.Resultado.DNI);
+                            $("#dni-nom-msc").html(data.d.Resultado.MASCOTA);
+                            $("#dni-prop-msc").html(data.d.Resultado.PROPIETARIO);
+                            $("#dni-email-msc").html(data.d.Resultado.EMAIL);
+                            $("#dni-tel-msc").html(data.d.Resultado.TELEFONO);  
+                            if (data.d.Resultado.COMENTARIO === "") {
                                 $("#lbl-com-sol").hide();
                             } else {
                                 $("#lbl-com-sol").show();
-                                $("#lbl-com-sol").html(data.d.Resultado[0].COMENTARIO);
+                                $("#lbl-com-sol").html(data.d.Resultado.COMENTARIO);
                             }
                             
                             $("#txt_comentario").val('');
                             
-                            $("#txt-nom").val(data.d.Resultado[0].NOM_REP);
-                            $("#txt-ape").val(data.d.Resultado[0].APE_REP);
-                            $("#txt-tel").val(data.d.Resultado[0].TEL_REP);
-                            $("#txt-dni").val(data.d.Resultado[0].DNI_REP);
+                            $("#txt-nom").val(data.d.Resultado.NOM_REP);
+                            $("#txt-ape").val(data.d.Resultado.APE_REP);
+                            $("#txt-tel").val(data.d.Resultado.TEL_REP);
+                            $("#txt-dni").val(data.d.Resultado.DNI_REP);
 
-                            $("#sel_departamento").val(data.d.Resultado[0].DEPARTAMENTO).change();
-                            prov_id = data.d.Resultado[0].PROVINCIA;
-                            dis_id = data.d.Resultado[0].GEOGRAFIA_ID;
-                            $("#txt_direccion").val(data.d.Resultado[0].DIRECCION);
-                            $("#txt_referencia").val(data.d.Resultado[0].REFERENCIA);
+                            $("#sel_departamento").val(data.d.Resultado.DEPARTAMENTO).change();
+                            prov_id = data.d.Resultado.PROVINCIA;
+                            dis_id = data.d.Resultado.GEOGRAFIA_ID;
+                            $("#txt_direccion").val(data.d.Resultado.DIRECCION);
+                            $("#txt_referencia").val(data.d.Resultado.REFERENCIA);
 
                             activaTab('dato');
                             closeLoading();

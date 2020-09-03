@@ -42,6 +42,7 @@
     <Compile Include="EEnciclopedia.cs" />
     <Compile Include="ERaza.cs" />
     <Compile Include="ECita.cs" />
+    <Compile Include="EPago.cs" />
     <Compile Include="ESolicitud.cs" />
     <Compile Include="EMedico.cs" />
     <Compile Include="EClinica.cs" />

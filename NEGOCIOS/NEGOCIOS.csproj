@@ -46,6 +46,7 @@
     <Compile Include="NConvenio.cs" />
     <Compile Include="NMascota.cs" />
     <Compile Include="NParametro.cs" />
+    <Compile Include="NPago.cs" />
     <Compile Include="NSolicitud.cs" />
     <Compile Include="NEvento.cs" />
     <Compile Include="NUsuario.cs" />

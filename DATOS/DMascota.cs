@@ -577,8 +577,7 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@direccion", objE.DIRECCION);
                 cmd.Parameters.AddWithValue("@referencia", objE.REFERENCIA);
                 cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
-
-
+                
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())

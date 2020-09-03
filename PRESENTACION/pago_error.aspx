@@ -32,7 +32,7 @@
                 <div class="o-hidden border-0 my-5">
                     <div class="card-body p-0">
                         <p>&nbsp;</p>
-            <div class="sub-wrapper">LO SENTIMOS SU PAGO NO SE REALIZO CORRECTAMENTE</div>
+                        <div runat="server" id="sub_wrapper" class="sub-wrapper">LO SENTIMOS SU PAGO NO SE REALIZO CORRECTAMENTE</div>
                         <p>&nbsp;</p>
             <a href="https://api.whatsapp.com/send?phone=51992975292&amp;text=Hola,%20tengo%20un%20problema%20con%20el%20*pago*.%20" class="baraitem">
                 <div class="text-center"><img src="templatePage/img/core-img/whatsaap-media.png"></div>

@@ -20,6 +20,7 @@ namespace PRESENTACION
             routes.MapPageRoute("Sistema", "Sistema", "~/default.aspx");
             routes.MapPageRoute("carritoRUMP", "carritoRUMP", "~/page/pagoSolicitud.aspx");
             routes.MapPageRoute("payment-mercadopago", "payment-mercadopago", "~/page/paymentGen.aspx");
+            routes.MapPageRoute("payment-pending", "payment-pending", "~/pago_proceso.aspx");
             routes.MapPageRoute("Registro", "Registro", "~/register.aspx");
             routes.MapPageRoute("OlvidoClave", "OlvidoClave", "~/forgotPassword.aspx");
             routes.MapPageRoute("Servicios", "Servicios", "~/servicios.aspx");
@@ -57,7 +58,7 @@ namespace PRESENTACION
 
         protected void Application_Error(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Sistema#!/page/pageError");
         }
 
         protected void Session_End(object sender, EventArgs e)

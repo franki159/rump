@@ -14,24 +14,25 @@ namespace PRESENTACION
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        [WebMethod()]
-        public static object obtenerCupon()
-        {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
-
-            /*try
+            if (Page.IsPostBack == false)
             {
-                objRespuesta.Resultado = NConvenio.obtenerCupon();
+                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
-            catch (Exception ex)
-            {
-                objRespuesta.Error(string.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-            }*/
 
-            return objRespuesta;
+            var objTipo = Request.QueryString["vTipo"];
+
+            switch (EUtil.getDesencriptar(objTipo))
+            {
+                case "cancelled":
+                case "rejected":
+                    sub_wrapper.InnerHtml = "Lo setimos su pago no se realizó correctamente.";
+                    break;
+                case "in_process":
+                    sub_wrapper.InnerHtml = "Su pago está pendiente de verificación. Se le comunicará a través de correo cuando haya sido confirmado";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

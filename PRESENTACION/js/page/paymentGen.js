@@ -26,7 +26,7 @@ function fc_listar_inicio() {
     //get session solicitud
     $.ajax({
         type: "POST",
-        url: "page/mantenimiento/solicitud.aspx/getCarritoItemWM",
+        url: "page/paymentGen.aspx/getPedidoItemWM",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         async: true,
@@ -44,10 +44,7 @@ function fc_listar_inicio() {
                     return;
                 }
             }
-
-            for (var i = 0; i < data.d.Resultado.length; i++) {
-                $(".row-summary").html("<span class='float-left'>" + data.d.Resultado[i].DESCRIPCION + "</span><span class='float-right'>" + data.d.Resultado[i].PRECIO + "</span>");
-            }
+            $(".row-summary").html("<span class='float-left'>Costo Total</span><span class='float-right'>S/. " + nwformatNumber(data.d.Resultado.TOTAL, 2) + "</span>");
 
             //g_id_mascota = data.d.Resultado[0].ID_MSC_ENCRIP;
             //g_id_sol = data.d.Resultado[0].ID;
@@ -81,7 +78,7 @@ function setPaymentMethod(status, response) {
         element.value = paymentMethodId;
         //getInstallments();
     } else {
-        $(".cardNumber-bar").html(`Tarjeta no valida`);
+        $(".cardNumber-bar").html(`Tarjeta no válida`);
         $("#cardNumber").focus();
     }
 }
@@ -125,7 +122,8 @@ function doPay(event) {
 
 function sdkResponseHandler(status, response) {
     if (status !== 200 && status !== 201) {
-        alert("verify filled data");
+        validateErrorInfo(response);
+        //alert("verify filled data");
     } else {
         var form = document.querySelector('#pay');
         var card = document.createElement('input');
@@ -135,6 +133,40 @@ function sdkResponseHandler(status, response) {
         form.appendChild(card);
         doSubmit = true;
         form.submit();
+    }
+}
+
+function validateErrorInfo(response) {
+    var cause = response.cause;
+    
+    $("#pay .group .bar").html("");
+    for (var i = 0; i < cause.length; i++) {
+        switch (cause[i].code) {
+            case "205":  /* empty card number */
+            case "E301": /* invalid car number*/
+                $(".cardNumber-bar").html(`Tarjeta no válida`);
+                break;
+            case "E302":
+                $(".securityCode-bar").html(`Código no válida`);
+                break;
+            case "208": /* empty card expiration month */
+            case "325": /* invalid card expiration month*/
+                $(".cardExpirationMonth-bar").html(`Mes no válida`);
+                break;
+            case "209": /* empty card expiration year */
+            case "326": /* invalid card expiration year*/
+                $(".cardExpirationYear-bar").html(`Año no válida`);
+                break;
+            case "221": /* empty cardholder name*/
+                $(".cardholderName-bar").html(`Nombre no válida`);
+                break;
+            case "322": /* cardholder identification type*/
+                //Este error no deberia suceder (revisar)
+                break;
+            case "324": /* invalid parameter docNumber */
+                $(".docNumber-bar").html(`Documento no válido`);
+                break;
+        }
     }
 }
 //***************************************************************************************************

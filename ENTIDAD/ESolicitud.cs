@@ -44,6 +44,7 @@ namespace ENTIDAD
 
         public string COMENTARIO { get; set; }
         public string FOTO { get; set; }
+        public decimal ENVIO { get; set; }
 
         public Nullable<DateTime> FEC_INI { get; set; }
         public Nullable<DateTime> FEC_FIN { get; set; }

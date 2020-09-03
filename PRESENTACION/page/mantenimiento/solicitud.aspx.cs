@@ -147,7 +147,7 @@ namespace PRESENTACION.page.mantenimiento
             {
                 if (HttpContext.Current.Session["userRump"] == null)
                 {
-                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    objRespuesta.Error("NS");
                     return objRespuesta;
                 }
 
@@ -161,6 +161,90 @@ namespace PRESENTACION.page.mantenimiento
                 else
                 {
                     objRespuesta.Resultado = objResultado;
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object getDeliveryWM(ESolicitud objE) {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null)
+                {
+                    objRespuesta.Error("NS");
+                    return objRespuesta;
+                }
+
+                List<ESolicitud> objCarrito = new List<ESolicitud>();
+                objCarrito = (List<ESolicitud>)HttpContext.Current.Session["carritoMascota"];
+                var precioDelivery = NSolicitud.getDelivery(objE);
+
+                if (objCarrito == null || objCarrito.Count == 0)
+                {
+                    objRespuesta.Error("SR");
+                }
+                else
+                {
+                    objRespuesta.Resultado = new
+                    {
+                        Carrito = objCarrito,
+                        Envio = precioDelivery
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
+            }
+            return objRespuesta;
+        }
+        [WebMethod()]
+        public static object guardarPedidoWM(ESolicitud objE)
+        {
+            ERespuestaJson objRespuesta = new ERespuestaJson();
+            try
+            {
+                if (HttpContext.Current.Session["userRump"] == null || HttpContext.Current.Session["carritoMascota"] == null)
+                {
+                    objRespuesta.Error("Su sesión ha expirado, por favor vuelva a iniciar sesión");
+                    return objRespuesta;
+                }
+
+                List<ESolicitud> carritoMascota = new List<ESolicitud>((List<ESolicitud>)HttpContext.Current.Session["carritoMascota"]);
+
+                //Cabecera
+                EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
+                objE.USUARIO_ID = eSession.ID;
+                //Detalle
+                string bodyDetalle = "";
+                double pTotal = 0;
+                decimal objResultado = 0;
+                foreach (ESolicitud item in carritoMascota)
+                {
+                    pTotal += Convert.ToDouble(item.PRECIO * item.CANTIDAD);
+                    bodyDetalle += item.ID + "," + item.CANTIDAD + "," + (item.ID_MSC_ENCRIP== null ? "": EUtil.getDesencriptar(item.ID_MSC_ENCRIP)) + "|";
+                }
+
+                objE.TOTAL = pTotal;
+                objE.vPARAM1 = bodyDetalle;
+                objResultado = NSolicitud.guardarServicioWM(objE);
+
+                ESolicitud objPedido = new ESolicitud();
+                objPedido.ID = objResultado;
+                HttpContext.Current.Session["solicitudPedido"] = objPedido;
+
+                if (objResultado == 0)
+                {
+                    objRespuesta.Error("No se pudo realizar la solicitud.");
+                }
+                else
+                {
+                    objRespuesta.Success("Se realizó la solicitud correctamente");
                 }
             }
             catch (Exception ex)
@@ -213,12 +297,14 @@ namespace PRESENTACION.page.mantenimiento
                     return objRespuesta;
                 }
 
-                List<ESolicitud> objResultado = new List<ESolicitud>();
+                ESolicitud objResultado = new ESolicitud();
                 EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
                 objE.USUARIO = eSession.ID;
+                objE.ID = Convert.ToDecimal(EUtil.getDesencriptar(objE.SOLICITUD_ID_ENCRIP));
+                objE.OPCION = 5;
                 objResultado = NSolicitud.listarSolicitudxId(objE);
 
-                if (objResultado.Count == 0)
+                if (objResultado.ID_ENCRIP == "")
                 {
                     objRespuesta.Error("No se encontraron registros.");
                 }
@@ -310,6 +396,7 @@ namespace PRESENTACION.page.mantenimiento
                 int objResultado = 0;
                 EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
                 objE.USUARIO = eSession.ID;
+                objE.ID = Convert.ToDecimal(EUtil.getDesencriptar(objE.ID_ENCRIP));
                 objResultado = NSolicitud.AtenderSolicitud(objE);
 
                 if (objResultado == 0)
@@ -342,6 +429,7 @@ namespace PRESENTACION.page.mantenimiento
                 int objResultado = 0;
                 EUsuario eSession = (EUsuario)HttpContext.Current.Session["userRump"];
                 objE.USUARIO = eSession.ID;
+                objE.ID = Convert.ToDecimal(EUtil.getDesencriptar(objE.ID_ENCRIP));
                 objResultado = NSolicitud.AnularSolicitud(objE);
 
                 if (objResultado == 0)

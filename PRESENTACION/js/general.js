@@ -385,10 +385,10 @@ String.prototype.format = function () {
     for (var k in arguments) {
         a = a.replace(new RegExp("\\{" + k + "\\}", 'g'), arguments[k]);
     }
-    return a
+    return a;
 };
 
-function formatNumber(number, dec) {
+function nwformatNumber(number, dec) {
     var num;
     if (number % 1 === 0)
         dec = 0;
@@ -399,6 +399,16 @@ function formatNumber(number, dec) {
         number = roundNumber(number, dec);
         num = Math.floor(number).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     }
+
+    return num;
+}
+
+function formatNumber(number, dig) {
+    var n1 = roundNumber(number, dig);
+    var n = n1.toString();
+
+    var parts = (+n).toFixed(dig).split(".");
+    var num = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
 
     return num;
 }

@@ -23,11 +23,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="../assets/multisteps/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
     <link href="../templateSoft/css/sb-admin-2.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet">
 
     <link href="../css/stylePropio.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
-
-    <link href="../assets/multisteps/style.css?v=<%:DateTime.Now.ToString("yyyyMMddHHmm")%>" rel="stylesheet" />
     <style>
         html, body, #wrapper {
             height:100%;
@@ -86,24 +85,21 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid" style="overflow-x: auto;">
                     <div class="row">
-    <div class="col-md-12">    
-        <div class="div-leyenda-fcp leyend-lim-txt">               
-            <b class='text-danger'><p>(*) Recuerde enviar el comprobante al whatsapp 992975292 para poder verificar el pago.</p></b>
-        </div>
+    <div class="col-md-12">
         <div id="errorDiv"></div>
         
         <div class="row">
         <div class="col-md-12">
-          <div class="overflow-hidden" style="padding: 10px 0px 40px;min-height: 400px;">
+          <div  style="padding: 10px 0px 40px;min-height: 400px;">
               <!--multisteps-form-->
               <div class="multisteps-form">
                 <!--progress bar-->
                 <div class="row">
                   <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
                     <div class="multisteps-form__progress">
-                      <button class="btn multisteps-form__progress-btn js-active" type="button" title="User Info">BOLSA DE COMPRA</button>
-                      <button class="btn multisteps-form__progress-btn" type="button" title="Address">DESPACHO</button>
-                      <button class="btn multisteps-form__progress-btn" type="button" title="Order Info">PAGO</button>
+                      <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">BOLSA DE COMPRA</button>
+                      <button class="multisteps-form__progress-btn" type="button" title="Address">DESPACHO</button>
+                      <button class="multisteps-form__progress-btn" type="button" title="Order Info">PAGO</button>
                     </div>
                   </div>
                 </div>
@@ -112,7 +108,7 @@
                   <div class="col-md-8">
                     <div class="multisteps-form__form">
                       <!--single form panel-->
-                      <div class="multisteps-form__panel p-4 bg-white js-active" data-animation="scaleIn">
+                      <div class="multisteps-form__panel p-4 bg-white js-active card shadow position-absolute" data-animation="scaleIn">
                           <div class="body-items">
 
                           </div>
@@ -123,7 +119,7 @@
                           </div>
                       </div>
                       <!--single form panel-->
-                      <div class="multisteps-form__panel p-4 bg-white" data-animation="scaleIn">
+                      <div class="multisteps-form__panel p-4 bg-white card shadow position-absolute" data-animation="scaleIn">
                         <h3 class="multisteps-form__title">¿Quién recibe?</h3>
                         <div class="multisteps-form__content">
                           <div class="form-row mt-4">
@@ -191,13 +187,11 @@
                         </div>
                       </div>
                       <!--single form panel-->
-                      <div class="multisteps-form__panel p-4 bg-white" data-animation="scaleIn">
+                      <div class="multisteps-form__panel p-4 bg-white card shadow position-absolute" data-animation="scaleIn">
                         <h3 class="multisteps-form__title">Elige tu medio de pago</h3>
                         <div class="multisteps-form__content">
-
-
-                            <div class="card-body">
-                              <div class="px-4 py-4 bg-gray-100 border-bottom-primary">
+                            <div class="">
+                              <div class="px-4 py-4 border btn-light btn-card-payment">
                                   <div class="row">
                                        <div class="col-0">
                                           <i class="fas fa-credit-card text-primary h2"></i>
@@ -212,7 +206,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="px-4 py-4 bg-gray-100 border-bottom-primary">
+                              <div class="px-4 py-4 border border-top-0  btn-light btn-money-payment">
                                   <div class="row">
                                        <div class="col-0">
                                           <i class="far fa-money-bill-alt text-primary h2"></i>
@@ -224,10 +218,10 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="px-4 py-4 bg-gray-100">
+                              <div class="px-4 py-4 border border-top-0 btn-light btn-bank-payment">
                                   <div class="row">
-                                       <div class="col-0">
-                                          <i class="fas fa-university"></i>
+                                       <div class="col-0 text-primary">
+                                          <i class="fas fa-university" style="font-size: 30px;"></i>
                                       </div>
                                       <div class="col-10  my-auto">
                                           <div class="col-12">
@@ -237,69 +231,6 @@
                                   </div>
                               </div>
                             </div>
-
-                                            <div class="row text-center">
-                                                <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
-                                                    <h4><br>Opcion 1</h4>
-                                                    <img src="img/mercadopago/mercadopago-qr.png" style="margin: 0px;">
-                                                </div>
-                                                <div class="col-md-6" style="border: 1px solid #9b9da9;border-radius: 20px;">
-                                                    <h4><br>Opcion 2</h4>
-                                                    <br>
-                                                    <img src="img/mercadopago/tarjetas_pago.png" style="margin: 0px; width: 120px;">
-                                                    <img src="img/mercadopago/pago-efectivo.png" style="margin: 0px; width: 120px;">
-                                                    <br> 
-                                                    <div class="btn-lim-1">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-4c834873-7417-4530-99b1-5b324bed501d"></script>
-                                                    </div>
-                                                    <div class="btn-lim-2">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
-                                                    </div>
-                                                    <div class="btn-lim-3">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
-                                                    </div>
-                                                    <div class="btn-lim-5">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-3d15a9f4-0a9d-490c-a5a7-e6043c4aacc4"></script>
-                                                    </div>
-                                                    <div class="btn-lim-6">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-2ea90f4a-91c5-42b6-96c0-bb0f501b17ee"></script>
-                                                    </div>
-
-                                                    <div class="btn-lprov-1">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-9f3c0d22-19c5-4dda-836e-d4518e46b75b"></script>       
-                                                    </div>
-                                                    <div class="btn-lprov-2">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
-                                                    </div>
-                                                    <div class="btn-lprov-3">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
-                                                    </div>
-                                                    <div class="btn-lprov-5">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-71d8d983-cf68-4c42-b487-737f6ca73e61"></script>       
-                                                    </div>
-                                                    <div class="btn-lprov-6">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-355f1616-7a7a-45e1-9948-3d474f35ae63"></script>       
-                                                    </div>
-
-                                                    <div class="btn-prov-1">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-36c907bc-8dd7-4717-9504-c2d264df81e5"></script>       
-                                                    </div>
-                                                    <div class="btn-prov-2">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
-                                                    </div>
-                                                    <div class="btn-prov-3">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
-                                                    </div>
-                                                    <div class="btn-prov-5">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-292987e5-be5e-490e-83c0-7915906d6651"></script>
-                                                    </div>
-                                                    <div class="btn-prov-6">
-                                                        <script src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js" data-preference-id="334567666-af83c099-126c-4bfb-abfa-328571928365"></script>
-                                                    </div>
-                                                    <br>
-                                                    <img alt="Mercado Pago" class="n3VNCb" src="https://marketplace.magento.com/media/catalog/product/cache/603f9e977a3dc35468ba3ae89ddfbb29/m/e/mercadopago_3.png" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd,gvK6lb;" style="width: 100px; height: 100px; margin: 0px;">
-                                                </div>
-                                            </div>
                           <div class="button-row d-flex mt-4">
                             <button class="btn btn-primary js-btn-prev" type="button" title="Prev"><< Atras</button>
                           </div>
@@ -310,7 +241,7 @@
                   <div class="col-md-4">
                     <form class="multisteps-form__form">
                       <!--single form panel-->
-                      <div class="p-4 bg-white js-active" data-animation="scaleIn">
+                      <div class="p-4 bg-white js-active card shadow" data-animation="scaleIn">
                         <h3 class="multisteps-form__title">Resumen de Orden</h3>
                         <div class="multisteps-form__content">
                           <div class="form-row mt-4">

@@ -14,10 +14,14 @@ namespace NEGOCIOS
         {
             return DSolicitud.listarSolicitud(ent);
         }
-        public static List<ESolicitud> listarSolicitudxId(ESolicitud ent)
+        public static ESolicitud listarSolicitudxId(ESolicitud ent)
         {
             return DSolicitud.listarSolicitudxId(ent);
-        }        
+        }
+        public static ESolicitud listarPedidoxId(ESolicitud ent)
+        {
+            return DSolicitud.listarPedidoxId(ent);
+        }
         public static List<ESolicitud> listarServicio()
         {
             return DSolicitud.listarServicio();
@@ -35,9 +39,18 @@ namespace NEGOCIOS
         {
             return DSolicitud.AtenderSolicitud(ent);
         }
+        public static decimal guardarServicioWM(ESolicitud ent)
+        {
+            return DSolicitud.guardarServicioWM(ent);
+        }
         public static int AnularSolicitud(ESolicitud ent)
         {
             return DSolicitud.AnularSolicitud(ent);
+        }
+
+        public static decimal getDelivery(ESolicitud ent)
+        {
+            return DSolicitud.getDelivery(ent);
         }
 
         public static int ActualizarSolicitud(ESolicitud ent)

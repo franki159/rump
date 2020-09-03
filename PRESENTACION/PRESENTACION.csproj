@@ -169,12 +169,14 @@
     <Content Include="img\mercadopago\pago-efectivo.png" />
     <Content Include="img\mercadopago\tarjetas_pago.png" />
     <Content Include="img\productos\C4CA4238A0B923820DCC509A6F75849B.jpg" />
+    <Content Include="js\page\pageError.js" />
     <Content Include="js\page\paymentGen.js" />
     <Content Include="js\page\pagoSolicitud.js" />
     <Content Include="js\pago_exitoso.js" />
     <Content Include="page\paymentGen.aspx" />
     <Content Include="page\pagoSolicitud.aspx" />
     <Content Include="pago_error.aspx" />
+    <Content Include="pago_proceso.aspx" />
     <Content Include="pago_exitoso.aspx" />
     <Content Include="genealogia.aspx" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -2855,6 +2857,13 @@
     </Compile>
     <Compile Include="pago_error.aspx.designer.cs">
       <DependentUpon>pago_error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pago_proceso.aspx.cs">
+      <DependentUpon>pago_proceso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pago_proceso.aspx.designer.cs">
+      <DependentUpon>pago_proceso.aspx</DependentUpon>
     </Compile>
     <Compile Include="pago_exitoso.aspx.cs">
       <DependentUpon>pago_exitoso.aspx</DependentUpon>

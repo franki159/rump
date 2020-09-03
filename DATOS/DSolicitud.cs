@@ -121,16 +121,16 @@ namespace DATOS
             }
             return lista;
         }
-        public static List<ESolicitud> listarSolicitudxId(ESolicitud objE)
+        public static ESolicitud listarSolicitudxId(ESolicitud objE)
         {
-            List<ESolicitud> lista = new List<ESolicitud>();
+            ESolicitud mItem= new ESolicitud();
 
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_solicitud", cn);
-                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.SOLICITUD_ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@id", objE.ID);
                 cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
-                cmd.Parameters.AddWithValue("@opcion", 5);
+                cmd.Parameters.AddWithValue("@opcion", objE.OPCION);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -138,7 +138,7 @@ namespace DATOS
                 {
                     while (dr.Read())
                     {
-                        ESolicitud mItem = new ESolicitud();
+                        mItem = new ESolicitud();
                         //mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
                         mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
                         mItem.TIPO = dr.IsDBNull(dr.GetOrdinal("tipo")) ? string.Empty : dr.GetString(dr.GetOrdinal("tipo"));
@@ -166,12 +166,51 @@ namespace DATOS
                         mItem.DEPARTAMENTO = dr.IsDBNull(dr.GetOrdinal("departamento")) ? string.Empty : dr.GetString(dr.GetOrdinal("departamento"));
                         mItem.PROVINCIA = dr.IsDBNull(dr.GetOrdinal("provincia")) ? string.Empty : dr.GetString(dr.GetOrdinal("provincia"));
                         mItem.DISTRITO = dr.IsDBNull(dr.GetOrdinal("distrito")) ? string.Empty : dr.GetString(dr.GetOrdinal("distrito"));
-
-                        lista.Add(mItem);
                     }
                 }
             }
-            return lista;
+            return mItem;
+        }
+        public static ESolicitud listarPedidoxId(ESolicitud objE)
+        {
+            ESolicitud mItem = new ESolicitud();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_solicitud", cn);
+                cmd.Parameters.AddWithValue("@id", objE.ID);
+                cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
+                cmd.Parameters.AddWithValue("@opcion", objE.OPCION);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        mItem = new ESolicitud();
+                        //mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.ID_ENCRIP = EUtil.getEncriptar((dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"))).ToString());
+                        mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.TOTAL = dr.IsDBNull(dr.GetOrdinal("total")) ? 0 : dr.GetDouble(dr.GetOrdinal("total"));
+                        mItem.EMAIL = dr.IsDBNull(dr.GetOrdinal("email")) ? "" : dr.GetString(dr.GetOrdinal("email"));
+                    }
+                }
+            }
+            return mItem;
+        }
+        public static decimal getDelivery(ESolicitud objE)
+        {
+            decimal precio_delivery = 0;
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("SELECT dbo.fu_retorna_delivery(@geografia_id)", cn);
+                cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
+                cn.Open();
+                precio_delivery = (decimal)cmd.ExecuteScalar(); ;
+            }
+            return precio_delivery;
         }
         public static List<ESolicitud> listarServicioXmascota(ESolicitud objE)
         {
@@ -205,7 +244,7 @@ namespace DATOS
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_solicitud", cn);
-                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@id", objE.ID);
                 cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
                 cmd.Parameters.AddWithValue("@comentario", objE.COMENTARIO);
                 cmd.Parameters.AddWithValue("@opcion", 2);
@@ -214,12 +253,43 @@ namespace DATOS
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static decimal guardarServicioWM(ESolicitud objE)
+        {
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_guardar_pedido", cn);
+                cmd.Parameters.AddWithValue("@usuario_id", objE.USUARIO_ID);
+                cmd.Parameters.AddWithValue("@total", objE.TOTAL);
+                cmd.Parameters.AddWithValue("@nom_rep", objE.NOM_REP);
+                cmd.Parameters.AddWithValue("@ape_rep", objE.APE_REP);
+                cmd.Parameters.AddWithValue("@tel_rep", objE.TEL_REP);
+                cmd.Parameters.AddWithValue("@dni_rep", objE.DNI_REP);
+                cmd.Parameters.AddWithValue("@direccion", objE.DIRECCION);
+                cmd.Parameters.AddWithValue("@referencia", objE.REFERENCIA);
+                cmd.Parameters.AddWithValue("@geografia_id", objE.GEOGRAFIA_ID);
+                cmd.Parameters.AddWithValue("@detalle", objE.vPARAM1);
+                cmd.Parameters.AddWithValue("@id_solicitud", objE.SOLICITUD_ID).Direction = ParameterDirection.Output;
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+
+                cmd.ExecuteNonQuery();
+
+                if (cmd.Parameters["@id_solicitud"] != null)
+                {
+                    return (decimal)cmd.Parameters["@id_solicitud"].Value;
+                }
+                else {
+                    return 0;
+                }
+            }
+        }
         public static int AnularSolicitud(ESolicitud objE)
         {
             using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
             {
                 SqlCommand cmd = new SqlCommand("usp_mnt_solicitud", cn);
-                cmd.Parameters.AddWithValue("@id", EUtil.getDesencriptar(objE.ID_ENCRIP));
+                cmd.Parameters.AddWithValue("@id", objE.ID);
                 cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
                 cmd.Parameters.AddWithValue("@comentario", objE.COMENTARIO);
                 cmd.Parameters.AddWithValue("@opcion", 3);
