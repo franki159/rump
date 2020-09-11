@@ -23,11 +23,39 @@ namespace DATOS
                 cmd.Parameters.AddWithValue("@solicitud_id", objE.SOLICITUD_ID);
                 cmd.Parameters.AddWithValue("@observacion", objE.OBSERVACION);
                 cmd.Parameters.AddWithValue("@usuario", objE.USUARIO);
+                cmd.Parameters.AddWithValue("@email", objE.EMAIL);
+                cmd.Parameters.AddWithValue("@vEstado", objE.vPARAM1);
                 cmd.Parameters.AddWithValue("@opcion", objE.OPCION);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cn.Open();
                 return cmd.ExecuteNonQuery();
             }
+        }
+
+        public static List<EPago> listarPagosPendientes()
+        {
+            List<EPago> lista = new List<EPago>();
+
+            using (SqlConnection cn = new SqlConnection(DConexion.Get_Connection(DConexion.DataBase.CnRumpSql)))
+            {
+                SqlCommand cmd = new SqlCommand("usp_mnt_pago", cn);
+                cmd.Parameters.AddWithValue("@opcion", 3);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        EPago mItem = new EPago();
+                        mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
+                        mItem.SOLICITUD_ID = dr.IsDBNull(dr.GetOrdinal("solicitud_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("solicitud_id"));
+                        mItem.OBSERVACION = dr.IsDBNull(dr.GetOrdinal("observacion")) ? string.Empty : dr.GetString(dr.GetOrdinal("observacion"));
+                        lista.Add(mItem);
+                    }
+                }
+            }
+            return lista;
         }
     }
 }

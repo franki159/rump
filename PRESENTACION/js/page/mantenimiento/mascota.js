@@ -668,7 +668,9 @@ function fc_listar_mascota(mAlerta, mConsejo) {
                 msg_OpenDay("a", "Algunos dni estan por vencer o vencidos. No te quedes sin los beneficios y renuevalos.");
                 closeLoading();
             } else {
-                if (mConsejo) {
+                //obteniendo si es de preregistro
+                if (sessionStorage.getItem("ini_pre") === "true") {
+                    sessionStorage.setItem("ini_pre", "false");
                     img_OpenDay("a");
                     $("#modalAlert .modal-dialog").addClass("modal-xl");
                     $("#modalAlert .modal-body img").attr("src", "img/inicio/mascota_registrada.png");

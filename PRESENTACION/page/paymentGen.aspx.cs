@@ -13,6 +13,8 @@ using MercadoPago;
 using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago.Common;
+using System.Configuration;
+using Newtonsoft.Json;
 
 namespace PRESENTACION.page
 {
@@ -23,143 +25,114 @@ namespace PRESENTACION.page
             if (Page.IsPostBack == false)
             {
                 if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
+                if (Session["solicitudPedido"] == null) Response.Redirect("~/Sistema#!/page/mantenimiento/mascota");
             }
+
             ESolicitud objPedido = new ESolicitud();
             objPedido = (ESolicitud)HttpContext.Current.Session["solicitudPedido"];
 
             //get params form
-            float payAmount = (float)objPedido.TOTAL;//Request.Form["transaction_amount"];
+            float payAmount = (objPedido == null ? 0 : (float)objPedido.TOTAL);//Request.Form["transaction_amount"];
             var tokencard = Request.Form["token"];
             var payMethod = Request.Form["payment_method_id"];
-            
+            var docType = Request["docType"];
+            var docNumber = Request["docNumber"];
+
             var installmt = 1;//Request.Form["installments"];***********cuotas
 
             if (tokencard != null && payMethod != null && payAmount != 0)
             {
                 var p_email = Request.Form["email"];
 
-                var rp_payment = response_card_mp(tokencard, payMethod, payAmount, installmt, p_email, objPedido.ID.ToString());
-                processPaymentResponse(rp_payment, objPedido.ID.ToString());
+                var rp_payment = response_pay_mp(payMethod, payAmount, p_email, objPedido.ID.ToString(), tokencard, installmt, docType, docNumber);
+                PaymentStatus rp_respose = processPaymentResponse(rp_payment, objPedido.ID, p_email);
+
+                if (rp_respose == MercadoPago.Common.PaymentStatus.approved || rp_respose == MercadoPago.Common.PaymentStatus.authorized)                 
+                    Response.Redirect("~/pago_exitoso.aspx?vtoken=" + EUtil.getEncriptar(objPedido.ID.ToString()), true);
+                else if (rp_respose == MercadoPago.Common.PaymentStatus.cancelled)
+                    Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("cancelled"), true);
+                else if (rp_respose == MercadoPago.Common.PaymentStatus.cancelled)
+                    Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("rejected"), true);
+                else if (rp_respose == MercadoPago.Common.PaymentStatus.rejected)
+                    Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("rejected"), true);
+                else if (rp_respose == MercadoPago.Common.PaymentStatus.in_process)
+                    Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("in_process"), false);
             }
         }
-        public object response_card_mp(string tokencard, string payMethod, float payAmount, int installmt, string email, string numPedido)
-        {
-            object payResult = null;
-
-            //MercadoPago.SDK.SetAccessToken("TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666");
-            //MercadoPago.SDK.SetAccessToken("TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666");
-
-            //MercadoPago.SDK.ClientId = "3603622080694099";
-            //MercadoPago.SDK.ClientSecret = "dMQJoxgQbagyNwqw0xuVMOrFfVHViVxY";
-            if (MercadoPago.SDK.AccessToken == null)
-            {
-                MercadoPago.SDK.AccessToken = "TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666";
-            }
-            //MercadoPago.SDK.AccessToken = "TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666";
-
-            var payment = new Payment
-            {
-                TransactionAmount = payAmount,
-                Token = tokencard,
-                Installments = installmt,
-                PaymentMethodId = payMethod,
-                Description = "Pedido Rump: " + numPedido,
-                ExternalReference = numPedido,
-                
-                Payer = new Payer
-                {
-                    Email = email//,
-                    //FirstName = "Frank",
-                    //LastName = "Chara"
-                },
-            };
-
-            try
-            {
-                payment.Save();
-                payResult = payment;
-            }
-            catch (Exception ex)
-            {
-                payResult = payment.Status;
-            }
-
-            return payResult;
-        }
-        public void processPaymentResponse(dynamic payment, string numPedido) {
+        public PaymentStatus processPaymentResponse(dynamic payment, decimal numPedido, string p_email) {
+            PaymentStatus result_estado;
             try
             {
                 if (payment != null)
                 {
-                    int objResultado = 0;
                     ESolicitud objSol = new ESolicitud();
-                    objSol.ID = Convert.ToDecimal(numPedido);
+                    objSol.ID = numPedido;
                     EUsuario eUsuario = (EUsuario)HttpContext.Current.Session["userRump"];
                     objSol.USUARIO = eUsuario.ID;
-
-                    EPago objPago = new EPago();
-                    objPago.USUARIO = eUsuario.ID;
-                    objPago.TOTAL = payment.TransactionAmount;
-                    objPago.NUM_TARJETA = payment.Card.LastFourDigits;
-                    objPago.SOLICITUD_ID = Convert.ToDecimal(numPedido);
-                    objPago.OPCION = 2;
-
+                    
                     //Limpiando sesiones
                     HttpContext.Current.Session["solicitudPedido"] = null;
                     HttpContext.Current.Session["carritoMascota"] = null;
 
-                    switch (payment.Status)
+                    if (payment.Status == MercadoPago.Common.PaymentStatus.approved || payment.Status == MercadoPago.Common.PaymentStatus.authorized)
                     {
-                        case MercadoPago.Common.PaymentStatus.approved:
-                        case MercadoPago.Common.PaymentStatus.authorized:
-                            //Actualiza el estado de la solicitud a APROBADO
-                            objSol.COMENTARIO = "approved::MercadoPago";
-                            objResultado = NSolicitud.AtenderSolicitud(objSol);
-                            //Guardando datos pago
-                            objPago.OBSERVACION = "approved::MercadoPago";
-                            objPago.ESTADO = 1;
-                            NPago.ActualizarPago(objPago);
-                            Response.Redirect("~/pago_exitoso.aspx");
-                            break;
-                        case MercadoPago.Common.PaymentStatus.cancelled:
-                            //cancelado
-                            //Actualiza el estado de la solicitud a ANULADO
-                            objSol.COMENTARIO = "cancelled::MercadoPago";
-                            objResultado = NSolicitud.AnularSolicitud(objSol);
-                            Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("cancelled"));
-                            break;
-                        case MercadoPago.Common.PaymentStatus.rejected:
-                            //fallido
-                            //Actualiza el estado de la solicitud a ANULADO
-                            objSol.COMENTARIO = "rejected::MercadoPago";
-                            objResultado = NSolicitud.AnularSolicitud(objSol);
-                            Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("rejected"));
-                            break;
-                        case MercadoPago.Common.PaymentStatus.in_process:
-                            //Caso particular de MercadoPago (pago pendiente de revision, se da hasta 6hrs para revision)
-                            objPago.ESTADO = 2;
-                            NPago.ActualizarPago(objPago);
-                            Response.Redirect("~/pago_error.aspx?vTipo=" + EUtil.getEncriptar("in_process"));
-                            break;
-                        case null:
-                            //Error en la pasarela de pago. Intente nuevamente por favor
-                            NMascota.log_error("Error en la pasarela de pago. Intente nuevamente por favor", "pago");
-                            break;
-                        default:
-                            break;
+                        //Actualiza el estado de la solicitud a APROBADO
+                        objSol.COMENTARIO = "approved::MercadoPago";
+                        //Guardando datos pago
+                        savePayDatabase(payment.TransactionAmount, payment.Card.LastFourDigits, numPedido, 2, JsonConvert.SerializeObject(payment), 1, p_email, "approved");
+                        //Atendiendo solicitud
+                        NSolicitud.AtenderSolicitud(objSol);
+                        enviarMail(p_email, "aprobada", numPedido.ToString());
+                    }
+                    else if (payment.Status == MercadoPago.Common.PaymentStatus.cancelled)
+                    {
+                        //cancelado
+                        //Actualiza el estado de la solicitud a ANULADO
+                        objSol.COMENTARIO = "cancelled::MercadoPago";
+                        NSolicitud.AnularSolicitud(objSol);
+                    }
+                    else if (payment.Status == MercadoPago.Common.PaymentStatus.cancelled)
+                    {
+                        //fallido
+                        //Actualiza el estado de la solicitud a ANULADO
+                        objSol.COMENTARIO = "rejected::MercadoPago";
+                        NSolicitud.AnularSolicitud(objSol);
+                    }
+                    else if (payment.Status == MercadoPago.Common.PaymentStatus.rejected)
+                    {
+                        //fallido
+                        //Actualiza el estado de la solicitud a ANULADO
+                        objSol.COMENTARIO = "rejected::MercadoPago";
+                        NSolicitud.AnularSolicitud(objSol);
+                    }
+                    else if (payment.Status == MercadoPago.Common.PaymentStatus.in_process)
+                    {
+                        //Caso particular de MercadoPago (pago pendiente de revision, se da hasta 6hrs para revision)
+                        savePayDatabase(payment.TransactionAmount, payment.Card.LastFourDigits, numPedido, 2, JsonConvert.SerializeObject(payment), 2, p_email, "in_process");
+                        enviarMail(p_email, "proceso", numPedido.ToString());
+                    }
+                    else {
+                        //Error en la pasarela de pago. Intente nuevamente por favor
+                        NMascota.log_error("Error en la pasarela de pago. Intente nuevamente por favor", "pago");
                     }
                 }
                 else
                 {
                     NMascota.log_error("payment card", "pago");
-                    Response.Redirect("~/Sistema#!/page/pageError");
+                    //Response.Redirect("~/Sistema#!/page/pageError");
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Alerta", "alert('El pago no devolvió información')", true);
                 }
+
+                result_estado = payment.Status;
             }
             catch (Exception ex)
             {
                 NMascota.log_error("payment card::" + (String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message), "pago");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Alerta", "alert('"+ (String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message) + "')", true);
+                result_estado = 0;
             }
-            
+
+            return result_estado;
         }
         [WebMethod()]
         public static object getPedidoItemWM()
@@ -199,7 +172,7 @@ namespace PRESENTACION.page
             return objRespuesta;
         }
         [WebMethod()]
-        public static object response_pagoefectivo_mp()
+        public static object response_pagoefectivo_mp(ESolicitud objPago)
         {
             ERespuestaJson objRespuesta = new ERespuestaJson();
             try
@@ -210,11 +183,10 @@ namespace PRESENTACION.page
                     return objRespuesta;
                 }
 
-                //Get datos Pedido
+                //Validando AccessToken MP
                 if (MercadoPago.SDK.AccessToken == null)
-                {
-                    MercadoPago.SDK.AccessToken = "TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666";
-                }
+                    MercadoPago.SDK.AccessToken = ConfigurationManager.AppSettings.Get("ACCESS_TOKEN");
+
                 //Get datos Pedido
                 ESolicitud objPedido = new ESolicitud();
                 objPedido = (ESolicitud)HttpContext.Current.Session["solicitudPedido"];
@@ -224,40 +196,19 @@ namespace PRESENTACION.page
                 objSolicitud.OPCION = 7;
                 objPedido = NSolicitud.listarPedidoxId(objSolicitud);
 
-                //get params form
+                //Pagando pagoefectivo
                 float payAmount = (float)objPedido.TOTAL;
-
-                var payment = new Payment
-                {
-                    TransactionAmount = payAmount,
-                    PaymentMethodId = "pagoefectivo_atm",
-                    Description = "Pedido Rump: " + objPedido.ID.ToString(),
-                    ExternalReference = objPedido.ID.ToString(),
-
-                    Payer = new Payer
-                    {
-                        Email = objPedido.EMAIL
-                    },
-                };
-              
-                payment.Save();
-                objRespuesta.Resultado = payment;
+                var payment = response_pay_mp("pagoefectivo_atm", payAmount, objPedido.EMAIL, objPedido.ID.ToString());
+                //Guardando pago
+                savePayDatabase(payAmount, "", objPedido.ID, 2, JsonConvert.SerializeObject(payment), 2, objPago.EMAIL, "pending");
+                //Enviando correo al cliente
+                enviarMail(objPedido.EMAIL, "mercadopago", objPedido.ID.ToString());
 
                 //Limpiando sesiones
                 HttpContext.Current.Session["solicitudPedido"] = null;
                 HttpContext.Current.Session["carritoMascota"] = null;
 
-                //Guardando pago
-                EUsuario eUsuario = (EUsuario)HttpContext.Current.Session["userRump"];
-                EPago objPago = new EPago();
-                objPago.USUARIO = eUsuario.ID;
-                objPago.TOTAL = payAmount;
-                objPago.NUM_TARJETA = "";
-                objPago.SOLICITUD_ID = objPedido.ID;
-                objPago.OPCION = 2;
-                objPago.OBSERVACION = "approved::MercadoPago";
-                objPago.ESTADO = 1;
-                NPago.ActualizarPago(objPago);
+                objRespuesta.Resultado = payment;
             }
             catch (Exception ex)
             {
@@ -266,61 +217,137 @@ namespace PRESENTACION.page
             }
             return objRespuesta;
         }
-        [WebMethod()]
-        public static object job_ProcessPendingPayments()
+        private static int savePayDatabase(float total, string carnum, decimal solicitud_id, int opcion, string observacion, int estado, string mail, string vestado) {
+            EUsuario eUsuario = (EUsuario)HttpContext.Current.Session["userRump"];
+            EPago objPago = new EPago();
+            objPago.USUARIO = eUsuario.ID;
+            objPago.TOTAL = total;
+            objPago.NUM_TARJETA = carnum;
+            objPago.SOLICITUD_ID = solicitud_id;
+            objPago.OPCION = opcion;
+            objPago.OBSERVACION = observacion;
+            objPago.ESTADO = estado;
+            objPago.EMAIL = mail;
+            objPago.vPARAM1 = vestado;
+            return NPago.ActualizarPago(objPago);
+        }
+        public static int updatePayDatabase(decimal idPago,int opcion, string observacion, int estado, string vestado)
         {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
+            EUsuario eUsuario = (EUsuario)HttpContext.Current.Session["userRump"];
+            EPago objPago = new EPago();
+            objPago.USUARIO = eUsuario.ID;
+            objPago.OPCION = opcion;
+            objPago.OBSERVACION = observacion;
+            objPago.ESTADO = estado;
+            objPago.ID = idPago;
+            objPago.vPARAM1 = vestado;
+            return NPago.ActualizarPago(objPago);
+        }
+        public static object response_pay_mp(string payMethod, float payAmount, string email, string numPedido, string tokencard, int installmt, string docType, string docNumber)
+        {
+            object payResult = null;
+
+            if (MercadoPago.SDK.AccessToken == null)
+                MercadoPago.SDK.AccessToken = ConfigurationManager.AppSettings.Get("ACCESS_TOKEN");
+
+            var payment = new Payment
+            {
+                TransactionAmount = payAmount,
+                Token = tokencard,
+                Installments = installmt,
+                PaymentMethodId = payMethod,
+                Description = "Pedido Rump: " + numPedido,
+                ExternalReference = numPedido,
+
+                Payer = new Payer
+                {
+                    Email = email,
+                    Identification = new Identification()
+                    {
+                        Type = docType,
+                        Number = docNumber
+                    }
+                }
+            };
+
+
             try
             {
-                //obteniendo pagos pendientes
+                payment .Save();
+                payResult = payment;
+            }
+            catch (Exception)
+            {
+                payResult = payment.Status;
+            }
 
+            return payResult;
+        }
+        public static object response_pay_mp(string payMethod, float payAmount, string email, string numPedido)
+        {
+            object payResult = null;
 
+            if (MercadoPago.SDK.AccessToken == null)
+                MercadoPago.SDK.AccessToken = ConfigurationManager.AppSettings.Get("ACCESS_TOKEN");
 
+            var payment = new Payment
+            {
+                TransactionAmount = payAmount,
+                PaymentMethodId = payMethod,//"pagoefectivo_atm",
+                Description = "Pedido Rump: " + numPedido,
+                ExternalReference = numPedido,
 
-
-                //Get datos Pedido
-                if (MercadoPago.SDK.AccessToken == null)
+                Payer = new Payer
                 {
-                    MercadoPago.SDK.AccessToken = "TEST-3603622080694099-071517-bee1bd3569411ac4d402e97b83c04cf9-334567666";
-                }
-                //Get datos Pedido
-                ESolicitud objPedido = new ESolicitud();
-                objPedido = (ESolicitud)HttpContext.Current.Session["solicitudPedido"];
+                    Email = email
+                },
+            };
 
-                ESolicitud objSolicitud = new ESolicitud();
-                objSolicitud.ID = objPedido.ID;
-                objSolicitud.OPCION = 7;
-                objPedido = NSolicitud.listarPedidoxId(objSolicitud);
+            payment.Save();
+            payResult = payment;
 
-                //get params form
-                float payAmount = (float)objPedido.TOTAL;
+            return payResult;
+        }
+        public static void enviarMail(string p_para, string p_tipo, string p_adicional) {
+            ECorreo correo = new ECorreo();
 
-                var payment = new Payment
-                {
-                    TransactionAmount = payAmount,
-                    PaymentMethodId = "pagoefectivo_atm",
-                    Description = "Pedido Rump: " + objPedido.ID.ToString(),
-                    ExternalReference = objPedido.ID.ToString(),
+            var p_asunto = "";
+            var mensaje = "<h4>¡Saludos desde RUMP!</h4>";
+            
+            switch (p_tipo)
+            {
+                case "aprobada":
+                    p_asunto = "Solicitud aprobada";
+                    mensaje += "<p>Su solicitud ha sido procesada con éxito, de ser necesario nos pondremos en contacto con usted para coordinar la entrega.</p><h4>Equipo RUMP</h4>";
+                    break;
+                case "proceso":
+                    p_asunto = "Solicitud en proceso";
+                    mensaje += "<p>Su solicitud está siendo procesada, su banco puede tardar algunos días para confirmar el pago. Si tiene alguna consulta no dude en contactarse con nosotros.</p><h4>Equipo RUMP</h4>";
+                    break;
+                case "cancelada":
+                    p_asunto = "Solicitud cancelada";
+                    mensaje += "<p>Su solicitud fue cancelada, no se pudo confirmar el pago.</p><h4>Equipo RUMP</h4>";
+                    break;
+                case "mercadopago":
+                    p_asunto = "Pago pendiente";
+                    mensaje += "<p>Su solicitud está siendo procesada, deberá acercarse al banco y brindar el código de Pago en efectivo.</p><h4>Equipo RUMP</h4>";
+                    break;
+                default:
+                    break;
+            }
 
-                    Payer = new Payer
-                    {
-                        Email = objPedido.EMAIL
-                    },
-                };
-
-                payment.Save();
-                objRespuesta.Resultado = payment;
-
-                //Limpiando sesiones
-                HttpContext.Current.Session["solicitudPedido"] = null;
-                HttpContext.Current.Session["carritoMascota"] = null;
+            correo.Para = p_para;
+            correo.Asunto = p_asunto;
+            correo.Mensaje = mensaje;
+            try
+            {
+                //correo.Enviar();
             }
             catch (Exception ex)
             {
                 NMascota.log_error("pagoefectivo::" + (String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message), "pago");
-                objRespuesta.Error(String.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
             }
-            return objRespuesta;
+            
         }
     }
 }

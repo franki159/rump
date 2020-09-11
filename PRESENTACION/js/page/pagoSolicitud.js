@@ -36,6 +36,101 @@ function InfoSesion() {
         }
     });
 }
+function aceptarConfirm() {
+    switch (txh_idConfirm) {
+        case "PAGO_EFECTIVO":
+            if (isEmail($("#txt_correo_pago").val()) === false) {
+                $("#errorPago").html(GenerarAlertaWarning("Correo: Ingrese un correo válido"));
+                $("#txt_correo_pago").focus();
+                return false;
+            }
+
+            var objE = {
+                NOM_REP: $("#txt-nom").val(),
+                APE_REP: $("#txt-ape").val(),
+                TEL_REP: $("#txt-tel").val(),
+                DNI_REP: $("#txt-dni").val(),
+                DIRECCION: $("#txt_direccion").val(),
+                REFERENCIA: $("#txt_referencia").val(),
+                GEOGRAFIA_ID: $("#sel_distrito").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "page/mantenimiento/solicitud.aspx/guardarPedidoWM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ objE: objE }),
+                async: true,
+                beforeSend: function () {
+                    openLoading();
+                },
+                success: function (data) {
+                    if (!data.d.Activo) {
+                        $("#errorDiv").html(GenerarAlertaWarning(data.d.Mensaje));
+                        closeLoading();
+                        return false;
+                    }
+
+                    //pagando con pago efectivo o transferencia bancaria
+                    var objPago = {
+                        EMAIL: $("#txt_correo_pago").val()
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "page/paymentGen.aspx/response_pagoefectivo_mp",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify({ objPago: objPago }),
+                        async: true,
+                        success: function (dataPay) {
+                            if (!dataPay.d.Activo) {
+                                if (dataPay.d.Mensaje === "SR") {
+                                    window.location = "Sistema";
+                                    return;
+                                } else {
+                                    msg_OpenDay('e', dataPay.d.Mensaje);
+                                    closeLoading();
+                                    return;
+                                }
+                            }
+
+                            if (dataPay.d.Resultado.TransactionDetails !== null) {
+                                window.location = dataPay.d.Resultado.TransactionDetails.ExternalResourceUrl;
+                            } else {
+                                msg_OpenDay('e', "No se encontró url de pago");
+                                closeLoading();
+                                return;
+                            }
+                            
+                        },
+                        error: function (dataPay) {
+                            $("#errorDiv").html(GenerarAlertaWarning(dataPay.d.Mensaje));
+                            closeLoading();
+                            return false;
+                        }
+                    });
+
+                },
+                error: function (data) {
+                    $("#errorDiv").html(GenerarAlertaWarning(data.d.Mensaje));
+                    closeLoading();
+                    return false;
+                }
+            });
+
+            event.preventDefault();
+            break;
+        default:
+            break;
+    }
+}
+function fc_aceptar_confirmacion() {
+    if (aceptarConfirm() !== false) {
+        $("#modalConfirm").modal('hide');
+    }
+}
 function fc_listar_inicio() {
     //get session solicitud
     $.ajax({
@@ -217,73 +312,68 @@ function fc_add_carrito(idSolicitud, idMascota) {
     });
 }
 function fc_sav_carrito(p_sync, p_tipo, p_url) {
-    var objE = {
-        NOM_REP: $("#txt-nom").val(),
-        APE_REP: $("#txt-ape").val(),
-        TEL_REP: $("#txt-tel").val(),
-        DNI_REP: $("#txt-dni").val(),
-        DIRECCION: $("#txt_direccion").val(),
-        REFERENCIA: $("#txt_referencia").val(),
-        GEOGRAFIA_ID: $("#sel_distrito").val()
-    };
-    
-    $.ajax({
-        type: "POST",
-        url: "page/mantenimiento/solicitud.aspx/guardarPedidoWM",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify({ objE: objE }),
-        async: p_sync,
-        beforeSend: function () {
-            openLoading();
-        },
-        success: function (data) {
-            if (!data.d.Activo) {
+    if (p_tipo === "money" || p_tipo === "bank") {
+        txh_idConfirm = 'PAGO_EFECTIVO';
+        contenido_html = "<div id='errorPago'></div><h4>Ingresa tu e-mail para pagar</h4>" +
+            '   <p>Tiene 3 días para completar el pago, después será anulado su pedido. Puede realizar el pago en </p>' +
+            '<div class="form-group pl-3">'+
+            '<ul>' +
+            '    <li>BBVA Continental</li>' +
+            '    <li>BCP (Código de empresa 02186)</li>' +
+            '    <li>Interbank (Código de empresa: 2735001)</li>' +
+            '    <li>Scotiabank</li>' +
+            '    <li>BanBif</li>' +
+            '    <li>Kasnet</li>' +
+            '    <li>Western Union</li>' +
+            '    <li>FullCarga</li>' +
+            '</ul>' +
+        '</div>'+
+        '   <div class="form-group">' +
+        '       <label>E-mail <strong class="text-danger"> (*)</strong ></label>' +
+        '       <input id="txt_correo_pago" name="tipo" placeholder="Ingrese el correo" class="form-control" />' +
+        '   </div>';
+
+        $("#txtContenido").html(contenido_html);
+        $("#modalConfirm").modal('show');
+    } else if (p_tipo === "card") {
+        var objE = {
+            NOM_REP: $("#txt-nom").val(),
+            APE_REP: $("#txt-ape").val(),
+            TEL_REP: $("#txt-tel").val(),
+            DNI_REP: $("#txt-dni").val(),
+            DIRECCION: $("#txt_direccion").val(),
+            REFERENCIA: $("#txt_referencia").val(),
+            GEOGRAFIA_ID: $("#sel_distrito").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "page/mantenimiento/solicitud.aspx/guardarPedidoWM",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({ objE: objE }),
+            async: p_sync,
+            beforeSend: function () {
+                openLoading();
+            },
+            success: function (data) {
+                if (!data.d.Activo) {
+                    $("#errorDiv").html(GenerarAlertaWarning(data.d.Mensaje));
+                    closeLoading();
+                    return false;
+                }
+
+                closeLoading();
+                window.location = p_url;
+
+            },
+            error: function (data) {
                 $("#errorDiv").html(GenerarAlertaWarning(data.d.Mensaje));
                 closeLoading();
                 return false;
-            }            
-            
-            if (p_tipo === "card") {
-                closeLoading();
-                window.location = p_url;
-            } else if (p_tipo === "money" || p_tipo ==="bank") {
-                //pagando con pago efectivo
-                $.ajax({
-                    type: "POST",
-                    url: "page/paymentGen.aspx/response_pagoefectivo_mp",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    async: true,
-                    success: function (dataPay) {
-                        if (!data.d.Activo) {
-                            if (data.d.Mensaje === "SR") {
-                                window.location = "Sistema";
-                                return;
-                            } else {
-                                msg_OpenDay('e', data.d.Mensaje);
-                                closeLoading();
-                                return;
-                            }
-                        }
-
-                        window.location = dataPay.d.Resultado.TransactionDetails.ExternalResourceUrl;
-                    },
-                    error: function (dataPay) {
-                        $("#errorDiv").html(GenerarAlertaWarning(dataPay.d.Mensaje));
-                        closeLoading();
-                        return false;
-                    }
-                });
             }
-            
-        },
-        error: function (data) {
-            $("#errorDiv").html(GenerarAlertaWarning(data.d.Mensaje));
-            closeLoading();
-            return false;
-        }
-    });
+        });
+    }
 }
 
 $("#sel_departamento").on('change', function () {

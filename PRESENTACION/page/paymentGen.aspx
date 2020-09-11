@@ -302,6 +302,7 @@
 </head>
 
 <body id="page-top">
+    <div id="page-loader"><img style="-webkit-user-select: none; margin: auto;" src="img/loader-pet.gif"></div>
     <div class="layout-col center mt-3 rounded" style="overflow: auto;background: #f7f7f7;box-shadow: 0 0.125em 0.375em rgba(0,0,0,.3);">
         <div class="layout-col-left float-left p-3 rounded-left">
             <h3 class="mt-3 mb-3 text-dark">Ingrese datos de la tarjeta</h3>
@@ -430,6 +431,8 @@
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
     
     <script>
+        window.Mercadopago.setPublishableKey("<%:ConfigurationManager.AppSettings.Get("PUBLIC_KEY")%>");
+
         let ccNumberInput = document.querySelector(".cc-number-input"),
 	ccNumberPattern = /^\d{0,16}$/g,
 	ccNumberSeparator = " ",

@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using ENTIDAD;
 using NEGOCIOS;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Configuration;
 
 namespace PRESENTACION
 {
@@ -14,24 +17,10 @@ namespace PRESENTACION
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        [WebMethod()]
-        public static object obtenerCupon()
-        {
-            ERespuestaJson objRespuesta = new ERespuestaJson();
-
-            /*try
+            if (Page.IsPostBack == false)
             {
-                objRespuesta.Resultado = NConvenio.obtenerCupon();
+                //if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
             }
-            catch (Exception ex)
-            {
-                objRespuesta.Error(string.IsNullOrEmpty(ex.Message) ? ex.InnerException.Message : ex.Message);
-            }*/
-
-            return objRespuesta;
         }
     }
 }

@@ -38,6 +38,26 @@
     <div id="page-loader">
         <img style="-webkit-user-select: none; margin: auto;" src="../img/loader-pet.gif">
     </div>
+    <!-- Modal para confirmaciones inicio-->
+    <div class="modal fade" style="z-index: 1051;" id="modalConfirm" role="dialog">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-confirm">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="icon-question-sign"></i>Confirmar</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="txtContenido">Seguro que desea?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnAceptar" onclick="fc_aceptar_confirmacion();" class="btn btn-primary btn-sm">Aceptar</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Content Wrapper -->
@@ -215,6 +235,9 @@
                                           <div class="col-12">
                                               <span>Efectivo en agentes</span>
                                           </div>
+                                          <div class="col-12 col-12 py-1">
+                                              <span class="text-gray-500 h5">El pago se acreditará en 1 día.</span>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
@@ -226,6 +249,9 @@
                                       <div class="col-10  my-auto">
                                           <div class="col-12">
                                               <span>Banca por internet</span>
+                                          </div>
+                                          <div class="col-12 col-12 py-1">
+                                              <span class="text-gray-500 h5">El pago se acreditará en 1 día.</span>
                                           </div>
                                       </div>
                                   </div>
@@ -261,12 +287,8 @@
             </div>
         </div>
         </div>
-
-
     </div>
 </div>
-
-
                 </div>
                 <!-- /.container-fluid -->
 

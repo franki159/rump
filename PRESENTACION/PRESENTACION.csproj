@@ -173,6 +173,7 @@
     <Content Include="js\page\paymentGen.js" />
     <Content Include="js\page\pagoSolicitud.js" />
     <Content Include="js\pago_exitoso.js" />
+    <Content Include="page\pageJobPago.aspx" />
     <Content Include="page\paymentGen.aspx" />
     <Content Include="page\pagoSolicitud.aspx" />
     <Content Include="pago_error.aspx" />
@@ -2837,6 +2838,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="page\pageJobPago.aspx.cs">
+      <DependentUpon>pageJobPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\pageJobPago.aspx.designer.cs">
+      <DependentUpon>pageJobPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="page\paymentGen.aspx.cs">
       <DependentUpon>paymentGen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

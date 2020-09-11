@@ -12,10 +12,27 @@ $(document).ready(function () {
     $(document).unbind("keydown"); 
 });
 
-function fc_listar_inicio() {
-    window.Mercadopago.setPublishableKey("TEST-c86d8288-620b-4175-b89f-25259cb838e1");
-    //window.Mercadopago.setPublishableKey("APP_USR-0c13961c-03f3-4a0c-b508-102f081274fa");
+var bPreguntar = true;
 
+window.onbeforeunload = preguntarAntesDeSalir;
+
+function preguntarAntesDeSalir() {
+    var respuesta;
+
+    if (bPreguntar) {
+        respuesta = confirm('¿Seguro que quieres salir?');
+
+        if (respuesta) {
+            window.onunload = function () {
+                return true;
+            };
+        } else {
+            return false;
+        }
+    }
+}
+
+function fc_listar_inicio() {  
     window.Mercadopago.getIdentificationTypes();
 
     document.getElementById('cardNumber').addEventListener('keyup', guessPaymentMethod);
@@ -41,6 +58,7 @@ function fc_listar_inicio() {
                     return;
                 } else {
                     closeLoading();
+                    msg_OpenDay('e', data.d.Mensaje);
                     return;
                 }
             }
@@ -114,8 +132,9 @@ function doPay(event) {
     if (!doSubmit) {
         var $form = document.querySelector('#pay');
 
+        openLoading();
         window.Mercadopago.createToken($form, sdkResponseHandler);
-
+        
         return false;
     }
 }
@@ -132,6 +151,7 @@ function sdkResponseHandler(status, response) {
         card.setAttribute('value', response.id);
         form.appendChild(card);
         doSubmit = true;
+        bPreguntar = false;
         form.submit();
     }
 }

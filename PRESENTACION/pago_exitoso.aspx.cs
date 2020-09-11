@@ -14,7 +14,14 @@ namespace PRESENTACION
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack == false)
+            {
+                if (Session["UserRump"] == null) Response.Redirect("~/InicioSesion");
+            }
 
+            var objPedido = Request.QueryString["vtoken"];
+
+            sub_wrapper.InnerHtml = "Su pedido N°: " + EUtil.getDesencriptar(objPedido) + " ha sido pagado exitosamente. De ser necesario nos comunicaremos con usted para coordinar detalles de la entrega.";
         }
 
         [WebMethod()]

@@ -163,8 +163,12 @@ function InfoSesion() {
                 //htmlMenu += '   <i class="fas fa-fw fa-paw"></i><span> Evento</span>';
                 //htmlMenu += '</a>';
             }
-
-            sessionStorage.clear();
+            if (sessionStorage.getItem("ini_pre") === "true") {
+                sessionStorage.clear();
+                sessionStorage.setItem("ini_pre", "true");
+            } else {
+                sessionStorage.clear();
+            }            
             sessionStorage.setItem("ID", data.d.Resultado.ID);
             sessionStorage.setItem("NOMBRE", data.d.Resultado.NOMBRE);
             sessionStorage.setItem("APELLIDO", data.d.Resultado.APELLIDO);

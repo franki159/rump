@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <!-- Title -->
-    <title>RUMP Perú::pago_exitoso</title>
+    <title>RUMP Perú::Pago</title>
 
     <!-- Favicon -->
     <link rel="icon" href="templatePage/img/core-img/favicon.png">

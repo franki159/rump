@@ -18,5 +18,6 @@ namespace ENTIDAD
         public string OBSERVACION { get; set; }
         public int ESTADO { get; set; }
         public decimal USUARIO { get; set; }
+        public string EMAIL { get; set; }
     }
 }

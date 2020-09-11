@@ -14,5 +14,9 @@ namespace NEGOCIOS
         {
             return DPago.ActualizarPago(ent);
         }
+        public static List<EPago> listarPagosPendientes()
+        {
+            return DPago.listarPagosPendientes();
+        }
     }
 }
