@@ -30,6 +30,8 @@ namespace PRESENTACION
             routes.MapPageRoute("Contacto", "Contacto", "~/contacto.aspx");
             routes.MapPageRoute("Establecimientos", "Establecimientos", "~/convenios.aspx");
             routes.MapPageRoute("Genealogia", "Genealogia", "~/genealogia.aspx");
+
+            routes.MapPageRoute("whatsaap", "whatsaap", "~/page/webWsp.aspx");
         }
         protected void Application_Start(object sender, EventArgs e)
         {

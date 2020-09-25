@@ -169,10 +169,12 @@
     <Content Include="img\mercadopago\pago-efectivo.png" />
     <Content Include="img\mercadopago\tarjetas_pago.png" />
     <Content Include="img\productos\C4CA4238A0B923820DCC509A6F75849B.jpg" />
+    <Content Include="js\page\webWsp.js" />
     <Content Include="js\page\pageError.js" />
     <Content Include="js\page\paymentGen.js" />
     <Content Include="js\page\pagoSolicitud.js" />
     <Content Include="js\pago_exitoso.js" />
+    <Content Include="page\webWsp.aspx" />
     <Content Include="page\pageJobPago.aspx" />
     <Content Include="page\paymentGen.aspx" />
     <Content Include="page\pagoSolicitud.aspx" />
@@ -2838,6 +2840,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="page\webWsp.aspx.cs">
+      <DependentUpon>webWsp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\webWsp.aspx.designer.cs">
+      <DependentUpon>webWsp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="page\pageJobPago.aspx.cs">
       <DependentUpon>pageJobPago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
