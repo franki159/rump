@@ -1708,7 +1708,7 @@ $("#btn_guardar").click(function (evt) {
                             }
                         });
 
-                        event.preventDefault();
+                        evt.preventDefault();
                     }
                 });
 
@@ -1761,7 +1761,7 @@ $("#btn_guardar").click(function (evt) {
                                 }
                             });
 
-                            event.preventDefault();
+                            evt.preventDefault();
                             
                             //error_img += guardarImagen(evt, nameAct, imgTemp);
                         }                        
@@ -1821,7 +1821,7 @@ $("#btn_guardar").click(function (evt) {
             closeLoading();
         }
     });
-    event.preventDefault();
+    evt.preventDefault();
 });
 $("#btn_select_prop").click(function (evt) {
     openLoading();

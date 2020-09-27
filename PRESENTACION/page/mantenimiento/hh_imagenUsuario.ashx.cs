@@ -33,7 +33,12 @@ namespace PRESENTACION.page.mantenimiento
                     {
                         string pathToSave = HttpContext.Current.Server.MapPath("~/img/usuario/") + str_image;
                         Image img = clsUtil.RedimensionarImagen(file.InputStream, 200);
-                        img.Save(pathToSave);
+                        using (MemoryStream stream = new MemoryStream())
+                        {
+                            img.Save(pathToSave);
+                            stream.WriteTo(context.Response.OutputStream);
+                        }
+                        //img.Save(pathToSave);
                         //file.SaveAs(pathToSave);
                     }
                 }

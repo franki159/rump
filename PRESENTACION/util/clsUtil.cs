@@ -42,8 +42,7 @@ namespace PRESENTACION
                 // Si las dimensiones cambiaron, se modifica la imagen
                 Bitmap newImg = new Bitmap(img, newW, newH);
                 Graphics g = Graphics.FromImage(newImg);
-                g.InterpolationMode =
-                  System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
                 g.DrawImage(img, 0, 0, newImg.Width, newImg.Height);
                 return newImg;
             }
