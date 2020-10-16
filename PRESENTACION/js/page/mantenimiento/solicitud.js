@@ -184,7 +184,7 @@ function fc_listar_solicitud(p_sinc) {
                     var eSolicitud = {
                         SOLICITUD_ID_ENCRIP: id_solicitud
                     };
-                    
+                    debugger;
                     $.ajax({
                         type: "POST",
                         url: "page/mantenimiento/solicitud.aspx/ListaSolicitudxIdWM",
@@ -199,7 +199,7 @@ function fc_listar_solicitud(p_sinc) {
                         },
                         success: function (data) {
                             $("#btn_buscar").removeAttr("disabled");
-
+                            
                             if (!data.d.Activo) {
                                 $("#errorDiv").html(GenerarAlertaError(data.d.Mensaje));
                                 closeLoading();

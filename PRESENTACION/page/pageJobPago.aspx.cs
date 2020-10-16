@@ -50,8 +50,20 @@ namespace PRESENTACION.page
                     if (payment_response != null)
                     {
                         var payment_id = payment_response["Id"].Value;
+                        //Si no encuentra el payment_id
+                        if (payment_id == null)
+                        {
+                            str_mensaje += item.SOLICITUD_ID + "::" + payment_id + ":: Id de pago no se genero<br>";
+                            continue;
+                        }
                         //Obteniendo estado del pago
                         var result_payment = get_pay_mp(payment_id);
+                        //Si no se encuentra el payment_id
+                        if (result_payment.StatusDetail == null)
+                        {
+                            str_mensaje += item.SOLICITUD_ID + "::" + payment_id + ":: Id de pago no encontrado<br>";
+                            continue;
+                        }
                         processPaymentResponse(result_payment, item.SOLICITUD_ID, item.ID, item.EMAIL);
                         str_mensaje += item.SOLICITUD_ID + "::" + payment_id + "::" + result_payment.StatusDetail + "<br>";
                     }
@@ -75,6 +87,7 @@ namespace PRESENTACION.page
                     int objResultado = 0;
                     ESolicitud objSol = new ESolicitud();
                     objSol.ID = numPedido;
+                    objSol.USUARIO = 10585;//usuario fchara para los pagos de sistema
 
                     switch (payment.Status)
                     {

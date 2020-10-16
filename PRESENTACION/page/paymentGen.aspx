@@ -336,7 +336,7 @@
                     </div>--%>
                         <div class="col-md-6">
                             <div class="group">
-                                <input required="required" class="cc-number-input" type="text" id="cardNumber" data-checkout="cardNumber" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
+                                <input required="required" type="text" id="cardNumber" data-checkout="cardNumber" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete="off" />
                                 <span class="highlight"></span><span class="cardNumber-bar bar"></span>
                                 <label for="cardNumber">Número de la tarjeta</label>
                             </div>
@@ -433,8 +433,8 @@
     <script>
         window.Mercadopago.setPublishableKey("<%:ConfigurationManager.AppSettings.Get("PUBLIC_KEY")%>");
 
-        let ccNumberInput = document.querySelector(".cc-number-input"),
-	ccNumberPattern = /^\d{0,16}$/g,
+        //let ccNumberInput = document.querySelector(".cc-number-input"),
+	let ccNumberPattern = /^\d{0,16}$/g,
 	ccNumberSeparator = " ",
 	ccNumberInputOldValue,
 	ccNumberInputOldCursor,
@@ -533,8 +533,8 @@
 		}
 	};
 
-ccNumberInput.addEventListener("keydown", ccNumberInputKeyDownHandler);
-ccNumberInput.addEventListener("input", ccNumberInputInputHandler);
+//ccNumberInput.addEventListener("keydown", ccNumberInputKeyDownHandler);
+//ccNumberInput.addEventListener("input", ccNumberInputInputHandler);
 
 //ccExpiryInput.addEventListener("keydown", ccExpiryInputKeyDownHandler);
 //ccExpiryInput.addEventListener("input", ccExpiryInputInputHandler);

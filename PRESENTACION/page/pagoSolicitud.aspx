@@ -134,7 +134,7 @@
                           </div>
                           <div class="button-row d-flex mt-4">
                             <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next" id="btn-carrito">
-                                <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Ir a comprar
+                                Ir a comprar
                             </button>
                           </div>
                       </div>

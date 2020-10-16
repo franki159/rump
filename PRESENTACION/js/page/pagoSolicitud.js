@@ -198,6 +198,7 @@ function fc_listar_item_carrito(listaCarrito) {
     var html_cont = '';
     var acu_total = 0;
     for (var i = 0; i < listaCarrito.length; i++) {
+        debugger;
         html_cont += ' <div class="alert alert-dismissible alert-primary bg-white">' +
             '      <div class="row">' +
             '          <div class="col-md-1 mw-100">' +

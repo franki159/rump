@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using ENTIDAD;
 using NEGOCIOS;
+using System.Configuration;
 
 namespace PRESENTACION
 {
@@ -43,7 +44,7 @@ namespace PRESENTACION
                         correo.Para = objLista[0].EMAIL;
                         correo.Asunto = "Reestablecer Usuario";
                         correo.Mensaje = "Reestablezca su cuenta ingresando al siguiente enlace para asignar nueva contraseña:<br/>" +
-                            "<a href=\"https://rumpp.charpetechnology.com/password.aspx?user=" + objLista[0].ID_ENCRIP + "\">REESTABLECER USUARIO</a>";
+                            "<a href=\"" + ConfigurationManager.AppSettings["dominioRump"].ToString() + objLista[0].ID_ENCRIP + "\">REESTABLECER USUARIO</a>";
                         correo.Enviar();
                     }
 

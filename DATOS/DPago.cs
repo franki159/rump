@@ -51,6 +51,7 @@ namespace DATOS
                         mItem.ID = dr.IsDBNull(dr.GetOrdinal("id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("id"));
                         mItem.SOLICITUD_ID = dr.IsDBNull(dr.GetOrdinal("solicitud_id")) ? 0 : dr.GetDecimal(dr.GetOrdinal("solicitud_id"));
                         mItem.OBSERVACION = dr.IsDBNull(dr.GetOrdinal("observacion")) ? string.Empty : dr.GetString(dr.GetOrdinal("observacion"));
+                        mItem.EMAIL = dr.IsDBNull(dr.GetOrdinal("email")) ? string.Empty : dr.GetString(dr.GetOrdinal("email"));
                         lista.Add(mItem);
                     }
                 }
