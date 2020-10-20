@@ -132,7 +132,7 @@
                           <div class="body-items">
 
                           </div>
-                          <div class="button-row d-flex mt-4">
+                          <div class="button-row d-flex">
                             <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next" id="btn-carrito">
                                 Ir a comprar
                             </button>

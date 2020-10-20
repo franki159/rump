@@ -47,7 +47,7 @@ namespace PRESENTACION.page.mantenimiento
 
                     foreach (ESolicitud item in carritoMascota)
                     {
-                        if (item.ID == itemCarrito.ID && item.ID_MSC_ENCRIP == (itemCarrito.TIPO == "mascota" ? item.ID_MSC_ENCRIP : item.ID_MSC_ENCRIP))
+                        if (item.ID == itemCarrito.ID && item.ID_MSC_ENCRIP == (itemCarrito.TIPO == "mascota" ? itemCarrito.ID_MSC_ENCRIP : item.ID_MSC_ENCRIP))
                         {
                             item.CANTIDAD += 1;
                             itemEncontrado = true;

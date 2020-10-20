@@ -597,7 +597,7 @@ $("#btn_registrar").click(function (evt) {
                             msg_OpenDay("e", "No se pudo registrar imagen");
                             return;
                         }
-                        debugger;
+
                         guardarImagen(evt, dataImg.d.Resultado, imgTemp);
                         sessionStorage.setItem("ini_pre", "true");
                         window.location = "Sistema#!/page/mantenimiento/mascota";

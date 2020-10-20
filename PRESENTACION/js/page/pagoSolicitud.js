@@ -198,11 +198,10 @@ function fc_listar_item_carrito(listaCarrito) {
     var html_cont = '';
     var acu_total = 0;
     for (var i = 0; i < listaCarrito.length; i++) {
-        debugger;
         html_cont += ' <div class="alert alert-dismissible alert-primary bg-white">' +
             '      <div class="row">' +
             '          <div class="col-md-1 mw-100">' +
-            '              <img onerror="this.src=\'img/noPets.png\';" src="img/productos/' + listaCarrito[i].FOTO + '" alt="" border="0">' +
+            '              <img class="d-none d-lg-inline" onerror="this.src=\'img/noPets.png\';" src="img/productos/' + listaCarrito[i].FOTO + '" alt="" border="0">' +
             '          </div>' +
             '          <div class="col-md-7 font-weight-bold my-auto">' + listaCarrito[i].DESCRIPCION + '</div>' +
             '          <div class="col-md-4 my-auto">' +

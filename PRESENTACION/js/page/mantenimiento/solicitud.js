@@ -184,7 +184,7 @@ function fc_listar_solicitud(p_sinc) {
                     var eSolicitud = {
                         SOLICITUD_ID_ENCRIP: id_solicitud
                     };
-                    debugger;
+                    
                     $.ajax({
                         type: "POST",
                         url: "page/mantenimiento/solicitud.aspx/ListaSolicitudxIdWM",
