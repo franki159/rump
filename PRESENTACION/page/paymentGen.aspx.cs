@@ -106,8 +106,7 @@ namespace PRESENTACION.page
                     //Actualiza el estado de la solicitud a ANULADO
                     objSol.COMENTARIO = "cancelled::MercadoPago";
                     NMascota.log_error("cancelled::" + JsonConvert.SerializeObject(payment), "pago");
-
-                    NSolicitud.AnularSolicitud(objSol);
+                    //NSolicitud.AnularSolicitud(objSol);
 
                     //Limpiando sesiones
                     HttpContext.Current.Session["solicitudPedido"] = null;
@@ -119,7 +118,7 @@ namespace PRESENTACION.page
                     //Actualiza el estado de la solicitud a ANULADO
                     objSol.COMENTARIO = "rejected::MercadoPago";
                     NMascota.log_error("rejected::" + JsonConvert.SerializeObject(payment), "pago");
-                    NSolicitud.AnularSolicitud(objSol);
+                    //NSolicitud.AnularSolicitud(objSol);
 
                     //Limpiando sesiones
                     HttpContext.Current.Session["solicitudPedido"] = null;
