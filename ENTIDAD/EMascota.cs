@@ -25,6 +25,7 @@ namespace ENTIDAD
         public string TAMANO { get; set; }
         public string TIPO { get; set; }
         public string RAZA { get; set; }
+        public string ESPECIE { get; set; }
         public decimal MASCOTA_TIPO_ID { get; set; }
         public decimal MASCOTA_RAZA_ID { get; set; }
         public string CALIFICACION { get; set; }

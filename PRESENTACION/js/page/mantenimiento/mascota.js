@@ -230,7 +230,8 @@ function fc_listar_mascota(mAlerta, mConsejo) {
                         html += '<td><i class="fas fa-check-circle text-success" style="font-size: 25px;"></i></td>';
                         break;
                     case 2:
-                        html += '<td><button class="btn btn-danger btn-sm" onclick="javascript:fc_sol_servicio(\'DYfVN+70kB0=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;Comprar</button></td>';
+                        //html += '<td><button class="btn btn-danger btn-sm" onclick="javascript:fc_sol_servicio(\'DYfVN+70kB0=\',\'' + data.d.Resultado[i].ID_ENCRIP +'\')"><i class="fa fa-shopping-cart"></i>&nbsp;Comprar</button></td>';
+                        html += '<td><a class="btn btn-danger btn-sm" href="https://rump.mitienda.pe/producto/dni-certificado-plaquita" target="_blank"><i class="fa fa-shopping-cart"></i>&nbsp;Comprar</a></td>';
                         break;
                     case 3:
                         html += '<td><span class="btn btn-info btn-sm"><i class="fas fa-tags"></i>&nbsp;En adopción</span></td>';

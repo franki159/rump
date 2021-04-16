@@ -19,11 +19,11 @@
 
                             <a class="baraitem" href="tel:+51 01 6516502">(01) 6516502</a>
                             
-							
 							<br><br>
-                            <span>Dirección: </span>
-							<span>Av. Brasil #3345  </span>
-                            <span>Magdalena del Mar -  PERÚ</span>
+                            <span>Postas autorizados: </span>
+							<span>Av. Arenales 230 - Urb. Orrantia - San Isidro</span>
+                            <span>Av. Universitaria 6049 - Urb. Sta Luzmila - Comas</span>
+                            <span>Av. 2 de octubre MZ D2 Lote 7 - Los Olivos</span>
                         </div>
                     </div>
 
@@ -110,9 +110,9 @@
                     <div class="col-12 col-md-4">
                         <!-- Social Info -->
                         <div class="social-info">
-                            <a class="itel" href="https://www.facebook.com/worldpetsperurump/"><img src="templatePage/img/core-img/fb.png"></a>
-                            <a class="itel" href="https://instagram.com/rumpworld?igshid=qlfktywcm7at"><img src="templatePage/img/core-img/ist.png"></a>
-                            <a class="itel" href="https://twitter.com/PeruRump?lang=es"><img src="templatePage/img/core-img/tw.png"></a>
+                            <a class="itel" href="https://web.facebook.com/rumpperu/" target="_blank"><img src="templatePage/img/core-img/fb.png"></a>
+                            <a class="itel" href="https://www.instagram.com/rumpperu/"  target="_blank"><img src="templatePage/img/core-img/ist.png"></a>
+                            <a class="itel" href="https://twitter.com/Rumpworld/" target="_blank"><img src="templatePage/img/core-img/tw.png"></a>
                             <a class="itel" href="https://www.youtube.com/channel/UCwFDOixpwmaCz6g0uFoaACg"><img src="templatePage/img/core-img/yt.png"></a>
                         </div>
                     </div>

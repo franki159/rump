@@ -162,6 +162,10 @@
   <ItemGroup>
     <Content Include="assets\multisteps\script.js" />
     <Content Include="assets\multisteps\style.css" />
+    <Content Include="img\dni\certificado_cc.jpg" />
+    <Content Include="img\dni\certificado_sc.jpg" />
+    <Content Include="img\dni\registro_cc.jpg" />
+    <Content Include="img\dni\registro_sc.jpg" />
     <Content Include="img\inicio\mascota_perdida.png" />
     <Content Include="img\inicio\mascota_registrada.png" />
     <Content Include="img\mercadopago\mercadopago-qr.png" />

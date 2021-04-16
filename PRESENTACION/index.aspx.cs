@@ -141,7 +141,8 @@ namespace PRESENTACION
                 correo.Mensaje = "<h4>¡Saludos desde RUMP!</h4>" +
 "<p>RUMP le da la bienvenida a la comunidad de tenencia responsable y le damos las gracias por unirse a nuestra familia. Cada vez somos más en el movimiento que lucha por el bienestar de las mascotas.</p>" +
 "<p>Ingresando a nuestra web con su correo y contraseña podrá acceder a múltiples opciones y pronto habrá muchas novedades para el engreído de la casa.</p>" +
-"<h4>Equipo RUMP</h4>";
+"<h4>Equipo RUMP</h4>"+
+"<h4><a href='https://api.whatsapp.com/send?phone=51992975292&amp;text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20' rel='noopener' class='mant-to-middle mode-mobile-act' title='Whatsapp'><img src='http://worldpetsperu.com/templatePage/img/core-img/whatsapp.png'></a></h4>";
                 try
                 {
                     correo.Enviar();

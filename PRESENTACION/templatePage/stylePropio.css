@@ -29,6 +29,22 @@
     z-index: 9999;
 }
 
+.mant-to-middle-red {
+    border-radius: 20% !important;
+    position: fixed;
+    background: linear-gradient(#f31e00, #f31e00) !important;
+    color: #fff;
+    line-height: 1;
+    padding: 4px 8px 4px 8px;
+    font-size: 40px;
+    right: 15px;
+    bottom: 320px;
+    z-index: 10;
+    box-shadow: 2px 2px 5px #242424;
+    z-index: 9999;
+}
+
+
 .mode-mobile-act {
     display: none !important;
 }

@@ -226,7 +226,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="px-4 py-4 border border-top-0  btn-light btn-money-payment">
+                              <%--<div class="px-4 py-4 border border-top-0  btn-light btn-money-payment">
                                   <div class="row">
                                        <div class="col-0">
                                           <i class="far fa-money-bill-alt text-primary h2"></i>
@@ -255,7 +255,7 @@
                                           </div>
                                       </div>
                                   </div>
-                              </div>
+                              </div>--%>
                             </div>
                           <div class="button-row d-flex mt-4">
                             <button class="btn btn-primary js-btn-prev" type="button" title="Prev"><< Atras</button>

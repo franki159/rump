@@ -44,7 +44,8 @@ namespace PRESENTACION.page.proceso
             }
         }
 
-        public string letraCapital(string valor) {
+        public string letraCapital(string valor)
+        {
             string resultado = "";
             var arrayTexto = valor.Trim().Split(Convert.ToChar(" "));
             for (int i = 0; i < arrayTexto.Length; i++)
@@ -52,13 +53,264 @@ namespace PRESENTACION.page.proceso
                 if (arrayTexto[i].Trim() != "")
                 {
                     resultado += arrayTexto[i].Trim().Substring(0, 1).ToUpper() + arrayTexto[i].Trim().Substring(1, arrayTexto[i].Trim().Length - 1).ToLower() + " ";
-                }                
+                }
             }
 
             return resultado.Trim();
         }
 
-        private void ImprimirRegistro() {
+        private void ImprirRegistroSC(EMascota objE)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var doc = new Document(PageSize.A4, 270, 10, 360, 5);//Margen del documento
+                                                                     //{
+                iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
+                //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
+                //{
+                doc.Open();
+                doc.NewPage();
+                //Estilos
+                var textoBody = FontFactory.GetFont("Calibri", 18, Font.BOLD, new BaseColor(94, 94, 94));
+
+                //Fondo
+                var logo = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/dni/registro_sc.jpg"));
+                logo.ScaleToFit(doc.PageSize.Width, doc.PageSize.Height - 20);//Tamaño
+                logo.SetAbsolutePosition(5, 10);
+                doc.Add(logo);
+                //Tabla Datos
+                PdfPTable table = new PdfPTable(1);
+                table.WidthPercentage = 93;
+                table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                PdfPCell cell = new PdfPCell(new Phrase(objE.DNI, textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 20;
+                table.AddCell(cell);
+                //Nombre del mascota
+                var nomMascota = objE.NOMBRE + " " + objE.APELLIDO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomMascota), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 13;
+                if ((nomMascota).Length > 30)
+                    cell.PaddingTop = -10;
+                table.AddCell(cell);
+                //Nombre del responsable
+                var nomResponsable = objE.FAMILIARP;
+                cell = new PdfPCell(new Phrase(letraCapital(nomResponsable), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 13;
+                if ((nomResponsable).Length > 30)
+                {
+                    cell.PaddingTop = -20;
+                    cell.PaddingBottom = 10;
+                }
+                else
+                {
+                    cell.PaddingBottom = 13;
+                }
+
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 13;
+                table.AddCell(cell);
+                //Nombre de Provincia y departamento
+                var nomProv = objE.PROVINCIA + "-" + objE.DEPARTAMENTO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomProv), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomProv).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Nombre de Distrito
+                var nomDist = objE.DISTRITO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomDist), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomDist).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Nombre de raza
+                var nomRaza = objE.RAZA;
+                cell = new PdfPCell(new Phrase(letraCapital(nomRaza), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomRaza).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Nombre color
+                var nomColor = objE.COLOR;
+                cell = new PdfPCell(new Phrase(nomColor, textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                if ((nomRaza).Length > 30)
+                    cell.PaddingTop = -16;
+                table.AddCell(cell);
+                doc.Add(table);
+
+                doc.Close();
+                //}
+                //}
+
+                Response.ContentType = "application/pdf";
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+                Response.OutputStream.Flush();
+                Response.OutputStream.Close();
+
+            }
+        }
+        private void ImprirRegistroCC(EMascota objE)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var doc = new Document(PageSize.A4, 270, 10, 345, 5);//Margen del documento
+                                                                     //{
+                iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
+                //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
+                //{
+                doc.Open();
+                doc.NewPage();
+                //Estilos
+                var textoBody = FontFactory.GetFont("Calibri", 18, Font.BOLD, new BaseColor(94, 94, 94));
+
+                //Fondo
+                var logo = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/dni/registro_cc.jpg"));
+                logo.ScaleToFit(doc.PageSize.Width, doc.PageSize.Height - 20);//Tamaño
+                logo.SetAbsolutePosition(5, 10);
+                doc.Add(logo);
+                //Tabla Datos
+                PdfPTable table = new PdfPTable(1);
+                table.WidthPercentage = 93;
+                table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                PdfPCell cell = new PdfPCell(new Phrase(objE.DNI, textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                table.AddCell(cell);
+                //Código de Microchip
+                var codMicrochip = objE.COD_MICROCHIP;
+                cell = new PdfPCell(new Phrase(letraCapital(codMicrochip), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((codMicrochip).Length > 30)
+                    cell.PaddingTop = -10;
+                table.AddCell(cell);
+                //Nombre del mascota
+                var nomMascota = objE.NOMBRE + " " + objE.APELLIDO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomMascota), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomMascota).Length > 30)
+                    cell.PaddingTop = -10;
+                table.AddCell(cell);
+                //Nombre del responsable
+                var nomResponsable = objE.FAMILIARP;
+                cell = new PdfPCell(new Phrase(letraCapital(nomResponsable), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                if ((nomResponsable).Length > 30)
+                {
+                    cell.PaddingTop = -20;
+                    cell.PaddingBottom = 10;
+                }
+                else
+                {
+                    cell.PaddingBottom = 14;
+                }
+
+                table.AddCell(cell);
+
+                cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                table.AddCell(cell);
+                //Nombre de Provincia y departamento
+                var nomProv = objE.PROVINCIA + " - " + objE.DEPARTAMENTO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomProv), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                if ((nomProv).Length >= 20)
+                {
+                    cell.PaddingTop = -8;
+                    cell.PaddingBottom = 5;
+                }
+                else
+                {
+                    cell.PaddingBottom = 14;
+                }
+                table.AddCell(cell);
+                //Nombre de Distrito
+                var nomDist = objE.DISTRITO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomDist), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomDist).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Nombre de raza
+                var nomRaza = objE.RAZA;
+                cell = new PdfPCell(new Phrase(letraCapital(nomRaza), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomRaza).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Nombre color
+                var nomColor = objE.COLOR;
+                cell = new PdfPCell(new Phrase(nomColor, textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                if ((nomRaza).Length > 30)
+                    cell.PaddingTop = -16;
+                table.AddCell(cell);
+                doc.Add(table);
+
+                doc.Close();
+                //}
+                //}
+
+                Response.ContentType = "application/pdf";
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+                Response.OutputStream.Flush();
+                Response.OutputStream.Close();
+
+            }
+        }
+
+        private void ImprimirRegistro()
+        {
             try
             {
                 var num_dni = Request.QueryString["numIdentify"];
@@ -67,106 +319,219 @@ namespace PRESENTACION.page.proceso
                 objE.DNI = num_dni;
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
                 objE = NMascota.ObtenerMascotaxDNI(objE);
+                if (objE.COD_MICROCHIP.Trim() == "")
+                    ImprirRegistroSC(objE);
+                else
+                    ImprirRegistroCC(objE);
 
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    var doc = new Document(PageSize.A4, 270, 10, 345, 5);//Margen del documento
-                    //{
-                    iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
-                    //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
-                    //{
-                    doc.Open();
-                    doc.NewPage();
-                    //Estilos
-                    var textoBody = FontFactory.GetFont("Calibri", 18, Font.BOLD, new BaseColor(94, 94, 94));
-
-                    //Fondo
-                    var logo = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/dni/registro.jpg"));
-                    logo.ScaleToFit(doc.PageSize.Width, doc.PageSize.Height - 20);//Tamaño
-                    logo.SetAbsolutePosition(5, 10);
-                    doc.Add(logo);
-                    //Tabla Datos
-                    PdfPTable table = new PdfPTable(1);
-                    table.WidthPercentage = 93;
-                    table.HorizontalAlignment = Element.ALIGN_LEFT;
-
-                    PdfPCell cell = new PdfPCell(new Phrase(objE.DNI, textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 20;
-                    table.AddCell(cell);
-
-                    //Nombre del mascota
-                    var nomMascota = objE.NOMBRE + " " + objE.APELLIDO;
-                    cell = new PdfPCell(new Phrase(letraCapital(nomMascota), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 20;
-                    if ((nomMascota).Length > 30)
-                        cell.PaddingTop = -10;
-                    table.AddCell(cell);
-
-                    //Nombre del responsable
-                    var nomResponsable = objE.FAMILIARP;
-                    cell = new PdfPCell(new Phrase(letraCapital(nomResponsable), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 20;
-                    if ((nomResponsable).Length > 30)
-                    {
-                        cell.PaddingTop = -14;
-                        cell.PaddingBottom = 16;
-                    }
-                    else {
-                        cell.PaddingBottom = 20;
-                    }
-                        
-                    table.AddCell(cell);
-
-                    cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 17;
-                    table.AddCell(cell);
-                    //Nombre de raza
-                    var nomRaza = objE.RAZA;
-                    cell = new PdfPCell(new Phrase(letraCapital(nomRaza), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 14;
-                    if ((nomRaza).Length > 30)
-                        cell.PaddingTop = 4;
-                    table.AddCell(cell);
-                    //Nombre color
-                    var nomColor = objE.COLOR;
-                    cell = new PdfPCell(new Phrase(nomColor, textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    if ((nomRaza).Length > 30)
-                        cell.PaddingTop = -16;
-                    table.AddCell(cell);
-                    doc.Add(table);
-                    
-                    doc.Close();
-                    //}
-                    //}
-
-                    Response.ContentType = "application/pdf";
-                    Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
-                    Response.OutputStream.Flush();
-                    Response.OutputStream.Close();
-
-                }
             }
             catch (Exception ex)
             {
-                throw(ex);
+                throw (ex);
+            }
+        }
+        private void ImprirResponsableSC(EMascota objE) {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var doc = new Document(PageSize.A4, 270, 10, 240, 5);//Margen del documento
+                doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());//Rotando horizontalmente
+                iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
+                //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
+                //{
+                doc.Open();
+                doc.NewPage();
+                //Estilos
+                var textoBody = FontFactory.GetFont("Calibri", 18, Font.BOLD, new BaseColor(94, 94, 94));
+
+                //Fondo
+                var logo = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/dni/certificado_sc.jpg"));
+                logo.ScaleToFit(doc.PageSize.Width, doc.PageSize.Height - 20);//Tamaño
+                logo.SetAbsolutePosition(5, 10);
+                doc.Add(logo);
+                //Tabla Datos
+                PdfPTable table = new PdfPTable(1);
+                table.WidthPercentage = 93;
+                table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                PdfPCell cell = new PdfPCell(new Phrase(objE.DNI, textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 16;
+                table.AddCell(cell);
+
+                //Nombre del mascota
+                var nomMascota = objE.NOMBRE + " " + objE.APELLIDO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomMascota), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 16;
+                if ((nomMascota).Length > 30)
+                    cell.PaddingTop = -10;
+                table.AddCell(cell);
+
+                //Nombre del responsable
+                var nomResponsable = objE.FAMILIARP;
+                cell = new PdfPCell(new Phrase(letraCapital(nomResponsable), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                if ((nomResponsable).Length > 30)
+                {
+                    cell.PaddingTop = -14;
+                    cell.PaddingBottom = 12;
+                }
+                else
+                {
+                    cell.PaddingBottom = 16;
+                }
+
+                table.AddCell(cell);
+                //Nombre de Distrito
+                var nomDist = objE.DISTRITO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomDist), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 16;
+                if ((nomDist).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Fecha de inscripcion
+                cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 16;
+                table.AddCell(cell);
+                //Nombre de macota Mayuscula
+                cell = new PdfPCell(new Phrase(nomMascota.ToUpper(), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 16;
+                if ((nomMascota).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                doc.Add(table);
+
+                doc.Close();
+                //}
+                //}
+
+                Response.ContentType = "application/pdf";
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+                Response.OutputStream.Flush();
+                Response.OutputStream.Close();
+
+            }
+        }
+        private void ImprirResponsableCC(EMascota objE)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var doc = new Document(PageSize.A4, 270, 10, 240, 5);//Margen del documento
+                doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());//Rotando horizontalmente
+                iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
+                //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
+                //{
+                doc.Open();
+                doc.NewPage();
+                //Estilos
+                var textoBody = FontFactory.GetFont("Calibri", 18, Font.BOLD, new BaseColor(94, 94, 94));
+
+                //Fondo
+                var logo = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/dni/certificado_cc.jpg"));
+                logo.ScaleToFit(doc.PageSize.Width, doc.PageSize.Height - 20);//Tamaño
+                logo.SetAbsolutePosition(5, 10);
+                doc.Add(logo);
+                //Tabla Datos
+                PdfPTable table = new PdfPTable(1);
+                table.WidthPercentage = 93;
+                table.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                PdfPCell cell = new PdfPCell(new Phrase(objE.DNI, textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 10;
+                table.AddCell(cell);
+                //Código de Microchip
+                var codMicrochip = objE.COD_MICROCHIP;
+                cell = new PdfPCell(new Phrase(letraCapital(codMicrochip), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 11;
+                if ((codMicrochip).Length > 30)
+                    cell.PaddingTop = -10;
+                table.AddCell(cell);
+                //Nombre del mascota
+                var nomMascota = objE.NOMBRE + " " + objE.APELLIDO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomMascota), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 11;
+                if ((nomMascota).Length > 30)
+                    cell.PaddingTop = -10;
+                table.AddCell(cell);
+
+                //Nombre del responsable
+                var nomResponsable = objE.FAMILIARP;
+                cell = new PdfPCell(new Phrase(letraCapital(nomResponsable), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                if ((nomResponsable).Length > 30)
+                {
+                    cell.PaddingTop = -14;
+                    cell.PaddingBottom = 6;
+                }
+                else
+                {
+                    cell.PaddingBottom = 11;
+                }
+
+                table.AddCell(cell);
+                //Nombre de Distrito
+                var nomDist = objE.DISTRITO;
+                cell = new PdfPCell(new Phrase(letraCapital(nomDist), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 11;
+                if ((nomDist).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                //Fecha de inscripcion
+                cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 11;
+                table.AddCell(cell);
+                //Nombre de macota Mayuscula
+                cell = new PdfPCell(new Phrase(nomMascota.ToUpper(), textoBody));
+                cell.Border = 0;
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell.PaddingBottom = 14;
+                if ((nomMascota).Length > 30)
+                    cell.PaddingTop = 4;
+                table.AddCell(cell);
+                doc.Add(table);
+
+                doc.Close();
+                //}
+                //}
+
+                Response.ContentType = "application/pdf";
+                Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+                Response.OutputStream.Flush();
+                Response.OutputStream.Close();
+
             }
         }
         private void ImprimirResponsable()
@@ -180,92 +545,11 @@ namespace PRESENTACION.page.proceso
                 //EUsuario eSession = (EUsuario)HttpContext.Current.Session["UserData"];
                 objE = NMascota.ObtenerMascotaxDNI(objE);
 
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    var doc = new Document(PageSize.A4, 270, 10, 270, 5);//Margen del documento
-                    doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());//Rotando horizontalmente
-                    iTextSharp.text.pdf.PdfWriter w = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, ms);
-                    //using (PdfWriter w = PdfWriter.GetInstance(doc, ms))
-                    //{
-                    doc.Open();
-                    doc.NewPage();
-                    //Estilos
-                    var textoBody = FontFactory.GetFont("Calibri", 18, Font.BOLD, new BaseColor(94, 94, 94));
+                if (objE.COD_MICROCHIP.Trim() == "")
+                    ImprirResponsableSC(objE);
+                else
+                    ImprirResponsableCC(objE);
 
-                    //Fondo
-                    var logo = iTextSharp.text.Image.GetInstance(Server.MapPath("~/img/dni/responsable.jpg"));
-                    logo.ScaleToFit(doc.PageSize.Width, doc.PageSize.Height - 20);//Tamaño
-                    logo.SetAbsolutePosition(5, 10);
-                    doc.Add(logo);
-                    //Tabla Datos
-                    PdfPTable table = new PdfPTable(1);
-                    table.WidthPercentage = 93;
-                    table.HorizontalAlignment = Element.ALIGN_LEFT;
-
-                    PdfPCell cell = new PdfPCell(new Phrase(objE.DNI, textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 20;
-                    table.AddCell(cell);
-
-                    //Nombre del mascota
-                    var nomMascota = objE.NOMBRE + " " + objE.APELLIDO;
-                    cell = new PdfPCell(new Phrase(letraCapital(nomMascota), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 20;
-                    if ((nomMascota).Length > 30)
-                        cell.PaddingTop = -10;
-                    table.AddCell(cell);
-
-                    //Nombre del responsable
-                    var nomResponsable = objE.FAMILIARP;
-                    cell = new PdfPCell(new Phrase(letraCapital(nomResponsable), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 20;
-                    if ((nomResponsable).Length > 30)
-                    {
-                        cell.PaddingTop = -14;
-                        cell.PaddingBottom = 16;
-                    }
-                    else
-                    {
-                        cell.PaddingBottom = 20;
-                    }
-
-                    table.AddCell(cell);
-                    
-                    cell = new PdfPCell(new Phrase(objE.FEC_CREA.Value.ToString("dd") + " de " + objE.FEC_CREA.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-ES")) + " de " + objE.FEC_CREA.Value.ToString("yyyy"), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 17;
-                    table.AddCell(cell);
-                    //Nombre de macota Mayuscula
-                    cell = new PdfPCell(new Phrase(nomMascota.ToUpper(), textoBody));
-                    cell.Border = 0;
-                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                    cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                    cell.PaddingBottom = 14;
-                    if ((nomMascota).Length > 30)
-                        cell.PaddingTop = 4;
-                    table.AddCell(cell);
-                    doc.Add(table);
-
-                    doc.Close();
-                    //}
-                    //}
-
-                    Response.ContentType = "application/pdf";
-                    Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
-                    Response.OutputStream.Flush();
-                    Response.OutputStream.Close();
-
-                }
             }
             catch (Exception ex)
             {
