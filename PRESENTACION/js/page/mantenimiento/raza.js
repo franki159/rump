@@ -122,8 +122,8 @@ function fc_listar_raza() {
                 return;
             }
 
-            var htmlBotones = '<button name="editar" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></button> ' +
-                '<button name="anular" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button> ';
+            var htmlBotones = '<button name="editar" class="btn-new btn-primary btn-sm"><i class="fas fa-pencil-alt"></i></button> ' +
+                '<button name="anular" class="btn-new btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button> ';
 
             var html = '';
             for (var i = 0; i < data.d.Resultado.length; i++) {

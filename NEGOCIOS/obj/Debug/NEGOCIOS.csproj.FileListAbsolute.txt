@@ -120,3 +120,12 @@ C:\Users\Desarrollo\Source\Repos\franki159\rump\NEGOCIOS\obj\Debug\NEGOCIOS.cspr
 C:\Users\Desarrollo\Source\Repos\franki159\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.CopyComplete
 C:\Users\Desarrollo\Source\Repos\franki159\rump\NEGOCIOS\obj\Debug\NEGOCIOS.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\NEGOCIOS\obj\Debug\NEGOCIOS.pdb
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\NEGOCIOS.dll
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\NEGOCIOS.pdb
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\DATOS.dll
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.dll
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\DATOS.pdb
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.pdb
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csprojResolveAssemblyReference.cache
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.dll
+C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.pdb

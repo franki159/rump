@@ -100,3 +100,12 @@ C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csprojAsse
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.csproj.CopyComplete
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.dll
 C:\Users\Desarrollo\Source\Repos\franki159\rump\DATOS\obj\Debug\DATOS.pdb
+C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\DATOS.dll.config
+C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\DATOS.dll
+C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\DATOS.pdb
+C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\ENTIDAD.dll
+C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\MySql.Data.dll
+C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\ENTIDAD.pdb
+C:\Users\informatica3\Source\Repos\rump\DATOS\obj\Debug\DATOS.csprojResolveAssemblyReference.cache
+C:\Users\informatica3\Source\Repos\rump\DATOS\obj\Debug\DATOS.dll
+C:\Users\informatica3\Source\Repos\rump\DATOS\obj\Debug\DATOS.pdb
