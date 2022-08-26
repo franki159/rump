@@ -143,7 +143,7 @@
                 alert("Error: No se ha cargando un complemento del sistema (general.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
             });
 
-        $.getScript("js/index.js")
+        $.getScript("js/index.js?v=260820220917")
             .fail(function (jqxhr, settings, exception) {
                 alert("Error: No se ha cargando un complemento del sistema (index.js), porfavor actualize la pagina para poder cargar el complemento. " + exception);
             });

@@ -60,6 +60,11 @@ C:\Users\chara\source\repos\franki159\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojAssem
 C:\Users\FCHARA\source\repos\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
 C:\Users\informatica3\Source\Repos\rump\ENTIDAD\bin\Debug\ENTIDAD.dll
 C:\Users\informatica3\Source\Repos\rump\ENTIDAD\bin\Debug\ENTIDAD.pdb
-C:\Users\informatica3\Source\Repos\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojResolveAssemblyReference.cache
 C:\Users\informatica3\Source\Repos\rump\ENTIDAD\obj\Debug\ENTIDAD.dll
 C:\Users\informatica3\Source\Repos\rump\ENTIDAD\obj\Debug\ENTIDAD.pdb
+E:\Bussiness\Web\RUMP\rump\ENTIDAD\bin\Debug\ENTIDAD.dll
+E:\Bussiness\Web\RUMP\rump\ENTIDAD\bin\Debug\ENTIDAD.pdb
+E:\Bussiness\Web\RUMP\rump\ENTIDAD\obj\Debug\ENTIDAD.csprojAssemblyReference.cache
+E:\Bussiness\Web\RUMP\rump\ENTIDAD\obj\Debug\ENTIDAD.csproj.CoreCompileInputs.cache
+E:\Bussiness\Web\RUMP\rump\ENTIDAD\obj\Debug\ENTIDAD.dll
+E:\Bussiness\Web\RUMP\rump\ENTIDAD\obj\Debug\ENTIDAD.pdb

@@ -109,3 +109,14 @@ C:\Users\informatica3\Source\Repos\rump\DATOS\bin\Debug\ENTIDAD.pdb
 C:\Users\informatica3\Source\Repos\rump\DATOS\obj\Debug\DATOS.csprojResolveAssemblyReference.cache
 C:\Users\informatica3\Source\Repos\rump\DATOS\obj\Debug\DATOS.dll
 C:\Users\informatica3\Source\Repos\rump\DATOS\obj\Debug\DATOS.pdb
+E:\Bussiness\Web\RUMP\rump\DATOS\bin\Debug\DATOS.dll.config
+E:\Bussiness\Web\RUMP\rump\DATOS\bin\Debug\DATOS.dll
+E:\Bussiness\Web\RUMP\rump\DATOS\bin\Debug\DATOS.pdb
+E:\Bussiness\Web\RUMP\rump\DATOS\bin\Debug\ENTIDAD.dll
+E:\Bussiness\Web\RUMP\rump\DATOS\bin\Debug\MySql.Data.dll
+E:\Bussiness\Web\RUMP\rump\DATOS\bin\Debug\ENTIDAD.pdb
+E:\Bussiness\Web\RUMP\rump\DATOS\obj\Debug\DATOS.csprojAssemblyReference.cache
+E:\Bussiness\Web\RUMP\rump\DATOS\obj\Debug\DATOS.csproj.CoreCompileInputs.cache
+E:\Bussiness\Web\RUMP\rump\DATOS\obj\Debug\DATOS.csproj.CopyComplete
+E:\Bussiness\Web\RUMP\rump\DATOS\obj\Debug\DATOS.dll
+E:\Bussiness\Web\RUMP\rump\DATOS\obj\Debug\DATOS.pdb

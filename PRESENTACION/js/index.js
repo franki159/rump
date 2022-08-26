@@ -11,7 +11,7 @@ $(document).ready(function () {
     fc_listar_inicio();
 
     //$("#pnl_mascota_mensaje .modal-body").css('background', 'linear-gradient(#0c637e, #000000)');
-    $("#pnl_mascota_mensaje .modal-body").css('background', '#ff9400');    
+    $("#pnl_mascota_mensaje .modal-body").css('background', '#e63338');    
     $("#pnl_mascota_mensaje .modal-body").css('color', '#fff');
     $("#pnl_mascota_mensaje .modal-body hr").css('border-top', '1px solid rgb(255 255 255)');
     $("#pnl_mascota_mensaje .modal-body .img-row-mascota").css('background', '#fff');

@@ -129,3 +129,15 @@ C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\bin\Debug\ENTIDAD.pdb
 C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csprojResolveAssemblyReference.cache
 C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.dll
 C:\Users\informatica3\Source\Repos\rump\NEGOCIOS\obj\Debug\NEGOCIOS.pdb
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\NEGOCIOS.dll
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\NEGOCIOS.pdb
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\DATOS.dll
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\ENTIDAD.dll
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\DATOS.pdb
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\DATOS.dll.config
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\bin\Debug\ENTIDAD.pdb
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csprojAssemblyReference.cache
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.CoreCompileInputs.cache
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\obj\Debug\NEGOCIOS.csproj.CopyComplete
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\obj\Debug\NEGOCIOS.dll
+E:\Bussiness\Web\RUMP\rump\NEGOCIOS\obj\Debug\NEGOCIOS.pdb

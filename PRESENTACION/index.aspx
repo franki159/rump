@@ -56,16 +56,13 @@
             <div class="modal-content">
                 <div class="modal-body single-footer-widget">
                     <button aria-hidden="true" data-dismiss="modal" class="close text-right" type="button"><span style="color: #000;font-size: 1.5rem;" aria-hidden="true">&times;</span></button>
-                    <img  src="img/inicio/mascota_perdida.png" alt="">
+                    <img  src="img/inicio/mascota_promo.jpeg" alt="">
 
                     <div class="col-md-12">
-                        <div class="single-footer-widget mb-40">
+                        <div class="single-footer-widget" style="text-align: center;">
                             <!-- Widget Title -->
                             <!-- Newsletter Form -->
-                            <div class="nl-form">
-                                <input id="bus_ini_txt_dni" type="text" class="form-control" maxlength="8" placeholder="Escribe el DNI RUMP...">
-                                <button type="submit" class="btn-ini-dat-msc"><i class="fas fa-search" aria-hidden="true"></i></button>
-                            </div>
+                            <a href="Contacto" class="btn roberto-btn btn-2">¡SOLICITALO YA!</a>
                         </div>
                     </div>                
                 </div>
