@@ -151,23 +151,30 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade show active" id="propietario" aria-labelledby="propietario-tab">
+                        <div role="tabpanel" class="tab-pane fade show active" id="propietario" aria-labelledby="propietario-tab">                            
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                      <div class="card-header text-white bg-primary">
+                                        Datos del usuario
+                                      </div>
+                                      <div class="card-body">
+                                          <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Nombres <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_pre" placeholder="Nombres del propietario" required>
+                                        <input class="form-control" id="txt_nombre_pre" placeholder="Nombres del usuario" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Apellidos <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_apellido_pre" placeholder="Apellidos del propietario" required>
+                                        <input class="form-control" id="txt_apellido_pre" placeholder="Apellidos del usuario" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                          <div class="row">
+                                                <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Correo Electrónico <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control" type="email" id="txt_correo_pre" placeholder="Correo electrónico" required="">
@@ -179,7 +186,9 @@
                                         <input class="form-control" type="email" id="txt_password_pre" placeholder="Contraseña" required="">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
                                     <div class="form-group">
                                         <h6><strong>Número Telefónico <strong class="text-danger">(*)</strong></strong></h6>
                                         <input class="form-control integerFCP" id="txt_telefono_pre" placeholder="Número teléfonico" required="">
@@ -191,40 +200,58 @@
                                         <input class="form-control integerFCP" id="txt_documento_pre" placeholder="Número de documento de identidad" required="">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>Nombre responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo responsable 1" required="">
+                                          </div>
+                                      </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>DNI responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_dni_padre" placeholder="DNI responsable 1" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>Telefono responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_tel_padre" placeholder="Telefono responsable 1" required="">
-                                    </div>
-                                </div>
-                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>Nombre responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo responsable 2" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>DNI responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_dni_madre" placeholder="DNI responsable 2" required="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h6><strong>Telefono del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
-                                        <input class="form-control" id="txt_tel_madre" placeholder="Telefono responsable 2" required="">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                      <div class="card-header text-white bg-dark">
+                                        Datos de los responsables
+                                          <h6 class="card-subtitle mb-2 text-muted">En el DNI saldrán los nombres de los responsables</h6>
+                                      </div>
+                                      <div class="card-body">
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <h6><strong>Nombre responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                                    <input class="form-control" id="txt_nombre_padre" placeholder="Nombre completo responsable 1" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <h6><strong>DNI responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                                    <input class="form-control" id="txt_dni_padre" placeholder="DNI responsable 1" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <h6><strong>Telefono responsable 1 <strong class="text-danger">(*)</strong></strong></h6>
+                                                    <input class="form-control" id="txt_tel_padre" placeholder="Telefono responsable 1" required="">
+                                                </div>
+                                            </div>
+                                          </div>
+                                          <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6><strong>Nombre responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                                <input class="form-control" id="txt_nombre_madre" placeholder="Nombre completo responsable 2" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6><strong>DNI responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                                <input class="form-control" id="txt_dni_madre" placeholder="DNI responsable 2" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h6><strong>Telefono del responsable 2 <strong class="text-danger">(*)</strong></strong></h6>
+                                                <input class="form-control" id="txt_tel_madre" placeholder="Telefono responsable 2" required="">
+                                            </div>
+                                        </div>
+                                              </div>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
@@ -947,6 +974,7 @@ más cuando ellos quieren que cuando nosotros lo buscamos.
 
     <!-- Footer Area Start -->
     <!--#include file="footerPage.aspx"-->
+    <a href="https://rump.mitienda.pe/" target="_blank" class="mant-to-middle-red mode-mobile-act  btn-pre-tienda"><i class="fas fa-shopping-cart"></i></a>
     <a href="#" class="mant-to-middle-blue mode-mobile-act  btn-pre-registrar"><i class="far fa-registered"></i></a>
     <a href="https://api.whatsapp.com/send?phone=51992975292&text=Hola,%20estoy%20interesado%20en%20el%20servicio%20*RUMP*.%20" rel="noopener" class="mant-to-middle mode-mobile-act" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
 </body>

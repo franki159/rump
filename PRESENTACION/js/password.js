@@ -1,4 +1,5 @@
 ﻿$(function () {
+    debugger;
     $.ajax({
         type: "POST",
         url: "password.aspx/IniciarWM",
@@ -11,7 +12,7 @@
         },
         success: function (data) {
             $("#page-loader").hide();
-
+            debugger;
             if (!data.d.Activo) {
                 $('#frmLogin').empty();
                 $('#frmLogin').html('<br /><br /><br /><br />' +

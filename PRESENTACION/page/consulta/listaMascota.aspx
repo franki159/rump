@@ -114,6 +114,12 @@
                         </span>
                         <span class="text">Buscar</span>
                     </button>
+                     <button id="btn_exportar" class="btn btn-3-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-download"></i>
+                            </span>
+                            <span class="text">Exportar</span>
+                        </button>
                 </div>
             </div>
         </div>
@@ -130,10 +136,14 @@
                         <tr>
                             <th>DNI</th>
                             <th>Mascota</th>
-                            <th>Dueño</th>
-                            <th>Telefono</th>
+                            <th>Especie</th>
+                            <th>Dirección</th>
+                            <th>Distrito</th>
                             <th>Fecha Nacimiento</th>
                             <th>Fecha Registro</th>
+                            <th>Dueño</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>                            
                         </tr>
                     </thead>
                     <tbody>

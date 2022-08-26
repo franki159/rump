@@ -135,16 +135,21 @@ function fc_listar_mascota() {
             for (var i = 0; i < data.d.Resultado.length; i++) {
                 html += '<tr><td>' + data.d.Resultado[i].DNI + '</td>';
                 html += '<td>' + data.d.Resultado[i].NOMBRE + '</td>';
-                html += '<td>' + data.d.Resultado[i].NOMBRE_PRE + '</td>';
-                html += '<td>' + data.d.Resultado[i].TELEFONO + '</td>';
+                html += '<td>' + data.d.Resultado[i].ESPECIE + '</td>';
+                html += '<td>' + data.d.Resultado[i].DIRECCION + '</td>';
+                html += '<td>' + data.d.Resultado[i].DISTRITO + '</td>';
                 if (data.d.Resultado[i].FEC_NAC !== null)
                     html += '<td>' + formatDate(parseDateServer(data.d.Resultado[i].FEC_NAC), "dd-MM-yyyy") + '</td>';
                 else
                     html += '<td></td>';
-                if (data.d.Resultado[i].FEC_INI !== null) 
-                    html += '<td>' + formatDate(parseDateServer(data.d.Resultado[i].FEC_INI), "dd-MM-yyyy") + '</td></tr>';
+                if (data.d.Resultado[i].FEC_INI !== null)
+                    html += '<td>' + formatDate(parseDateServer(data.d.Resultado[i].FEC_INI), "dd-MM-yyyy") + '</td>';
                 else
-                    html += '<td></td></tr>';
+                    html += '<td></td>';
+                html += '<td>' + data.d.Resultado[i].NOMBRE_PRE + '</td>';
+                html += '<td>' + data.d.Resultado[i].CORREO + '</td>';
+                html += '<td>' + data.d.Resultado[i].TELEFONO + '</td>';
+                html += '</tr>';
             }
 
             $("#tbl_mascota tbody").append(html);
@@ -368,4 +373,26 @@ $("#sel_provincia").on('change', function () {
 $("#btn_buscar").click(function () {
     $("#errorDiv").html('');
     fc_listar_mascota();
+});
+
+$("#btn_exportar").click(function () {
+    $("#btn_exportar").attr("disabled", true);
+    var total_reg = $('#tbl_mascota tr').length;
+
+    if (total_reg < 2) {
+        $("#errorDiv").html(GenerarAlertaWarning("Cantidad de Registros: No hay registros para exportar"));
+        $("#btn_exportar").attr("disabled", false);
+        return;
+    }
+
+    try {
+        exportGridToExcel("tbl_mascota", "mascotas_rump");
+    } catch (e) {
+        $("#errorDiv").html(GenerarAlertaWarning("Error: No hay registros para exportar"));
+        $("#btn_exportar").attr("disabled", false);
+        return;
+    }
+
+    
+    $("#btn_exportar").attr("disabled", false);
 });

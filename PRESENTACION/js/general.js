@@ -529,7 +529,7 @@ function exportGridToExcel(tableID, filename = '') {
         navigator.msSaveOrOpenBlob(blob, filename);
     } else {
         // Create a link to the file
-        downloadLink.href = 'data:' + dataType + ', ' + $.base64.encode(tableHTML);
+        downloadLink.href = 'data:' + dataType + ', ' + $.base64.encode(unescape(encodeURIComponent(tableHTML)));
 
         // Setting the file name
         downloadLink.download = filename;
